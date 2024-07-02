@@ -1,0 +1,28 @@
+﻿using Assets.RaceTheSun.Sources.Infrastructure;
+using Cysharp.Threading.Tasks;
+
+namespace Assets.RaceTheSun.Sources.UI.LoadingCurtain
+{
+    public class LoadingCurtainProxy : ILoadingCurtain
+    {
+        private readonly LoadingCurtain.Factory _factory;
+
+        private ILoadingCurtain _implementation;
+
+        public LoadingCurtainProxy(LoadingCurtain.Factory factory)
+        {
+            _factory = factory;
+        }
+
+        public async UniTask InitializeAsync()
+        {
+            _implementation = await _factory.Create(InfrasructureAssetPath.Curtain);
+        }
+
+        public void Show() =>
+            _implementation.Show();
+
+        public void Hide() =>
+            _implementation.Hide();
+    }
+}
