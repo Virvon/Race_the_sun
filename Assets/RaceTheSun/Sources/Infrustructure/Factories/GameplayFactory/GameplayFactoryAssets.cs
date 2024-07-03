@@ -9,5 +9,7 @@
         public const string Item = "Item";
         public const string Client = "Client";
         public const string Spaceship = "Spaceship";
+        public const string Tile = "Tile";
+        public const string WorldGenerator = "WorldGenerator";
     }
 }

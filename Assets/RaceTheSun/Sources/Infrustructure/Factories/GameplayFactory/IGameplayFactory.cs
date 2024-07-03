@@ -8,5 +8,7 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
     {
         UniTask CreateHud();
         UniTask CreateSpaceship();
+        UniTask<GameObject> CreateTile(Vector3 position, Transform parent);
+        UniTask CreateWorldGenerator();
     }
 }

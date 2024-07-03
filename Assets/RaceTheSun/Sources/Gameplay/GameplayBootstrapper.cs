@@ -15,6 +15,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay
         public async void Initialize()
         {
             await _gameplayFactory.CreateSpaceship();
+            await _gameplayFactory.CreateWorldGenerator();
         }
     }
 }

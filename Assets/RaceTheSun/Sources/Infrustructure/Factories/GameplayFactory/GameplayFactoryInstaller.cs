@@ -1,4 +1,5 @@
 ﻿using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
+using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
 using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -19,6 +20,10 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             Container
                 .BindFactory<string, UniTask<Spaceship>, Spaceship.Factory>()
                 .FromFactory<KeyPrefabFactoryAsync<Spaceship>>();
+
+            Container
+                .BindFactory<string, UniTask<Tile>, Tile.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<Tile>>();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Assets.MyBakery.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
+using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
 using Cysharp.Threading.Tasks;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -13,34 +14,40 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         private readonly HudFactory _hudFactory;
         private readonly IStaticDataService _staticDataService;
         private readonly Spaceship.Factory _spaceshipFactory;
+        private readonly Tile.Factory _tileFactory;
 
-        public GameplayFactory(DiContainer container, HudFactory hudFactory, IStaticDataService staticDataService, Spaceship.Factory spaceshipFactory)
+        public GameplayFactory(DiContainer container, HudFactory hudFactory, IStaticDataService staticDataService, Spaceship.Factory spaceshipFactory, Tile.Factory tileFactory)
         {
             _container = container;
             _hudFactory = hudFactory;
             _staticDataService = staticDataService;
             _spaceshipFactory = spaceshipFactory;
+            _tileFactory = tileFactory;
         }
 
         public async UniTask CreateSpaceship()
         {
-            await _spaceshipFactory.Create(GameplayFactoryAssets.Spaceship);
+            Spaceship spaceship = await _spaceshipFactory.Create(GameplayFactoryAssets.Spaceship);
+            _container.Bind<Spaceship>().FromInstance(spaceship).AsSingle();
         }
 
         public async UniTask CreateHud() =>
             await _hudFactory.Create(GameplayFactoryAssets.Hud);
 
-        public async UniTask CreatePlayerCharacter(Vector3 position)
-        {
-            //PlayerCharacter playerCharacter = await _playerCharacterFactory.Create(GameplayFactoryAssets.PlayerCharacter);
-            //playerCharacter.transform.position = position;
-            //_container.Bind<PlayerCharacter>().FromInstance(playerCharacter).AsSingle();
-
-            //PlayerCharacterMovement x = playerCharacter.GetComponent<PlayerCharacterMovement>();
-            //_container.Bind<PlayerCharacterMovement>().FromInstance(x).AsSingle();
-        }
-
         public async UniTask CreatePlayerCharacterCamera() =>
             await _hudFactory.Create(GameplayFactoryAssets.PlayerCharacterCamera);
+
+        public async UniTask<GameObject> CreateTile(Vector3 position, Transform parent)
+        {
+            Tile tile = await _tileFactory.Create(GameplayFactoryAssets.Tile);
+
+            tile.transform.parent = parent;
+            tile.transform.position = position;
+
+            return tile.gameObject;
+        }
+
+        public async UniTask CreateWorldGenerator() =>
+            await _hudFactory.Create(GameplayFactoryAssets.WorldGenerator);
     }
 }
