@@ -9,7 +9,15 @@ namespace Assets.RaceTheSun.Sources.Gameplay
         {
             BindGameplayBootstrapper();
             BindGameplayFactory();
+            BindGameplayStateMachine();
+            BindScoreCounter();
         }
+
+        private void BindScoreCounter() =>
+            Container.BindInterfacesAndSelfTo<ScoreCounter.ScoreCounter>().AsSingle();
+
+        private void BindGameplayStateMachine() =>
+            GameplayStateMachineInstaller.Install(Container);
 
         private void BindGameplayFactory() =>
             GameplayFactoryInstaller.Install(Container);

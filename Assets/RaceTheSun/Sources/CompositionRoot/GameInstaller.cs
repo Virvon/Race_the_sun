@@ -1,8 +1,9 @@
-﻿using Assets.MyBakery.Sources.Services.StaticDataService;
-using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
+﻿using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
+using Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory;
 using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
 using Assets.RaceTheSun.Sources.Infrastructure.SceneManagement;
+using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.UI.LoadingCurtain;
 using Cysharp.Threading.Tasks;
 using Zenject;
@@ -20,7 +21,29 @@ namespace Assets.RaceTheSun.Sources.CompositionRoot
             //BindInputService();
             BindGameplayFactory();
             BindStaticDataService();
+            BindSaveLoadService();
+            BindPersistentProgressService();
+            BindWindowService();
+            BindUiFactory();
         }
+
+        private void BindUiFactory()
+        {
+            Container
+                 .Bind<IUiFactory>()
+                 .FromSubContainerResolve()
+                 .ByInstaller<UiFactoryInstaller>()
+                 .AsSingle();
+        }
+
+        private void BindWindowService() =>
+            Container.BindInterfacesAndSelfTo<WindowService>().AsSingle();
+
+        private void BindPersistentProgressService() =>
+            Container.BindInterfacesAndSelfTo<PersistentProgressService>().AsSingle();
+
+        private void BindSaveLoadService() =>
+            Container.BindInterfacesAndSelfTo<SaveLoadService>().AsSingle();
 
         private void BindStaticDataService() =>
             Container.BindInterfacesAndSelfTo<StaticDataService>().AsSingle();

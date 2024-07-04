@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 {
@@ -26,6 +27,9 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
         private void OnCollisionEnter(Collision collision)
         {
+            if (collision.transform.TryGetComponent(out SpaceshipDie _))
+                return;
+
             _normal = collision.contacts[0].normal;
             _rigidbody.velocity = Vector3.zero;
         }
@@ -47,6 +51,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             _rigidbody.MovePosition(_rigidbody.position + offset);
             Rotate(deviation);
         }
+
+        
 
         private void Rotate(float deviation)
         {

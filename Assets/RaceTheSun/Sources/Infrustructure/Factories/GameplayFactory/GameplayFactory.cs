@@ -1,6 +1,6 @@
-﻿using Assets.MyBakery.Sources.Services.StaticDataService;
-using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
+﻿using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
+using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Cysharp.Threading.Tasks;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -29,6 +29,8 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         {
             Spaceship spaceship = await _spaceshipFactory.Create(GameplayFactoryAssets.Spaceship);
             _container.Bind<Spaceship>().FromInstance(spaceship).AsSingle();
+            _container.Bind<SpaceshipDie>().FromInstance(spaceship.GetComponentInChildren<SpaceshipDie>()).AsSingle();
+            _container.Bind<SpaceshipJump>().FromInstance(spaceship.GetComponent<SpaceshipJump>()).AsSingle();
         }
 
         public async UniTask CreateHud() =>

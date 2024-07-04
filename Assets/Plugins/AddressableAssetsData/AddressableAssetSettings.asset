@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 79a8dafef5290794da4fc3fa3beda0b1
   m_currentHash:
     serializedVersion: 2
-    Hash: df3179204872d1a162bf251394c6aa2d
+    Hash: d1e0c17c0a491e9401e20c8359964f49
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -88,6 +88,7 @@ MonoBehaviour:
     m_LabelNames:
     - default
     - Scenes
+    - Configs
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 6789f2768da0ae34583a592957e6d6f4, type: 2}

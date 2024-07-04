@@ -1,5 +1,6 @@
-﻿using Assets.MyBakery.Sources.Services.StaticDataService;
-using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
+﻿using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
+using Assets.RaceTheSun.Sources.Infrustructure.GameStateMachine.States;
+using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.UI.LoadingCurtain;
 using Cysharp.Threading.Tasks;
 
@@ -24,7 +25,7 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine.States
         {
             await InitServices();
 
-            _stateMachine.Enter<MainMenuState>().Forget();
+            _stateMachine.Enter<LoadProgressState>().Forget();
         }
 
         public UniTask Exit() =>

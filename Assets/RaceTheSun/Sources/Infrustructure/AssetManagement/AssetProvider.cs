@@ -21,6 +21,14 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.AssetManagement
             await Addressables.InitializeAsync().ToUniTask();
         }
 
+        public void CleanUp()
+        {
+            foreach (AsyncOperationHandle handle in _assetRequest.Values)
+                Addressables.Release(handle);
+
+            _assetRequest.Clear();
+        }
+
         public async UniTask<TAsset> Load<TAsset>(AssetReferenceGameObject reference) where TAsset : class
         {
             AsyncOperationHandle handle;

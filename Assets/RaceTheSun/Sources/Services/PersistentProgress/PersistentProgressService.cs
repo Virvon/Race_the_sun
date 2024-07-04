@@ -1,0 +1,6 @@
+﻿using Assets.RaceTheSun.Sources.Data;
+
+public class PersistentProgressService : IPersistentProgressService
+{
+    public PlayerProgress Progress { get; set; }
+}

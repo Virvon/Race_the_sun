@@ -12,5 +12,6 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.AssetManagement
         UniTask WarmupAssetsByLable(string label);
         UniTask<TAsset[]> LoadAll<TAsset>(List<string> keys) where TAsset : class;
         UniTask<List<string>> GetAssetsListByLabel<TAsset>(string label);
+        void CleanUp();
     }
 }

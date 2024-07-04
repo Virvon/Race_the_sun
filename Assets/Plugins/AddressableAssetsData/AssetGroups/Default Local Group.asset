@@ -41,7 +41,8 @@ MonoBehaviour:
   - m_GUID: 6382e0beaccecc041a68c169a06eb139
     m_Address: GameplayScene
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Scenes
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8e6450ae66716fa43aae029d407c55e7
     m_Address: WorldGenerator
@@ -52,6 +53,27 @@ MonoBehaviour:
     m_Address: Tile
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 34c059f5a77a2df48ac1df929cdf9781
+    m_Address: Hud
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 660c58cd0bf965640a7bb8447a25e547
+    m_Address: UiRoot
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c157ef0bc049eb646a45fb26a34e0e07
+    m_Address: Shop
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fb1cc40e0b0466f4a85bbbbecaa694fe
+    m_Address: WindowStaticData
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 01d6725a7c3e3d04aaaaf52334bff613, type: 2}

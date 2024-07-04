@@ -9,7 +9,11 @@ namespace Assets.RaceTheSun.Sources.MainMenu
         {
             BindMainMenuBootstrapper();
             BindMainMenuFactory();
+            BindUiFactory();
         }
+
+        private void BindUiFactory() =>
+            UiFactoryInstaller.Install(Container);
 
         private void BindMainMenuFactory() =>
             MainMenuFactoryInstaller.Install(Container);
