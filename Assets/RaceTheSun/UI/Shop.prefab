@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 2868531737965051313}
   - component: {fileID: 7113641156982047861}
   - component: {fileID: 1297199342287294121}
+  - component: {fileID: 8578912678225772765}
   m_Layer: 5
-  m_Name: ExitButton
+  m_Name: CloseWindowButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,6 +122,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8578912678225772765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5534653881681572034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9f3497bab3ba4144b4deb7440073406, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 1297199342287294121}
+  _openableWindow: {fileID: 1710143984631161579}
 --- !u!1 &7543470649572744154
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,7 +281,7 @@ GameObject:
   - component: {fileID: 2914051490385628907}
   - component: {fileID: 5940112791246980080}
   - component: {fileID: 2875808801846244316}
-  - component: {fileID: 7746849964348375636}
+  - component: {fileID: 1710143984631161579}
   m_Layer: 5
   m_Name: Shop
   m_TagString: Untagged
@@ -332,7 +347,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7746849964348375636
+--- !u!114 &1710143984631161579
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -341,7 +356,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8454226656092783456}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e666359ec3b93f34eba04ac3d3faa0ab, type: 3}
+  m_Script: {fileID: 11500000, guid: 205bff5769923e0439be9c6d57b960a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _closeButton: {fileID: 1297199342287294121}

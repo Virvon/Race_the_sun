@@ -6,10 +6,12 @@ namespace Assets.RaceTheSun.Sources.Data
     public class PlayerProgress
     {
         public Wallet Wallet;
+        public AvailableStatsToUpgrade AvailableStatsToUpgrade;
 
         public PlayerProgress()
         {
             Wallet = new();
+            AvailableStatsToUpgrade = new ();
         }
     }
 }

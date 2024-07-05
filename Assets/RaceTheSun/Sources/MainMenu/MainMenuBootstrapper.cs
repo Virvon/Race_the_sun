@@ -17,7 +17,6 @@ namespace Assets.RaceTheSun.Sources.MainMenu
         public async void Initialize()
         {
             await _mainMenuFactory.CreateMainMenu();
-            await _uiFactory.CreateUiRoot();
         }
     }
 }

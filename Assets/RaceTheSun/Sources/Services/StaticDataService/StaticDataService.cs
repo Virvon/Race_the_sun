@@ -15,26 +15,11 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService
             _assetsProvider = assetsProvider;
         }
 
-        private Dictionary<WindowId, WindowConfig> _windowConfigs;
-
         public async UniTask InitializeAsync()
         {
             List<UniTask> tasks = new List<UniTask>();
 
-            tasks.Add(LoadWindowConfigs());
-
             await UniTask.WhenAll(tasks);
-        }
-
-        public WindowConfig GetWindow(WindowId windowId) =>
-            _windowConfigs.TryGetValue(windowId, out var config) ? config : null;
-
-        private async UniTask LoadWindowConfigs()
-        {
-            WindowStaticData[] windowStaticDatas = await GetConfigs<WindowStaticData>();
-            WindowStaticData windowStaticData = windowStaticDatas.First();
-
-            _windowConfigs = windowStaticData.Configs.ToDictionary(value => value.WindowId, value => value);
         }
 
         private async UniTask<TConfig[]> GetConfigs<TConfig>() where TConfig : class

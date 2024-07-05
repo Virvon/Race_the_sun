@@ -23,7 +23,6 @@ namespace Assets.RaceTheSun.Sources.CompositionRoot
             BindStaticDataService();
             BindSaveLoadService();
             BindPersistentProgressService();
-            BindWindowService();
             BindUiFactory();
         }
 
@@ -36,8 +35,6 @@ namespace Assets.RaceTheSun.Sources.CompositionRoot
                  .AsSingle();
         }
 
-        private void BindWindowService() =>
-            Container.BindInterfacesAndSelfTo<WindowService>().AsSingle();
 
         private void BindPersistentProgressService() =>
             Container.BindInterfacesAndSelfTo<PersistentProgressService>().AsSingle();

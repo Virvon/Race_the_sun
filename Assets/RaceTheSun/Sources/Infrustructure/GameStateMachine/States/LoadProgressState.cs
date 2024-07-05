@@ -1,6 +1,7 @@
 ﻿using Assets.RaceTheSun.Sources.Data;
 using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
 using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine.States;
+using Assets.RaceTheSun.Sources.MainMenu.Spaceship;
 using Cysharp.Threading.Tasks;
 
 namespace Assets.RaceTheSun.Sources.Infrustructure.GameStateMachine.States
@@ -37,6 +38,8 @@ namespace Assets.RaceTheSun.Sources.Infrustructure.GameStateMachine.States
         private PlayerProgress CreateNewProgress()
         {
             PlayerProgress progress = new();
+
+            progress.AvailableStatsToUpgrade.Stats.Add(StatType.Battery);
 
             return progress;
         }

@@ -14,5 +14,16 @@ namespace Assets.RaceTheSun.Sources.Data
             Value += value;
             ValueChanged?.Invoke(Value);
         }
+
+        public bool TryTake(int value)
+        {
+            if(value > Value)
+                return false;
+
+            Value -= value;
+            ValueChanged?.Invoke(Value);
+
+            return true;
+        }
     }
 }
