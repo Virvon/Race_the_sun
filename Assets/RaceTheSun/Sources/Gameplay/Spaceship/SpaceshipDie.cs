@@ -26,6 +26,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         {
             if (other.transform.TryGetComponent(out Wall _))
             {
+                _spaceship.position = new Vector3(transform.position.x, 50, transform.position.z);
+                return;
                 if(_shieldsCount > 0)
                 {
                     _shieldsCount--;

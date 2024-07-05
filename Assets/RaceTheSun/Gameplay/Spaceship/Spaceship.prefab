@@ -10,9 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4419601514146712839}
   - component: {fileID: 5310117516549734283}
-  - component: {fileID: 3292056374350632907}
   m_Layer: 0
-  m_Name: DieTrigger
+  m_Name: Delete
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,27 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spaceship: {fileID: 5789376504018628276}
---- !u!65 &3292056374350632907
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1364192079177526287}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.4, y: 0.5, z: 0.2854333}
-  m_Center: {x: 0, y: 0, z: 0.35728335}
 --- !u!1 &2432101691324614991
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,6 +128,72 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &3698360965343339150
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7707792951058009480}
+  - component: {fileID: 4303271011127889016}
+  - component: {fileID: 6292063375717737957}
+  m_Layer: 0
+  m_Name: DieTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7707792951058009480
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3698360965343339150}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5789376504018628276}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4303271011127889016
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3698360965343339150}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 2.85}
+  m_Center: {x: 0, y: 0.8, z: 0.8}
+--- !u!114 &6292063375717737957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3698360965343339150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e34d4531cdee7849875af3f5119a306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6151267343870864566
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,14 +402,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5789376504018628276}
-  - component: {fileID: 498371049094663948}
-  - component: {fileID: 4631679895538501472}
   - component: {fileID: 997834433271052482}
-  - component: {fileID: 8239532251891628263}
   - component: {fileID: 6663257255485136456}
   - component: {fileID: 3712972243847333947}
   - component: {fileID: 9153718015142481203}
   - component: {fileID: -1817524834148764225}
+  - component: {fileID: 7651415972937325125}
+  - component: {fileID: 3106690647854551342}
+  - component: {fileID: 6095623645172689575}
   m_Layer: 0
   m_Name: Spaceship
   m_TagString: Untagged
@@ -389,56 +433,9 @@ Transform:
   - {fileID: 6338342311962899652}
   - {fileID: 1560929715687832022}
   - {fileID: 4419601514146712839}
+  - {fileID: 7707792951058009480}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &498371049094663948
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7935134606465975063}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.6, y: 0.6, z: 3}
-  m_Center: {x: 0, y: 0, z: 0.70000005}
---- !u!54 &4631679895538501472
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7935134606465975063}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &997834433271052482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,21 +448,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c140eb204f5ba9740a4701c15b7691c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8239532251891628263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7935134606465975063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39151aef5196174438c3573ffe066117, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _jumpHeight: 30
-  _rigidbody: {fileID: 4631679895538501472}
-  _spaceshipFloat: {fileID: 9153718015142481203}
 --- !u!114 &6663257255485136456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -479,7 +461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spaceshipDie: {fileID: 5310117516549734283}
-  _spaceShipJump: {fileID: 8239532251891628263}
+  _spaceShipJump: {fileID: -1817524834148764225}
 --- !u!114 &3712972243847333947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -492,12 +474,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb01a88f6c8b4454382d557648c7c57b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rigidbody: {fileID: 4631679895538501472}
+  _rigidbody: {fileID: 7651415972937325125}
   _turnDuration: 0.2
   _maxDeviation: 0.5
   _speed: 100
   _model: {fileID: 6338342311962899652}
   _spaceshipJump: {fileID: -1817524834148764225}
+  _groundedCollision: {fileID: 6095623645172689575}
 --- !u!114 &9153718015142481203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -510,7 +493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56dc948dcddd58742855d05a6354ef5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rigidbody: {fileID: 4631679895538501472}
+  _rigidbody: {fileID: 7651415972937325125}
   _floatTime: 1
 --- !u!114 &-1817524834148764225
 MonoBehaviour:
@@ -524,7 +507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 683d95f63f77d1c49b112e90f0a0eb4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rigidbody: {fileID: 4631679895538501472}
+  _rigidbody: {fileID: 7651415972937325125}
   _jumpCurve:
     serializedVersion: 2
     m_Curve:
@@ -552,3 +535,64 @@ MonoBehaviour:
   _duration: 1
   _jumpHeight: 30
   _spaceshipFloat: {fileID: 9153718015142481203}
+--- !u!54 &7651415972937325125
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7935134606465975063}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 1
+--- !u!65 &3106690647854551342
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7935134606465975063}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.6, y: 0.25, z: 2.9}
+  m_Center: {x: 0, y: -0.125, z: 0.65}
+--- !u!114 &6095623645172689575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7935134606465975063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3afb68b4a69139438a0f24542299b99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spaceshipJump: {fileID: -1817524834148764225}

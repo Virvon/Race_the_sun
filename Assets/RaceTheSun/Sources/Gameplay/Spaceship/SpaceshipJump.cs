@@ -16,6 +16,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         private int _jumpBoostsCount;
 
         public event Action<int> JumpBoostsCountChanged;
+        public event Action Jumped;
 
         public Vector3 JumpPosition { get; private set; }
 
@@ -32,6 +33,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
                 _jumping = StartCoroutine(Jumping());
                 _jumpBoostsCount--;
                 JumpBoostsCountChanged?.Invoke(_jumpBoostsCount);
+                Jumped?.Invoke();
             }
         }
 
