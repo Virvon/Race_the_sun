@@ -65,7 +65,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5, y: 0.5, z: 0.2854333}
+  m_Size: {x: 0.4, y: 0.5, z: 0.2854333}
   m_Center: {x: 0, y: 0, z: 0.35728335}
 --- !u!1 &2432101691324614991
 GameObject:
@@ -258,7 +258,7 @@ Transform:
   m_GameObject: {fileID: 6708592405223054704}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -360,10 +360,12 @@ GameObject:
   - component: {fileID: 5789376504018628276}
   - component: {fileID: 498371049094663948}
   - component: {fileID: 4631679895538501472}
-  - component: {fileID: 6709258689662953497}
   - component: {fileID: 997834433271052482}
   - component: {fileID: 8239532251891628263}
   - component: {fileID: 6663257255485136456}
+  - component: {fileID: 3712972243847333947}
+  - component: {fileID: 9153718015142481203}
+  - component: {fileID: -1817524834148764225}
   m_Layer: 0
   m_Name: Spaceship
   m_TagString: Untagged
@@ -408,7 +410,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3, y: 0.6, z: 3}
+  m_Size: {x: 0.6, y: 0.6, z: 3}
   m_Center: {x: 0, y: 0, z: 0.70000005}
 --- !u!54 &4631679895538501472
 Rigidbody:
@@ -437,56 +439,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &6709258689662953497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7935134606465975063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab1bf7265200f724b91b79854364070d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rigidbody: {fileID: 4631679895538501472}
-  _accelerationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: -0.9918604
-      value: -1.0016109
-      inSlope: 2
-      outSlope: 1.441149
-      tangentMode: 1
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.14210163
-    - serializedVersion: 3
-      time: 0.014500698
-      value: 0.0075570364
-      inSlope: 1.3991199
-      outSlope: 1.3085132
-      tangentMode: 1
-      weightedMode: 0
-      inWeight: 0.088017255
-      outWeight: 0.13939539
-    - serializedVersion: 3
-      time: 0.9858551
-      value: 0.9934845
-      inSlope: 1.5403273
-      outSlope: -0.4472104
-      tangentMode: 1
-      weightedMode: 0
-      inWeight: 0.12238836
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _extremePointsDuration: 5
-  _maxDeviation: 0.2
-  _model: {fileID: 6338342311962899652}
-  _speed: 150
 --- !u!114 &997834433271052482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,8 +463,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39151aef5196174438c3573ffe066117, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpHeight: 10
+  _jumpHeight: 30
   _rigidbody: {fileID: 4631679895538501472}
+  _spaceshipFloat: {fileID: 9153718015142481203}
 --- !u!114 &6663257255485136456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -527,3 +480,75 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spaceshipDie: {fileID: 5310117516549734283}
   _spaceShipJump: {fileID: 8239532251891628263}
+--- !u!114 &3712972243847333947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7935134606465975063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb01a88f6c8b4454382d557648c7c57b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody: {fileID: 4631679895538501472}
+  _turnDuration: 0.2
+  _maxDeviation: 0.5
+  _speed: 100
+  _model: {fileID: 6338342311962899652}
+  _spaceshipJump: {fileID: -1817524834148764225}
+--- !u!114 &9153718015142481203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7935134606465975063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56dc948dcddd58742855d05a6354ef5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody: {fileID: 4631679895538501472}
+  _floatTime: 1
+--- !u!114 &-1817524834148764225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7935134606465975063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683d95f63f77d1c49b112e90f0a0eb4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody: {fileID: 4631679895538501472}
+  _jumpCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _duration: 1
+  _jumpHeight: 30
+  _spaceshipFloat: {fileID: 9153718015142481203}

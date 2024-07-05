@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections;
 using UnityEngine;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
@@ -6,21 +6,23 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
     public class SpaceshipMovement : MonoBehaviour
     {
         [SerializeField] private Rigidbody _rigidbody;
-        [SerializeField] private AnimationCurve _accelerationCurve;
-        [SerializeField] private float _extremePointsDuration;
+        [SerializeField] private float _turnDuration;
         [SerializeField] private float _maxDeviation;
-        [SerializeField] private Transform _model;
         [SerializeField] private float _speed;
+        [SerializeField] private Transform _model;
+        [SerializeField] private SpaceshipJump _spaceshipJump;
 
-        private float _curvePosition = 0;
+        private float _currentTurn;
+        private float _targetTurn;
+        private Coroutine _turning;
         private Vector3 _normal;
 
         private void Update()
         {
             float horizontal = Input.GetAxis("Horizontal");
 
-            if(horizontal != 0)
-                horizontal = horizontal > 0? 1 : -1;
+            if (horizontal != 0)
+                horizontal = horizontal > 0 ? 1 : -1;
 
             Move(horizontal);
         }
@@ -31,32 +33,51 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
                 return;
 
             _normal = collision.contacts[0].normal;
-            _rigidbody.velocity = Vector3.zero;
         }
+
 
         private void Move(float horizontal)
         {
-            if (horizontal == 0 && _curvePosition != 0)
-                horizontal = _curvePosition > 0 ? -1 : 1;
+            if (horizontal != _targetTurn)
+            {
+                float duration;
+                _targetTurn = horizontal;
 
-            _curvePosition += _extremePointsDuration * Time.deltaTime * horizontal;
+                if(horizontal != 0)
+                    duration = _turnDuration + Mathf.Abs(_currentTurn) * _turnDuration;
+                else if(horizontal == 0)
+                    duration = Mathf.Abs(_currentTurn) * _turnDuration;
+                else
+                    duration = (1 - Mathf.Abs(_currentTurn)) * _turnDuration;
 
-            _curvePosition = Mathf.Clamp(_curvePosition, -1, 1);
-            float deviation = RoundUp(_accelerationCurve.Evaluate(_curvePosition));
+                if (_turning != null)
+                    StopCoroutine(_turning);
 
-            Vector3 direction = new Vector3(deviation * _maxDeviation, 0,  1);
+                _turning = StartCoroutine(Turning(_targetTurn, duration));
+            }
+
+            Vector3 direction = new Vector3(_currentTurn * _maxDeviation, 0, 1);
             Vector3 directionAlongSurface = Project(direction.normalized);
             Vector3 offset = directionAlongSurface * (_speed * Time.deltaTime);
 
-            _rigidbody.MovePosition(_rigidbody.position + offset);
-            Rotate(deviation);
-        }
+            //Vector3 offset = direction.normalized * (_speed * Time.deltaTime);
+            Debug.DrawRay(transform.position, offset * 5);
 
-        
+            Vector3 currentPositon;
 
-        private void Rotate(float deviation)
-        {
-            _model.rotation = Quaternion.Euler(0, 0, deviation * -35);
+            if (_spaceshipJump.JumpPosition != Vector3.zero)
+            {
+                currentPositon = new Vector3(_rigidbody.position.x, _spaceshipJump.JumpPosition.y, _rigidbody.position.z);
+                _normal = Vector3.zero;
+            }
+            else
+            {
+                currentPositon = _rigidbody.position;
+            }
+
+            _rigidbody.MovePosition(currentPositon + offset);
+
+            Rotate(_currentTurn);
         }
 
         private Vector3 Project(Vector3 direction)
@@ -64,16 +85,24 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             return direction - Vector3.Dot(direction, _normal) * _normal;
         }
 
-        private float RoundUp(float number)
+        private void Rotate(float deviation)
         {
-            if (1 - number < 0.05f)
-                number = 1;
-            else if (1 + number < 0.05f)
-                number = -1;
-            else if (number < 0.05f && number > -0.05f)
-                number = 0;
+            _model.rotation = Quaternion.Euler(0, 0, deviation * -35);
+        }
 
-            return number;
+        private IEnumerator Turning(float targetTurn, float duration)
+        {
+            float elapsedTime = 0;
+            float startTurn = _currentTurn;
+
+            while(_currentTurn != targetTurn)
+            {
+                elapsedTime += Time.deltaTime;
+                float progress = elapsedTime / duration;
+                _currentTurn = Mathf.Lerp(startTurn, targetTurn, progress);
+
+                yield return null;
+            }
         }
     }
 }
