@@ -19,6 +19,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         public event Action Jumped;
 
         public Vector3 JumpPosition { get; private set; }
+        public bool IsJumped { get; private set; }
 
         private void Update()
         {
@@ -50,7 +51,9 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             float startHeight = _rigidbody.position.y;
             float finishHeight = startHeight + _jumpHeight;
 
-            Debug.Log(_rigidbody.position.y);
+            IsJumped = true;
+
+            Debug.Log(finishHeight);
 
             while (progress < 1)
             {
@@ -60,8 +63,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
                 yield return null;
             }
 
-            JumpPosition = Vector3.zero;
             _spaceshipFloat.Float();
+            IsJumped = false;
         }
     }
 }

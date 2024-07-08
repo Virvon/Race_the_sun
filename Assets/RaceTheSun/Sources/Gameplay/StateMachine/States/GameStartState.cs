@@ -16,7 +16,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
 
         public async UniTask Enter()
         {
-            
+            await _gameplayFactory.CreateStartCamera();
         }
 
         public UniTask Exit()

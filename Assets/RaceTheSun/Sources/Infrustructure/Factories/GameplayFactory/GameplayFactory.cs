@@ -2,6 +2,7 @@
 using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Cysharp.Threading.Tasks;
+using System;
 using System.Threading.Tasks;
 using UnityEngine;
 using Zenject;
@@ -14,6 +15,12 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         private readonly HudFactory _hudFactory;
         private readonly IStaticDataService _staticDataService;
         private readonly Spaceship.Factory _spaceshipFactory;
+
+        internal Task CreateStartCamera()
+        {
+            throw new NotImplementedException();
+        }
+
         private readonly Tile.Factory _tileFactory;
 
         public GameplayFactory(DiContainer container, HudFactory hudFactory, IStaticDataService staticDataService, Spaceship.Factory spaceshipFactory, Tile.Factory tileFactory)
@@ -29,8 +36,8 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         {
             Spaceship spaceship = await _spaceshipFactory.Create(GameplayFactoryAssets.Spaceship);
             _container.Bind<Spaceship>().FromInstance(spaceship).AsSingle();
-            _container.Bind<SpaceshipDie>().FromInstance(spaceship.GetComponentInChildren<SpaceshipDie>()).AsSingle();
-            _container.Bind<SpaceshipJump>().FromInstance(spaceship.GetComponent<SpaceshipJump>()).AsSingle();
+            //_container.Bind<SpaceshipDie>().FromInstance(spaceship.GetComponentInChildren<SpaceshipDie>()).AsSingle();
+            //_container.Bind<SpaceshipJump>().FromInstance(spaceship.GetComponent<SpaceshipJump>()).AsSingle();
         }
 
         public async UniTask CreateHud() =>
