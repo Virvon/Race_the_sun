@@ -1,6 +1,8 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
+﻿using Assets.RaceTheSun.Sources.Gameplay.Cameras;
+using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
+using Cinemachine;
 using Cysharp.Threading.Tasks;
 using System;
 using System.Threading.Tasks;
@@ -18,8 +20,9 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         private readonly Spaceship.Factory _spaceshipFactory;
         private readonly Tile.Factory _tileFactory;
         private readonly WorldGenerator.Factory _worldGeneratorFactory;
+        private readonly VirtualCamera.Factory _virtualCameraFactory;
 
-        public GameplayFactory(DiContainer container, HudFactory hudFactory, IStaticDataService staticDataService, Spaceship.Factory spaceshipFactory, Tile.Factory tileFactory, WorldGenerator.Factory worldGeneratorFactory)
+        public GameplayFactory(DiContainer container, HudFactory hudFactory, IStaticDataService staticDataService, Spaceship.Factory spaceshipFactory, Tile.Factory tileFactory, WorldGenerator.Factory worldGeneratorFactory, VirtualCamera.Factory virtualCameraFactory)
         {
             _container = container;
             _hudFactory = hudFactory;
@@ -27,11 +30,7 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             _spaceshipFactory = spaceshipFactory;
             _tileFactory = tileFactory;
             _worldGeneratorFactory = worldGeneratorFactory;
-        }
-
-        public Task CreateStartCamera()
-        {
-            throw new NotImplementedException();
+            _virtualCameraFactory = virtualCameraFactory;
         }
 
         public async UniTask CreateSpaceship()
@@ -62,6 +61,12 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         {
             WorldGenerator worldGenerator = await _worldGeneratorFactory.Create(GameplayFactoryAssets.WorldGenerator);
             _container.Bind<WorldGenerator>().FromInstance(worldGenerator).AsSingle();
+        }
+
+        public async UniTask<CinemachineVirtualCamera> CreateStartCamera()
+        {
+            VirtualCamera virtualCamera = await _virtualCameraFactory.Create(GameplayFactoryAssets.StartCamera);
+            return virtualCamera.GetComponent<CinemachineVirtualCamera>();
         }
     }
 }

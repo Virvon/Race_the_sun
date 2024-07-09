@@ -70,6 +70,11 @@ MonoBehaviour:
     m_SerializedLabels:
     - Configs
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0276d386fc48283429a34c650af79e22
+    m_Address: StartCamera
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 01d6725a7c3e3d04aaaaf52334bff613, type: 2}
   m_SchemaSet:

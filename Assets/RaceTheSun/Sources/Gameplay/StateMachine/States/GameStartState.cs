@@ -12,34 +12,26 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
         private readonly GameplayStateMachine _gameplayStateMachine;
         private readonly IStaticDataService _staticDataService;
         private readonly WorldGenerator.WorldGenerator _worldGenerator;
+        private readonly IGameplayFactory _gameplayFacotry;
 
-        public GameStartState(GameplayStateMachine gameplayStateMachine, IStaticDataService staticDataService, WorldGenerator.WorldGenerator worldGenerator)
+        public GameStartState(GameplayStateMachine gameplayStateMachine, IStaticDataService staticDataService, WorldGenerator.WorldGenerator worldGenerator, IGameplayFactory gameplayFacotry)
         {
             _gameplayStateMachine = gameplayStateMachine;
             _staticDataService = staticDataService;
             _worldGenerator = worldGenerator;
+            _gameplayFacotry = gameplayFacotry;
         }
 
-        public UniTask Enter()
+        public async UniTask Enter()
         {
             StageConfig stageConfig = _staticDataService.GetStage(Stage.StartStage);
             _worldGenerator.SetTilesToGenerate(stageConfig.Tiles);
-
-            _worldGenerator.LastTileGenerated += OnLastTileGenerated;
-            return default;
+            await _gameplayFacotry.CreateStartCamera();
         }
 
         public UniTask Exit()
         {
-            _worldGenerator.LastTileGenerated -= OnLastTileGenerated;
             return default;
-        }
-
-        private void OnLastTileGenerated()
-        {
-            _gameplayStateMachine.Enter<GameStageState, int>(++_gameplayStateMachine.Stage).Forget();
-        }
-
-        
+        } 
     }
 }

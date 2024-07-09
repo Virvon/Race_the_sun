@@ -29,7 +29,35 @@ MonoBehaviour:
       m_EditorAssetChanged: 0
   - Stage: 1
     Tiles:
-    - m_AssetGUID: 8e6450ae66716fa43aae029d407c55e7
+    - m_AssetGUID: d842758c8f165f640b8ec8fac00d7fd2
       m_SubObjectName: 
       m_SubObjectType: 
-      m_EditorAssetChanged: 0
+      m_EditorAssetChanged: 1
+    - m_AssetGUID: d842758c8f165f640b8ec8fac00d7fd2
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
+    - m_AssetGUID: d842758c8f165f640b8ec8fac00d7fd2
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
+    - m_AssetGUID: d842758c8f165f640b8ec8fac00d7fd2
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
+    - m_AssetGUID: d842758c8f165f640b8ec8fac00d7fd2
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
+    - m_AssetGUID: d842758c8f165f640b8ec8fac00d7fd2
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
+    - m_AssetGUID: d842758c8f165f640b8ec8fac00d7fd2
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
+    - m_AssetGUID: d842758c8f165f640b8ec8fac00d7fd2
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
