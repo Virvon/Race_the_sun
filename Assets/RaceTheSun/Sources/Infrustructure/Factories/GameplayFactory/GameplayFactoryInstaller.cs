@@ -3,6 +3,7 @@ using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
 using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using Zenject;
 
 namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
@@ -22,8 +23,12 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
                 .FromFactory<KeyPrefabFactoryAsync<Spaceship>>();
 
             Container
-                .BindFactory<string, UniTask<Tile>, Tile.Factory>()
-                .FromFactory<KeyPrefabFactoryAsync<Tile>>();
+                .BindFactory<AssetReferenceGameObject, UniTask<Tile>, Tile.Factory>()
+                .FromFactory<RefefencePrefabFactoryAsync<Tile>>();
+
+            Container
+                .BindFactory<string, UniTask<WorldGenerator>, WorldGenerator.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<WorldGenerator>>();
         }
     }
 }

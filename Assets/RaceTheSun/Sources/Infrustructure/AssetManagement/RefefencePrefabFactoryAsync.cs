@@ -5,12 +5,12 @@ using Zenject;
 
 namespace Assets.RaceTheSun.Sources.Infrastructure.AssetManagement
 {
-    public class RefefencePrefabFactory<TComponent> : IFactory<AssetReferenceGameObject, UniTask<TComponent>>
+    public class RefefencePrefabFactoryAsync<TComponent> : IFactory<AssetReferenceGameObject, UniTask<TComponent>>
     {
         private readonly IAssetProvider _assetProvider;
         private readonly IInstantiator _instantiator;
 
-        public RefefencePrefabFactory(IAssetProvider assetProvider, IInstantiator instantiator)
+        public RefefencePrefabFactoryAsync(IAssetProvider assetProvider, IInstantiator instantiator)
         {
             _assetProvider = assetProvider;
             _instantiator = instantiator;

@@ -1,5 +1,7 @@
-﻿using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
+﻿using Assets.RaceTheSun.Sources.Gameplay.StateMachine.States;
+using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
 using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
+using UnityEngine;
 using Zenject;
 
 namespace Assets.RaceTheSun.Sources.Gameplay
@@ -23,7 +25,10 @@ namespace Assets.RaceTheSun.Sources.Gameplay
             await _gameplayFactory.CreateWorldGenerator();
             await _gameplayFactory.CreateHud();
 
-            //_gameplayStateMachine.RegisterState()
+            _gameplayStateMachine.RegisterState(_statesFactory.Create<GameStartState>());
+            _gameplayStateMachine.RegisterState(_statesFactory.Create<GameStageState>());
+
+            await _gameplayStateMachine.Enter<GameStartState>();
         }
     }
 }

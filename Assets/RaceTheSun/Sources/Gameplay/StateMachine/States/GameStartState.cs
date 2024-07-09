@@ -1,27 +1,46 @@
 ﻿using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
 using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
+using Assets.RaceTheSun.Sources.Services.StaticDataService;
+using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
 using Cysharp.Threading.Tasks;
-using System;
+using UnityEngine;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
 {
     public class GameStartState : IState
     {
-        private readonly GameplayFactory _gameplayFactory;
+        private readonly GameplayStateMachine _gameplayStateMachine;
+        private readonly IStaticDataService _staticDataService;
+        private readonly WorldGenerator.WorldGenerator _worldGenerator;
 
-        public GameStartState(GameplayFactory gameplayFactory)
+        public GameStartState(GameplayStateMachine gameplayStateMachine, IStaticDataService staticDataService, WorldGenerator.WorldGenerator worldGenerator)
         {
-            _gameplayFactory = gameplayFactory;
+            _gameplayStateMachine = gameplayStateMachine;
+            _staticDataService = staticDataService;
+            _worldGenerator = worldGenerator;
         }
 
-        public async UniTask Enter()
+        public UniTask Enter()
         {
-            await _gameplayFactory.CreateStartCamera();
+            StageConfig stageConfig = _staticDataService.GetStage(Stage.StartStage);
+            _worldGenerator.SetTilesToGenerate(stageConfig.Tiles);
+
+            _worldGenerator.LastTileGenerated += OnLastTileGenerated;
+            return default;
         }
 
         public UniTask Exit()
         {
-            throw new NotImplementedException();
+            _worldGenerator.LastTileGenerated -= OnLastTileGenerated;
+            return default;
         }
+
+        private void OnLastTileGenerated()
+        {
+            return;
+            _gameplayStateMachine.Enter<GameStageState, int>(_gameplayStateMachine.Stage++).Forget();
+        }
+
+        
     }
 }

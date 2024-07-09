@@ -5,6 +5,7 @@ using Cysharp.Threading.Tasks;
 using System;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using Zenject;
 
 namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
@@ -15,21 +16,22 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         private readonly HudFactory _hudFactory;
         private readonly IStaticDataService _staticDataService;
         private readonly Spaceship.Factory _spaceshipFactory;
-
-        internal Task CreateStartCamera()
-        {
-            throw new NotImplementedException();
-        }
-
         private readonly Tile.Factory _tileFactory;
+        private readonly WorldGenerator.Factory _worldGeneratorFactory;
 
-        public GameplayFactory(DiContainer container, HudFactory hudFactory, IStaticDataService staticDataService, Spaceship.Factory spaceshipFactory, Tile.Factory tileFactory)
+        public GameplayFactory(DiContainer container, HudFactory hudFactory, IStaticDataService staticDataService, Spaceship.Factory spaceshipFactory, Tile.Factory tileFactory, WorldGenerator.Factory worldGeneratorFactory)
         {
             _container = container;
             _hudFactory = hudFactory;
             _staticDataService = staticDataService;
             _spaceshipFactory = spaceshipFactory;
             _tileFactory = tileFactory;
+            _worldGeneratorFactory = worldGeneratorFactory;
+        }
+
+        public Task CreateStartCamera()
+        {
+            throw new NotImplementedException();
         }
 
         public async UniTask CreateSpaceship()
@@ -46,9 +48,9 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         public async UniTask CreatePlayerCharacterCamera() =>
             await _hudFactory.Create(GameplayFactoryAssets.PlayerCharacterCamera);
 
-        public async UniTask<GameObject> CreateTile(Vector3 position, Transform parent)
+        public async UniTask<GameObject> CreateTile(AssetReferenceGameObject tileReference, Vector3 position, Transform parent)
         {
-            Tile tile = await _tileFactory.Create(GameplayFactoryAssets.Tile);
+            Tile tile = await _tileFactory.Create(tileReference);
 
             tile.transform.parent = parent;
             tile.transform.position = position;
@@ -56,7 +58,10 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             return tile.gameObject;
         }
 
-        public async UniTask CreateWorldGenerator() =>
-            await _hudFactory.Create(GameplayFactoryAssets.WorldGenerator);
+        public async UniTask CreateWorldGenerator()
+        {
+            WorldGenerator worldGenerator = await _worldGeneratorFactory.Create(GameplayFactoryAssets.WorldGenerator);
+            _container.Bind<WorldGenerator>().FromInstance(worldGenerator).AsSingle();
+        }
     }
 }

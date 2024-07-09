@@ -11,18 +11,18 @@ namespace Assets.RaceTheSun.Sources.UI.ScoreView
 
         private SpaceshipDie _spaceshipDie;
 
-        [Inject]
-        private void Construct(SpaceshipDie spaceshipDie)
-        {
-            _spaceshipDie = spaceshipDie;
+        //[Inject]
+        //private void Construct(SpaceshipDie spaceshipDie)
+        //{
+        //    _spaceshipDie = spaceshipDie;
 
-            _spaceshipDie.ShieldsCountChanged += OnShieldsCountChanged;
-        }
+        //    _spaceshipDie.ShieldsCountChanged += OnShieldsCountChanged;
+        //}
 
-        private void OnDestroy()
-        {
-            _spaceshipDie.ShieldsCountChanged -= OnShieldsCountChanged;
-        }
+        //private void OnDestroy()
+        //{
+        //    _spaceshipDie.ShieldsCountChanged -= OnShieldsCountChanged;
+        //}
 
         private void OnShieldsCountChanged(int shieldsCount)
         {

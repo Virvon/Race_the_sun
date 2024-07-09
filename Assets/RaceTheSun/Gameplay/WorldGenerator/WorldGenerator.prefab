@@ -44,6 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e492a258a3592f7459ad67ac06273749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tile: {fileID: 0}
   _cellLength: 500
-  _renderDistance: 2000
+  _renderDistance: 5000

@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Test
+namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 {
     public class SpaceshipMovement : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 ﻿using Assets.RaceTheSun.Sources.Utils;
 using UnityEngine;
 
-namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Test
+namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 {
     public class HeightsEngine : MonoBehaviour
     {

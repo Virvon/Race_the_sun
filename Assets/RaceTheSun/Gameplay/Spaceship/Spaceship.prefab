@@ -351,7 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb01a88f6c8b4454382d557648c7c57b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerInput: {fileID: 0}
+  _playerInput: {fileID: 1189609125267202750}
   _maxDistance: 5
   _layerMask:
     serializedVersion: 2
@@ -380,7 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc2b59b7c2681974fb2f6d3f9f30cf47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerInput: {fileID: 6230952508603313520}
+  _playerInput: {fileID: 1189609125267202750}
   _turnDuration: 0.2
   _maxDeviation: 0.5
   _model: {fileID: 6338342311962899652}
@@ -530,7 +530,7 @@ GameObject:
   - component: {fileID: 997834433271052482}
   - component: {fileID: 3106690647854551342}
   - component: {fileID: 5699659358237058815}
-  - component: {fileID: 6230952508603313520}
+  - component: {fileID: 1189609125267202750}
   m_Layer: 0
   m_Name: Spaceship
   m_TagString: Untagged
@@ -618,7 +618,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 2
---- !u!114 &6230952508603313520
+--- !u!114 &1189609125267202750
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

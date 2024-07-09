@@ -1,10 +1,12 @@
 ﻿using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
 using Cysharp.Threading.Tasks;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using Zenject;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
@@ -18,6 +20,13 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
         private Transform _spaceship;
 
         private HashSet<GameObject> _tilesMatrix;
+        private AssetReferenceGameObject[] _tilesToGenerate;
+        private int _currentTileIndex;
+        private bool _isFlowFree;
+
+        public event Action LastTileGenerated;
+
+        private bool CanGenerate => _currentTileIndex < _tilesToGenerate.Length;
 
         [Inject]
         private void Construct(IGameplayFactory gameplayFactory, Spaceship.Spaceship spaceship)
@@ -26,15 +35,26 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
             _spaceship = spaceship.transform;
 
             _tilesMatrix = new();
+            _isFlowFree = true;
         }
 
         private async void Update()
         {
-            if (_spaceship == null)
+            if (_spaceship == null || _tilesToGenerate == null || CanGenerate == false || _isFlowFree == false)
                 return;
+
+            _isFlowFree = false;
 
             await Fill(_spaceship.position, _renderDistance);
             await Empty(_spaceship.position);
+
+            _isFlowFree = true;
+        }
+
+        public void SetTilesToGenerate(AssetReferenceGameObject[] tiles)
+        {
+            _tilesToGenerate = tiles;
+            _currentTileIndex = 0;
         }
 
         private UniTask Empty(Vector3 spaceshipPositoin)
@@ -71,7 +91,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
             
             for(int z = 0; z < cellCoundOnAxis; z++)
             {
-                await TryCreate(fillStart + z);
+                if(CanGenerate)
+                    await TryCreate(fillStart + z);
             }
         }
 
@@ -82,9 +103,13 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
 
             Vector3 position = GridToWorldPosition(gridPosition);
 
-            GameObject tileObject = await _gameplayFactory.CreateTile(position, transform);
+            GameObject tileObject = await _gameplayFactory.CreateTile(_tilesToGenerate[_currentTileIndex], position, transform);
+            _currentTileIndex++;
 
             _tilesMatrix.Add(tileObject);
+
+            if (_currentTileIndex == _tilesToGenerate.Length)
+                LastTileGenerated?.Invoke();
         }
 
         private Vector3 GridToWorldPosition(int gridPosition)
@@ -98,6 +123,10 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
         private int WorldToGridPosition(Vector3 worldPosition)
         {
             return (int)(worldPosition.z / _cellLength);
+        }
+
+        public class Factory : PlaceholderFactory<string, UniTask<WorldGenerator>>
+        {
         }
     }
 }

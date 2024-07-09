@@ -1,6 +1,7 @@
 ﻿using Cysharp.Threading.Tasks;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
 {
@@ -8,7 +9,7 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
     {
         UniTask CreateHud();
         UniTask CreateSpaceship();
-        UniTask<GameObject> CreateTile(Vector3 position, Transform parent);
+        UniTask<GameObject> CreateTile(AssetReferenceGameObject tileReference, Vector3 position, Transform parent);
         UniTask CreateWorldGenerator();
     }
 }

@@ -11,18 +11,18 @@ namespace Assets.RaceTheSun.Sources.UI.ScoreView
 
         private SpaceshipJump _spaceshipJump;
 
-        [Inject]
-        private void Construct(SpaceshipJump spaceshipJump)
-        {
-            _spaceshipJump = spaceshipJump;
+        //[Inject]
+        //private void Construct(SpaceshipJump spaceshipJump)
+        //{
+        //    _spaceshipJump = spaceshipJump;
 
-            _spaceshipJump.JumpBoostsCountChanged += OnJumpBoostsCountChanged;
-        }
+        //    _spaceshipJump.JumpBoostsCountChanged += OnJumpBoostsCountChanged;
+        //}
 
-        private void OnDestroy()
-        {
-            _spaceshipJump.JumpBoostsCountChanged -= OnJumpBoostsCountChanged;
-        }
+        //private void OnDestroy()
+        //{
+        //    _spaceshipJump.JumpBoostsCountChanged -= OnJumpBoostsCountChanged;
+        //}
 
         private void OnJumpBoostsCountChanged(int jumpBoostsCount)
         {
