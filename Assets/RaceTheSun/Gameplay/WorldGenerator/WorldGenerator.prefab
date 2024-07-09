@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cellLength: 500
-  _renderDistance: 5000
+  _renderDistance: 2000

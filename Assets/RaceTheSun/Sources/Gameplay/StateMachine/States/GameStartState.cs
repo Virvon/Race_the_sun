@@ -37,8 +37,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
 
         private void OnLastTileGenerated()
         {
-            return;
-            _gameplayStateMachine.Enter<GameStageState, int>(_gameplayStateMachine.Stage++).Forget();
+            _gameplayStateMachine.Enter<GameStageState, int>(++_gameplayStateMachine.Stage).Forget();
         }
 
         
