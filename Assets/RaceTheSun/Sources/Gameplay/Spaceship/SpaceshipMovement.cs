@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Assets.RaceTheSun.Sources.Gameplay.StateMachine.States;
+using Cysharp.Threading.Tasks;
+using System;
 using System.Collections;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 {
@@ -29,6 +32,13 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         private float _currentSpeed;
         private bool _isCollided;
         private float _forceTime;
+        private GameplayStateMachine _gameplayStateMachine;
+
+        [Inject]
+        private void Construct(GameplayStateMachine gameplayStateMachine)
+        {
+            _gameplayStateMachine = gameplayStateMachine;
+        }
 
         public Vector3 Offset { get; private set; }
 
@@ -83,7 +93,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
                 if (_collision.Dot > _destoryDot)
                     _currentSpeed = _minSpeed;
                 else
+                {
                     _currentSpeed = 0;
+                    enabled = false;
+                    _gameplayStateMachine.Enter<GameEndState>().Forget();
+                }
             }
         }
 

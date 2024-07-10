@@ -63,7 +63,7 @@ MonoBehaviour:
       m_EditorAssetChanged: 1
   - Stage: -1
     Tiles:
-    - m_AssetGUID: d842758c8f165f640b8ec8fac00d7fd2
+    - m_AssetGUID: 1d7e830b70e6b9649a08a616b09c27db
       m_SubObjectName: 
       m_SubObjectType: 
-      m_EditorAssetChanged: 1
+      m_EditorAssetChanged: 0

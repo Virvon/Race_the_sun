@@ -27,7 +27,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
 
         public UniTask Exit()
         {
-            throw new System.NotImplementedException();
+            return default;
         }
     }
 }

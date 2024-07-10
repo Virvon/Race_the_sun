@@ -26,9 +26,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay
             await _gameplayFactory.CreateHud();
             await _gameplayFactory.CreateStartCamera();
             await _gameplayFactory.CreateSpaceshipMainCamera();
+            await _gameplayFactory.CreateSpaceshipSideCamera();
 
             _gameplayStateMachine.RegisterState(_statesFactory.Create<GameStartState>());
             _gameplayStateMachine.RegisterState(_statesFactory.Create<GameLoopState>());
+            _gameplayStateMachine.RegisterState(_statesFactory.Create<GameEndState>());
 
             await _gameplayStateMachine.Enter<GameStartState>();
         }
