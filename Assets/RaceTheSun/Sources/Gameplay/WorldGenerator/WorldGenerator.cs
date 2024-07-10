@@ -1,4 +1,6 @@
 ﻿using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
+using Assets.RaceTheSun.Sources.Services.StaticDataService;
+using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
 using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
@@ -18,24 +20,27 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
 
         private IGameplayFactory _gameplayFactory;
         private Transform _spaceship;
-
         private HashSet<GameObject> _tilesMatrix;
         private AssetReferenceGameObject[] _tilesToGenerate;
         private int _currentTileIndex;
         private bool _isFlowFree;
-
-        public event Action LastTileGenerated;
+        private CurrentStage _currentStage;
+        private IStaticDataService _staticDataService;
 
         private bool CanGenerate => _currentTileIndex < _tilesToGenerate.Length;
 
         [Inject]
-        private void Construct(IGameplayFactory gameplayFactory, Spaceship.Spaceship spaceship)
+        private void Construct(IGameplayFactory gameplayFactory, Spaceship.Spaceship spaceship, IStaticDataService staticDataService)
         {
             _gameplayFactory = gameplayFactory;
             _spaceship = spaceship.transform;
+            _staticDataService = staticDataService;
 
             _tilesMatrix = new();
             _isFlowFree = true;
+            _currentStage = new();
+
+            SetNextStage();
         }
 
         private async void Update()
@@ -49,12 +54,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
             await Empty(_spaceship.position);
 
             _isFlowFree = true;
-        }
-
-        public void SetTilesToGenerate(AssetReferenceGameObject[] tiles)
-        {
-            _tilesToGenerate = tiles;
-            _currentTileIndex = 0;
         }
 
         private UniTask Empty(Vector3 spaceshipPositoin)
@@ -109,7 +108,15 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
             _tilesMatrix.Add(tileObject);
 
             if (_currentTileIndex == _tilesToGenerate.Length)
-                LastTileGenerated?.Invoke();
+                SetNextStage();
+        }
+
+        private void SetNextStage()
+        {
+            StageConfig stageConfig = _staticDataService.GetStage((Stage)_currentStage.GetCurrentStage());
+
+            _tilesToGenerate = stageConfig.Tiles;
+            _currentTileIndex = 0;
         }
 
         private Vector3 GridToWorldPosition(int gridPosition)

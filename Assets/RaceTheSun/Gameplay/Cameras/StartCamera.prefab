@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1768370319633952966}
   - component: {fileID: 3544907184899333106}
-  - component: {fileID: 5830468094920189957}
+  - component: {fileID: -4947708341714772327}
   m_Layer: 0
   m_Name: StartCamera
   m_TagString: Untagged
@@ -50,7 +50,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 0
+  m_Priority: 2
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
@@ -73,7 +73,7 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 5240797198449538982}
---- !u!114 &5830468094920189957
+--- !u!114 &-4947708341714772327
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -82,7 +82,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6199593414886363176}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ced89d395ec4ecc4883f6c1f3e137b34, type: 3}
+  m_Script: {fileID: 11500000, guid: d54d2155099e7ac40a974adc0183993b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7791111594875421272

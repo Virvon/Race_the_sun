@@ -63,10 +63,16 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             _container.Bind<WorldGenerator>().FromInstance(worldGenerator).AsSingle();
         }
 
-        public async UniTask<CinemachineVirtualCamera> CreateStartCamera()
+        public async UniTask CreateStartCamera()
         {
             VirtualCamera virtualCamera = await _virtualCameraFactory.Create(GameplayFactoryAssets.StartCamera);
-            return virtualCamera.GetComponent<CinemachineVirtualCamera>();
+            _container.Bind<StartCamera>().FromInstance(virtualCamera.GetComponent<StartCamera>()).AsSingle();
+        }
+
+        public async UniTask CreateSpaceshipMainCamera()
+        {
+            VirtualCamera virtualCamera = await _virtualCameraFactory.Create(GameplayFactoryAssets.SpaceshipMainCamera);
+            _container.Bind<SpaceshipMainCamera>().FromInstance(virtualCamera.GetComponent<SpaceshipMainCamera>()).AsSingle();
         }
     }
 }

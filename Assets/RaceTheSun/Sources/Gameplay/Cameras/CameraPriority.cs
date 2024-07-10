@@ -1,4 +1,6 @@
-﻿namespace Assets.RaceTheSun.Sources.Gameplay.Cameras
+﻿using UnityEngine;
+
+namespace Assets.RaceTheSun.Sources.Gameplay.Cameras
 {
     public enum CameraPriority
     {
