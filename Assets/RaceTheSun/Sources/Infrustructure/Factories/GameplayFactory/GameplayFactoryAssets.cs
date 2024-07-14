@@ -14,5 +14,6 @@
         public const string StartCamera = "StartCamera";
         public const string SpaceshipMainCamera = "SpaceshipMainCamera";
         public const string SpaceshipSideCamera = "SpaceshipSideCamera";
+        public const string Sun = "Sun";
     }
 }

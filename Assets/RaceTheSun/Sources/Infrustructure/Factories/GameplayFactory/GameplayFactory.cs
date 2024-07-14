@@ -1,5 +1,6 @@
 ﻿using Assets.RaceTheSun.Sources.Gameplay.Cameras;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
+using Assets.RaceTheSun.Sources.Gameplay.Sun;
 using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Cinemachine;
@@ -21,8 +22,9 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         private readonly Tile.Factory _tileFactory;
         private readonly WorldGenerator.Factory _worldGeneratorFactory;
         private readonly VirtualCamera.Factory _virtualCameraFactory;
+        private readonly Sun.Factory _sunFactory;
 
-        public GameplayFactory(DiContainer container, HudFactory hudFactory, IStaticDataService staticDataService, Spaceship.Factory spaceshipFactory, Tile.Factory tileFactory, WorldGenerator.Factory worldGeneratorFactory, VirtualCamera.Factory virtualCameraFactory)
+        public GameplayFactory(DiContainer container, HudFactory hudFactory, IStaticDataService staticDataService, Spaceship.Factory spaceshipFactory, Tile.Factory tileFactory, WorldGenerator.Factory worldGeneratorFactory, VirtualCamera.Factory virtualCameraFactory, Sun.Factory sunFactory)
         {
             _container = container;
             _hudFactory = hudFactory;
@@ -31,6 +33,7 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             _tileFactory = tileFactory;
             _worldGeneratorFactory = worldGeneratorFactory;
             _virtualCameraFactory = virtualCameraFactory;
+            _sunFactory = sunFactory;
         }
 
         public async UniTask CreateSpaceship()
@@ -79,6 +82,11 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         {
             VirtualCamera virtualCamera = await _virtualCameraFactory.Create(GameplayFactoryAssets.SpaceshipSideCamera);
             _container.Bind<SpaceshipSideCamera>().FromInstance(virtualCamera.GetComponent<SpaceshipSideCamera>()).AsSingle(); ;
+        }
+
+        public async UniTask CreateSun()
+        {
+            await _sunFactory.Create(GameplayFactoryAssets.Sun);
         }
     }
 }

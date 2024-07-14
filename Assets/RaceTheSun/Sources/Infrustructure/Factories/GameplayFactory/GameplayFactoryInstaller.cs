@@ -1,5 +1,6 @@
 ﻿using Assets.RaceTheSun.Sources.Gameplay.Cameras;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
+using Assets.RaceTheSun.Sources.Gameplay.Sun;
 using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
 using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
 using Cysharp.Threading.Tasks;
@@ -34,6 +35,10 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             Container
                 .BindFactory<string, UniTask<VirtualCamera>, VirtualCamera.Factory>()
                 .FromFactory<KeyPrefabFactoryAsync<VirtualCamera>>();
+
+            Container
+                .BindFactory<string, UniTask<Sun>, Sun.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<Sun>>();
         }
     }
 }
