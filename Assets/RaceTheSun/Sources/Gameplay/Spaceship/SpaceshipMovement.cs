@@ -24,6 +24,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         [SerializeField] private SpaceshipJump _jump;
         [SerializeField] private float _collisionForceMultiplier;
         [SerializeField] private float _collisionForceDuration;
+        [SerializeField] private Battery _battery;
+        [SerializeField] private float _stopSpeed;
 
         private Vector3 _surfaceNormal;
         private bool _isFlight;
@@ -88,10 +90,22 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
         private void SetCurrentSpeed()
         {
-            if (_collision.IsCollided)
+            if (_battery.Discharged)
+            {
+                _currentSpeed -= Time.deltaTime * _stopSpeed;
+
+                if(_currentSpeed <= 0)
+                {
+                    _currentSpeed = 0;
+                    _gameplayStateMachine.Enter<GameEndState>().Forget();
+                }    
+            }
+            else if (_collision.IsCollided)
             {
                 if (_collision.Dot > _destoryDot)
+                {
                     _currentSpeed = _minSpeed;
+                }
                 else
                 {
                     _currentSpeed = 0;
@@ -105,6 +119,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         {
             if (_collision.IsCollided && offset.magnitude > _collision.Distance)
                 offset = offset.normalized * _collision.Distance;
+
             return offset;
         }
 
@@ -112,6 +127,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         {
             if (_jump.IsJumped)
                 offset = new Vector3(offset.x, _jump.JumpPosition.y - _rigidbody.position.y, offset.z);
+
             return offset;
         }
 
@@ -169,7 +185,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
         private void TryNormalizeSpeed()
         {
-            if (_currentSpeed < _speed)
+            if (_currentSpeed < _speed && _battery.Discharged == false)
             {
                 float speedFactor = _accelerationFromMinSpeed * Time.deltaTime;
 

@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
+using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine;
 using Zenject;
@@ -15,15 +16,15 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
         private Transform _spaceship;
         private bool _isShadowed;
         private float _progress;
+        private Battery _battery;
         
         [Inject]
         private void Construct(Spaceship.Spaceship spaceship)
         {
             _spaceship = spaceship.transform;
             _isShadowed = false;
+            _battery = spaceship.GetComponentInChildren<Battery>();
         }
-
-        public event Action<bool> ShadowedChanged;
 
         private void Update()
         {
@@ -42,7 +43,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
             if (isShadowed != _isShadowed)
             {
                 _isShadowed = isShadowed;
-                ShadowedChanged?.Invoke(_isShadowed);
+                _battery.ChangeShadowed(_isShadowed);
             }
         }
 

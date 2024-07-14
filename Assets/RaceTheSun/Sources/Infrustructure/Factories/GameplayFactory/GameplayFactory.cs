@@ -86,7 +86,8 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
 
         public async UniTask CreateSun()
         {
-            await _sunFactory.Create(GameplayFactoryAssets.Sun);
+            Sun sun = await _sunFactory.Create(GameplayFactoryAssets.Sun);
+            _container.Bind<Sun>().FromInstance(sun).AsSingle();
         }
     }
 }

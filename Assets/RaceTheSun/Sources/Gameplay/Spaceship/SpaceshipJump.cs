@@ -53,8 +53,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
             IsJumped = true;
 
-            Debug.Log(finishHeight);
-
             while (progress < 1)
             {
                 expiredSeconds += Time.deltaTime;
