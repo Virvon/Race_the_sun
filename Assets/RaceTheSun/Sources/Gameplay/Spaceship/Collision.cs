@@ -8,6 +8,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         [SerializeField] private SpaceshipMovement _movement;
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private LayerMask _layerMask;
+        [SerializeField] private Spaceship _spaceship;
 
         public bool IsCollided { get; private set; }
         public float Distance { get; private set; }
@@ -23,6 +24,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
                 Distance = hitInfo.distance;
                 Dot = Vector3.Dot(hitInfo.normal, _movement.Offset.normalized);
                 HitPosition = hitInfo.point;
+                _spaceship.StopBoostSpeed();
             }
         }
 

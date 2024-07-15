@@ -1,0 +1,87 @@
+﻿using System.Collections;
+using UnityEngine;
+
+namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
+{
+    public class BoostedSpeed : SpeedDecorator
+    {
+        private const float BoostValue = 50;
+        private const float AccelerationDuration = 1;
+        private const float BoostedSpeedTime = 5;
+        private const float BrakingDuration = 2;
+
+        private readonly float _defaultSpeed;
+        private readonly MonoBehaviour _coroutineRunner;
+
+        private float _speed;
+        private bool _isBoosted;
+        private Coroutine _booster;
+
+        public BoostedSpeed(ISpeedProvider wrappedEntity, float defaultSpeed, MonoBehaviour coroutineRunner) : base(wrappedEntity)
+        {
+            _defaultSpeed = defaultSpeed;
+            _coroutineRunner = coroutineRunner;
+        }
+
+        public void Boost()
+        {
+            if (_booster != null)
+                _coroutineRunner.StopCoroutine(_booster);
+
+            _booster = _coroutineRunner.StartCoroutine(Booster());
+        }
+
+        public void StopBoost()
+        {
+            if (_booster != null)
+                _coroutineRunner.StopCoroutine(_booster);
+
+            _isBoosted = false;
+        }
+
+        protected override float GetSpeedInternal()
+        {
+            return _isBoosted ? _speed : WrappedEntity.GetSpeed();
+        }
+
+        private IEnumerator Booster()
+        {
+            float startSpeed = WrappedEntity.GetSpeed();
+            float targetSpeed = startSpeed + BoostValue;
+            float time = 0;
+            float progress = 0;
+
+            _speed = startSpeed;
+            _isBoosted = true;
+
+            while (_speed != targetSpeed)
+            {
+                time += Time.deltaTime;
+                progress = time / AccelerationDuration;
+
+                _speed = Mathf.Lerp(startSpeed, targetSpeed, progress);
+
+                yield return null;
+            }
+
+            yield return new WaitForSeconds(BoostedSpeedTime);
+
+            startSpeed = _speed;
+            targetSpeed = _defaultSpeed;
+            time = 0;
+            progress = 0;
+
+            while (_speed != targetSpeed)
+            {
+                time += Time.deltaTime;
+                progress = time / AccelerationDuration;
+
+                _speed = Mathf.Lerp(startSpeed, targetSpeed, progress);
+
+                yield return null;
+            }
+
+            _isBoosted = false;
+        }
+    }
+}

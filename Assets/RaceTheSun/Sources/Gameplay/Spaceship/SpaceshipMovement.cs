@@ -12,26 +12,21 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         [SerializeField] private PlayerInput _playerInput;
         [SerializeField] private float _maxDistance;
         [SerializeField] private LayerMask _layerMask;
-        [SerializeField] private float _speed;
         [SerializeField] private float _minSpeed;
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private float _flightDistance;
         [SerializeField] private float _flightDuration;
         [SerializeField] private SpaceshipTurning _turning;
         [SerializeField] private Collision _collision;
-        [SerializeField] private float _destoryDot;
-        [SerializeField] private float _accelerationFromMinSpeed;
         [SerializeField] private SpaceshipJump _jump;
         [SerializeField] private float _collisionForceMultiplier;
         [SerializeField] private float _collisionForceDuration;
-        [SerializeField] private Battery _battery;
-        [SerializeField] private float _stopSpeed;
+        [SerializeField] private Spaceship _spaceship;
 
         private Vector3 _surfaceNormal;
         private bool _isFlight;
         private float _flightTime;
         private Vector3 _startSurfaceNormal;
-        private float _currentSpeed;
         private bool _isCollided;
         private float _forceTime;
         private GameplayStateMachine _gameplayStateMachine;
@@ -46,13 +41,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
         private void Start()
         {
-            _currentSpeed = _speed;
             _isCollided = false;
         }
 
         private void FixedUpdate()
         {
-            TryNormalizeSpeed();
             TryFly();
             CheckStartOfCollision();
 
@@ -61,8 +54,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             Offset = AdjustOffsetLengthToCollision(Offset);
 
             _rigidbody.MovePosition(_rigidbody.position + Offset);
-
-            SetCurrentSpeed();
         }
 
         private void OnDrawGizmos()
@@ -85,33 +76,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             {
                 _forceTime = 0;
                 _isCollided = true;
-            }
-        }
-
-        private void SetCurrentSpeed()
-        {
-            if (_battery.Discharged)
-            {
-                _currentSpeed -= Time.deltaTime * _stopSpeed;
-
-                if(_currentSpeed <= 0)
-                {
-                    _currentSpeed = 0;
-                    _gameplayStateMachine.Enter<GameEndState>().Forget();
-                }    
-            }
-            else if (_collision.IsCollided)
-            {
-                if (_collision.Dot > _destoryDot)
-                {
-                    _currentSpeed = _minSpeed;
-                }
-                else
-                {
-                    _currentSpeed = 0;
-                    enabled = false;
-                    _gameplayStateMachine.Enter<GameEndState>().Forget();
-                }
             }
         }
 
@@ -152,7 +116,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             }
 
             Vector3 directionAlongSurface = Project(direction);
-            Vector3 offset = directionAlongSurface * _currentSpeed * Time.fixedDeltaTime;
+            Vector3 offset = directionAlongSurface * _spaceship.SpeedProvider.GetSpeed() * Time.fixedDeltaTime;
             return offset;
         }
 
@@ -180,19 +144,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
                 _flightTime += Time.fixedDeltaTime;
                 float progress = _flightTime / _flightDuration;
                 _surfaceNormal = Vector3.Lerp(_startSurfaceNormal, Vector3.up, progress);
-            }
-        }
-
-        private void TryNormalizeSpeed()
-        {
-            if (_currentSpeed < _speed && _battery.Discharged == false)
-            {
-                float speedFactor = _accelerationFromMinSpeed * Time.deltaTime;
-
-                if (_currentSpeed + speedFactor > _speed)
-                    _currentSpeed = _speed;
-                else
-                    _currentSpeed += speedFactor;
             }
         }
 

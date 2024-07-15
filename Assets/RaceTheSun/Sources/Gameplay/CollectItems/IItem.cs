@@ -2,7 +2,8 @@
 
 namespace Assets.RaceTheSun.Sources.Gameplay.CollectItems
 {
-    public class Item : MonoBehaviour
+    public interface IItem
     {
+        void Accept(IItemVisitor visitor);
     }
 }

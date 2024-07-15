@@ -2,7 +2,7 @@
 
 namespace Assets.RaceTheSun.Sources.Gameplay.CollectItems
 {
-    public class JumpBoost : MonoBehaviour, IItem
+    public class ScoreItem : MonoBehaviour, IItem
     {
         public void Accept(IItemVisitor visitor)
         {

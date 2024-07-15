@@ -401,20 +401,16 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 83
-  _speed: 100
   _minSpeed: 60
   _rigidbody: {fileID: 5699659358237058815}
   _flightDistance: 3
   _flightDuration: 3
   _turning: {fileID: 7435576250677095112}
   _collision: {fileID: 2114853494269242055}
-  _destoryDot: -0.5
-  _accelerationFromMinSpeed: 15
   _jump: {fileID: 1793601898392911040}
   _collisionForceMultiplier: 0.2
   _collisionForceDuration: 0.2
-  _battery: {fileID: 4024959007766294848}
-  _stopSpeed: 5
+  _spaceship: {fileID: 997834433271052482}
 --- !u!114 &7435576250677095112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,6 +445,7 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 83
+  _spaceship: {fileID: 997834433271052482}
 --- !u!1 &6708592405223054704
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,6 +479,52 @@ Transform:
   - {fileID: 6792911365892799455}
   m_Father: {fileID: 5789376504018628276}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7215081878153495869
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1344712567764641690}
+  - component: {fileID: 5763474565024263249}
+  m_Layer: 0
+  m_Name: CollectItems
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1344712567764641690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7215081878153495869}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5789376504018628276}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5763474565024263249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7215081878153495869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e26d968b35cf1874abef3a219069d1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collectRadius: 2
+  _spaceship: {fileID: 997834433271052482}
 --- !u!1 &7935134606465975063
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,6 +563,7 @@ Transform:
   - {fileID: 7684107179572176401}
   - {fileID: 5268272267183083335}
   - {fileID: 8881256909963806639}
+  - {fileID: 1344712567764641690}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &997834433271052482
@@ -534,6 +578,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c140eb204f5ba9740a4701c15b7691c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collision: {fileID: 2114853494269242055}
+  _battery: {fileID: 4024959007766294848}
 --- !u!65 &3106690647854551342
 BoxCollider:
   m_ObjectHideFlags: 0
