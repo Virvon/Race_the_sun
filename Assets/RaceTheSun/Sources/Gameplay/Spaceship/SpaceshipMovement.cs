@@ -23,6 +23,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         [SerializeField] private float _collisionForceDuration;
         [SerializeField] private Spaceship _spaceship;
 
+        public bool IsStopped;
+
         private Vector3 _surfaceNormal;
         private bool _isFlight;
         private float _flightTime;
@@ -42,10 +44,14 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         private void Start()
         {
             _isCollided = false;
+            IsStopped = false;
         }
 
         private void FixedUpdate()
         {
+            if (IsStopped)
+                return;
+
             TryFly();
             CheckStartOfCollision();
 

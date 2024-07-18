@@ -21,31 +21,25 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
         private IGameplayFactory _gameplayFactory;
         private Transform _spaceship;
         private HashSet<GameObject> _tilesMatrix;
-        private AssetReferenceGameObject[] _tilesToGenerate;
-        private int _currentTileIndex;
         private bool _isFlowFree;
-        private CurrentStage _currentStage;
+        private CurrentGenerationStage _currentGenerationStage;
         private IStaticDataService _staticDataService;
 
-        private bool CanGenerate => _currentTileIndex < _tilesToGenerate.Length;
-
         [Inject]
-        private void Construct(IGameplayFactory gameplayFactory, Spaceship.Spaceship spaceship, IStaticDataService staticDataService)
+        private void Construct(IGameplayFactory gameplayFactory, Spaceship.Spaceship spaceship, IStaticDataService staticDataService, CurrentGenerationStage currentGenerationStage)
         {
             _gameplayFactory = gameplayFactory;
             _spaceship = spaceship.transform;
             _staticDataService = staticDataService;
+            _currentGenerationStage = currentGenerationStage;
 
             _tilesMatrix = new();
             _isFlowFree = true;
-            _currentStage = new();
-
-            SetNextStage();
         }
 
         private async void Update()
         {
-            if (_spaceship == null || _tilesToGenerate == null || CanGenerate == false || _isFlowFree == false)
+            if (_spaceship == null || _isFlowFree == false)
                 return;
 
             _isFlowFree = false;
@@ -54,6 +48,16 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
             await Empty(_spaceship.position);
 
             _isFlowFree = true;
+        }
+
+        public void Clean()
+        {
+            foreach(var tile in _tilesMatrix)
+            {
+                Destroy(tile.gameObject);
+            }
+
+            _tilesMatrix.Clear();
         }
 
         private UniTask Empty(Vector3 spaceshipPositoin)
@@ -79,7 +83,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
             foreach(GameObject tile in removedTiles)
             {
                 _tilesMatrix.Remove(tile);
-                Destroy(tile);
+                Destroy(tile.gameObject);
             }
         }
 
@@ -90,8 +94,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
             
             for(int z = 0; z < cellCoundOnAxis; z++)
             {
-                if(CanGenerate)
-                    await TryCreate(fillStart + z);
+                await TryCreate(fillStart + z);
             }
         }
 
@@ -102,21 +105,9 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
 
             Vector3 position = GridToWorldPosition(gridPosition);
 
-            GameObject tileObject = await _gameplayFactory.CreateTile(_tilesToGenerate[_currentTileIndex], position, transform);
-            _currentTileIndex++;
+            GameObject tileObject = await _gameplayFactory.CreateTile(_currentGenerationStage.GetTile(), position, transform);
 
             _tilesMatrix.Add(tileObject);
-
-            if (_currentTileIndex == _tilesToGenerate.Length)
-                SetNextStage();
-        }
-
-        private void SetNextStage()
-        {
-            StageConfig stageConfig = _staticDataService.GetStage((Stage)_currentStage.GetCurrentStage());
-
-            _tilesToGenerate = stageConfig.Tiles;
-            _currentTileIndex = 0;
         }
 
         private Vector3 GridToWorldPosition(int gridPosition)

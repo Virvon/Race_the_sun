@@ -19,24 +19,28 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
         private readonly WorldGenerator.WorldGenerator _worldGenerator;
         private readonly IGameplayFactory _gameplayFacotry;
         private readonly Spaceship.Spaceship _spaceship;
+        private readonly StartMovement _startMovement;
+        
 
-        private CinemachineVirtualCamera _startCamera;
-
-        public GameStartState(GameplayStateMachine gameplayStateMachine, IStaticDataService staticDataService, WorldGenerator.WorldGenerator worldGenerator, IGameplayFactory gameplayFacotry, Spaceship.Spaceship spaceship, StartCamera startCamera)
+        public GameStartState(GameplayStateMachine gameplayStateMachine, IStaticDataService staticDataService, WorldGenerator.WorldGenerator worldGenerator, IGameplayFactory gameplayFacotry, Spaceship.Spaceship spaceship)
         {
             _gameplayStateMachine = gameplayStateMachine;
             _staticDataService = staticDataService;
             _worldGenerator = worldGenerator;
             _gameplayFacotry = gameplayFacotry;
             _spaceship = spaceship;
-            _startCamera = startCamera.GetComponent<CinemachineVirtualCamera>();
+            _startMovement = _spaceship.GetComponentInChildren<StartMovement>();
+            
         }
 
         public async UniTask Enter()
         {
             StageConfig stageConfig = _staticDataService.GetStage(Stage.StartStage);
 
-            _spaceship.StartCoroutine(SpaceshipMover());
+            _startMovement.Move(() =>
+            {
+                _gameplayStateMachine.Enter<GameLoopState>().Forget();
+            });
         }
 
         public UniTask Exit()
@@ -44,29 +48,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
             return default;
         }
 
-        private IEnumerator SpaceshipMover()
-        {
-            Vector3 startPosition = new Vector3(0, 2, -100);
-            Vector3 endPosition = new Vector3(0, 2, 30);
-            float duration = 1f;
-            float time = 0;
-
-            SpaceshipMovement movement = _spaceship.GetComponentInChildren<SpaceshipMovement>();
-            movement.enabled = false;
-
-            while(_spaceship.transform.position != endPosition)
-            {
-                time += Time.deltaTime;
-                float progress = time / duration;
-
-                _spaceship.transform.position = Vector3.Lerp(startPosition, endPosition, progress);
-
-                yield return null;
-            }
-
-            movement.enabled = true;
-            _startCamera.Priority = (int)CameraPriority.NotUse;
-            _gameplayStateMachine.Enter<GameLoopState>().Forget();
-        }
+        
     }
 }

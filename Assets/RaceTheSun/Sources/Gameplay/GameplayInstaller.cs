@@ -1,4 +1,6 @@
-﻿using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
+﻿using Assets.RaceTheSun.Sources.Gameplay.DistanceObserver;
+using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
+using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
 using Zenject;
 
 namespace Assets.RaceTheSun.Sources.Gameplay
@@ -11,7 +13,15 @@ namespace Assets.RaceTheSun.Sources.Gameplay
             BindGameplayFactory();
             BindGameplayStateMachine();
             BindScoreCounter();
+            BindCurrentGenerationStage();
+            BindDistanceObservable();
         }
+
+        private void BindDistanceObservable() =>
+            Container.BindInterfacesAndSelfTo<DistanceObservable>().AsSingle();
+
+        private void BindCurrentGenerationStage() =>
+            Container.BindInterfacesAndSelfTo<CurrentGenerationStage>().AsSingle();
 
         private void BindScoreCounter() =>
             Container.BindInterfacesAndSelfTo<ScoreCounter.ScoreCounter>().AsSingle();

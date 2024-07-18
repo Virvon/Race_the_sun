@@ -1,4 +1,5 @@
 ﻿using Assets.RaceTheSun.Sources.Gameplay.Cameras;
+using Assets.RaceTheSun.Sources.Gameplay.DistanceObserver;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using Assets.RaceTheSun.Sources.Gameplay.Sun;
 using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
@@ -23,8 +24,9 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         private readonly WorldGenerator.Factory _worldGeneratorFactory;
         private readonly VirtualCamera.Factory _virtualCameraFactory;
         private readonly Sun.Factory _sunFactory;
+        private readonly DistanceObservable _distanceObservable;
 
-        public GameplayFactory(DiContainer container, HudFactory hudFactory, IStaticDataService staticDataService, Spaceship.Factory spaceshipFactory, Tile.Factory tileFactory, WorldGenerator.Factory worldGeneratorFactory, VirtualCamera.Factory virtualCameraFactory, Sun.Factory sunFactory)
+        public GameplayFactory(DiContainer container, HudFactory hudFactory, IStaticDataService staticDataService, Spaceship.Factory spaceshipFactory, Tile.Factory tileFactory, WorldGenerator.Factory worldGeneratorFactory, VirtualCamera.Factory virtualCameraFactory, Sun.Factory sunFactory, DistanceObservable distanceObservable)
         {
             _container = container;
             _hudFactory = hudFactory;
@@ -34,21 +36,19 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             _worldGeneratorFactory = worldGeneratorFactory;
             _virtualCameraFactory = virtualCameraFactory;
             _sunFactory = sunFactory;
+            _distanceObservable = distanceObservable;
         }
 
         public async UniTask CreateSpaceship()
         {
             Spaceship spaceship = await _spaceshipFactory.Create(GameplayFactoryAssets.Spaceship);
             _container.Bind<Spaceship>().FromInstance(spaceship).AsSingle();
-            //_container.Bind<SpaceshipDie>().FromInstance(spaceship.GetComponentInChildren<SpaceshipDie>()).AsSingle();
-            //_container.Bind<SpaceshipJump>().FromInstance(spaceship.GetComponent<SpaceshipJump>()).AsSingle();
+
+            _distanceObservable.Init(spaceship);
         }
 
         public async UniTask CreateHud() =>
             await _hudFactory.Create(GameplayFactoryAssets.Hud);
-
-        public async UniTask CreatePlayerCharacterCamera() =>
-            await _hudFactory.Create(GameplayFactoryAssets.PlayerCharacterCamera);
 
         public async UniTask<GameObject> CreateTile(AssetReferenceGameObject tileReference, Vector3 position, Transform parent)
         {
