@@ -1,6 +1,7 @@
 ﻿using Assets.RaceTheSun.Sources.Gameplay.DistanceObserver;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
-using UnityEngine;
+using Assets.RaceTheSun.Sources.UI.LoadingCurtain;
+using Assets.RaceTheSun.Sources.UI.ScoreView;
 using Zenject;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
@@ -11,14 +12,16 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
         private CurrentGenerationStage _currentGenerationStage;
         private WorldGenerator _worldGenerator;
         private Spaceship.Spaceship _spaceship;
+        private ILoadingCurtain _loadingCurtain;
 
         [Inject]
-        private void Construct(DistanceObservable distanceObservable, CurrentGenerationStage currentGenerationStage, WorldGenerator worldGenerator, Spaceship.Spaceship spaceship)
+        private void Construct(DistanceObservable distanceObservable, CurrentGenerationStage currentGenerationStage, WorldGenerator worldGenerator, Spaceship.Spaceship spaceship, ILoadingCurtain loadingCurtain)
         {
             _distanceObservable = distanceObservable;
             _currentGenerationStage = currentGenerationStage;
             _worldGenerator = worldGenerator;
             _spaceship = spaceship;
+            _loadingCurtain = loadingCurtain;
 
             _distanceObservable.RegisterObserver(this, transform.position);
         }
@@ -30,7 +33,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
 
         public void Invoke()
         {
-            _worldGenerator.Clean();
+            _loadingCurtain.Show(0.2f, callback: () => _loadingCurtain.Hide(0.6f));
+            _worldGenerator.Clean(); 
             _currentGenerationStage.EndBonusLevel();
             _spaceship.GetComponentInChildren<StartMovement>().Move();
         }

@@ -5,14 +5,14 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory
 {
     public class MainMenuFactory : IMainMenuFactory
     {
-        private readonly HudFactory _hudFactory;
+        private readonly UI.MainMenu.MainMenu.Factory _mainMenuFactory;
 
-        public MainMenuFactory(HudFactory hudFactory)
+        public MainMenuFactory(UI.MainMenu.MainMenu.Factory mainMenuFactory)
         {
-            _hudFactory = hudFactory;
+            _mainMenuFactory = mainMenuFactory;
         }
 
         public async UniTask CreateMainMenu() =>
-            await _hudFactory.Create(MainMenuFactoryAssets.MainMenu);
+            await _mainMenuFactory.Create(MainMenuFactoryAssets.MainMenu);
     }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2866758313619043104}
   - component: {fileID: 1971145698597908738}
   - component: {fileID: 6698392987758551139}
+  - component: {fileID: 2471930899811467333}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -58,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 3
-  m_FollowOffset: {x: 0, y: 4, z: -10}
+  m_FollowOffset: {x: 0, y: 6, z: -14}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
@@ -67,6 +68,18 @@ MonoBehaviour:
   m_YawDamping: 12.34
   m_RollDamping: 12.61
   m_AngularDamping: 0
+--- !u!114 &2471930899811467333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6089560291326200619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e8b78ac948f05a46a6d8339a503172b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6199593414886363176
 GameObject:
   m_ObjectHideFlags: 0
@@ -76,10 +89,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1768370319633952966}
-  - component: {fileID: 7836448402095139353}
   - component: {fileID: 3797519584511387569}
+  - component: {fileID: 4096718157288260221}
   m_Layer: 0
-  m_Name: SpaceshipMainCamera
+  m_Name: SpaceshipUpperCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,28 +114,6 @@ Transform:
   - {fileID: 2866758313619043104}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 5, y: 0, z: 0}
---- !u!114 &7836448402095139353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6199593414886363176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5f6f7a4a14e25b488d091478f791bbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cinemachineVirtualCamera: {fileID: 3797519584511387569}
-  _blendDefinition:
-    m_Style: 1
-    m_Time: 2
-    m_CustomCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
 --- !u!114 &3797519584511387569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,3 +153,16 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 2866758313619043104}
+--- !u!114 &4096718157288260221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6199593414886363176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1f0257a382261b47af1d7aae339aa31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cinemachineVirtualCamera: {fileID: 3797519584511387569}

@@ -1,5 +1,6 @@
 ﻿using Assets.RaceTheSun.Sources.Infrastructure;
 using Cysharp.Threading.Tasks;
+using System;
 
 namespace Assets.RaceTheSun.Sources.UI.LoadingCurtain
 {
@@ -19,10 +20,10 @@ namespace Assets.RaceTheSun.Sources.UI.LoadingCurtain
             _implementation = await _factory.Create(InfrasructureAssetPath.Curtain);
         }
 
-        public void Show() =>
-            _implementation.Show();
+        public void Show(float duration = 0, Action callback = null) =>
+            _implementation.Show(duration, callback);
 
-        public void Hide() =>
-            _implementation.Hide();
+        public void Hide(float duration = 0, Action callback = null) =>
+            _implementation.Hide(duration, callback);
     }
 }

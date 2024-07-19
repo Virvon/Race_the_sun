@@ -4,6 +4,7 @@ using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using Assets.RaceTheSun.Sources.Gameplay.Sun;
 using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
+using Assets.RaceTheSun.Sources.UI.ScoreView;
 using Cinemachine;
 using Cysharp.Threading.Tasks;
 using System;
@@ -17,7 +18,7 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
     public class GameplayFactory : IGameplayFactory
     {
         private readonly DiContainer _container;
-        private readonly HudFactory _hudFactory;
+        private readonly Hud.Factory _hudFactory;
         private readonly IStaticDataService _staticDataService;
         private readonly Spaceship.Factory _spaceshipFactory;
         private readonly Tile.Factory _tileFactory;
@@ -25,8 +26,9 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         private readonly VirtualCamera.Factory _virtualCameraFactory;
         private readonly Sun.Factory _sunFactory;
         private readonly DistanceObservable _distanceObservable;
+        private readonly Cameras _cameras;
 
-        public GameplayFactory(DiContainer container, HudFactory hudFactory, IStaticDataService staticDataService, Spaceship.Factory spaceshipFactory, Tile.Factory tileFactory, WorldGenerator.Factory worldGeneratorFactory, VirtualCamera.Factory virtualCameraFactory, Sun.Factory sunFactory, DistanceObservable distanceObservable)
+        public GameplayFactory(DiContainer container, Hud.Factory hudFactory, IStaticDataService staticDataService, Spaceship.Factory spaceshipFactory, Tile.Factory tileFactory, WorldGenerator.Factory worldGeneratorFactory, VirtualCamera.Factory virtualCameraFactory, Sun.Factory sunFactory, DistanceObservable distanceObservable, Cameras cameras)
         {
             _container = container;
             _hudFactory = hudFactory;
@@ -37,6 +39,13 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             _virtualCameraFactory = virtualCameraFactory;
             _sunFactory = sunFactory;
             _distanceObservable = distanceObservable;
+            _cameras = cameras;
+        }
+
+        public async UniTask CreateSpaceshipUpperCamera()
+        {
+            VirtualCamera virtualCamera = await _virtualCameraFactory.Create(GameplayFactoryAssets.SpaceshipUpperCamera);
+            _cameras.Init(virtualCamera.GetComponent<SpaceshipUpperCamera>());
         }
 
         public async UniTask CreateSpaceship()
@@ -47,8 +56,10 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             _distanceObservable.Init(spaceship);
         }
 
-        public async UniTask CreateHud() =>
-            await _hudFactory.Create(GameplayFactoryAssets.Hud);
+        public async UniTask CreateHud()
+        {
+            Hud hud = await _hudFactory.Create(GameplayFactoryAssets.Hud);
+        }
 
         public async UniTask<GameObject> CreateTile(AssetReferenceGameObject tileReference, Vector3 position, Transform parent)
         {
@@ -70,18 +81,21 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         {
             VirtualCamera virtualCamera = await _virtualCameraFactory.Create(GameplayFactoryAssets.StartCamera);
             _container.Bind<StartCamera>().FromInstance(virtualCamera.GetComponent<StartCamera>()).AsSingle();
+            _cameras.Init(virtualCamera.GetComponent<StartCamera>());
         }
 
         public async UniTask CreateSpaceshipMainCamera()
         {
             VirtualCamera virtualCamera = await _virtualCameraFactory.Create(GameplayFactoryAssets.SpaceshipMainCamera);
             _container.Bind<SpaceshipMainCamera>().FromInstance(virtualCamera.GetComponent<SpaceshipMainCamera>()).AsSingle();
+            _cameras.Init(virtualCamera.GetComponent<SpaceshipMainCamera>());
         }
 
         public async UniTask CreateSpaceshipSideCamera()
         {
             VirtualCamera virtualCamera = await _virtualCameraFactory.Create(GameplayFactoryAssets.SpaceshipSideCamera);
             _container.Bind<SpaceshipSideCamera>().FromInstance(virtualCamera.GetComponent<SpaceshipSideCamera>()).AsSingle(); ;
+            _cameras.Init(virtualCamera.GetComponent<SpaceshipSideCamera>());
         }
 
         public async UniTask CreateSun()

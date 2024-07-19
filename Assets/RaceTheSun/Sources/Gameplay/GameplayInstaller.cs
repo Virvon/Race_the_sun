@@ -15,7 +15,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay
             BindScoreCounter();
             BindCurrentGenerationStage();
             BindDistanceObservable();
+            BindCameras();
         }
+
+        private void BindCameras() =>
+            Container.BindInterfacesAndSelfTo<Cameras.Cameras>().AsSingle();
 
         private void BindDistanceObservable() =>
             Container.BindInterfacesAndSelfTo<DistanceObservable>().AsSingle();

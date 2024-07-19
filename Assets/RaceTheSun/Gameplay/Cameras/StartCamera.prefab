@@ -50,7 +50,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 2
+  m_Priority: 1
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
@@ -85,6 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d54d2155099e7ac40a974adc0183993b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cinemachineVirtualCamera: {fileID: 3544907184899333106}
 --- !u!1 &7791111594875421272
 GameObject:
   m_ObjectHideFlags: 0

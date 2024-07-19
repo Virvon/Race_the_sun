@@ -12,17 +12,34 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         [SerializeField] private Spaceship _spaceship;
         [SerializeField] private SpaceshipMovement _spaceshipMovement;
 
-        private CinemachineVirtualCamera _startCamera;
+        private Cameras.Cameras _cameras;
 
         [Inject]
-        private void Construct(StartCamera startCamera)
+        private void Construct(Cameras.Cameras cameras)
         {
-            _startCamera = startCamera.GetComponent<CinemachineVirtualCamera>();
+            _cameras = cameras;
         }
 
         public void Move(Action endCallback = null)
         {
             StartCoroutine(SpaceshipMover(endCallback));
+        }
+
+        public void MoveUpper(Action startCallback = null, Action finishCallback = null)
+        {
+            StartCoroutine(UpperMover(startCallback, finishCallback));
+        }
+
+        private IEnumerator UpperMover(Action startCallback, Action finishCallback)
+        {
+            _spaceship.transform.position = new Vector3(0, 2.4f, 0);
+            _cameras.IncludeCamera(Cameras.CameraType.UpperCamera);
+
+            yield return new WaitForSeconds(1);
+            startCallback?.Invoke();
+
+            _cameras.IncludeCamera(Cameras.CameraType.MainCamera);
+            finishCallback?.Invoke();
         }
 
         private IEnumerator SpaceshipMover(Action endCallback)
@@ -33,7 +50,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             float time = 0;
 
             _spaceshipMovement.IsStopped = true;
-            _startCamera.Priority = (int)CameraPriority.Use;
+            _cameras.IncludeCamera(Cameras.CameraType.StartCamera);
 
             while (_spaceship.transform.position != endPosition)
             {
@@ -45,7 +62,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
                 yield return null;
             }
 
-            _startCamera.Priority = (int)CameraPriority.NotUse;
+            _cameras.IncludeCamera(Cameras.CameraType.MainCamera);
             _spaceshipMovement.IsStopped = false;
             endCallback?.Invoke();
         }

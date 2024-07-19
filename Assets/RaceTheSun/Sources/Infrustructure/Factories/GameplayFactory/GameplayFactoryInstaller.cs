@@ -3,6 +3,7 @@ using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using Assets.RaceTheSun.Sources.Gameplay.Sun;
 using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
 using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
+using Assets.RaceTheSun.Sources.UI.ScoreView;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -17,8 +18,8 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             Container.Bind<IGameplayFactory>().To<GameplayFactory>().AsSingle();
 
             Container
-                .BindFactory<string, UniTask<GameObject>, HudFactory>()
-                .FromFactory<KeyPrefabFactoryAsync<GameObject>>();
+                .BindFactory<string, UniTask<Hud>, Hud.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<Hud>>();
 
             Container
                 .BindFactory<string, UniTask<Spaceship>, Spaceship.Factory>()

@@ -20,8 +20,6 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine.States
             _loadingCurtain.Show();
 
             await _sceneLoader.Load(InfrasructureAssetPath.GameLoadingScene);
-
-            _loadingCurtain.Hide();
         }
 
         public UniTask Exit()

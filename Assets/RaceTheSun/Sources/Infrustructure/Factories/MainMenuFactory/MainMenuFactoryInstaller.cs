@@ -13,8 +13,8 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory
             Container.Bind<IMainMenuFactory>().To<MainMenuFactory>().AsSingle();
 
             Container
-                .BindFactory<string, UniTask<GameObject>, HudFactory>()
-                .FromFactory<KeyPrefabFactoryAsync<GameObject>>();
+                .BindFactory<string, UniTask<UI.MainMenu.MainMenu>, UI.MainMenu.MainMenu.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<UI.MainMenu.MainMenu>>();
         }
     }
 }
