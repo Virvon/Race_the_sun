@@ -25,6 +25,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay
         public async void Initialize()
         {
             await _gameplayFactory.CreateStartCamera();
+            await _gameplayFactory.CreateShpaceshipShieldPortal();
             await _gameplayFactory.CreateSpaceship();
             await _gameplayFactory.CreateWorldGenerator();
             await _gameplayFactory.CreateHud();
@@ -32,6 +33,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay
             await _gameplayFactory.CreateSpaceshipSideCamera();
             await _gameplayFactory.CreateSpaceshipUpperCamera();
             await _gameplayFactory.CreateSun();
+            await _gameplayFactory.CreateCollisionPortalCamera();
+            await _gameplayFactory.CreateShieldCamera();
 
             _gameplayStateMachine.RegisterState(_statesFactory.Create<GameStartState>());
             _gameplayStateMachine.RegisterState(_statesFactory.Create<GameLoopState>());

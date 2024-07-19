@@ -6,5 +6,7 @@
         SideCamera,
         UpperCamera,
         StartCamera,
+        CollisionPortalCamera,
+        ShieldPortalCamera,
     }
 }

@@ -35,7 +35,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         private void CreateSpeedDecorator()
         {
             SpeedProvider = new SpaceshipSpeed(DefaultSpeed);
-            SpeedProvider = new CollisionSpeed(SpeedProvider, _collision, DefaultSpeed);
+            SpeedProvider = new CollisionSpeed(SpeedProvider, _collision, DefaultSpeed, GetComponentInChildren<StartMovement>());
             _boostedSpeed = new BoostedSpeed(SpeedProvider, DefaultSpeed, this);
             SpeedProvider = _boostedSpeed;
             SpeedProvider = new BatterySpeed(SpeedProvider, _battery);

@@ -1,4 +1,6 @@
-﻿using Cinemachine;
+﻿using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
+using Cinemachine;
+using System;
 using UnityEngine;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.Cameras
@@ -12,6 +14,9 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Cameras
         private SpaceshipSideCamera _spaceshipSideCamera;
         private SpaceshipUpperCamera _spaceshipUpperCamera;
         private StartCamera _startCamera;
+        private ShieldPortalCamera _shieldPortalCamera;
+        private CollisionPortalCamera _collisionPortalCamera;
+        private SpaceshipShieldPortal _spaceshipShieldPortal;
 
         public Cameras()
         {
@@ -38,6 +43,16 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Cameras
             _startCamera = startCamera;
         }
 
+        public void Init(ShieldPortalCamera shieldPortalCamera)
+        {
+            _shieldPortalCamera = shieldPortalCamera;
+        }
+
+        public void Init(CollisionPortalCamera collisionPortalCamera)
+        {
+            _collisionPortalCamera = collisionPortalCamera;
+        }
+
         public void IncludeCamera(CameraType type)
         {
             VirtualCamera targetCamera = null;
@@ -56,6 +71,12 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Cameras
                 case CameraType.StartCamera:
                     targetCamera = _startCamera;
                     break;
+                case CameraType.CollisionPortalCamera:
+                    targetCamera = _collisionPortalCamera;
+                    break;
+                case CameraType.ShieldPortalCamera:
+                    targetCamera = _shieldPortalCamera;
+                    break;
             }
 
             if (targetCamera == _currentCamera || targetCamera == null)
@@ -68,5 +89,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Cameras
             _cinemachineBrain.m_DefaultBlend = _currentCamera.BlendDefinition;
             _currentCamera.CinemachineVirtualCamera.Priority = (int)CameraPriority.Use;
         }
+
+        
     }
 }

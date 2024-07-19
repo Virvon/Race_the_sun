@@ -1,5 +1,4 @@
 ﻿using Cinemachine;
-using UnityEngine;
 using Zenject;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.Cameras

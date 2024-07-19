@@ -10,14 +10,16 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
 
         private readonly Collision _collision;
         private readonly float _defaultSpeed;
+        private readonly StartMovement _startMovement;
 
         private float _speed;
 
-        public CollisionSpeed(ISpeedProvider wrappedEntity, Collision collision, float defaultSpeed) : base(wrappedEntity)
+        public CollisionSpeed(ISpeedProvider wrappedEntity, Collision collision, float defaultSpeed, StartMovement startMovement) : base(wrappedEntity)
         {
             _collision = collision;
             _defaultSpeed = defaultSpeed;
             _speed = _defaultSpeed;
+            _startMovement = startMovement;
         }
 
         protected override float GetSpeedInternal()
@@ -37,7 +39,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
                 if (_collision.Dot > DestoryDot)
                     _speed = MinSpeed;
                 else
-                    _speed = 0;
+                    _startMovement.MoveUp();
             }
 
             return _speed;

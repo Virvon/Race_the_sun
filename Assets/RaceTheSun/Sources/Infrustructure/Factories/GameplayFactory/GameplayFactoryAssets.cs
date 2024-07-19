@@ -16,5 +16,8 @@
         public const string SpaceshipSideCamera = "SpaceshipSideCamera";
         public const string Sun = "Sun";
         public const string SpaceshipUpperCamera = "SpaceshipUpperCamera";
+        public const string CollisionPortalCamera = "CollisionPortalCamera";
+        public const string ShieldPortalCamera = "ShieldPortalCamera";
+        public const string SpaceshipShieldPortal = "ShieldPortal";
     }
 }

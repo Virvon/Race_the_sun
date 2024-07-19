@@ -27,8 +27,9 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         private readonly Sun.Factory _sunFactory;
         private readonly DistanceObservable _distanceObservable;
         private readonly Cameras _cameras;
+        private readonly SpaceshipShieldPortal.Factory _spaceshipShieldPortalFactory;
 
-        public GameplayFactory(DiContainer container, Hud.Factory hudFactory, IStaticDataService staticDataService, Spaceship.Factory spaceshipFactory, Tile.Factory tileFactory, WorldGenerator.Factory worldGeneratorFactory, VirtualCamera.Factory virtualCameraFactory, Sun.Factory sunFactory, DistanceObservable distanceObservable, Cameras cameras)
+        public GameplayFactory(DiContainer container, Hud.Factory hudFactory, IStaticDataService staticDataService, Spaceship.Factory spaceshipFactory, Tile.Factory tileFactory, WorldGenerator.Factory worldGeneratorFactory, VirtualCamera.Factory virtualCameraFactory, Sun.Factory sunFactory, DistanceObservable distanceObservable, Cameras cameras, SpaceshipShieldPortal.Factory spaceshipShieldPortalFactory)
         {
             _container = container;
             _hudFactory = hudFactory;
@@ -40,6 +41,25 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             _sunFactory = sunFactory;
             _distanceObservable = distanceObservable;
             _cameras = cameras;
+            _spaceshipShieldPortalFactory = spaceshipShieldPortalFactory;
+        }
+
+        public async UniTask CreateShpaceshipShieldPortal()
+        {
+            SpaceshipShieldPortal spaceshipShieldPortal = await _spaceshipShieldPortalFactory.Create(GameplayFactoryAssets.SpaceshipShieldPortal);
+            _container.Bind<SpaceshipShieldPortal>().FromInstance(spaceshipShieldPortal).AsSingle();
+        }
+
+        public async UniTask CreateShieldCamera()
+        {
+            VirtualCamera virtualCamera = await _virtualCameraFactory.Create(GameplayFactoryAssets.ShieldPortalCamera);
+            _cameras.Init(virtualCamera.GetComponent<ShieldPortalCamera>());
+        }
+
+        public async UniTask CreateCollisionPortalCamera()
+        {
+            VirtualCamera virtualCamera = await _virtualCameraFactory.Create(GameplayFactoryAssets.CollisionPortalCamera);
+            _cameras.Init(virtualCamera.GetComponent<CollisionPortalCamera>());
         }
 
         public async UniTask CreateSpaceshipUpperCamera()

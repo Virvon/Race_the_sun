@@ -40,6 +40,10 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             Container
                 .BindFactory<string, UniTask<Sun>, Sun.Factory>()
                 .FromFactory<KeyPrefabFactoryAsync<Sun>>();
+
+            Container
+                .BindFactory<string, UniTask<SpaceshipShieldPortal>, SpaceshipShieldPortal.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<SpaceshipShieldPortal>>();
         }
     }
 }
