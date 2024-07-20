@@ -8,15 +8,15 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
         private const float DestoryDot = -0.5f;
         private const float AccelerationFromMinSpeed = 15;
 
-        private readonly Collision _collision;
+        private readonly SpaceshipMovement _spaceshipMovement;
         private readonly float _defaultSpeed;
         private readonly StartMovement _startMovement;
 
         private float _speed;
 
-        public CollisionSpeed(ISpeedProvider wrappedEntity, Collision collision, float defaultSpeed, StartMovement startMovement) : base(wrappedEntity)
+        public CollisionSpeed(ISpeedProvider wrappedEntity, SpaceshipMovement spaceshipMovement, float defaultSpeed, StartMovement startMovement) : base(wrappedEntity)
         {
-            _collision = collision;
+            _spaceshipMovement = spaceshipMovement;
             _defaultSpeed = defaultSpeed;
             _speed = _defaultSpeed;
             _startMovement = startMovement;
@@ -34,9 +34,9 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
                     _speed += speedFactor;
             }
 
-            if (_collision.IsCollided)
+            if (_spaceshipMovement.IsCollided)
             {
-                if (_collision.Dot > DestoryDot)
+                if (_spaceshipMovement.CollisionInfo.Dot > DestoryDot)
                     _speed = MinSpeed;
                 else
                     _startMovement.MoveUp();

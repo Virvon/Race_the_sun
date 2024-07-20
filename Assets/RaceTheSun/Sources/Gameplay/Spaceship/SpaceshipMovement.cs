@@ -17,11 +17,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         [SerializeField] private float _flightDistance;
         [SerializeField] private float _flightDuration;
         [SerializeField] private SpaceshipTurning _turning;
-        [SerializeField] private Collision _collision;
         [SerializeField] private SpaceshipJump _jump;
         [SerializeField] private float _collisionForceMultiplier;
         [SerializeField] private float _collisionForceDuration;
         [SerializeField] private Spaceship _spaceship;
+        [SerializeField] private Vector3 _halfExtents;
 
         public bool IsStopped;
 
@@ -29,22 +29,22 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         private bool _isFlight;
         private float _flightTime;
         private Vector3 _startSurfaceNormal;
-        private bool _isCollided;
+        private bool _isBounced;
         private float _forceTime;
-        private GameplayStateMachine _gameplayStateMachine;
-
-        [Inject]
-        private void Construct(GameplayStateMachine gameplayStateMachine)
-        {
-            _gameplayStateMachine = gameplayStateMachine;
-        }
+        private CollisionChecker _collisionChecker;
+        private CollisionInfo _collisionInfo;
+        private Vector3 _bounceDirection;
 
         public Vector3 Offset { get; private set; }
+        public bool IsCollided { get; private set; }
+        public CollisionInfo CollisionInfo => _collisionInfo;
 
         private void Start()
         {
-            _isCollided = false;
+            _isBounced = false;
             IsStopped = false;
+
+            _collisionChecker = new CollisionChecker(_halfExtents, _rigidbody, _layerMask);
         }
 
         private void FixedUpdate()
@@ -53,7 +53,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
                 return;
 
             TryFly();
-            CheckStartOfCollision();
+            CheckStartOfBounced();
 
             Offset = GetOffset();
             Offset = AdjustOffsetToJump(Offset);
@@ -74,21 +74,33 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             Gizmos.color = Color.green;
             Gizmos.DrawSphere(transform.position + Offset, 0.3f);
             Gizmos.DrawLine(transform.position, transform.position + Offset);
+
+            if (_rigidbody == null || Offset == Vector3.zero)
+                return;
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawCube(_rigidbody.position + Offset, _halfExtents * 2);
+
         }
 
-        private void CheckStartOfCollision()
+        private void CheckStartOfBounced()
         {
-            if (_collision.IsCollided && _isCollided == false)
+            IsCollided = _collisionChecker.CheckCollision(Offset, out _collisionInfo);
+
+            if (IsCollided && _isBounced == false)
             {
                 _forceTime = 0;
-                _isCollided = true;
+                _isBounced = true;
+                _spaceship.StopBoostSpeed();
+                _bounceDirection = _rigidbody.transform.position - _collisionInfo.CollisionPosition;
+                _bounceDirection = new Vector3(_bounceDirection.x, 0, 0).normalized;
             }
         }
 
         private Vector3 AdjustOffsetLengthToCollision(Vector3 offset)
         {
-            if (_collision.IsCollided && offset.magnitude > _collision.Distance)
-                offset = offset.normalized * _collision.Distance;
+            if (IsCollided && offset.magnitude > _collisionInfo.Distance)
+                offset = offset.normalized * _collisionInfo.Distance;
 
             return offset;
         }
@@ -105,16 +117,12 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         {
             Vector3 direction;
 
-            if (_isCollided)
+            if (_isBounced)
             {
-                Vector3 forceDirection = _rigidbody.transform.position - _collision.HitPosition;
-                forceDirection = new Vector3(forceDirection.x, 0, 0).normalized;
-                direction = (Vector3.forward + (forceDirection * _collisionForceMultiplier)).normalized;
-
+                direction = (Vector3.forward + (_bounceDirection * _collisionForceMultiplier)).normalized;
                 _forceTime += Time.fixedDeltaTime;
-
                 if (_forceTime > _collisionForceDuration)
-                    _isCollided = false;
+                    _isBounced = false;
             }
             else
             {

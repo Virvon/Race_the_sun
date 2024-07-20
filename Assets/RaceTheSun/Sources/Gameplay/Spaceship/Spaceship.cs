@@ -10,7 +10,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
     {
         private const float DefaultSpeed = 100;
 
-        [SerializeField] private Collision _collision;
+        [SerializeField] private SpaceshipMovement _spaceshipMovement;
         [SerializeField] private Battery _battery;
 
         private BoostedSpeed _boostedSpeed;
@@ -35,7 +35,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         private void CreateSpeedDecorator()
         {
             SpeedProvider = new SpaceshipSpeed(DefaultSpeed);
-            SpeedProvider = new CollisionSpeed(SpeedProvider, _collision, DefaultSpeed, GetComponentInChildren<StartMovement>());
+            SpeedProvider = new CollisionSpeed(SpeedProvider, _spaceshipMovement, DefaultSpeed, GetComponentInChildren<StartMovement>());
             _boostedSpeed = new BoostedSpeed(SpeedProvider, DefaultSpeed, this);
             SpeedProvider = _boostedSpeed;
             SpeedProvider = new BatterySpeed(SpeedProvider, _battery);
