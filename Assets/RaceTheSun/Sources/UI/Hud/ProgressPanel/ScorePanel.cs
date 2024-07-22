@@ -5,7 +5,7 @@ using Zenject;
 
 namespace Assets.RaceTheSun.Sources.UI.ScoreView
 {
-    public class ScoreView : MonoBehaviour
+    public class ScorePanel : MonoBehaviour
     {
         [SerializeField] private TMP_Text _scoreValue;
 

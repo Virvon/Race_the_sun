@@ -4,6 +4,7 @@ using Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory;
 using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
 using Assets.RaceTheSun.Sources.Infrastructure.SceneManagement;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
+using Assets.RaceTheSun.Sources.Services.TimeScale;
 using Assets.RaceTheSun.Sources.UI.LoadingCurtain;
 using Cysharp.Threading.Tasks;
 using Zenject;
@@ -24,6 +25,12 @@ namespace Assets.RaceTheSun.Sources.CompositionRoot
             BindSaveLoadService();
             BindPersistentProgressService();
             BindUiFactory();
+            BindTimeScale();
+        }
+
+        private void BindTimeScale()
+        {
+            Container.BindInterfacesAndSelfTo<TimeScale>().AsSingle();
         }
 
         private void BindUiFactory()
