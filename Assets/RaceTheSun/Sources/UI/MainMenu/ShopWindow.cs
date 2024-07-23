@@ -4,7 +4,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
 {
     public class ShopWindow : OpenableWindow
     {
-        public override void Close()
+        public override void Hide()
         {
             gameObject.SetActive(false);
         }

@@ -12,14 +12,12 @@ namespace Assets.RaceTheSun.Sources.Gameplay
         private readonly IGameplayFactory _gameplayFactory;
         private readonly GameplayStateMachine _gameplayStateMachine;
         private readonly StatesFactory _statesFactory;
-        private readonly ILoadingCurtain _loadingCurtain;
 
-        public GameplayBootstrapper(IGameplayFactory gameplayFactory, GameplayStateMachine gameplayStateMachine, StatesFactory statesFactory, ILoadingCurtain loadingCurtain)
+        public GameplayBootstrapper(IGameplayFactory gameplayFactory, GameplayStateMachine gameplayStateMachine, StatesFactory statesFactory)
         {
             _gameplayFactory = gameplayFactory;
             _gameplayStateMachine = gameplayStateMachine;
             _statesFactory = statesFactory;
-            _loadingCurtain = loadingCurtain;
         }
 
         public async void Initialize()
@@ -41,8 +39,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay
             _gameplayStateMachine.RegisterState(_statesFactory.Create<GameEndState>());
 
             await _gameplayStateMachine.Enter<GameStartState>();
-
-            _loadingCurtain.Hide(0.6f);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.DistanceObserver;
+﻿using Assets.RaceTheSun.Sources.Animations;
+using Assets.RaceTheSun.Sources.Gameplay.DistanceObserver;
 using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
 using Zenject;
@@ -16,6 +17,12 @@ namespace Assets.RaceTheSun.Sources.Gameplay
             BindCurrentGenerationStage();
             BindDistanceObservable();
             BindCameras();
+            BindHudAnimation();
+        }
+
+        private void BindHudAnimation()
+        {
+            Container.Bind<HudAnimation>().FromNew().AsSingle();
         }
 
         private void BindCameras() =>

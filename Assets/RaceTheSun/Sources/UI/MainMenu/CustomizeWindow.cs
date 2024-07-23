@@ -2,7 +2,7 @@
 {
     public class CustomizeWindow : OpenableWindow
     {
-        public override void Close()
+        public override void Hide()
         {
             gameObject.SetActive(false);
         }

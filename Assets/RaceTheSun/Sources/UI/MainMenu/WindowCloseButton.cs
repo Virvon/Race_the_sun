@@ -3,6 +3,6 @@
     public class WindowCloseButton : WindowInteractionButton
     {
         protected override void Interact() =>
-            OpenableWindow.Close();
+            OpenableWindow.Hide();
     }
 }

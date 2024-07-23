@@ -8,7 +8,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
 
         protected override void Interact()
         {
-            _currentWindow.Close();
+            _currentWindow.Hide();
             OpenableWindow.Open();
         }
     }

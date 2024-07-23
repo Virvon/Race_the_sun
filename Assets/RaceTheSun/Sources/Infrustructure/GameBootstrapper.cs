@@ -1,6 +1,7 @@
 ﻿using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
 using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine.States;
 using Assets.RaceTheSun.Sources.Infrustructure.GameStateMachine.States;
+using Assets.RaceTheSun.Sources.Services.CoroutineRunner;
 using UnityEngine;
 using Zenject;
 
