@@ -33,9 +33,12 @@ namespace Assets.RaceTheSun.Sources.Gameplay
             await _gameplayFactory.CreateSun();
             await _gameplayFactory.CreateCollisionPortalCamera();
             await _gameplayFactory.CreateShieldCamera();
+            await _gameplayFactory.CreateGameOverPanel();
 
             _gameplayStateMachine.RegisterState(_statesFactory.Create<GameStartState>());
             _gameplayStateMachine.RegisterState(_statesFactory.Create<GameLoopState>());
+            _gameplayStateMachine.RegisterState(_statesFactory.Create<RevivalState>());
+            _gameplayStateMachine.RegisterState(_statesFactory.Create<ResultState>());
             _gameplayStateMachine.RegisterState(_statesFactory.Create<GameEndState>());
 
             await _gameplayStateMachine.Enter<GameStartState>();

@@ -49,7 +49,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
         private void FixedUpdate()
         {
-            if (IsStopped)
+            if (IsStopped || _spaceship.SpeedProvider == null)
                 return;
 
             TryFly();

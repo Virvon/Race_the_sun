@@ -1,6 +1,5 @@
 ﻿using Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator;
 using Cysharp.Threading.Tasks;
-using System;
 using UnityEngine;
 using Zenject;
 
@@ -12,15 +11,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
         [SerializeField] private SpaceshipMovement _spaceshipMovement;
         [SerializeField] private Battery _battery;
+        [SerializeField] private SpaceshipDie _spaceshipDie;
 
         private BoostedSpeed _boostedSpeed;
 
         public ISpeedProvider SpeedProvider { get; private set; }
-
-        private void Start()
-        {
-            CreateSpeedDecorator();
-        }
 
         public void BoostSpeed()
         {
@@ -32,10 +27,10 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             _boostedSpeed.StopBoost();
         }
 
-        private void CreateSpeedDecorator()
+        public void UpdateSpeedDecorator()
         {
             SpeedProvider = new SpaceshipSpeed(DefaultSpeed);
-            SpeedProvider = new CollisionSpeed(SpeedProvider, _spaceshipMovement, DefaultSpeed, GetComponentInChildren<StartMovement>());
+            SpeedProvider = new CollisionSpeed(SpeedProvider, _spaceshipMovement, DefaultSpeed, _spaceshipDie);
             _boostedSpeed = new BoostedSpeed(SpeedProvider, DefaultSpeed, this);
             SpeedProvider = _boostedSpeed;
             SpeedProvider = new BatterySpeed(SpeedProvider, _battery);

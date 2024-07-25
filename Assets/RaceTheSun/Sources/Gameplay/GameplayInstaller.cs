@@ -1,5 +1,6 @@
 ﻿using Assets.RaceTheSun.Sources.Animations;
 using Assets.RaceTheSun.Sources.Gameplay.DistanceObserver;
+using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
 using Zenject;

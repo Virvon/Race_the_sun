@@ -1,5 +1,7 @@
 ﻿using Assets.RaceTheSun.Sources.Gameplay.Cameras;
 using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
+using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine.States;
+using Assets.RaceTheSun.Sources.UI.LoadingCurtain;
 using Cinemachine;
 using Cysharp.Threading.Tasks;
 
@@ -7,16 +9,16 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
 {
     public class GameEndState : IState
     {
-        private readonly CinemachineVirtualCamera _spaceshipSideCamera;
+        private readonly GameStateMachine _gameStateMachine;
 
-        public GameEndState(SpaceshipSideCamera spaceshipSideCamera)
+        public GameEndState(GameStateMachine gameStateMachine)
         {
-            _spaceshipSideCamera = spaceshipSideCamera.GetComponent<CinemachineVirtualCamera>();
+            _gameStateMachine = gameStateMachine;
         }
 
         public UniTask Enter()
         {
-            _spaceshipSideCamera.Priority = (int)CameraPriority.Use;
+            _gameStateMachine.Enter<MainMenuState>().Forget();
             return default;
         }
 

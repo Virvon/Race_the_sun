@@ -9,20 +9,23 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
 {
     public class GameLoopState : IState
     {
-        private readonly SpaceshipMainCamera _spaceshipMainCamera;
         private readonly HudAnimation _hudAnimation;
         private readonly IWaitingService _waitingService;
+        private readonly Cameras.Cameras _cameras;
+        private readonly Spaceship.Spaceship _spaceship;
 
-        public GameLoopState(SpaceshipMainCamera spaceshipMainCamera, HudAnimation hudAnimation, IWaitingService waitingService)
+        public GameLoopState(HudAnimation hudAnimation, IWaitingService waitingService, Cameras.Cameras cameras, Spaceship.Spaceship spaceship)
         {
-            _spaceshipMainCamera = spaceshipMainCamera;
             _hudAnimation = hudAnimation;
             _waitingService = waitingService;
+            _cameras = cameras;
+            _spaceship = spaceship;
         }
 
         public UniTask Enter()
         {
-            _spaceshipMainCamera.GetComponent<CinemachineVirtualCamera>().Priority = (int)CameraPriority.Use;
+            _spaceship.UpdateSpeedDecorator();
+            _cameras.IncludeCamera(CameraType.MainCamera);
             _waitingService.Wait(2.5f, callback: _hudAnimation.Open);
 
             return default;
@@ -30,6 +33,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
 
         public UniTask Exit()
         {
+            _hudAnimation.Hide();
             return default;
         }
     }

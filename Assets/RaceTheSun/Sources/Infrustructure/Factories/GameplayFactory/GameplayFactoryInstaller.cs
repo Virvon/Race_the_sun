@@ -3,6 +3,7 @@ using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using Assets.RaceTheSun.Sources.Gameplay.Sun;
 using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
 using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
+using Assets.RaceTheSun.Sources.UI.GameOverPanel;
 using Assets.RaceTheSun.Sources.UI.ScoreView;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -44,6 +45,10 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             Container
                 .BindFactory<string, UniTask<SpaceshipShieldPortal>, SpaceshipShieldPortal.Factory>()
                 .FromFactory<KeyPrefabFactoryAsync<SpaceshipShieldPortal>>();
+
+            Container
+                .BindFactory<string, UniTask<GameOverPanel>, GameOverPanel.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<GameOverPanel>>();
         }
     }
 }

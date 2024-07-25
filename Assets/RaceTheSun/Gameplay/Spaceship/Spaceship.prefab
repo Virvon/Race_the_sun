@@ -550,6 +550,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collectRadius: 2
   _spaceship: {fileID: 997834433271052482}
+  _spaceshipDie: {fileID: 6867741456451803694}
 --- !u!1 &7935134606465975063
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,6 +592,7 @@ Transform:
   - {fileID: 1344712567764641690}
   - {fileID: 2059465628260789885}
   - {fileID: 6221396874336465921}
+  - {fileID: 7316110185737474450}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &997834433271052482
@@ -607,6 +609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spaceshipMovement: {fileID: 4442606206750293770}
   _battery: {fileID: 4024959007766294848}
+  _spaceshipDie: {fileID: 6867741456451803694}
 --- !u!65 &3106690647854551342
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -714,3 +717,49 @@ MonoBehaviour:
   _spaceship: {fileID: 997834433271052482}
   _spaceshipMovement: {fileID: 4442606206750293770}
   _collisionPortalPoint: {fileID: 8397933910233311415}
+--- !u!1 &8835830059162219300
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7316110185737474450}
+  - component: {fileID: 6867741456451803694}
+  m_Layer: 0
+  m_Name: Die
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7316110185737474450
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8835830059162219300}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5789376504018628276}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6867741456451803694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8835830059162219300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f77405f8ed90cf148a7d88b1785f3452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startMovement: {fileID: 4920748642329290856}
+  _spaceshipMovement: {fileID: 4442606206750293770}

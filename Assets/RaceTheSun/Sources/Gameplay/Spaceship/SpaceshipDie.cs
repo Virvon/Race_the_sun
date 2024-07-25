@@ -1,5 +1,6 @@
-﻿using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
-using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine.States;
+﻿using Assets.RaceTheSun.Sources.Gameplay.StateMachine.States;
+using Assets.RaceTheSun.Sources.Services.WaitingService;
+using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine;
 using Zenject;
@@ -8,34 +9,37 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 {
     public class SpaceshipDie : MonoBehaviour
     {
-        [SerializeField] private Transform _spaceship;
-
-        private GameStateMachine _gameStateMachine;
+        [SerializeField] private StartMovement _startMovement;
+        [SerializeField] private SpaceshipMovement _spaceshipMovement;
 
         private int _shieldsCount;
+        private Cameras.Cameras _cameras;
+        private GameplayStateMachine _gameplayStateMachine;
+        private WaitingService _waitingService;
 
         [Inject]
-        private void Construct(GameStateMachine gameStateMachine)
+        private void Construct(Cameras.Cameras cameras, GameplayStateMachine gameplayStateMachine, WaitingService waitingService)
         {
-            _gameStateMachine = gameStateMachine;
+            _cameras = cameras;
+            _gameplayStateMachine = gameplayStateMachine;
+            _waitingService = waitingService;
         }
 
         public event Action<int> ShieldsCountChanged;
 
-        private void OnTriggerEnter(Collider other)
+        public void TryDie()
         {
-            if (other.transform.TryGetComponent(out Wall _))
+            if(_shieldsCount > 0)
             {
-                _spaceship.position = new Vector3(transform.position.x, 50, transform.position.z);
-                return;
-                if(_shieldsCount > 0)
-                {
-                    _shieldsCount--;
-                    ShieldsCountChanged?.Invoke(_shieldsCount);
-                    _spaceship.position = new Vector3(transform.position.x, 50, transform.position.z);
-                }
-                else
-                    _gameStateMachine.Enter<MainMenuState>();
+                _shieldsCount--;
+                ShieldsCountChanged?.Invoke(_shieldsCount);
+                _startMovement.MoveUp();
+            }
+            else
+            {
+                _spaceshipMovement.IsStopped = true;
+                _cameras.IncludeCamera(Cameras.CameraType.SideCamera);
+                _waitingService.Wait(2, callback: () => _gameplayStateMachine.Enter<RevivalState>().Forget());
             }
         }
 

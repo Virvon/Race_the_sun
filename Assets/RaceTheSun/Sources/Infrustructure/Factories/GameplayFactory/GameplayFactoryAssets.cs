@@ -19,5 +19,6 @@
         public const string CollisionPortalCamera = "CollisionPortalCamera";
         public const string ShieldPortalCamera = "ShieldPortalCamera";
         public const string SpaceshipShieldPortal = "ShieldPortal";
+        public const string GameOverPanel = "GameOverPanel";
     }
 }

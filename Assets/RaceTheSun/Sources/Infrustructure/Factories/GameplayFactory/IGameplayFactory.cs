@@ -20,5 +20,6 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         UniTask CreateCollisionPortalCamera();
         UniTask CreateShieldCamera();
         UniTask CreateShpaceshipShieldPortal();
+        UniTask CreateGameOverPanel();
     }
 }

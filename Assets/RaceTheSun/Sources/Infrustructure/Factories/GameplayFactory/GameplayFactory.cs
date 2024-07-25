@@ -4,6 +4,7 @@ using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using Assets.RaceTheSun.Sources.Gameplay.Sun;
 using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
+using Assets.RaceTheSun.Sources.UI.GameOverPanel;
 using Assets.RaceTheSun.Sources.UI.ScoreView;
 using Cinemachine;
 using Cysharp.Threading.Tasks;
@@ -28,8 +29,9 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         private readonly DistanceObservable _distanceObservable;
         private readonly Cameras _cameras;
         private readonly SpaceshipShieldPortal.Factory _spaceshipShieldPortalFactory;
+        private readonly GameOverPanel.Factory _gameOverPanelFactory;
 
-        public GameplayFactory(DiContainer container, Hud.Factory hudFactory, IStaticDataService staticDataService, Spaceship.Factory spaceshipFactory, Tile.Factory tileFactory, WorldGenerator.Factory worldGeneratorFactory, VirtualCamera.Factory virtualCameraFactory, Sun.Factory sunFactory, DistanceObservable distanceObservable, Cameras cameras, SpaceshipShieldPortal.Factory spaceshipShieldPortalFactory)
+        public GameplayFactory(DiContainer container, Hud.Factory hudFactory, IStaticDataService staticDataService, Spaceship.Factory spaceshipFactory, Tile.Factory tileFactory, WorldGenerator.Factory worldGeneratorFactory, VirtualCamera.Factory virtualCameraFactory, Sun.Factory sunFactory, DistanceObservable distanceObservable, Cameras cameras, SpaceshipShieldPortal.Factory spaceshipShieldPortalFactory, GameOverPanel.Factory gameOverPanelFactory)
         {
             _container = container;
             _hudFactory = hudFactory;
@@ -42,6 +44,14 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             _distanceObservable = distanceObservable;
             _cameras = cameras;
             _spaceshipShieldPortalFactory = spaceshipShieldPortalFactory;
+            _gameOverPanelFactory = gameOverPanelFactory;
+        }
+
+        public async UniTask CreateGameOverPanel()
+        {
+            GameOverPanel gameOverPanel = await _gameOverPanelFactory.Create(GameplayFactoryAssets.GameOverPanel);
+            _container.Bind<RevivalPanel>().FromInstance(gameOverPanel.GetComponentInChildren<RevivalPanel>()).AsSingle();
+            _container.Bind<ResultPanel>().FromInstance(gameOverPanel.GetComponentInChildren<ResultPanel>()).AsSingle();
         }
 
         public async UniTask CreateShpaceshipShieldPortal()
@@ -72,6 +82,8 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         {
             Spaceship spaceship = await _spaceshipFactory.Create(GameplayFactoryAssets.Spaceship);
             _container.Bind<Spaceship>().FromInstance(spaceship).AsSingle();
+            _container.Bind<SpaceshipMovement>().FromInstance(spaceship.GetComponentInChildren<SpaceshipMovement>()).AsSingle();
+            _container.Bind<StartMovement>().FromInstance(spaceship.GetComponentInChildren<StartMovement>()).AsSingle();
 
             _distanceObservable.Init(spaceship);
         }
