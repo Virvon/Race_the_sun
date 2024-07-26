@@ -148,8 +148,8 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 4
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -209,6 +209,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2703658120813595843}
   - component: {fileID: 8775061945029278813}
+  - component: {fileID: -74370086568080726}
   m_Layer: 0
   m_Name: Sun
   m_TagString: Untagged
@@ -248,4 +249,21 @@ MonoBehaviour:
   _radius: 500
   _startHeight: 100
   _finishHeight: -20
-  _speed: 0.01
+  _speed: 0.001
+--- !u!114 &-74370086568080726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8916164828231263970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1033795bcb319a8449082245bc440bf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startSkyboxConfig:
+    SkyboxColor: {r: 0.3882353, g: 0.3882353, b: 0.3882353, a: 1}
+    AtmosphereThickness: 0.2
+    Exposure: 3.24
+  _changeColorDuration: 0.4

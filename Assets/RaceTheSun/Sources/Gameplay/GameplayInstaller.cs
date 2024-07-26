@@ -19,6 +19,12 @@ namespace Assets.RaceTheSun.Sources.Gameplay
             BindDistanceObservable();
             BindCameras();
             BindHudAnimation();
+            BindCurrentSpaceshipStage();
+        }
+
+        private void BindCurrentSpaceshipStage()
+        {
+            Container.BindInterfacesAndSelfTo<CurrentSpaceshipStage>().AsSingle();
         }
 
         private void BindHudAnimation()

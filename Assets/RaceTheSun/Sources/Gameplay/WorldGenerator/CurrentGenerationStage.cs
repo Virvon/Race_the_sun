@@ -1,6 +1,6 @@
 ﻿using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
-using System;
+using UnityEngine;
 using UnityEngine.AddressableAssets;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
@@ -26,6 +26,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
             _tilesToGenerate = _staticDataService.GetStage(Stage.StartStage).Tiles;
         }
 
+        public Stage GeneratedStageType { get; private set; }
+
         public AssetReferenceGameObject GetTile()
         {
             _currentTile++;
@@ -49,7 +51,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
         {
             _currentTile = 0;
             _isBetweenStages = false;
-            _tilesToGenerate = _staticDataService.GetStage(Stage.BonusStage).Tiles;
+            GeneratedStageType = Stage.BonusStage;
+            _tilesToGenerate = _staticDataService.GetStage(GeneratedStageType).Tiles;
         }
 
         public void EndBonusLevel()
@@ -71,12 +74,14 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
                 if (_currentStage > StagesCount)
                     _currentStage = 1;
 
-                stageConfig = _staticDataService.GetStage((Stage)_currentStage);
+                GeneratedStageType = (Stage)_currentStage;
+                stageConfig = _staticDataService.GetStage(GeneratedStageType);
             }
             else
             {
                 _isBetweenStages = true;
-                stageConfig = _staticDataService.GetStage(Stage.BetweenStages);
+                GeneratedStageType = Stage.BetweenStages;
+                stageConfig = _staticDataService.GetStage(GeneratedStageType);
             }
 
             _tilesToGenerate = stageConfig.Tiles;

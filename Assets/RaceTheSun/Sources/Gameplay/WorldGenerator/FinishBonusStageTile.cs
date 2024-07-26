@@ -2,6 +2,7 @@
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using Assets.RaceTheSun.Sources.UI.LoadingCurtain;
 using Assets.RaceTheSun.Sources.UI.ScoreView;
+using UnityEngine;
 using Zenject;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
@@ -22,13 +23,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
             _worldGenerator = worldGenerator;
             _spaceship = spaceship;
             _loadingCurtain = loadingCurtain;
-
-            _distanceObservable.RegisterObserver(this, transform.position);
         }
 
-        private void OnDestroy()
+        private void Start()
         {
-            
+            _distanceObservable.RegisterObserver(this, transform.position);
         }
 
         public void Invoke()

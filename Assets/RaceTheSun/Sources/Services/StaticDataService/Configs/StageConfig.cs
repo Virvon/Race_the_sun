@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEngine;
 using UnityEngine.AddressableAssets;
 
 namespace Assets.RaceTheSun.Sources.Services.StaticDataService.Configs
@@ -8,6 +7,7 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService.Configs
     public class StageConfig
     {
         public Stage Stage;
+        public SkyboxConfig Skybox;
         public AssetReferenceGameObject[] Tiles;
     }
 }
