@@ -259,11 +259,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8916164828231263970}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1033795bcb319a8449082245bc440bf3, type: 3}
+  m_Script: {fileID: 11500000, guid: 82b3de28f25a78840b7e4dfad019294e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _startSkyboxConfig:
-    SkyboxColor: {r: 0.3882353, g: 0.3882353, b: 0.3882353, a: 1}
-    AtmosphereThickness: 0.2
-    Exposure: 3.24
-  _changeColorDuration: 0.4
+    SkyboxColor: {r: 0, g: 0, b: 0, a: 0}
+    AtmosphereThickness: 0
+    Exposure: 0
+  _changeColorDuration: 0

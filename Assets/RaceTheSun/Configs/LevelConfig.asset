@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StageConfigs:
   - Stage: 0
-    SkyboxColor: {r: 0, g: 0, b: 0, a: 1}
+    Skybox:
+      SkyboxColor: {r: 0.3882353, g: 0.3882353, b: 0.3882353, a: 1}
+      AtmosphereThickness: 0.2
+      Exposure: 3.24
     Tiles:
     - m_AssetGUID: 50279e0b215c0344d86282bc9f390cfb
       m_SubObjectName: 
@@ -33,7 +36,10 @@ MonoBehaviour:
       m_SubObjectType: 
       m_EditorAssetChanged: 0
   - Stage: 1
-    SkyboxColor: {r: 1, g: 0.23113209, b: 0.23113209, a: 1}
+    Skybox:
+      SkyboxColor: {r: 1, g: 0, b: 0, a: 1}
+      AtmosphereThickness: 0.8
+      Exposure: 0.73
     Tiles:
     - m_AssetGUID: 50279e0b215c0344d86282bc9f390cfb
       m_SubObjectName: 
@@ -72,7 +78,10 @@ MonoBehaviour:
       m_SubObjectType: 
       m_EditorAssetChanged: 1
   - Stage: -1
-    SkyboxColor: {r: 0, g: 0, b: 0, a: 1}
+    Skybox:
+      SkyboxColor: {r: 0.3882353, g: 0.3882353, b: 0.3882353, a: 1}
+      AtmosphereThickness: 0.2
+      Exposure: 3.24
     Tiles:
     - m_AssetGUID: 50279e0b215c0344d86282bc9f390cfb
       m_SubObjectName: 
@@ -83,7 +92,10 @@ MonoBehaviour:
       m_SubObjectType: 
       m_EditorAssetChanged: 0
   - Stage: -2
-    SkyboxColor: {r: 0, g: 0, b: 0, a: 1}
+    Skybox:
+      SkyboxColor: {r: 0, g: 0, b: 0, a: 0}
+      AtmosphereThickness: 0
+      Exposure: 0
     Tiles:
     - m_AssetGUID: 50279e0b215c0344d86282bc9f390cfb
       m_SubObjectName: 
