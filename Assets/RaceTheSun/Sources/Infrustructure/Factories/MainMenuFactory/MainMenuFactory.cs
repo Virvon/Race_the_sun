@@ -12,6 +12,11 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory
             _mainMenuFactory = mainMenuFactory;
         }
 
+        public UniTask CreateEnviroment()
+        {
+            return default;
+        }
+
         public async UniTask CreateMainMenu() =>
             await _mainMenuFactory.Create(MainMenuFactoryAssets.MainMenu);
     }
