@@ -1,4 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
+﻿using Assets.RaceTheSun.Sources.Data;
+using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
 using Cysharp.Threading.Tasks;
 
 namespace Assets.RaceTheSun.Sources.Services.StaticDataService
@@ -7,5 +8,6 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService
     {
         UniTask InitializeAsync();
         StageConfig GetStage(Stage stage);
+        SpaceshipConfig GetSpaceship(SpaceshipType type);
     }
 }

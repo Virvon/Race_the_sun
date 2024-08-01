@@ -33,7 +33,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay
         }
 
         private void BindCameras() =>
-            Container.BindInterfacesAndSelfTo<Cameras.Cameras>().AsSingle();
+            Container.BindInterfacesAndSelfTo<Cameras.GameplayCameras>().AsSingle();
 
         private void BindDistanceObservable() =>
             Container.BindInterfacesAndSelfTo<DistanceObservable>().AsSingle();

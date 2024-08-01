@@ -7,11 +7,13 @@ namespace Assets.RaceTheSun.Sources.Data
     {
         public Wallet Wallet;
         public AvailableStatsToUpgrade AvailableStatsToUpgrade;
+        public AvailableSpaceships AvailableSpaceships;
 
         public PlayerProgress()
         {
             Wallet = new();
-            AvailableStatsToUpgrade = new ();
+            AvailableStatsToUpgrade = new();
+            AvailableSpaceships = new();
         }
     }
 }

@@ -27,11 +27,11 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         private readonly VirtualCamera.Factory _virtualCameraFactory;
         private readonly Sun.Factory _sunFactory;
         private readonly DistanceObservable _distanceObservable;
-        private readonly Cameras _cameras;
+        private readonly GameplayCameras _cameras;
         private readonly SpaceshipShieldPortal.Factory _spaceshipShieldPortalFactory;
         private readonly GameOverPanel.Factory _gameOverPanelFactory;
 
-        public GameplayFactory(DiContainer container, Hud.Factory hudFactory, IStaticDataService staticDataService, Spaceship.Factory spaceshipFactory, Tile.Factory tileFactory, WorldGenerator.Factory worldGeneratorFactory, VirtualCamera.Factory virtualCameraFactory, Sun.Factory sunFactory, DistanceObservable distanceObservable, Cameras cameras, SpaceshipShieldPortal.Factory spaceshipShieldPortalFactory, GameOverPanel.Factory gameOverPanelFactory)
+        public GameplayFactory(DiContainer container, Hud.Factory hudFactory, IStaticDataService staticDataService, Spaceship.Factory spaceshipFactory, Tile.Factory tileFactory, WorldGenerator.Factory worldGeneratorFactory, VirtualCamera.Factory virtualCameraFactory, Sun.Factory sunFactory, DistanceObservable distanceObservable, GameplayCameras cameras, SpaceshipShieldPortal.Factory spaceshipShieldPortalFactory, GameOverPanel.Factory gameOverPanelFactory)
         {
             _container = container;
             _hudFactory = hudFactory;

@@ -8,7 +8,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
 {
     public class SpaceshipSelection : MonoBehaviour
     {
-        [SerializeField] private TMP_Text _spaceshipName;
+        //[SerializeField] private TMP_Text _spaceshipName;
         [SerializeField] private SpaceshipInfoButton[] _spaceshipInfoButtons;
 
         private IPersistentProgressService _persistentProgress;
@@ -63,7 +63,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
         private void OnSpaceshipSelected(SpaceshipInfo spaceshipInfo)
         {
             _currentShip = spaceshipInfo;
-            _spaceshipName.text = _currentShip.Name;
+            //_spaceshipName.text = _currentShip.Name;
 
             if (_currentShip.IsUnlocked == false)
             {

@@ -1,4 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory;
+﻿using Assets.RaceTheSun.Sources.Gameplay.Cameras;
+using Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory;
 using Zenject;
 
 namespace Assets.RaceTheSun.Sources.MainMenu
@@ -10,6 +11,12 @@ namespace Assets.RaceTheSun.Sources.MainMenu
             BindMainMenuBootstrapper();
             BindMainMenuFactory();
             BindUiFactory();
+            BindMainMenuCameras();
+        }
+
+        private void BindMainMenuCameras()
+        {
+            Container.BindInterfacesAndSelfTo<MainMenuCameras>().AsSingle();
         }
 
         private void BindUiFactory() =>

@@ -1054,7 +1054,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9c7f014ed53c745ad9a34b1ffa2d89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spaceshipName: {fileID: 0}
   _spaceshipInfoButtons:
   - {fileID: 8484877696180033205}
   - {fileID: 4028977408001563996}
@@ -4795,6 +4794,10 @@ PrefabInstance:
       propertyPath: _statType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6906337409808847887, guid: ddd34f0e45db1f642933cad0e65fce6a, type: 3}
+      propertyPath: _spaceshipSelection
+      value: 
+      objectReference: {fileID: 1472945688009639755}
     - target: {fileID: 8324528955304379598, guid: ddd34f0e45db1f642933cad0e65fce6a, type: 3}
       propertyPath: m_Name
       value: Battery
@@ -5029,6 +5032,10 @@ PrefabInstance:
       propertyPath: _statType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6906337409808847887, guid: ddd34f0e45db1f642933cad0e65fce6a, type: 3}
+      propertyPath: _spaceshipSelection
+      value: 
+      objectReference: {fileID: 1472945688009639755}
     - target: {fileID: 8324528955304379598, guid: ddd34f0e45db1f642933cad0e65fce6a, type: 3}
       propertyPath: m_Name
       value: PickUpRange
@@ -5143,6 +5150,10 @@ PrefabInstance:
       propertyPath: _statType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6906337409808847887, guid: ddd34f0e45db1f642933cad0e65fce6a, type: 3}
+      propertyPath: _spaceshipSelection
+      value: 
+      objectReference: {fileID: 1472945688009639755}
     - target: {fileID: 8324528955304379598, guid: ddd34f0e45db1f642933cad0e65fce6a, type: 3}
       propertyPath: m_Name
       value: ExperienceMultiplier

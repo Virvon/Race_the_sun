@@ -1,4 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.Infrastructure;
+﻿using Assets.RaceTheSun.Sources.Data;
+using Assets.RaceTheSun.Sources.Infrastructure;
 using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
 using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
 using Cysharp.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService
         private readonly IAssetProvider _assetsProvider;
         
         private Dictionary<Stage, StageConfig> _stageConfigs;
+        private Dictionary<SpaceshipType, SpaceshipConfig> _spaceshipConfigs;
 
         public StaticDataService(IAssetProvider assetsProvider)
         {
@@ -25,12 +27,23 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService
             List<UniTask> tasks = new List<UniTask>();
 
             tasks.Add(LoadStageConfigs());
+            tasks.Add(LoadSpaceshipConfigs());
 
             await UniTask.WhenAll(tasks);
         }
 
+        public SpaceshipConfig GetSpaceship(SpaceshipType type) =>
+            _spaceshipConfigs.TryGetValue(type, out SpaceshipConfig config) ? config : null;
+
         public StageConfig GetStage(Stage stage) =>
             _stageConfigs.TryGetValue(stage, out StageConfig config) ? config : null;
+
+        private async UniTask LoadSpaceshipConfigs()
+        {
+            SpaceshipConfig[] spaceshipConfigs = await GetConfigs<SpaceshipConfig>();
+
+            _spaceshipConfigs = spaceshipConfigs.ToDictionary(value => value.Type, value => value);
+        }
 
         private async UniTask LoadStageConfigs()
         {

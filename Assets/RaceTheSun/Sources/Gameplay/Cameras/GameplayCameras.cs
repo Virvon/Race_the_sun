@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.Cameras
 {
-    public class Cameras
+    public class GameplayCameras
     {
         private readonly CinemachineBrain _cinemachineBrain;
 
@@ -18,7 +18,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Cameras
         private CollisionPortalCamera _collisionPortalCamera;
         private SpaceshipShieldPortal _spaceshipShieldPortal;
 
-        public Cameras()
+        public GameplayCameras()
         {
             _cinemachineBrain = Camera.main.GetComponent<CinemachineBrain>();
         }
@@ -53,28 +53,28 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Cameras
             _collisionPortalCamera = collisionPortalCamera;
         }
 
-        public void IncludeCamera(CameraType type)
+        public void IncludeCamera(GameplayCameraType type)
         {
             VirtualCamera targetCamera = null;
 
             switch (type)
             {
-                case CameraType.MainCamera:
+                case GameplayCameraType.MainCamera:
                     targetCamera = _spaceshipMainCamera;
                     break;
-                case CameraType.SideCamera:
+                case GameplayCameraType.SideCamera:
                     targetCamera = _spaceshipSideCamera;
                     break;
-                case CameraType.UpperCamera:
+                case GameplayCameraType.UpperCamera:
                     targetCamera = _spaceshipUpperCamera;
                     break;
-                case CameraType.StartCamera:
+                case GameplayCameraType.StartCamera:
                     targetCamera = _startCamera;
                     break;
-                case CameraType.CollisionPortalCamera:
+                case GameplayCameraType.CollisionPortalCamera:
                     targetCamera = _collisionPortalCamera;
                     break;
-                case CameraType.ShieldPortalCamera:
+                case GameplayCameraType.ShieldPortalCamera:
                     targetCamera = _shieldPortalCamera;
                     break;
             }

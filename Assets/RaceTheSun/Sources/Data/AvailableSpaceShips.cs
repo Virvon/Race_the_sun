@@ -4,13 +4,17 @@ using System.Collections.Generic;
 namespace Assets.RaceTheSun.Sources.Data
 {
     [Serializable]
-    public class AvailableSpaceShips
+    public class AvailableSpaceships
     {
-        public List<SpaceShipData> Spaceships;
+        private const SpaceshipType StartSpaceship = SpaceshipType.Swallow;
 
-        public AvailableSpaceShips()
+        public List<SpaceShipData> Spaceships;
+        public SpaceshipType CurrentSpaceshipType;
+
+        public AvailableSpaceships()
         {
             Spaceships = new();
+            CurrentSpaceshipType = StartSpaceship;
         }
     }
 }

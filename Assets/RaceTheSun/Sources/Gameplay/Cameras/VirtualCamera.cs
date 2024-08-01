@@ -5,7 +5,7 @@ using Zenject;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.Cameras
 {
-    public class VirtualCamera : MonoBehaviour
+    public abstract class VirtualCamera : MonoBehaviour
     {
         [SerializeField] private CinemachineVirtualCamera _cinemachineVirtualCamera;
         [SerializeField] private CinemachineBlendDefinition _blendDefinition;

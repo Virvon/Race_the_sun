@@ -13,12 +13,12 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         [SerializeField] private SpaceshipMovement _spaceshipMovement;
 
         private int _shieldsCount;
-        private Cameras.Cameras _cameras;
+        private Cameras.GameplayCameras _cameras;
         private GameplayStateMachine _gameplayStateMachine;
         private WaitingService _waitingService;
 
         [Inject]
-        private void Construct(Cameras.Cameras cameras, GameplayStateMachine gameplayStateMachine, WaitingService waitingService)
+        private void Construct(Cameras.GameplayCameras cameras, GameplayStateMachine gameplayStateMachine, WaitingService waitingService)
         {
             _cameras = cameras;
             _gameplayStateMachine = gameplayStateMachine;
@@ -38,7 +38,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             else
             {
                 _spaceshipMovement.IsStopped = true;
-                _cameras.IncludeCamera(Cameras.CameraType.SideCamera);
+                _cameras.IncludeCamera(Cameras.GameplayCameraType.SideCamera);
                 _waitingService.Wait(2, callback: () => _gameplayStateMachine.Enter<RevivalState>().Forget());
             }
         }

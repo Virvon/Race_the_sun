@@ -1,6 +1,6 @@
 ﻿namespace Assets.RaceTheSun.Sources.Gameplay.Cameras
 {
-    public enum CameraType
+    public enum GameplayCameraType
     {
         MainCamera,
         SideCamera,
@@ -8,5 +8,10 @@
         StartCamera,
         CollisionPortalCamera,
         ShieldPortalCamera,
+    }
+    public enum MainMenuCameraType
+    {
+        MainCamera,
+        TrailCamera,
     }
 }
