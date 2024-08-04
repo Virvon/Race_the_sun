@@ -14,8 +14,7 @@ namespace Assets.RaceTheSun.Sources.MainMenu
         private readonly MainMenuCameras _mainMenuCameras;
         private readonly ILoadingCurtain _loadingCurtain;
 
-        private Vector3 _spaceshipModelPosition = new Vector3(0, 3, 0);
-        private Vector3 _modelTrailPointPosition = new Vector3(0, 3, -2);
+        private Vector3 _modelPointPosition = new Vector3(0, 3, 0);
 
         public MainMenuBootstrapper(IMainMenuFactory mainMenuFactory, IUiFactory uiFactory, IPersistentProgressService persistentProgressService, MainMenuCameras mainMenuCameras, ILoadingCurtain loadingCurtain)
         {
@@ -28,8 +27,8 @@ namespace Assets.RaceTheSun.Sources.MainMenu
 
         public async void Initialize()
         {
+            await _mainMenuFactory.CreateModelPoint(_modelPointPosition);
             await _mainMenuFactory.CreateMainMenu();
-            await _mainMenuFactory.CreateSpaceshipModel(_persistentProgressService.Progress.AvailableSpaceships.CurrentSpaceshipType, _spaceshipModelPosition);
             await _mainMenuFactory.CreateMainMenuMainCamera();
             await _mainMenuFactory.CreateTrailCamera();
 

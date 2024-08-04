@@ -1,16 +1,17 @@
-﻿using Assets.RaceTheSun.Sources.MainMenu.Spaceship;
+﻿using Assets.RaceTheSun.Sources.Data;
+using Assets.RaceTheSun.Sources.MainMenu.Spaceship;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Assets.RaceTheSun.Sources.UI.MainMenu
 {
-    public class SpaceshipInfoButton : MonoBehaviour
+    public class SpaceshipButton : MonoBehaviour
     {
         [SerializeField] private Button _button;
-        [SerializeField] private SpaceshipInfo _spaceshipInfo;
+        [SerializeField] private SpaceshipType _spaceshipType;
 
-        public event Action<SpaceshipInfo> Selected;
+        public event Action<SpaceshipType> Clicked;
 
         private void OnEnable()
         {
@@ -24,7 +25,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
 
         private void OnClicked()
         {
-            Selected?.Invoke(_spaceshipInfo);
+            Clicked?.Invoke(_spaceshipType);
         }
     }
 }

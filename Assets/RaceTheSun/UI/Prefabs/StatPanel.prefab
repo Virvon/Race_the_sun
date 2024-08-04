@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7832755755124878899}
   - component: {fileID: 7054809418240711005}
   m_Layer: 0
-  m_Name: ProgressPanel
+  m_Name: Progressbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -683,8 +683,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _upgradeButton: {fileID: 4047345336955130227}
-  _spaceshipSelection: {fileID: 0}
   _statType: 3
+  _progressbarValue: {fileID: 8327391983553715415}
 --- !u!1 &8429223817177270976
 GameObject:
   m_ObjectHideFlags: 0

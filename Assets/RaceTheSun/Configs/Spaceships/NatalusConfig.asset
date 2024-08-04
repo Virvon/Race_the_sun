@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30678e5c7aed7c548bf514c804b6b260, type: 3}
-  m_Name: SwallowConfig
+  m_Name: NatalusConfig
   m_EditorClassIdentifier: 
-  Type: 0
+  Type: 2
   ModelPrefabReference:
-    m_AssetGUID: 8171665c18ba3dd4a9404be0c661a236
+    m_AssetGUID: b797b0688ddf0e04f871ae113b789c5d
     m_SubObjectName: 
     m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  IsUnlockedOnStart: 1
-  BuyCost: 0
+    m_EditorAssetChanged: 1
+  IsUnlockedOnStart: 0
+  BuyCost: 5000
   Battery:
     Type: 0
     StartValue: 5
@@ -28,7 +28,7 @@ MonoBehaviour:
   ExperienceMultiplier:
     Type: 1
     StartValue: 0
-    StartBoost: 0
+    StartBoost: 0.2
     MaxBoost: 1
   PickUpRange:
     Type: 2

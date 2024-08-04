@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Assets.RaceTheSun.Sources.Data
 {
@@ -9,11 +10,11 @@ namespace Assets.RaceTheSun.Sources.Data
         public AvailableStatsToUpgrade AvailableStatsToUpgrade;
         public AvailableSpaceships AvailableSpaceships;
 
-        public PlayerProgress()
+        public PlayerProgress(List<SpaceshipData> spaceshipDatas)
         {
             Wallet = new();
             AvailableStatsToUpgrade = new();
-            AvailableSpaceships = new();
+            AvailableSpaceships = new(spaceshipDatas);
         }
     }
 }

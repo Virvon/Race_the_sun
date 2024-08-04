@@ -1,5 +1,4 @@
-﻿using Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory;
-using UnityEngine;
+﻿using Assets.RaceTheSun.Sources.MainMenu.ModelPoint;
 using Zenject;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.Cameras
@@ -7,10 +6,10 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Cameras
     public class TrailCamera : FreeLookCamera
     {
         [Inject]
-        private void Construct(SpaceshipModel spaceshipModel)
+        private void Construct(ModelPoint modelPoint)
         {
-            CinemachineFreeLook.Follow = spaceshipModel.transform;
-            CinemachineFreeLook.LookAt = spaceshipModel.transform;
+            CinemachineFreeLook.Follow = modelPoint.transform;
+            CinemachineFreeLook.LookAt = modelPoint.transform;
         }
     }
 }

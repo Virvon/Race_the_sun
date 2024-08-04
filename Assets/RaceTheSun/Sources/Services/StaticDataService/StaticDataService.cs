@@ -32,6 +32,9 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService
             await UniTask.WhenAll(tasks);
         }
 
+        public SpaceshipConfig[] GetSpaceships() =>
+            _spaceshipConfigs.Values.ToArray();
+
         public SpaceshipConfig GetSpaceship(SpaceshipType type) =>
             _spaceshipConfigs.TryGetValue(type, out SpaceshipConfig config) ? config : null;
 

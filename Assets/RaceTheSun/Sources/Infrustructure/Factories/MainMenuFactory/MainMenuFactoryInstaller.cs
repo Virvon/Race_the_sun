@@ -1,6 +1,7 @@
 ﻿using Assets.RaceTheSun.Sources.Gameplay.Cameras;
 using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
+using Assets.RaceTheSun.Sources.MainMenu.ModelPoint;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -25,6 +26,10 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory
             Container
                 .BindFactory<string, UniTask<FreeLookCamera>, FreeLookCamera.Factory>()
                 .FromFactory<KeyPrefabFactoryAsync<FreeLookCamera>>();
+
+            Container
+                .BindFactory<string, UniTask<ModelPoint>, ModelPoint.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<ModelPoint>>();
         }
     }
 }

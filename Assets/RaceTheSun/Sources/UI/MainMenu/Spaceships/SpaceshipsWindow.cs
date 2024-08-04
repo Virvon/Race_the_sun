@@ -1,4 +1,5 @@
 ﻿using Assets.RaceTheSun.Sources.Gameplay.Cameras;
+using Assets.RaceTheSun.Sources.MainMenu.ModelPoint;
 using System;
 using Zenject;
 

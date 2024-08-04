@@ -5,5 +5,6 @@
         public const string MainMenu = "MainMenu";
         public const string MainMenuMainCamera = "MainMenuMainCamera";
         public const string TrailCamera = "TrailCamera";
+        public const string ModelPoint = "ModelPoint";
     }
 }

@@ -151,6 +151,44 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6987bf7f00ddcaa4ba90a253c16e91ac
+    m_Address: ModelPoint
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8889b17a5b8777e488d5cdf4f66d212f
+    m_Address: CrawlerModel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b797b0688ddf0e04f871ae113b789c5d
+    m_Address: NatalusModel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7be26657ffdf1ec4d8c3d2a1e6964415
+    m_Address: TheArrowModel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: db0a54a0943573b4683ff7d00eac26d4
+    m_Address: TheArrowConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 21da42aef76f8b7449927e7d7e06fabb
+    m_Address: NatalusConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 99e3b55d49ba1d64b9b1fe8440d241f6
+    m_Address: CrawlerConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 01d6725a7c3e3d04aaaaf52334bff613, type: 2}
   m_SchemaSet:

@@ -1,21 +1,43 @@
-﻿using System;
+﻿using Assets.RaceTheSun.Sources.MainMenu.Spaceship;
+using System;
 
 namespace Assets.RaceTheSun.Sources.Data
 {
     [Serializable]
-    public class SpaceShipData
+    public class SpaceshipData
     {
-        public float BatteryTime;
-        public float ExperienceMultiplier;
-        public float PickupRange;
-        public float FloatTime;
+        public SpaceshipType Type;
+        public StatData BatteryBoost;
+        public StatData ExperienceMultiplierBoost;
+        public StatData PickupRangeBoost;
+        public StatData FloatTimeBoost;
+        public bool IsUnlocked;
 
-        public SpaceShipData(float batteryTime, float experienceMultiplier, float pickupRange, float floatTime)
+        public SpaceshipData(SpaceshipType type, float batteryBoost, float experienceMultiplierBoost, float pickupRangeBoost, float floatTimeBoost, bool isUnlocked)
         {
-            BatteryTime = batteryTime;
-            ExperienceMultiplier = experienceMultiplier;
-            PickupRange = pickupRange;
-            FloatTime = floatTime;
+            Type = type;
+            BatteryBoost = new StatData(StatType.Battery, batteryBoost);
+            ExperienceMultiplierBoost = new StatData(StatType.ExperienceMultiplier, experienceMultiplierBoost);
+            PickupRangeBoost = new StatData(StatType.PickUpRange, pickupRangeBoost);
+            FloatTimeBoost = new StatData(StatType.FloatTime, floatTimeBoost);
+            IsUnlocked = isUnlocked;
+        }
+
+        public float GetStat(StatType statType)
+        {
+            switch (statType)
+            {
+                case StatType.Battery:
+                    return BatteryBoost.Value;
+                case StatType.ExperienceMultiplier:
+                    return ExperienceMultiplierBoost.Value;
+                case StatType.PickUpRange:
+                    return PickupRangeBoost.Value;
+                case StatType.FloatTime:
+                    return FloatTimeBoost.Value;
+                default:
+                    return 0;
+            }
         }
     }
 }

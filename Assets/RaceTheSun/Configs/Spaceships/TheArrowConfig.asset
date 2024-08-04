@@ -10,33 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30678e5c7aed7c548bf514c804b6b260, type: 3}
-  m_Name: SwallowConfig
+  m_Name: TheArrowConfig
   m_EditorClassIdentifier: 
-  Type: 0
+  Type: 3
   ModelPrefabReference:
-    m_AssetGUID: 8171665c18ba3dd4a9404be0c661a236
+    m_AssetGUID: 7be26657ffdf1ec4d8c3d2a1e6964415
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  IsUnlockedOnStart: 1
-  BuyCost: 0
+  IsUnlockedOnStart: 0
+  BuyCost: 15000
   Battery:
     Type: 0
     StartValue: 5
     StartBoost: 0
     MaxBoost: 5
   ExperienceMultiplier:
-    Type: 1
+    Type: 0
     StartValue: 0
     StartBoost: 0
     MaxBoost: 1
   PickUpRange:
-    Type: 2
+    Type: 0
     StartValue: 3
-    StartBoost: 0
+    StartBoost: 1
     MaxBoost: 3
   FloatTime:
-    Type: 3
+    Type: 0
     StartValue: 2
     StartBoost: 0
     MaxBoost: 2

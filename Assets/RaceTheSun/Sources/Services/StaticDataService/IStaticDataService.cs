@@ -9,5 +9,6 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService
         UniTask InitializeAsync();
         StageConfig GetStage(Stage stage);
         SpaceshipConfig GetSpaceship(SpaceshipType type);
+        SpaceshipConfig[] GetSpaceships();
     }
 }
