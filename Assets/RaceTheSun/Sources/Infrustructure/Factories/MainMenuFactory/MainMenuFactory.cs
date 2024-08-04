@@ -49,11 +49,11 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory
             _mainMenuCameras.Init(freeLookCamera.GetComponent<MainMenuMainCamera>());
         }
 
-        public async UniTask CreateTrailCamera()
+        public async UniTask CreateSelectionCamera()
         {
-            FreeLookCamera freeLookCamera = await _freeLookCameraFactory.Create(MainMenuFactoryAssets.TrailCamera);
+            FreeLookCamera freeLookCamera = await _freeLookCameraFactory.Create(MainMenuFactoryAssets.SelectionCamera);
 
-            _mainMenuCameras.Init(freeLookCamera.GetComponent<TrailCamera>());
+            _mainMenuCameras.Init(freeLookCamera.GetComponent<SelectionCamera>());
         }
 
         public async UniTask CreateModelPoint(Vector3 position)

@@ -1,14 +1,14 @@
 {
-    "name": "InputActions",
+    "name": "GameInputAction",
     "maps": [
         {
             "name": "Player",
             "id": "cfea939f-1dd6-4fc1-aa12-6e6b1cd2b519",
             "actions": [
                 {
-                    "name": "Movement",
+                    "name": "Swipe",
                     "type": "Value",
-                    "id": "f13ca3bb-a15a-41f0-a778-cf0aa97084d9",
+                    "id": "b39ffba3-1920-4360-bbd3-d12fab72980b",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -17,30 +17,73 @@
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "93fe6504-a52d-4722-a6be-06628acc3b71",
-                    "path": "<Joystick>/stick",
+                    "name": "2D Vector",
+                    "id": "c76a1b70-d975-4f4c-8cf6-8eef9c43a914",
+                    "path": "2DVector",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Joystick",
-                    "action": "Movement",
+                    "groups": "",
+                    "action": "Swipe",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "9d16c4a6-f626-4a94-831a-5cacbfe2774a",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Swipe",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "449df699-c866-43fd-b00e-598b8d38b3fd",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Swipe",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "52b205ea-b21c-45ea-8599-8048bca66e91",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Swipe",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "f18477a9-7c78-4aa9-8d67-95b48961a780",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Swipe",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "b75d2970-6a3f-417f-97da-e333d85307f2",
+                    "path": "<Touchscreen>/delta",
+                    "interactions": "",
+                    "processors": "InvertVector2",
+                    "groups": "",
+                    "action": "Swipe",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
             ]
         }
     ],
-    "controlSchemes": [
-        {
-            "name": "Joystick",
-            "bindingGroup": "Joystick",
-            "devices": [
-                {
-                    "devicePath": "<Joystick>",
-                    "isOptional": false,
-                    "isOR": false
-                }
-            ]
-        }
-    ]
+    "controlSchemes": []
 }

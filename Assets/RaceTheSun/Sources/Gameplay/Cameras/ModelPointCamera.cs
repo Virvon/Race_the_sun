@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.Cameras
 {
-    public class TrailCamera : FreeLookCamera
+    public class ModelPointCamera : FreeLookCamera
     {
         [Inject]
         private void Construct(ModelPoint modelPoint)

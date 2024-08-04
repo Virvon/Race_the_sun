@@ -11,6 +11,6 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory
         UniTask CreateMainMenuMainCamera();
         UniTask CreateModelPoint(Vector3 position);
         UniTask<SpaceshipModel> CreateSpaceshipModel(SpaceshipType type, Vector3 position);
-        UniTask CreateTrailCamera();
+        UniTask CreateSelectionCamera();
     }
 }

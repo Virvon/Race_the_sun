@@ -32,7 +32,6 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine.States
         {
             await InitServices();
             _coroutineRunner.StartCoroutine(InitializeYandexSdk(callback: () => _stateMachine.Enter<LoadProgressState>().Forget()));
-            //_stateMachine.Enter<LoadProgressState>().Forget();
         }
 
         public UniTask Exit() =>

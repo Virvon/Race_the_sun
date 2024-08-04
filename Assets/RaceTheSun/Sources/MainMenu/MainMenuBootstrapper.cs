@@ -30,7 +30,7 @@ namespace Assets.RaceTheSun.Sources.MainMenu
             await _mainMenuFactory.CreateModelPoint(_modelPointPosition);
             await _mainMenuFactory.CreateMainMenu();
             await _mainMenuFactory.CreateMainMenuMainCamera();
-            await _mainMenuFactory.CreateTrailCamera();
+            await _mainMenuFactory.CreateSelectionCamera();
 
             _mainMenuCameras.IncludeCamera(MainMenuCameraType.MainCamera);
             _loadingCurtain.Hide(0.1f);

@@ -6,14 +6,14 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Cameras
     {
         private FreeLookCamera _currentCamera;
         private MainMenuMainCamera _mainMenuMainCamera;
-        private TrailCamera _trailCamera;
+        private SelectionCamera _trailCamera;
 
         public void Init(MainMenuMainCamera mainMenuMainCamera)
         {
             _mainMenuMainCamera = mainMenuMainCamera;
         }
 
-        public void Init(TrailCamera trailCamera)
+        public void Init(SelectionCamera trailCamera)
         {
             _trailCamera = trailCamera;
         }
