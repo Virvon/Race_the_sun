@@ -3,6 +3,11 @@ using Assets.RaceTheSun.Sources.Infrustructure.GameStateMachine.States;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.UI.LoadingCurtain;
 using Cysharp.Threading.Tasks;
+using Assets.RaceTheSun.Sources.Services.CoroutineRunner;
+using Agava.YandexGames;
+using UnityEngine;
+using System.Collections;
+using System;
 
 namespace Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine.States
 {
@@ -12,20 +17,22 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine.States
         private readonly LoadingCurtainProxy _loadingCurtainProxy;
         private readonly IAssetProvider _assetProvider;
         private readonly IStaticDataService _staticDataService;
+        private readonly ICoroutineRunner _coroutineRunner;
 
-        public BootstrapState(GameStateMachine stateMachine, LoadingCurtainProxy loadingCurtainProxy, IAssetProvider assetProvider, IStaticDataService staticDataService)
+        public BootstrapState(GameStateMachine stateMachine, LoadingCurtainProxy loadingCurtainProxy, IAssetProvider assetProvider, IStaticDataService staticDataService, ICoroutineRunner coroutineRunner)
         {
             _stateMachine = stateMachine;
             _loadingCurtainProxy = loadingCurtainProxy;
             _assetProvider = assetProvider;
             _staticDataService = staticDataService;
+            _coroutineRunner = coroutineRunner;
         }
 
         public async UniTask Enter()
         {
             await InitServices();
-
-            _stateMachine.Enter<LoadProgressState>().Forget();
+            _coroutineRunner.StartCoroutine(InitializeYandexSdk(callback: () => _stateMachine.Enter<LoadProgressState>().Forget()));
+            //_stateMachine.Enter<LoadProgressState>().Forget();
         }
 
         public UniTask Exit() =>
@@ -36,6 +43,27 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine.States
             await _assetProvider.InitializeAsync();
             await _loadingCurtainProxy.InitializeAsync();
             await _staticDataService.InitializeAsync();
+        }
+
+        private IEnumerator InitializeYandexSdk(Action callback)
+        {
+            Debug.Log("--------------------------------------------------");
+            Debug.Log("Start Initialize Sdk");
+
+#if !UNITY_WEBGL || UNITY_EDITOR
+            callback?.Invoke();
+            yield break;
+#else
+            yield return YandexGamesSdk.Initialize();
+
+            if (YandexGamesSdk.IsInitialized == false)
+                throw new ArgumentNullException(nameof(YandexGamesSdk), "Yandex SDK didn't initialized correctly");
+
+            YandexGamesSdk.CallbackLogging = true;
+            StickyAd.Show();
+            Debug.Log("SDK Initialized");
+            callback?.Invoke();
+#endif
         }
     }
 }
