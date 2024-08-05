@@ -6,7 +6,9 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Cameras
     {
         private FreeLookCamera _currentCamera;
         private MainMenuMainCamera _mainMenuMainCamera;
-        private SelectionCamera _trailCamera;
+        private SelectionCamera _selectionCamera;
+        private CustomizeCamera _customizeCamera;
+        private TrailCamera _trailCamera;
 
         public void Init(MainMenuMainCamera mainMenuMainCamera)
         {
@@ -14,6 +16,16 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Cameras
         }
 
         public void Init(SelectionCamera trailCamera)
+        {
+            _selectionCamera = trailCamera;
+        }
+
+        public void Init(CustomizeCamera customizeCamera)
+        {
+            _customizeCamera = customizeCamera;
+        }
+
+        public void Init(TrailCamera trailCamera)
         {
             _trailCamera = trailCamera;
         }
@@ -26,6 +38,12 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Cameras
             {
                 case MainMenuCameraType.MainCamera:
                     targetCamera = _mainMenuMainCamera;
+                    break;
+                case MainMenuCameraType.SelectionCamera:
+                    targetCamera = _selectionCamera;
+                    break;
+                case MainMenuCameraType.CustomizeCamera:
+                    targetCamera = _customizeCamera;
                     break;
                 case MainMenuCameraType.TrailCamera:
                     targetCamera = _trailCamera;

@@ -46,9 +46,6 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine.States
 
         private IEnumerator InitializeYandexSdk(Action callback)
         {
-            Debug.Log("--------------------------------------------------");
-            Debug.Log("Start Initialize Sdk");
-
 #if !UNITY_WEBGL || UNITY_EDITOR
             callback?.Invoke();
             yield break;
@@ -60,7 +57,6 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine.States
 
             YandexGamesSdk.CallbackLogging = true;
             StickyAd.Show();
-            Debug.Log("SDK Initialized");
             callback?.Invoke();
 #endif
         }

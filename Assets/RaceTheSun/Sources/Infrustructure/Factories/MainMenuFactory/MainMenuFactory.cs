@@ -18,8 +18,9 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory
         private readonly FreeLookCamera.Factory _freeLookCameraFactory;
         private readonly MainMenuCameras _mainMenuCameras;
         private readonly ModelPoint.Factory _modelPointFactory;
+        private readonly TrailPoint.Factory _trailPointFactory;
 
-        public MainMenuFactory(UI.MainMenu.MainMenu.Factory mainMenuFactory, IStaticDataService staticDataService, SpaceshipModel.Factory spaceshipModelFactory, DiContainer container, FreeLookCamera.Factory freeLookCameraFactory, MainMenuCameras mainMenuCameras, ModelPoint.Factory modelPointFactory)
+        public MainMenuFactory(UI.MainMenu.MainMenu.Factory mainMenuFactory, IStaticDataService staticDataService, SpaceshipModel.Factory spaceshipModelFactory, DiContainer container, FreeLookCamera.Factory freeLookCameraFactory, MainMenuCameras mainMenuCameras, ModelPoint.Factory modelPointFactory, TrailPoint.Factory trailPointFactory)
         {
             _mainMenuFactory = mainMenuFactory;
             _staticDataService = staticDataService;
@@ -28,6 +29,7 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory
             _freeLookCameraFactory = freeLookCameraFactory;
             _mainMenuCameras = mainMenuCameras;
             _modelPointFactory = modelPointFactory;
+            _trailPointFactory = trailPointFactory;
         }
 
         public async UniTask CreateMainMenu() =>
@@ -62,6 +64,26 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory
 
             modelPoint.transform.position = position;
             _container.Bind<ModelPoint>().FromInstance(modelPoint).AsSingle();
+        }
+
+        public async UniTask CreateCustomizeCamera()
+        {
+            FreeLookCamera freeLookCamera = await _freeLookCameraFactory.Create(MainMenuFactoryAssets.CustomizeCamera);
+
+            _mainMenuCameras.Init(freeLookCamera.GetComponent<CustomizeCamera>());
+        }
+        public async UniTask CreateTrailCamera()
+        {
+            FreeLookCamera freeLookCamera = await _freeLookCameraFactory.Create(MainMenuFactoryAssets.TrailCamera);
+
+            _mainMenuCameras.Init(freeLookCamera.GetComponent<TrailCamera>());
+        }
+        public async UniTask CreateTrailPoint(Vector3 position)
+        {
+            TrailPoint trailPoint = await _trailPointFactory.Create(MainMenuFactoryAssets.TrailPoint);
+
+            trailPoint.transform.position = position;
+            _container.Bind<TrailPoint>().FromInstance(trailPoint).AsSingle();
         }
     }
 }

@@ -9,9 +9,4 @@
         CollisionPortalCamera,
         ShieldPortalCamera,
     }
-    public enum MainMenuCameraType
-    {
-        MainCamera,
-        TrailCamera,
-    }
 }

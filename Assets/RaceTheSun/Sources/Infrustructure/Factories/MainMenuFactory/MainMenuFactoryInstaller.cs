@@ -30,6 +30,10 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory
             Container
                 .BindFactory<string, UniTask<ModelPoint>, ModelPoint.Factory>()
                 .FromFactory<KeyPrefabFactoryAsync<ModelPoint>>();
+
+            Container
+                .BindFactory<string, UniTask<TrailPoint>, TrailPoint.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<TrailPoint>>();
         }
     }
 }

@@ -1,11 +1,9 @@
 ﻿using Assets.RaceTheSun.Sources.Gameplay.Cameras;
-using Assets.RaceTheSun.Sources.MainMenu.ModelPoint;
-using System;
 using Zenject;
 
 namespace Assets.RaceTheSun.Sources.UI.MainMenu
 {
-    public class SpaceshipsWindow : OpenableWindow
+    public class TrailWindow : OpenableWindow
     {
         private MainMenuCameras _mainMenuCameras;
 
@@ -22,8 +20,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
 
         public override void Open()
         {
+            _mainMenuCameras.IncludeCamera(MainMenuCameraType.TrailCamera);
             gameObject.SetActive(true);
-            _mainMenuCameras.IncludeCamera(MainMenuCameraType.SelectionCamera);
         }
     }
 }

@@ -15,6 +15,7 @@ namespace Assets.RaceTheSun.Sources.MainMenu
         private readonly ILoadingCurtain _loadingCurtain;
 
         private Vector3 _modelPointPosition = new Vector3(0, 3, 0);
+        private Vector3 _trailPointPosition = new Vector3(0, 3, -2);
 
         public MainMenuBootstrapper(IMainMenuFactory mainMenuFactory, IUiFactory uiFactory, IPersistentProgressService persistentProgressService, MainMenuCameras mainMenuCameras, ILoadingCurtain loadingCurtain)
         {
@@ -28,9 +29,12 @@ namespace Assets.RaceTheSun.Sources.MainMenu
         public async void Initialize()
         {
             await _mainMenuFactory.CreateModelPoint(_modelPointPosition);
+            await _mainMenuFactory.CreateTrailPoint(_trailPointPosition);
             await _mainMenuFactory.CreateMainMenu();
             await _mainMenuFactory.CreateMainMenuMainCamera();
             await _mainMenuFactory.CreateSelectionCamera();
+            await _mainMenuFactory.CreateCustomizeCamera();
+            await _mainMenuFactory.CreateTrailCamera();
 
             _mainMenuCameras.IncludeCamera(MainMenuCameraType.MainCamera);
             _loadingCurtain.Hide(0.1f);
