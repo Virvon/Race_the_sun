@@ -7,7 +7,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 {
     public class Spaceship : MonoBehaviour
     {
-        private const float DefaultSpeed = 100;
+        private const float DefaultSpeed = 300;
 
         [SerializeField] private SpaceshipMovement _spaceshipMovement;
         [SerializeField] private Battery _battery;

@@ -15,8 +15,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
 {
     public class WorldGenerator : MonoBehaviour
     {
-        [SerializeField] private int _cellLength;
-        [SerializeField] private int _renderDistance;
+        private int _cellLength;
+        private int _renderDistance;
 
         private IGameplayFactory _gameplayFactory;
         private Transform _spaceship;
@@ -32,6 +32,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
             _spaceship = spaceship.transform;
             _staticDataService = staticDataService;
             _currentGenerationStage = currentGenerationStage;
+
+            GameplayWorldConfig gameplayWorldConfig = _staticDataService.GetGameplayWorld();
+
+            _cellLength = gameplayWorldConfig.CellLength;
+            _renderDistance = gameplayWorldConfig.RenderDistacne;
 
             _tilesMatrix = new();
             _isFlowFree = true;

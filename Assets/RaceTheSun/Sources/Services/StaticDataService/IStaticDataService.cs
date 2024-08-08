@@ -10,5 +10,6 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService
         StageConfig GetStage(Stage stage);
         SpaceshipConfig GetSpaceship(SpaceshipType type);
         SpaceshipConfig[] GetSpaceships();
+        GameplayWorldConfig GetGameplayWorld();
     }
 }

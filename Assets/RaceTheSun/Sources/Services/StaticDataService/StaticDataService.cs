@@ -16,6 +16,7 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService
         
         private Dictionary<Stage, StageConfig> _stageConfigs;
         private Dictionary<SpaceshipType, SpaceshipConfig> _spaceshipConfigs;
+        private GameplayWorldConfig _gameplayWorldConfig;
 
         public StaticDataService(IAssetProvider assetsProvider)
         {
@@ -26,11 +27,14 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService
         {
             List<UniTask> tasks = new List<UniTask>();
 
-            tasks.Add(LoadStageConfigs());
+            tasks.Add(LoadGameplayWorldConfig());
             tasks.Add(LoadSpaceshipConfigs());
 
             await UniTask.WhenAll(tasks);
         }
+
+        public GameplayWorldConfig GetGameplayWorld() =>
+            _gameplayWorldConfig;
 
         public SpaceshipConfig[] GetSpaceships() =>
             _spaceshipConfigs.Values.ToArray();
@@ -48,12 +52,12 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService
             _spaceshipConfigs = spaceshipConfigs.ToDictionary(value => value.Type, value => value);
         }
 
-        private async UniTask LoadStageConfigs()
+        private async UniTask LoadGameplayWorldConfig()
         {
-            LevelConfig[] levelConfigs = await GetConfigs<LevelConfig>();
-            LevelConfig levelConfig = levelConfigs.First();
+            GameplayWorldConfig[] gameplayWorldConfigs = await GetConfigs<GameplayWorldConfig>();
+            _gameplayWorldConfig = gameplayWorldConfigs.First();
 
-            _stageConfigs = levelConfig.StageConfigs.ToDictionary(value => value.Stage, value => value);
+            _stageConfigs = _gameplayWorldConfig.StageConfigs.ToDictionary(value => value.Stage, value => value);
         }
 
         private async UniTask<TConfig[]> GetConfigs<TConfig>() where TConfig : class

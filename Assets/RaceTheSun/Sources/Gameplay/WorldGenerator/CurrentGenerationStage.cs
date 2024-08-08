@@ -7,7 +7,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
 {
     public class CurrentGenerationStage
     {
-        private const int StagesCount = 1;
+        private const int StagesCount = 4;
 
         private readonly IStaticDataService _staticDataService;
 

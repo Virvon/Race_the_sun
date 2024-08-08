@@ -1,0 +1,391 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f107cb3b1e01be44bbbf5fe349e7a9c, type: 3}
+  m_Name: GameplayWorldConfig
+  m_EditorClassIdentifier: 
+  CellLength: 1000
+  RenderDistacne: 5000
+  StageConfigs:
+  - Stage: 0
+    Skybox:
+      SkyboxColor: {r: 0.58431375, g: 0.25882354, b: 0.23529412, a: 1}
+      AtmosphereThickness: 0.8
+      Exposure: 0.9
+    Tiles:
+    - m_AssetGUID: 1d7e830b70e6b9649a08a616b09c27db
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 1d7e830b70e6b9649a08a616b09c27db
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 1d7e830b70e6b9649a08a616b09c27db
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - Stage: 4
+    Skybox:
+      SkyboxColor: {r: 0.58431375, g: 0.25882354, b: 0.23529412, a: 1}
+      AtmosphereThickness: 0.8
+      Exposure: 0.9
+    Tiles:
+    - m_AssetGUID: 50279e0b215c0344d86282bc9f390cfb
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: d842758c8f165f640b8ec8fac00d7fd2
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
+    - m_AssetGUID: 839921d45dd70d94193c6bc5e21b4f7e
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: a67803a2a7d60bb4face51a79ef6c0d7
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 21e32e603d8872f48ab6d6588c082da0
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 3ad58a395790fee4f9c9bc81c69402be
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 848036a29ab23404bbfe91ae0a4d3439
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: e1e60f8026b8c0c4a99cac9eb4f68db9
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 72ed933d352e7fc4a8a228f2192f3fba
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 21e32e603d8872f48ab6d6588c082da0
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 3ad58a395790fee4f9c9bc81c69402be
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: b9c923cc4208c254988acc1444e5f9b8
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 6b207749bd9c17a4d83f4e9b299d5082
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 384e79be101b1a94f8014fd92015e0b9
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 55f0320d417552048b016ee72e07e920
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 235174f68e0db994dbea3a61bad76777
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - Stage: -1
+    Skybox:
+      SkyboxColor: {r: 0.3882353, g: 0.3882353, b: 0.3882353, a: 1}
+      AtmosphereThickness: 0.2
+      Exposure: 3.24
+    Tiles:
+    - m_AssetGUID: 50279e0b215c0344d86282bc9f390cfb
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 1d7e830b70e6b9649a08a616b09c27db
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 1d7e830b70e6b9649a08a616b09c27db
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 1d7e830b70e6b9649a08a616b09c27db
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - Stage: -2
+    Skybox:
+      SkyboxColor: {r: 0, g: 0, b: 0, a: 0}
+      AtmosphereThickness: 0
+      Exposure: 0
+    Tiles:
+    - m_AssetGUID: 50279e0b215c0344d86282bc9f390cfb
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 55c3b9f19aa6b2741879807e080ddef9
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 55c3b9f19aa6b2741879807e080ddef9
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 55c3b9f19aa6b2741879807e080ddef9
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
+    - m_AssetGUID: 55c3b9f19aa6b2741879807e080ddef9
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
+    - m_AssetGUID: 92555fcd145e7e54c94bc8db2bedd39e
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 55c3b9f19aa6b2741879807e080ddef9
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
+    - m_AssetGUID: 55c3b9f19aa6b2741879807e080ddef9
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
+    - m_AssetGUID: 55c3b9f19aa6b2741879807e080ddef9
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
+    - m_AssetGUID: 55c3b9f19aa6b2741879807e080ddef9
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
+  - Stage: 2
+    Skybox:
+      SkyboxColor: {r: 1, g: 0.34901962, b: 0, a: 0}
+      AtmosphereThickness: 0.4
+      Exposure: 4.2
+    Tiles:
+    - m_AssetGUID: 50279e0b215c0344d86282bc9f390cfb
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: f73edbc8888ec874f917ad31a6508955
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: a36babadeb98df0468da3199b661318c
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 6641f0d800d1c864c956b7391a144023
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 022b266be41992f43a98dfb8540ac75e
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: fbcd2bd602000c94d97e01a7c5667760
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
+    - m_AssetGUID: 5820f9f8f5aee214682fd37d3454cdc3
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: f3d5cf66a517d2845b3c021882078ef4
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 7a0c9eed31162b249bb321478951e5a8
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 21e32e603d8872f48ab6d6588c082da0
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 3ad58a395790fee4f9c9bc81c69402be
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
+    - m_AssetGUID: 022b266be41992f43a98dfb8540ac75e
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: fbcd2bd602000c94d97e01a7c5667760
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
+    - m_AssetGUID: f3d5cf66a517d2845b3c021882078ef4
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 6641f0d800d1c864c956b7391a144023
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 5820f9f8f5aee214682fd37d3454cdc3
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - Stage: 3
+    Skybox:
+      SkyboxColor: {r: 0.21176471, g: 0.8509804, b: 0.2509804, a: 0}
+      AtmosphereThickness: 0.31
+      Exposure: 2.74
+    Tiles:
+    - m_AssetGUID: 50279e0b215c0344d86282bc9f390cfb
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: a2c6cb1740502864780d3efce188abc0
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 49e8f0b554dbc314eb93c222a2e61a00
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: b7fe888be1ef25b46acb0cc60fc091fe
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 4c27da883aa15e64782c0e8d1b194082
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
+    - m_AssetGUID: 3a6bf765034ef0e4c95ca8925f8f8b26
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 5820f9f8f5aee214682fd37d3454cdc3
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 3a6bf765034ef0e4c95ca8925f8f8b26
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 21e32e603d8872f48ab6d6588c082da0
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 3ad58a395790fee4f9c9bc81c69402be
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: db509239679112c4faf6abab7c4cd2f6
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: db509239679112c4faf6abab7c4cd2f6
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: a2c6cb1740502864780d3efce188abc0
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
+    - m_AssetGUID: 49e8f0b554dbc314eb93c222a2e61a00
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: b7fe888be1ef25b46acb0cc60fc091fe
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 4c27da883aa15e64782c0e8d1b194082
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - Stage: 1
+    Skybox:
+      SkyboxColor: {r: 1, g: 0.4509804, b: 0, a: 0}
+      AtmosphereThickness: 0.74
+      Exposure: 1.33
+    Tiles:
+    - m_AssetGUID: 50279e0b215c0344d86282bc9f390cfb
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: b5485c9198411134bb9faad10a27327c
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: ba4054c779ddeb1469817e9a2cb2089c
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: bee6992c58a01f343a103da5e3954d3d
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: bee6992c58a01f343a103da5e3954d3d
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: bee6992c58a01f343a103da5e3954d3d
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: a8e57bac0e8021c46b08d4ae7cfb57bc
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: a8e57bac0e8021c46b08d4ae7cfb57bc
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: a8e57bac0e8021c46b08d4ae7cfb57bc
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 10d4a6c51b1a47a438f47496f836f6bd
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 82d927bf01fc5874d8e3e9e35e17c602
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: a8e57bac0e8021c46b08d4ae7cfb57bc
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: a8e57bac0e8021c46b08d4ae7cfb57bc
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: a8e57bac0e8021c46b08d4ae7cfb57bc
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 10d4a6c51b1a47a438f47496f836f6bd
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 82d927bf01fc5874d8e3e9e35e17c602
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
+    - m_AssetGUID: e29cc6abf9f21964188a5c55a41a7f00
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 82d927bf01fc5874d8e3e9e35e17c602
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0

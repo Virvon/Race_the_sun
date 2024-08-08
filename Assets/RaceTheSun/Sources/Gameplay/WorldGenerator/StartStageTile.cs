@@ -29,6 +29,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
         public void Invoke()
         {
             _currentSpacehsipStage.SetCurrentStage(_stage);
+            Debug.Log("Start stage " + _stage);
         }
     }
 }

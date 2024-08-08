@@ -11,6 +11,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         [SerializeField] private float _maxForce;
         [SerializeField] private LayerMask _layerMask;
         [SerializeField] private float _damping;
+        [SerializeField] private Vector3 _halfExtence;
 
         private float _springSpeed;
         private float _lastDistance;
@@ -20,16 +21,9 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             Lift();
         }
 
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.cyan;
-            Gizmos.DrawCube(transform.position, Vector3.one * 0.2f);
-            Gizmos.DrawLine(transform.position, transform.position + transform.forward * _maxDistance);
-        }
-
         private void Lift()
-        {
-            if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, _maxDistance, _layerMask, QueryTriggerInteraction.Ignore))
+        {//Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, _maxDistance, _layerMask, QueryTriggerInteraction.Ignore)
+            if (Physics.BoxCast(_rigidbody.position, _halfExtence, transform.forward, out RaycastHit hitInfo, Quaternion.identity, _maxDistance, _layerMask, QueryTriggerInteraction.Ignore))
             {
                 float distance = hitInfo.distance;
 
