@@ -33,7 +33,7 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-  - Stage: 4
+  - Stage: 1
     Skybox:
       SkyboxColor: {r: 0.58431375, g: 0.25882354, b: 0.23529412, a: 1}
       AtmosphereThickness: 0.8
@@ -131,46 +131,78 @@ MonoBehaviour:
       AtmosphereThickness: 0
       Exposure: 0
     Tiles:
-    - m_AssetGUID: 50279e0b215c0344d86282bc9f390cfb
+    - m_AssetGUID: ad2ed0f814f156f4d9660bffb78e11c9
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-    - m_AssetGUID: 55c3b9f19aa6b2741879807e080ddef9
+    - m_AssetGUID: 24de2275f6f0f04468e78523cd785535
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-    - m_AssetGUID: 55c3b9f19aa6b2741879807e080ddef9
+    - m_AssetGUID: ad2ed0f814f156f4d9660bffb78e11c9
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-    - m_AssetGUID: 55c3b9f19aa6b2741879807e080ddef9
+    - m_AssetGUID: ad2ed0f814f156f4d9660bffb78e11c9
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 9bdd8e5b52ece4348b92ceed08776845
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 1
-    - m_AssetGUID: 55c3b9f19aa6b2741879807e080ddef9
+    - m_AssetGUID: b7c297ce74c2224478297bb74f38e957
       m_SubObjectName: 
       m_SubObjectType: 
-      m_EditorAssetChanged: 1
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: b7c297ce74c2224478297bb74f38e957
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 9bdd8e5b52ece4348b92ceed08776845
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: b7c297ce74c2224478297bb74f38e957
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 9bdd8e5b52ece4348b92ceed08776845
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 9bdd8e5b52ece4348b92ceed08776845
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: b7c297ce74c2224478297bb74f38e957
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: b7c297ce74c2224478297bb74f38e957
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 9bdd8e5b52ece4348b92ceed08776845
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: b7c297ce74c2224478297bb74f38e957
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 9bdd8e5b52ece4348b92ceed08776845
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     - m_AssetGUID: 92555fcd145e7e54c94bc8db2bedd39e
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-    - m_AssetGUID: 55c3b9f19aa6b2741879807e080ddef9
+    - m_AssetGUID: 92555fcd145e7e54c94bc8db2bedd39e
       m_SubObjectName: 
       m_SubObjectType: 
-      m_EditorAssetChanged: 1
-    - m_AssetGUID: 55c3b9f19aa6b2741879807e080ddef9
-      m_SubObjectName: 
-      m_SubObjectType: 
-      m_EditorAssetChanged: 1
-    - m_AssetGUID: 55c3b9f19aa6b2741879807e080ddef9
-      m_SubObjectName: 
-      m_SubObjectType: 
-      m_EditorAssetChanged: 1
-    - m_AssetGUID: 55c3b9f19aa6b2741879807e080ddef9
-      m_SubObjectName: 
-      m_SubObjectType: 
-      m_EditorAssetChanged: 1
+      m_EditorAssetChanged: 0
   - Stage: 2
     Skybox:
       SkyboxColor: {r: 1, g: 0.34901962, b: 0, a: 0}
@@ -311,7 +343,7 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-  - Stage: 1
+  - Stage: 4
     Skybox:
       SkyboxColor: {r: 1, g: 0.4509804, b: 0, a: 0}
       AtmosphereThickness: 0.74
@@ -385,7 +417,7 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-    - m_AssetGUID: 82d927bf01fc5874d8e3e9e35e17c602
+    - m_AssetGUID: ba4054c779ddeb1469817e9a2cb2089c
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
