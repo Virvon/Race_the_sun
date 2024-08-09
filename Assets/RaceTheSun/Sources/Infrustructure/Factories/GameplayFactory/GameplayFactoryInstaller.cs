@@ -1,4 +1,5 @@
 ﻿using Assets.RaceTheSun.Sources.Gameplay.Cameras;
+using Assets.RaceTheSun.Sources.Gameplay.CollectItems;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using Assets.RaceTheSun.Sources.Gameplay.Sun;
 using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
@@ -49,6 +50,18 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             Container
                 .BindFactory<string, UniTask<GameOverPanel>, GameOverPanel.Factory>()
                 .FromFactory<KeyPrefabFactoryAsync<GameOverPanel>>();
+
+            Container
+                .BindFactory<string, UniTask<JumpBoost>, JumpBoost.Factory>()
+                .FromFactory < KeyPrefabFactoryAsync <JumpBoost>>();
+            
+            Container
+                .BindFactory<string, UniTask<Shield>, Shield.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<Shield>>();
+
+            Container
+                .BindFactory<string, UniTask<ShieldPortal>, ShieldPortal.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<ShieldPortal>>();
         }
     }
 }

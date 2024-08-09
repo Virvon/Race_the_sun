@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1699717646432838240}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 1.739}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -549,9 +549,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e26d968b35cf1874abef3a219069d1aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collectRadius: 2
+  _collectRadius: 5
   _spaceship: {fileID: 997834433271052482}
-  _spaceshipDie: {fileID: 6867741456451803694}
+  _spaceshipDie: {fileID: 0}
 --- !u!1 &7935134606465975063
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,5 +743,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f77405f8ed90cf148a7d88b1785f3452, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startMovement: {fileID: 4920748642329290856}
   _spaceshipMovement: {fileID: 4442606206750293770}
+  _spaceship: {fileID: 997834433271052482}

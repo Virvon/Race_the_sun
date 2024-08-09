@@ -12,16 +12,18 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
         private readonly RevivalPanel _revivalPanel;
         private readonly StartMovement _startMovement;
         private readonly GameplayStateMachine _gameplayStateMachine;
+        private readonly SpaceshipShieldPortal _spaceshipShieldPortal;
 
         private bool _isRevivalTryed;
 
-        public RevivalState(RevivalPanel revivalPanel, StartMovement startMovement, GameplayStateMachine gameplayStateMachine)
+        public RevivalState(RevivalPanel revivalPanel, StartMovement startMovement, GameplayStateMachine gameplayStateMachine, SpaceshipShieldPortal spaceshipShieldPortal)
         {
             _revivalPanel = revivalPanel;
 
             _isRevivalTryed = false;
             _startMovement = startMovement;
             _gameplayStateMachine = gameplayStateMachine;
+            _spaceshipShieldPortal = spaceshipShieldPortal;
         }
 
         public async UniTask Enter()
@@ -56,7 +58,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
         private void OnRevivalButtonClicked()
         {
             _gameplayStateMachine.Enter<GameLoopState>().Forget();
-            _startMovement.MoveUp();
+            _spaceshipShieldPortal.Activate(false);
             _revivalPanel.Hide();
         }
     }

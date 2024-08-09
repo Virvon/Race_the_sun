@@ -76,6 +76,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay.CollectItems
             {
                 _spaceship.BoostSpeed();
             }
+
+            public void Visit(MysteryBox mysteryBox)
+            {
+                
+            }
         }
     }
 }

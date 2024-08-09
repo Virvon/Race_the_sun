@@ -1,4 +1,7 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using Assets.RaceTheSun.Sources.Gameplay.Cameras;
+using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
+using Cysharp.Threading.Tasks;
+using System.Collections;
 using UnityEngine;
 using Zenject;
 
@@ -6,11 +9,52 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 {
     public class SpaceshipShieldPortal : MonoBehaviour 
     {
-        [SerializeField] private float _shieldPortalHeight;
+        private IGameplayFactory _gameplayFactory;
+        private SpaceshipMovement _spaceshipMovement;
+        private Spaceship _spaceship;
+        private GameplayCameras _cameras;
+        private CollisionPortalPoint _collisionPortalPoint;
 
-        public void Activate(CollisionPortalPoint collisionPortalPoint)
+        [Inject]
+        private void Construct(IGameplayFactory gameplayFactory, SpaceshipMovement spaceshipMovement, Spaceship spaceship, GameplayCameras cameras, CollisionPortalPoint collisionPortalPoint)
         {
-            transform.position = new Vector3(collisionPortalPoint.transform.position.x, _shieldPortalHeight, collisionPortalPoint.transform.position.z);
+            _gameplayFactory = gameplayFactory;
+            _spaceshipMovement = spaceshipMovement;
+            _spaceship = spaceship;
+            _cameras = cameras;
+            _collisionPortalPoint = collisionPortalPoint;
+        }
+
+        public void Activate(bool createdCollisionPortal = true)
+        {
+            Vector3 revivalPosition = new Vector3(_spaceship.transform.position.x, 120, _spaceship.transform.position.z + 2);
+            transform.position = revivalPosition;
+            
+            if(createdCollisionPortal)
+                _gameplayFactory.CreateShieldPortal(_collisionPortalPoint.transform.position);
+
+            _gameplayFactory.CreateShieldPortal(revivalPosition);
+            StartCoroutine(Revivler(revivalPosition, createdCollisionPortal));
+        }
+
+        private IEnumerator Revivler(Vector3 revivalPosition, bool includedCollisionPortalCamera)
+        {
+            if(includedCollisionPortalCamera)
+            {
+                _cameras.IncludeCamera(GameplayCameraType.CollisionPortalCamera);
+
+                yield return new WaitForSeconds(1);
+            }
+
+            _cameras.IncludeCamera(GameplayCameraType.ShieldPortalCamera);
+
+            yield return new WaitForSeconds(2f);
+
+            _spaceship.gameObject.SetActive(true);
+            _spaceshipMovement.IsStopped = false;
+            _spaceship.transform.position = revivalPosition;
+
+            _cameras.IncludeCamera(GameplayCameraType.MainCamera);
         }
 
         public class Factory : PlaceholderFactory<string, UniTask<SpaceshipShieldPortal>>

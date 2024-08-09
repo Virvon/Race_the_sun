@@ -40,7 +40,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
                 if (_spaceshipMovement.CollisionInfo.Dot > DestoryDot)
                     _speed = MinSpeed;
                 else
-                    _spaceshipDie.TryDie();
+                    _spaceshipDie.TryRevive();
             }
 
             return _speed;

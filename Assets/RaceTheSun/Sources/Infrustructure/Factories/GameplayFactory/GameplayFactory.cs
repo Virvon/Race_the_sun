@@ -1,4 +1,5 @@
 ﻿using Assets.RaceTheSun.Sources.Gameplay.Cameras;
+using Assets.RaceTheSun.Sources.Gameplay.CollectItems;
 using Assets.RaceTheSun.Sources.Gameplay.DistanceObserver;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using Assets.RaceTheSun.Sources.Gameplay.Sun;
@@ -30,8 +31,13 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         private readonly GameplayCameras _cameras;
         private readonly SpaceshipShieldPortal.Factory _spaceshipShieldPortalFactory;
         private readonly GameOverPanel.Factory _gameOverPanelFactory;
+        private readonly JumpBoost.Factory _jumpBoostFactory;
+        private readonly Shield.Factory _shieldFactory;
+        private readonly ShieldPortal.Factory _shieldPortalFactory;
 
-        public GameplayFactory(DiContainer container, Hud.Factory hudFactory, IStaticDataService staticDataService, Spaceship.Factory spaceshipFactory, Tile.Factory tileFactory, WorldGenerator.Factory worldGeneratorFactory, VirtualCamera.Factory virtualCameraFactory, Sun.Factory sunFactory, DistanceObservable distanceObservable, GameplayCameras cameras, SpaceshipShieldPortal.Factory spaceshipShieldPortalFactory, GameOverPanel.Factory gameOverPanelFactory)
+        private SpaceshipDie _spaceshipDie;
+
+        public GameplayFactory(DiContainer container, Hud.Factory hudFactory, IStaticDataService staticDataService, Spaceship.Factory spaceshipFactory, Tile.Factory tileFactory, WorldGenerator.Factory worldGeneratorFactory, VirtualCamera.Factory virtualCameraFactory, Sun.Factory sunFactory, DistanceObservable distanceObservable, GameplayCameras cameras, SpaceshipShieldPortal.Factory spaceshipShieldPortalFactory, GameOverPanel.Factory gameOverPanelFactory, JumpBoost.Factory jumpBoostFactory, Shield.Factory shieldFactory, ShieldPortal.Factory shieldPortalFactory)
         {
             _container = container;
             _hudFactory = hudFactory;
@@ -45,6 +51,9 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             _cameras = cameras;
             _spaceshipShieldPortalFactory = spaceshipShieldPortalFactory;
             _gameOverPanelFactory = gameOverPanelFactory;
+            _jumpBoostFactory = jumpBoostFactory;
+            _shieldFactory = shieldFactory;
+            _shieldPortalFactory = shieldPortalFactory;
         }
 
         public async UniTask CreateGameOverPanel()
@@ -58,6 +67,7 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         {
             SpaceshipShieldPortal spaceshipShieldPortal = await _spaceshipShieldPortalFactory.Create(GameplayFactoryAssets.SpaceshipShieldPortal);
             _container.Bind<SpaceshipShieldPortal>().FromInstance(spaceshipShieldPortal).AsSingle();
+            _spaceshipDie.Init(spaceshipShieldPortal);
         }
 
         public async UniTask CreateShieldCamera()
@@ -84,8 +94,11 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             _container.Bind<Spaceship>().FromInstance(spaceship).AsSingle();
             _container.Bind<SpaceshipMovement>().FromInstance(spaceship.GetComponentInChildren<SpaceshipMovement>()).AsSingle();
             _container.Bind<StartMovement>().FromInstance(spaceship.GetComponentInChildren<StartMovement>()).AsSingle();
+            _container.Bind<CollisionPortalPoint>().FromInstance(spaceship.GetComponentInChildren<CollisionPortalPoint>()).AsSingle();
 
             _distanceObservable.Init(spaceship);
+
+            _spaceshipDie = spaceship.GetComponentInChildren<SpaceshipDie>();
         }
 
         public async UniTask CreateHud()
@@ -134,6 +147,29 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         {
             Sun sun = await _sunFactory.Create(GameplayFactoryAssets.Sun);
             _container.Bind<Sun>().FromInstance(sun).AsSingle();
+        }
+
+        public async UniTask CreateJumpBoost(Vector3 position, Transform parent)
+        {
+            JumpBoost jumpBoost = await _jumpBoostFactory.Create(GameplayFactoryAssets.JumpBoost);
+
+            jumpBoost.transform.position = position;
+            jumpBoost.transform.parent = parent;
+        }
+
+        public async UniTask CreateShield(Vector3 position, Transform parent)
+        {
+            Shield shield = await _shieldFactory.Create(GameplayFactoryAssets.Shield);
+
+            shield.transform.position = position;
+            shield.transform.parent = parent;
+        }
+
+        public async UniTask CreateShieldPortal(Vector3 position)
+        {
+            ShieldPortal shieldPortal = await _shieldPortalFactory.Create(GameplayFactoryAssets.ShieldPortal);
+
+            shieldPortal.transform.position = position;
         }
     }
 }

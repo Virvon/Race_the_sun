@@ -1,4 +1,6 @@
 ﻿using Assets.RaceTheSun.Sources.Gameplay.Cameras;
+using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
+using Assets.RaceTheSun.Sources.Services.CoroutineRunner;
 using Cinemachine;
 using System;
 using System.Collections;
@@ -14,18 +16,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         [SerializeField] private CollisionPortalPoint _collisionPortalPoint;
 
         private Cameras.GameplayCameras _cameras;
-        private SpaceshipShieldPortal _spaceshipShieldPortal;
 
         [Inject]
-        private void Construct(Cameras.GameplayCameras cameras, SpaceshipShieldPortal spaceshipShieldPortal)
+        private void Construct(Cameras.GameplayCameras cameras)
         {
             _cameras = cameras;
-            _spaceshipShieldPortal = spaceshipShieldPortal;
-        }
-
-        public void MoveUp()
-        {
-            StartCoroutine(UpMover());
         }
 
         public void Move(Action endCallback = null)
@@ -38,24 +33,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             StartCoroutine(UpperMover(startCallback, finishCallback));
         }
 
-        private IEnumerator UpMover()
-        {
-            SpaceshipMovement spaceshipMovement = _spaceship.GetComponentInChildren<SpaceshipMovement>();
-            spaceshipMovement.IsStopped = true;
-            _spaceshipShieldPortal.Activate(_collisionPortalPoint);
-            _cameras.IncludeCamera(Cameras.GameplayCameraType.CollisionPortalCamera);
-
-            yield return new WaitForSeconds(1);
-
-            _cameras.IncludeCamera(Cameras.GameplayCameraType.ShieldPortalCamera);
-
-            yield return new WaitForSeconds(2f);
-
-            _spaceship.transform.position = _spaceshipShieldPortal.transform.position;
-            _spaceshipMovement.IsStopped = false;
-
-            _cameras.IncludeCamera(Cameras.GameplayCameraType.MainCamera);
-        }
+       
 
         private IEnumerator UpperMover(Action startCallback, Action finishCallback)
         {

@@ -52,6 +52,8 @@ namespace Assets.RaceTheSun.Sources.Infrustructure.GameStateMachine.States
 
             progress.AvailableStatsToUpgrade.Stats.Add(StatType.Battery);
             progress.Wallet.Value = 6000;
+            progress.Upgrading.UpgradedTypes.Add(Upgrading.UpgradeType.JumpBoost);
+            progress.Upgrading.UpgradedTypes.Add(Upgrading.UpgradeType.ShieldPortal);
 
             return progress;
         }

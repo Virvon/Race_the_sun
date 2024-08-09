@@ -23,8 +23,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay
         public async void Initialize()
         {
             await _gameplayFactory.CreateStartCamera();
-            await _gameplayFactory.CreateShpaceshipShieldPortal();
             await _gameplayFactory.CreateSpaceship();
+            await _gameplayFactory.CreateShpaceshipShieldPortal();
             await _gameplayFactory.CreateWorldGenerator();
             await _gameplayFactory.CreateHud();
             await _gameplayFactory.CreateSpaceshipMainCamera();

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GameplayWorldConfig
   m_EditorClassIdentifier: 
   CellLength: 1000
-  RenderDistacne: 5000
+  RenderDistacne: 4000
   StageConfigs:
   - Stage: 0
     Skybox:
@@ -199,10 +199,30 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-    - m_AssetGUID: 92555fcd145e7e54c94bc8db2bedd39e
+    - m_AssetGUID: ad2ed0f814f156f4d9660bffb78e11c9
       m_SubObjectName: 
       m_SubObjectType: 
-      m_EditorAssetChanged: 0
+      m_EditorAssetChanged: 1
+    - m_AssetGUID: ad2ed0f814f156f4d9660bffb78e11c9
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
+    - m_AssetGUID: ad2ed0f814f156f4d9660bffb78e11c9
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
+    - m_AssetGUID: ad2ed0f814f156f4d9660bffb78e11c9
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
+    - m_AssetGUID: ad2ed0f814f156f4d9660bffb78e11c9
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
+    - m_AssetGUID: ad2ed0f814f156f4d9660bffb78e11c9
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1
   - Stage: 2
     Skybox:
       SkyboxColor: {r: 1, g: 0.34901962, b: 0, a: 0}

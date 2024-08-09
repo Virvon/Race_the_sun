@@ -6,5 +6,6 @@
         void Visit(JumpBoost jumpBoost);
         void Visit(ScoreItem scoreItem);
         void Visit(SpeedBoost speedBoost);
+        void Visit(MysteryBox mysteryBox);
     }
 }
