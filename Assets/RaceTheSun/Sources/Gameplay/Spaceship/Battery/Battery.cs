@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using Zenject;
 
@@ -12,6 +13,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
         private Coroutine _batteryDischarger;
         private float _battery;
+
+        public event Action<float> BatteryValueChanged;
 
         public bool Discharged => _battery == 0;
 
@@ -32,6 +35,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
                     StopCoroutine(_batteryDischarger);
 
                 _battery = FullBattery;
+                BatteryValueChanged?.Invoke(_battery);
             }
         }
 
@@ -46,6 +50,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
                 progress = time / _dischargerDuration;
 
                 _battery = Mathf.Lerp(FullBattery, 0, progress);
+                BatteryValueChanged?.Invoke(_battery);
 
                 yield return null;
             }

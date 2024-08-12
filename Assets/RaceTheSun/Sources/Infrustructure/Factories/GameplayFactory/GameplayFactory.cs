@@ -1,4 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.Cameras;
+﻿using Assets.RaceTheSun.Sources.Gameplay;
+using Assets.RaceTheSun.Sources.Gameplay.Cameras;
 using Assets.RaceTheSun.Sources.Gameplay.CollectItems;
 using Assets.RaceTheSun.Sources.Gameplay.DistanceObserver;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
@@ -88,17 +89,20 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             _cameras.Init(virtualCamera.GetComponent<SpaceshipUpperCamera>());
         }
 
-        public async UniTask CreateSpaceship()
+        public async UniTask<Spaceship> CreateSpaceship()
         {
             Spaceship spaceship = await _spaceshipFactory.Create(GameplayFactoryAssets.Spaceship);
             _container.Bind<Spaceship>().FromInstance(spaceship).AsSingle();
             _container.Bind<SpaceshipMovement>().FromInstance(spaceship.GetComponentInChildren<SpaceshipMovement>()).AsSingle();
             _container.Bind<StartMovement>().FromInstance(spaceship.GetComponentInChildren<StartMovement>()).AsSingle();
             _container.Bind<CollisionPortalPoint>().FromInstance(spaceship.GetComponentInChildren<CollisionPortalPoint>()).AsSingle();
-
             _distanceObservable.Init(spaceship);
+            _container.Bind<Battery>().FromInstance(spaceship.GetComponentInChildren<Battery>()).AsSingle();
+            
 
             _spaceshipDie = spaceship.GetComponentInChildren<SpaceshipDie>();
+
+            return spaceship;
         }
 
         public async UniTask CreateHud()

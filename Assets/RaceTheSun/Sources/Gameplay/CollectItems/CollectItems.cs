@@ -11,13 +11,14 @@ namespace Assets.RaceTheSun.Sources.Gameplay.CollectItems
         [SerializeField] private float _collectRadius;
         [SerializeField] private Spaceship.Spaceship _spaceship;
         [SerializeField] private SpaceshipDie _spaceshipDie;
+        [SerializeField] private SpaceshipJump _spaceshipJump;
 
         private IItemVisitor _itemVisitor;
 
         [Inject]
         private void Construct(ScoreCounter.ScoreCounter scoreCounter)
         {
-            _itemVisitor = new ItemVisitor(scoreCounter, _spaceship, _spaceshipDie);
+            _itemVisitor = new ItemVisitor(scoreCounter, _spaceship, _spaceshipDie, _spaceshipJump);
         }
 
         private void Update()
@@ -49,12 +50,14 @@ namespace Assets.RaceTheSun.Sources.Gameplay.CollectItems
             private readonly ScoreCounter.ScoreCounter _scoreCounter;
             private readonly Spaceship.Spaceship _spaceship;
             private readonly SpaceshipDie _spaceshipDie;
+            private readonly SpaceshipJump _spaceshipJump;
 
-            public ItemVisitor(ScoreCounter.ScoreCounter scoreCounter, Spaceship.Spaceship spaceship, SpaceshipDie spaceshipDie)
+            public ItemVisitor(ScoreCounter.ScoreCounter scoreCounter, Spaceship.Spaceship spaceship, SpaceshipDie spaceshipDie, SpaceshipJump spaceshipJump)
             {
                 _scoreCounter = scoreCounter;
                 _spaceship = spaceship;
                 _spaceshipDie = spaceshipDie;
+                _spaceshipJump = spaceshipJump;
             }
 
             public void Visit(Shield shield)
@@ -64,7 +67,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.CollectItems
 
             public void Visit(JumpBoost jumpBoost)
             {
-
+                _spaceshipJump.TakeJumpBoost();
             }
 
             public void Visit(ScoreItem scoreItem)

@@ -49,8 +49,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
         private IEnumerator SpaceshipMover(Action endCallback)
         {
-            Vector3 startPosition = new Vector3(0, 2, -100);
-            Vector3 endPosition = new Vector3(0, 2, 30);
+            Vector3 startPosition = new Vector3(0, 5, -100);
+            Vector3 endPosition = new Vector3(0, 5, 30);
             float duration = 1f;
             float time = 0;
 

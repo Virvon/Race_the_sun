@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7359305440428373976}
-  serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: -0.565, z: -1.107}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2260485328032382224}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &4431194375572605006
 MeshFilter:
@@ -61,11 +61,11 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7598250206089851362, guid: 14803832a3ab84a4ca80ea49330cdcf6, type: 3}
-  - {fileID: -4028468259306145289, guid: 14803832a3ab84a4ca80ea49330cdcf6, type: 3}
+  - {fileID: 2100000, guid: 15ae56c5b8e83d44f9df126da83b2b8d, type: 2}
+  - {fileID: 2100000, guid: 3356cf847754d67428d5554b7b202033, type: 2}
   - {fileID: -27605045843087612, guid: 14803832a3ab84a4ca80ea49330cdcf6, type: 3}
   - {fileID: -8212680083840791456, guid: 14803832a3ab84a4ca80ea49330cdcf6, type: 3}
-  - {fileID: 351233210345883595, guid: 14803832a3ab84a4ca80ea49330cdcf6, type: 3}
+  - {fileID: 2100000, guid: 3575c54627587a949b874ba0cdf31414, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -100,7 +100,7 @@ GameObject:
   m_Layer: 0
   m_Name: TheArrowModel
   m_TagString: Untagged
-  m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -111,7 +111,6 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7673342862675386992}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -119,6 +118,7 @@ Transform:
   m_Children:
   - {fileID: 7185792602661127062}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3599335406685496531
 MonoBehaviour:

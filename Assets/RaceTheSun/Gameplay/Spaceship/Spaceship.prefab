@@ -251,7 +251,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _duration: 1
-  _jumpHeight: 30
+  _jumpHeight: 50
   _spaceshipFloat: {fileID: 3129080722154805988}
 --- !u!114 &3129080722154805988
 MonoBehaviour:
@@ -267,6 +267,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 5699659358237058815}
   _floatTime: 1
+--- !u!1 &3750234821986570821
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3566715025245634024}
+  - component: {fileID: 5060586501719837099}
+  m_Layer: 0
+  m_Name: ModelPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3566715025245634024
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3750234821986570821}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2.22}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5789376504018628276}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5060586501719837099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3750234821986570821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b531a8e7eb31d443adaea4fbede2882, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5873051150389910152
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,6 +321,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8881256909963806639}
   - component: {fileID: 4024959007766294848}
+  - component: {fileID: 1154407479975181392}
   m_Layer: 0
   m_Name: Battery
   m_TagString: Untagged
@@ -312,6 +357,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dischargerDuration: 2
+--- !u!114 &1154407479975181392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5873051150389910152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbd5b3e6e0fea6949905d11785b3321f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _battery: {fileID: 4024959007766294848}
 --- !u!1 &6151267343870864566
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,7 +529,6 @@ MonoBehaviour:
   _playerInput: {fileID: 1189609125267202750}
   _turnDuration: 0.3
   _maxDeviation: 0.4
-  _model: {fileID: 6338342311962899652}
 --- !u!1 &6708592405223054704
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,7 +544,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6338342311962899652
 Transform:
   m_ObjectHideFlags: 0
@@ -551,7 +608,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collectRadius: 5
   _spaceship: {fileID: 997834433271052482}
-  _spaceshipDie: {fileID: 0}
+  _spaceshipDie: {fileID: 6867741456451803694}
+  _spaceshipJump: {fileID: 1793601898392911040}
 --- !u!1 &7935134606465975063
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,7 +638,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7935134606465975063}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -593,6 +651,7 @@ Transform:
   - {fileID: 2059465628260789885}
   - {fileID: 6221396874336465921}
   - {fileID: 7316110185737474450}
+  - {fileID: 3566715025245634024}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -743,5 +802,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f77405f8ed90cf148a7d88b1785f3452, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spaceshipMovement: {fileID: 4442606206750293770}
   _spaceship: {fileID: 997834433271052482}

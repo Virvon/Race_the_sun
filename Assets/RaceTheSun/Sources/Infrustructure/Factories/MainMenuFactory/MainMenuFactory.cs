@@ -1,5 +1,4 @@
-﻿using Assets.RaceTheSun.Sources.Data;
-using Assets.RaceTheSun.Sources.Gameplay.Cameras;
+﻿using Assets.RaceTheSun.Sources.Gameplay.Cameras;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
 using Assets.RaceTheSun.Sources.MainMenu.ModelPoint;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
@@ -13,36 +12,27 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory
     {
         private readonly UI.MainMenu.MainMenu.Factory _mainMenuFactory;
         private readonly IStaticDataService _staticDataService;
-        private readonly SpaceshipModel.Factory _spaceshipModelFactory;
         private readonly DiContainer _container;
         private readonly FreeLookCamera.Factory _freeLookCameraFactory;
         private readonly MainMenuCameras _mainMenuCameras;
-        private readonly ModelPoint.Factory _modelPointFactory;
         private readonly TrailPoint.Factory _trailPointFactory;
+        private readonly ModelPoint.Factory _modelPointFactory;
 
-        public MainMenuFactory(UI.MainMenu.MainMenu.Factory mainMenuFactory, IStaticDataService staticDataService, SpaceshipModel.Factory spaceshipModelFactory, DiContainer container, FreeLookCamera.Factory freeLookCameraFactory, MainMenuCameras mainMenuCameras, ModelPoint.Factory modelPointFactory, TrailPoint.Factory trailPointFactory)
+        public MainMenuFactory(UI.MainMenu.MainMenu.Factory mainMenuFactory, IStaticDataService staticDataService, DiContainer container, FreeLookCamera.Factory freeLookCameraFactory, MainMenuCameras mainMenuCameras, TrailPoint.Factory trailPointFactory, ModelPoint.Factory modelPointFactory)
         {
             _mainMenuFactory = mainMenuFactory;
             _staticDataService = staticDataService;
-            _spaceshipModelFactory = spaceshipModelFactory;
             _container = container;
             _freeLookCameraFactory = freeLookCameraFactory;
             _mainMenuCameras = mainMenuCameras;
-            _modelPointFactory = modelPointFactory;
             _trailPointFactory = trailPointFactory;
+            _modelPointFactory = modelPointFactory;
         }
 
         public async UniTask CreateMainMenu() =>
             await _mainMenuFactory.Create(MainMenuFactoryAssets.MainMenu);
 
-        public async UniTask<SpaceshipModel> CreateSpaceshipModel(SpaceshipType type, Vector3 position)
-        {
-            SpaceshipModel spaceshipModel = await _spaceshipModelFactory.Create(_staticDataService.GetSpaceship(type).ModelPrefabReference);
-
-            spaceshipModel.transform.position = position;
-
-            return spaceshipModel;
-        }
+        
 
         public async UniTask CreateMainMenuMainCamera()
         {

@@ -3,6 +3,7 @@ using Assets.RaceTheSun.Sources.Gameplay.DistanceObserver;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
+using Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory;
 using Zenject;
 
 namespace Assets.RaceTheSun.Sources.Gameplay
@@ -20,6 +21,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay
             BindCameras();
             BindHudAnimation();
             BindCurrentSpaceshipStage();
+            SpaceshipModelFactoryInstaller.Install(Container);
         }
 
         private void BindCurrentSpaceshipStage()

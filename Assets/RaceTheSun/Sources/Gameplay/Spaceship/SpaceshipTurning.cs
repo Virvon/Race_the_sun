@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory;
+using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
@@ -8,7 +10,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         [SerializeField] private PlayerInput _playerInput;
         [SerializeField] private float _turnDuration;
         [SerializeField] private float _maxDeviation;
-        [SerializeField] private Transform _model;
+        
+        private SpaceshipModel _model;
 
         private float _currentTurn;
         private float _targetTurn;
@@ -18,13 +21,21 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
         private void FixedUpdate()
         {
+            if (_model == null)
+                return;
+
             float horizontal = _playerInput.MoveInput.x;
 
             if (horizontal != 0)
                 horizontal = horizontal > 0 ? 1 : -1;
 
             Turn(horizontal);
-            _model.rotation = Quaternion.Euler(0, 0, _currentTurn * -35);
+            _model.transform.rotation = Quaternion.Euler(0, 0, _currentTurn * -35);
+        }
+
+        public void Init(SpaceshipModel spaceshipModel)
+        {
+            _model = spaceshipModel;
         }
 
         private void Turn(float horizontal)
@@ -63,5 +74,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
                 yield return null;
             }
         }
+
+        
     }
 }

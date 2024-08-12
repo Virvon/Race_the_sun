@@ -241,7 +241,7 @@ MonoBehaviour:
   _radius: 500
   _startHeight: 100
   _finishHeight: -20
-  _speed: 0.001
+  _speed: 0.1
 --- !u!114 &-74370086568080726
 MonoBehaviour:
   m_ObjectHideFlags: 0

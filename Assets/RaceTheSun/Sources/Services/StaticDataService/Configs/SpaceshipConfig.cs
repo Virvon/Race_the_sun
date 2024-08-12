@@ -1,6 +1,8 @@
 ﻿using Assets.RaceTheSun.Sources.Data;
+using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using Assets.RaceTheSun.Sources.MainMenu.Spaceship;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -15,10 +17,17 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService.Configs
         public bool IsUnlockedOnStart;
         public int BuyCost;
 
+        public List<BatteryMaterialInfo> BatteryMaterialsInfo;
+        public Material ChargedBatteryMaterial;
+        public Material DischargedBatteryMaterial;
+        public Material LowBatteryMaterial;
+
         public StatConfig Battery;
         public StatConfig ExperienceMultiplier;
         public StatConfig PickUpRange;
         public StatConfig FloatTime;
+
+        
 
         public StatConfig GetStat(StatType statType)
         {

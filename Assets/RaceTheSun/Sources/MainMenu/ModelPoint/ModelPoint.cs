@@ -10,16 +10,15 @@ namespace Assets.RaceTheSun.Sources.MainMenu.ModelPoint
 {
     public class ModelPoint : MonoBehaviour
     {
-        private IMainMenuFactory _mainMenuFactory;
         private IPersistentProgressService _persistentProgressService;
-
+        private ISpaceshipModelFactory _spaceshipModelFactory;
         private SpaceshipModel _currentModel;
 
         [Inject]
-        private void Construct(IMainMenuFactory mainMenuFactory, IPersistentProgressService persistentProgressService)
+        private void Construct(PersistentProgressService persistentProgressService, ISpaceshipModelFactory spaceshipModelFactory)
         {
-            _mainMenuFactory = mainMenuFactory;
             _persistentProgressService = persistentProgressService;
+            _spaceshipModelFactory = spaceshipModelFactory;
         }
 
         private async void Start()
@@ -32,7 +31,7 @@ namespace Assets.RaceTheSun.Sources.MainMenu.ModelPoint
             if (_currentModel != null)
                 Destroy(_currentModel.gameObject);
 
-            _currentModel = await _mainMenuFactory.CreateSpaceshipModel(spaceshipType, transform.position);
+            _currentModel = await _spaceshipModelFactory.CreateSpaceshipModel(spaceshipType, transform.position);
         }
 
         public class Factory : PlaceholderFactory<string, UniTask<ModelPoint>>

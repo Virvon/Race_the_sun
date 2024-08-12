@@ -111,7 +111,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 56f1dcf27099ed744a81e8eaf10e287f
-    m_Address: ShieldPortal
+    m_Address: SpaceshipShieldPortal
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -391,6 +391,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 762dfb5af9c27674a9bcfdd0b9b5121b
     m_Address: JumpBoost
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bf59f2f15b07b3549b069c291c1a01d6
+    m_Address: ShieldPortal
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

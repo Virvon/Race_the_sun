@@ -19,7 +19,7 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   IsUnlockedOnStart: 0
-  BuyCost: 15000
+  BuyCost: 5000
   Battery:
     Type: 0
     StartValue: 5

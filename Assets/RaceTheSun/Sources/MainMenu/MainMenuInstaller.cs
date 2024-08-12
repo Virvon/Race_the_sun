@@ -12,6 +12,7 @@ namespace Assets.RaceTheSun.Sources.MainMenu
             BindMainMenuFactory();
             BindUiFactory();
             BindMainMenuCameras();
+            SpaceshipModelFactoryInstaller.Install(Container);
         }
 
         private void BindMainMenuCameras()

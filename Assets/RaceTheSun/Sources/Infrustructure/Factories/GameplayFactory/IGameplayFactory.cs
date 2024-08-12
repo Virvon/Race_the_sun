@@ -1,4 +1,5 @@
-﻿using Cinemachine;
+﻿using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
+using Cinemachine;
 using Cysharp.Threading.Tasks;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -9,8 +10,8 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
     public interface IGameplayFactory
     {
         UniTask CreateHud();
-        UniTask CreateSpaceship();
-        UniTask<GameObject> CreateTile(AssetReferenceGameObject tileReference, Vector3 position, Transform parent);
+        UniTask<Spaceship> CreateSpaceship();
+        UniTask<GameObject> CreateTile(AssetReferenceGameObject tileReference, Vector3 position, Transform parent = null);
         UniTask CreateWorldGenerator();
         UniTask CreateStartCamera();
         UniTask CreateSpaceshipMainCamera();
