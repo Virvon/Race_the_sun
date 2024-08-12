@@ -1,4 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
+﻿using Assets.RaceTheSun.Sources.Gameplay.CollectItems;
+using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using Cinemachine;
 using Cysharp.Threading.Tasks;
 using System.Threading.Tasks;
@@ -22,8 +23,11 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         UniTask CreateShieldCamera();
         UniTask CreateShpaceshipShieldPortal();
         UniTask CreateGameOverPanel();
-        UniTask CreateJumpBoost(Vector3 position, Transform parent);
-        UniTask CreateShield(Vector3 position, Transform parent);
+        UniTask<JumpBoost> CreateJumpBoost(Vector3 position, Transform parent = null);
+        UniTask<Shield> CreateShield(Vector3 position, Transform parent = null);
         UniTask CreateShieldPortal(Vector3 postion);
+        UniTask CreateBird();
+        UniTask<ScoreItem> CreateScoreItem(Vector3 position);
+        UniTask<SpeedBoost> CreateSpeedBoost(Vector3 position);
     }
 }

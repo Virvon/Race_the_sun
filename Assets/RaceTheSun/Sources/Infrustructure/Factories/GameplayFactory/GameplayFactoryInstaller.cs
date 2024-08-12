@@ -1,4 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.Cameras;
+﻿using Assets.RaceTheSun.Sources.Gameplay.Bird;
+using Assets.RaceTheSun.Sources.Gameplay.Cameras;
 using Assets.RaceTheSun.Sources.Gameplay.CollectItems;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using Assets.RaceTheSun.Sources.Gameplay.Sun;
@@ -62,6 +63,18 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             Container
                 .BindFactory<string, UniTask<ShieldPortal>, ShieldPortal.Factory>()
                 .FromFactory<KeyPrefabFactoryAsync<ShieldPortal>>();
+
+            Container
+                .BindFactory<string, UniTask<Bird>, Bird.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<Bird>>();
+
+            Container
+                .BindFactory<string, UniTask<ScoreItem>, ScoreItem.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<ScoreItem>>();
+
+            Container
+                .BindFactory<string, UniTask<SpeedBoost>, SpeedBoost.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<SpeedBoost>>();
         }
     }
 }

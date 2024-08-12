@@ -1,4 +1,5 @@
 ﻿using Assets.RaceTheSun.Sources.Gameplay;
+using Assets.RaceTheSun.Sources.Gameplay.Bird;
 using Assets.RaceTheSun.Sources.Gameplay.Cameras;
 using Assets.RaceTheSun.Sources.Gameplay.CollectItems;
 using Assets.RaceTheSun.Sources.Gameplay.DistanceObserver;
@@ -35,10 +36,13 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         private readonly JumpBoost.Factory _jumpBoostFactory;
         private readonly Shield.Factory _shieldFactory;
         private readonly ShieldPortal.Factory _shieldPortalFactory;
+        private readonly Bird.Factory _birdFactory;
+        private readonly ScoreItem.Factory _scoreItemFactory;
+        private readonly SpeedBoost.Factory _speedBoostFactory;
 
         private SpaceshipDie _spaceshipDie;
 
-        public GameplayFactory(DiContainer container, Hud.Factory hudFactory, IStaticDataService staticDataService, Spaceship.Factory spaceshipFactory, Tile.Factory tileFactory, WorldGenerator.Factory worldGeneratorFactory, VirtualCamera.Factory virtualCameraFactory, Sun.Factory sunFactory, DistanceObservable distanceObservable, GameplayCameras cameras, SpaceshipShieldPortal.Factory spaceshipShieldPortalFactory, GameOverPanel.Factory gameOverPanelFactory, JumpBoost.Factory jumpBoostFactory, Shield.Factory shieldFactory, ShieldPortal.Factory shieldPortalFactory)
+        public GameplayFactory(DiContainer container, Hud.Factory hudFactory, IStaticDataService staticDataService, Spaceship.Factory spaceshipFactory, Tile.Factory tileFactory, WorldGenerator.Factory worldGeneratorFactory, VirtualCamera.Factory virtualCameraFactory, Sun.Factory sunFactory, DistanceObservable distanceObservable, GameplayCameras cameras, SpaceshipShieldPortal.Factory spaceshipShieldPortalFactory, GameOverPanel.Factory gameOverPanelFactory, JumpBoost.Factory jumpBoostFactory, Shield.Factory shieldFactory, ShieldPortal.Factory shieldPortalFactory, Bird.Factory birdFactory, ScoreItem.Factory scoreItemFactory, SpeedBoost.Factory speedBoostFactory)
         {
             _container = container;
             _hudFactory = hudFactory;
@@ -55,6 +59,9 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             _jumpBoostFactory = jumpBoostFactory;
             _shieldFactory = shieldFactory;
             _shieldPortalFactory = shieldPortalFactory;
+            _birdFactory = birdFactory;
+            _scoreItemFactory = scoreItemFactory;
+            _speedBoostFactory = speedBoostFactory;
         }
 
         public async UniTask CreateGameOverPanel()
@@ -153,20 +160,24 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             _container.Bind<Sun>().FromInstance(sun).AsSingle();
         }
 
-        public async UniTask CreateJumpBoost(Vector3 position, Transform parent)
+        public async UniTask<JumpBoost> CreateJumpBoost(Vector3 position, Transform parent = null)
         {
             JumpBoost jumpBoost = await _jumpBoostFactory.Create(GameplayFactoryAssets.JumpBoost);
 
             jumpBoost.transform.position = position;
             jumpBoost.transform.parent = parent;
+
+            return jumpBoost;
         }
 
-        public async UniTask CreateShield(Vector3 position, Transform parent)
+        public async UniTask<Shield> CreateShield(Vector3 position, Transform parent = null)
         {
             Shield shield = await _shieldFactory.Create(GameplayFactoryAssets.Shield);
 
             shield.transform.position = position;
             shield.transform.parent = parent;
+
+            return shield;
         }
 
         public async UniTask CreateShieldPortal(Vector3 position)
@@ -174,6 +185,31 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             ShieldPortal shieldPortal = await _shieldPortalFactory.Create(GameplayFactoryAssets.ShieldPortal);
 
             shieldPortal.transform.position = position;
+        }
+
+        public async UniTask CreateBird()
+        {
+            Bird bird = await _birdFactory.Create(GameplayFactoryAssets.Bird);
+
+            _container.Bind<Bird>().FromInstance(bird).AsSingle();
+        }
+
+        public async UniTask<ScoreItem> CreateScoreItem(Vector3 position)
+        {
+            ScoreItem scoreItem = await _scoreItemFactory.Create(GameplayFactoryAssets.ScoreItem);
+
+            scoreItem.transform.position = position;
+            
+            return scoreItem;
+        }
+
+        public async UniTask<SpeedBoost> CreateSpeedBoost(Vector3 position)
+        {
+            SpeedBoost speedBoost = await _speedBoostFactory.Create(GameplayFactoryAssets.SpeedBoost);
+
+            speedBoost.transform.position = position;
+
+            return speedBoost;
         }
     }
 }

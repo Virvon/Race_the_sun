@@ -23,5 +23,8 @@
         public const string JumpBoost = "JumpBoost";
         public const string Shield = "Shield";
         public const string ShieldPortal = "ShieldPortal";
+        public const string Bird = "Bird";
+        public const string ScoreItem = "ScoreItem";
+        public const string SpeedBoost = "SpeedBoost";
     }
 }

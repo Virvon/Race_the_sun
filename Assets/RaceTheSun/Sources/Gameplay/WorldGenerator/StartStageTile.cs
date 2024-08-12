@@ -26,7 +26,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
             _distanceObservable.RegisterObserver(this, transform.position);
         }
 
-        public void Invoke()
+        public virtual void Invoke()
         {
             _currentSpacehsipStage.SetCurrentStage(_stage);
             Debug.Log("Start stage " + _stage);

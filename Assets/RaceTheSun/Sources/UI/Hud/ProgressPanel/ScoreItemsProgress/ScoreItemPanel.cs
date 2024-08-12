@@ -65,6 +65,8 @@ namespace Assets.RaceTheSun.Sources.UI.Hud
 
             _isReleased = false;
 
+            transform.localScale = Vector3.one;
+
             while(_image.color != _emptyColor)
             {
                 passedTime += Time.deltaTime;
