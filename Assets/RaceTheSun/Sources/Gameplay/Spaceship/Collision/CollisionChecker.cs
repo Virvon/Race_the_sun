@@ -23,7 +23,10 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             bool isCollided = Physics.BoxCast(_rigidbody.position, _halfExtents, offset, out RaycastHit hitInfo, _rigidbody.rotation, castDistance, _layerMask, QueryTriggerInteraction.Ignore);
 
             if (isCollided)
-                collidoinInfo = new CollisionInfo(hitInfo.distance, Vector3.Dot(hitInfo.normal, offset.normalized), hitInfo.point);
+            {
+                float dot = hitInfo.collider.transform.TryGetComponent(out ImpassableEnvironment _) ? -1 : Vector3.Dot(hitInfo.normal, offset.normalized);
+                collidoinInfo = new CollisionInfo(hitInfo.distance, dot, hitInfo.point);
+            }
 
             return isCollided;
         }

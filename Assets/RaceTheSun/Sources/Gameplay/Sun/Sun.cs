@@ -11,12 +11,14 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
         [SerializeField] private float _radius;
         [SerializeField] private float _startHeight;
         [SerializeField] private float _finishHeight;
-        [SerializeField] private float _speed;
+        [SerializeField] private float _downMoveSpeed;
+        [SerializeField] private float _upMoveSpeed;
 
         private Transform _spaceship;
         private bool _isShadowed;
         private float _progress;
         private Battery _battery;
+        private bool _isMovedDown;
         
         [Inject]
         private void Construct(Spaceship.Spaceship spaceship)
@@ -24,6 +26,9 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
             _spaceship = spaceship.transform;
             _isShadowed = false;
             _battery = spaceship.GetComponentInChildren<Battery>();
+            _isMovedDown = true;
+
+            spaceship.Init(this);
         }
 
         private void Update()
@@ -31,6 +36,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
             float positionY = GetHeight();
             Move(positionY);
             CheckShadowed();
+        }
+        
+        public void SetMovementDirection(bool isMovedDown)
+        {
+            _isMovedDown = isMovedDown;
         }
 
         private void CheckShadowed()
@@ -57,8 +67,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
 
         private float GetHeight()
         {
-            if(_progress < 1)
-                _progress += Time.deltaTime * _speed;
+            if((_progress < 1 && _isMovedDown) || (_progress > 0 && _isMovedDown == false))
+            {
+                float movementSpeed = _isMovedDown ? _downMoveSpeed : _upMoveSpeed * -1;
+                _progress += Time.deltaTime * movementSpeed;
+            }
 
             return Mathf.Lerp(_startHeight, _finishHeight, _progress);
         }
