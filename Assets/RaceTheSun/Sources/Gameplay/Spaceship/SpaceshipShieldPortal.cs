@@ -29,6 +29,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         {
             Vector3 revivalPosition = new Vector3(_spaceship.transform.position.x, 120, _spaceship.transform.position.z + 2);
             transform.position = revivalPosition;
+
+            _spaceshipMovement.Reset();
             
             if(createdCollisionPortal)
                 _gameplayFactory.CreateShieldPortal(_collisionPortalPoint.transform.position);

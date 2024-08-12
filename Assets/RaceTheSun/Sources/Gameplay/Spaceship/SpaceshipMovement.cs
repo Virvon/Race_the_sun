@@ -83,6 +83,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
         }
 
+        public void Reset()
+        {
+            _collisionInfo = new CollisionInfo();
+        }
+
         private void CheckStartOfBounced()
         {
             IsCollided = _collisionChecker.CheckCollision(Offset, out _collisionInfo);
