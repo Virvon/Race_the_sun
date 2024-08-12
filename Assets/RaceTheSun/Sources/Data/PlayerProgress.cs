@@ -11,6 +11,7 @@ namespace Assets.RaceTheSun.Sources.Data
         public AvailableSpaceships AvailableSpaceships;
         public UpgradingData Upgrading;
         public LevelProgress LevelProgress;
+        public SpaceshipMainCameraSettings SpaceshipMainCameraSettings;
 
         public PlayerProgress(List<SpaceshipData> spaceshipDatas)
         {
@@ -19,6 +20,7 @@ namespace Assets.RaceTheSun.Sources.Data
             AvailableSpaceships = new(spaceshipDatas);
             Upgrading = new();
             LevelProgress = new(Upgrading);
+            SpaceshipMainCameraSettings = new();
         }
     }
 }
