@@ -17,6 +17,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         private WaitingService _waitingService;
         private SpaceshipShieldPortal _spaceshipShieldPortal;
 
+        public event Action Died;
+
         [Inject]
         private void Construct(Cameras.GameplayCameras cameras, GameplayStateMachine gameplayStateMachine, WaitingService waitingService)
         {
@@ -32,7 +34,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             _spaceshipShieldPortal = spaceshipShieldPortal;
         }
 
-        public void TryRevive()
+        public bool TryRevive()
         {
             _spaceship.gameObject.SetActive(false);
             
@@ -41,11 +43,15 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
                 _spaceshipShieldPortal.Activate();
                 _shieldsCount--;
                 ShieldsCountChanged?.Invoke(_shieldsCount);
+                return true;
             }
             else
             {
+                Debug.Log("died");
+                Died?.Invoke();
                 _cameras.IncludeCamera(Cameras.GameplayCameraType.SideCamera);
                 _waitingService.Wait(2, callback: () => _gameplayStateMachine.Enter<RevivalState>().Forget());
+                return false;
             }
         }
 

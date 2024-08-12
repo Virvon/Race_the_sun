@@ -16,8 +16,21 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
         private BoostedSpeed _boostedSpeed;
         private Sun.Sun _sun;
+        private ISpeedProvider _speedProvider;
 
-        public ISpeedProvider SpeedProvider { get; private set; }
+        [Inject]
+        private void Construct(ScoreCounter.ScoreCounter scoreCounter)
+        {
+            scoreCounter.Init(this);
+        }
+
+        public float Speed { get; private set; }
+
+        private void Update()
+        {
+            if(_speedProvider != null)
+                Speed = _speedProvider.GetSpeed();
+        }
 
         public void Init(Sun.Sun sun)
         {
@@ -36,11 +49,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
         public void UpdateSpeedDecorator()
         {
-            SpeedProvider = new SpaceshipSpeed(DefaultSpeed);
-            SpeedProvider = new CollisionSpeed(SpeedProvider, _spaceshipMovement, DefaultSpeed, _spaceshipDie);
-            _boostedSpeed = new BoostedSpeed(SpeedProvider, DefaultSpeed, this, _sun);
-            SpeedProvider = _boostedSpeed;
-            SpeedProvider = new BatterySpeed(SpeedProvider, _battery);
+            _speedProvider = new SpaceshipSpeed(DefaultSpeed);
+            _speedProvider = new CollisionSpeed(_speedProvider, _spaceshipMovement, DefaultSpeed, _spaceshipDie);
+            _boostedSpeed = new BoostedSpeed(_speedProvider, DefaultSpeed, this, _sun);
+            _speedProvider = _boostedSpeed;
+            _speedProvider = new BatterySpeed(_speedProvider, _battery);
         }
 
         

@@ -4,9 +4,9 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
 {
     public class CollisionSpeed : SpeedDecorator
     {
-        private const float MinSpeed = 60;
+        private const float MinSpeed = 150;
         private const float DestoryDot = -0.5f;
-        private const float AccelerationFromMinSpeed = 15;
+        private const float AccelerationFromMinSpeed = 20;
 
         private readonly SpaceshipMovement _spaceshipMovement;
         private readonly float _defaultSpeed;
@@ -39,8 +39,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
             {
                 if (_spaceshipMovement.CollisionInfo.Dot > DestoryDot)
                     _speed = MinSpeed;
-                else
-                    _spaceshipDie.TryRevive();
+                else if (_spaceshipDie.TryRevive() == false)
+                    _speed = 0;
             }
 
             return _speed;

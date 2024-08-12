@@ -20,6 +20,16 @@ MonoBehaviour:
     m_EditorAssetChanged: 1
   IsUnlockedOnStart: 0
   BuyCost: 5000
+  BatteryMaterialsInfo:
+  - Index: 1
+    Position: 1
+  - Index: 4
+    Position: 2
+  - Index: 3
+    Position: 3
+  ChargedBatteryMaterial: {fileID: 2100000, guid: 3575c54627587a949b874ba0cdf31414, type: 2}
+  DischargedBatteryMaterial: {fileID: 2100000, guid: 0c0ebbcd7b6db2545b55d03db57fcce8, type: 2}
+  LowBatteryMaterial: {fileID: 2100000, guid: e5c6ac151af7b3048a7ad7e7d15097c0, type: 2}
   Battery:
     Type: 0
     StartValue: 5

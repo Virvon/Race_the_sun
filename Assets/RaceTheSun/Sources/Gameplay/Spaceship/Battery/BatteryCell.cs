@@ -26,7 +26,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
             if(batteryValue < _minIncludeValue && CurrentMaterial != _dischargedMaterial)
             {
-                Debug.Log("change");
                 material = _dischargedMaterial;
                 CurrentMaterial = material;
                 return true;

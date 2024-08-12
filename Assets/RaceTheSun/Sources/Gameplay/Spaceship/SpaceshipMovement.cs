@@ -49,7 +49,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
         private void FixedUpdate()
         {
-            if (IsStopped || _spaceship.SpeedProvider == null)
+            if (IsStopped)
                 return;
 
             TryFly();
@@ -130,7 +130,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             }
 
             Vector3 directionAlongSurface = Project(direction);
-            Vector3 offset = directionAlongSurface * _spaceship.SpeedProvider.GetSpeed() * Time.fixedDeltaTime;
+            Vector3 offset = directionAlongSurface * _spaceship.Speed * Time.fixedDeltaTime;
             return offset;
         }
 
