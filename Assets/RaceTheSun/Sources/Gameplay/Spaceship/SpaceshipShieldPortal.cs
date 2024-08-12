@@ -50,9 +50,9 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
             yield return new WaitForSeconds(2f);
 
-            _spaceship.gameObject.SetActive(true);
-            _spaceshipMovement.IsStopped = false;
             _spaceship.transform.position = revivalPosition;
+            _spaceshipMovement.IsStopped = false;
+            _spaceship.gameObject.SetActive(true);
 
             _cameras.IncludeCamera(GameplayCameraType.MainCamera);
         }
