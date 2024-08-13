@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Assets.RaceTheSun.Sources.Animations
 {
@@ -10,6 +11,7 @@ namespace Assets.RaceTheSun.Sources.Animations
         public void OnOpened()
         {
             Opened?.Invoke();
+            Debug.Log("Base invoke");
         }
         
         public void OnHided()

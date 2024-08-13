@@ -38,7 +38,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             }
         }
 
-        public void TakeJumpBoost()
+        public void GiveJumpBoost()
         {
             _jumpBoostsCount++;
         }

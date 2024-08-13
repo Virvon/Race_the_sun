@@ -10,22 +10,22 @@ namespace Assets.RaceTheSun.Sources.UI.Hud
     {
         [SerializeField] private ScoreItemPanel[] _scoreItemPanels;
 
-        private ScoreCounter _scoreCounter;
+        private MultiplierProgressCounter _multiplierProgressCounter;
         private int _nextFilledScoreItemPanelIndex;
         private int _nextReleasedScoreItemPanelIndex;
 
         [Inject]
-        private void Construct(ScoreCounter scoreCounter)
+        private void Construct(MultiplierProgressCounter multiplierProgressCounter)
         {
-            _scoreCounter = scoreCounter;
+            _multiplierProgressCounter = multiplierProgressCounter;
             _nextFilledScoreItemPanelIndex = 0;
 
-            _scoreCounter.MultiplierProgressChanged += OnMultiplierProgressChanged;
+            _multiplierProgressCounter.MultiplierProgressChanged += OnMultiplierProgressChanged;
         }
 
         private void OnDestroy()
         {
-            _scoreCounter.MultiplierProgressChanged -= OnMultiplierProgressChanged;
+            _multiplierProgressCounter.MultiplierProgressChanged -= OnMultiplierProgressChanged;
         }
 
         private void OnMultiplierProgressChanged(int multiplierProgress)

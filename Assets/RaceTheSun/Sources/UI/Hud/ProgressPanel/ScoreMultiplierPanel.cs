@@ -16,22 +16,22 @@ namespace Assets.RaceTheSun.Sources.UI.ScoreView
         [SerializeField] private Color _increaseColor;
         [SerializeField] private Color _decreaseColor;
 
-        private ScoreCounter _scoreCounter;
+        private MultiplierProgressCounter _multiplierProgressCounter;
         private Color _panelColor;
         private Coroutine _animation;
 
         [Inject]
-        private void Construct(ScoreCounter scoreCounter)
+        private void Construct(MultiplierProgressCounter multiplierProgressCounter)
         {
-            _scoreCounter = scoreCounter;
+            _multiplierProgressCounter = multiplierProgressCounter;
             _panelColor = _image.color;
 
-            _scoreCounter.MultiplierChanged += OnMultiplierChanged;
+            _multiplierProgressCounter.MultiplierChanged += OnMultiplierChanged;
         }
 
         private void OnDestroy()
         {
-            _scoreCounter.MultiplierChanged -= OnMultiplierChanged;
+            _multiplierProgressCounter.MultiplierChanged -= OnMultiplierChanged;
         }
 
         private void OnMultiplierChanged(int multipliler)

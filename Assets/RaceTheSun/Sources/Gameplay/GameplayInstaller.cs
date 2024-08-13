@@ -1,5 +1,6 @@
 ﻿using Assets.RaceTheSun.Sources.Animations;
 using Assets.RaceTheSun.Sources.Gameplay.DistanceObserver;
+using Assets.RaceTheSun.Sources.Gameplay.ScoreCounter;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
@@ -22,6 +23,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay
             BindHudAnimation();
             BindCurrentSpaceshipStage();
             SpaceshipModelFactoryInstaller.Install(Container);
+            Container.BindInterfacesAndSelfTo<ScoreItemsCounter>().AsSingle();
+            Container.BindInterfacesAndSelfTo<MultiplierProgressCounter>().AsSingle();
         }
 
         private void BindCurrentSpaceshipStage()

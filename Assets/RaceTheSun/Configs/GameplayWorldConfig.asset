@@ -109,11 +109,11 @@ MonoBehaviour:
       AtmosphereThickness: 0.2
       Exposure: 3.24
     Tiles:
-    - m_AssetGUID: 50279e0b215c0344d86282bc9f390cfb
+    - m_AssetGUID: 1d7e830b70e6b9649a08a616b09c27db
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-    - m_AssetGUID: 1d7e830b70e6b9649a08a616b09c27db
+    - m_AssetGUID: 28041c6164e4a1d48a0136b93f88fbc0
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0

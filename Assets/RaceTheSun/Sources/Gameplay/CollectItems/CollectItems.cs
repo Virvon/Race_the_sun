@@ -1,4 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
+﻿using Assets.RaceTheSun.Sources.Gameplay.ScoreCounter;
+using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using UnityEngine;
 using Zenject;
 
@@ -16,9 +17,9 @@ namespace Assets.RaceTheSun.Sources.Gameplay.CollectItems
         private IItemVisitor _itemVisitor;
 
         [Inject]
-        private void Construct(ScoreCounter.ScoreCounter scoreCounter)
+        private void Construct(ScoreItemsCounter scoreItemsCounter)
         {
-            _itemVisitor = new ItemVisitor(scoreCounter, _spaceship, _spaceshipDie, _spaceshipJump);
+            _itemVisitor = new ItemVisitor(_spaceship, _spaceshipDie, _spaceshipJump, scoreItemsCounter);
         }
 
         private void Update()
@@ -47,32 +48,32 @@ namespace Assets.RaceTheSun.Sources.Gameplay.CollectItems
 
         private class ItemVisitor : IItemVisitor
         {
-            private readonly ScoreCounter.ScoreCounter _scoreCounter;
             private readonly Spaceship.Spaceship _spaceship;
             private readonly SpaceshipDie _spaceshipDie;
             private readonly SpaceshipJump _spaceshipJump;
+            private readonly ScoreItemsCounter _scoreItemsCounter;
 
-            public ItemVisitor(ScoreCounter.ScoreCounter scoreCounter, Spaceship.Spaceship spaceship, SpaceshipDie spaceshipDie, SpaceshipJump spaceshipJump)
+            public ItemVisitor(Spaceship.Spaceship spaceship, SpaceshipDie spaceshipDie, SpaceshipJump spaceshipJump, ScoreItemsCounter scoreItemsCounter)
             {
-                _scoreCounter = scoreCounter;
                 _spaceship = spaceship;
                 _spaceshipDie = spaceshipDie;
                 _spaceshipJump = spaceshipJump;
+                _scoreItemsCounter = scoreItemsCounter;
             }
 
             public void Visit(Shield shield)
             {
-                _spaceshipDie.TakeShield();
+                _spaceshipDie.GiveShield();
             }
 
             public void Visit(JumpBoost jumpBoost)
             {
-                _spaceshipJump.TakeJumpBoost();
+                _spaceshipJump.GiveJumpBoost();
             }
 
             public void Visit(ScoreItem scoreItem)
             {
-                _scoreCounter.TakeItem();
+                _scoreItemsCounter.Give();
             }
 
             public void Visit(SpeedBoost speedBoost)

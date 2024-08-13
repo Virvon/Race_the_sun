@@ -55,7 +55,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             }
         }
 
-        public void TakeShield()
+        public void GiveShield()
         {
             _shieldsCount++;
             ShieldsCountChanged?.Invoke(_shieldsCount);
