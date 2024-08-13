@@ -46,6 +46,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay
             await _gameplayFactory.CreateCollisionPortalCamera();
             await _gameplayFactory.CreateShieldCamera();
             await _gameplayFactory.CreateGameOverPanel();
+            await _gameplayFactory.CreateStageMusic();
 
             _gameplayStateMachine.RegisterState(_statesFactory.Create<GameStartState>());
             _gameplayStateMachine.RegisterState(_statesFactory.Create<GameLoopState>());

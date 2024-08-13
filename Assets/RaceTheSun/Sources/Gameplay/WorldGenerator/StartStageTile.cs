@@ -1,4 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.DistanceObserver;
+﻿using Assets.RaceTheSun.Sources.Audio;
+using Assets.RaceTheSun.Sources.Gameplay.DistanceObserver;
 using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
 using UnityEngine;
 using Zenject;
@@ -16,7 +17,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
         {
             _currentSpacehsipStage = currentSpacehsipStage;
             _distanceObservable = distanceObservable;
-            
 
             _stage = currentGenerationStage.GeneratedStageType;
         }

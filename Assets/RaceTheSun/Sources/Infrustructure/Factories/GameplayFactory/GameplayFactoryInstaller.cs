@@ -1,4 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.Bird;
+﻿using Assets.RaceTheSun.Sources.Audio;
+using Assets.RaceTheSun.Sources.Gameplay.Bird;
 using Assets.RaceTheSun.Sources.Gameplay.Cameras;
 using Assets.RaceTheSun.Sources.Gameplay.CollectItems;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
@@ -75,6 +76,10 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             Container
                 .BindFactory<string, UniTask<SpeedBoost>, SpeedBoost.Factory>()
                 .FromFactory<KeyPrefabFactoryAsync<SpeedBoost>>();
+            
+            Container
+                .BindFactory<string, UniTask<StageMusic>, StageMusic.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<StageMusic>>();
         }
     }
 }

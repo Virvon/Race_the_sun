@@ -26,5 +26,6 @@
         public const string Bird = "Bird";
         public const string ScoreItem = "ScoreItem";
         public const string SpeedBoost = "SpeedBoost";
+        public const string StageMusic = "StageMusic";
     }
 }

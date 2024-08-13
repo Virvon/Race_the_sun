@@ -1,4 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay;
+﻿using Assets.RaceTheSun.Sources.Audio;
+using Assets.RaceTheSun.Sources.Gameplay;
 using Assets.RaceTheSun.Sources.Gameplay.Bird;
 using Assets.RaceTheSun.Sources.Gameplay.Cameras;
 using Assets.RaceTheSun.Sources.Gameplay.CollectItems;
@@ -39,10 +40,11 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         private readonly Bird.Factory _birdFactory;
         private readonly ScoreItem.Factory _scoreItemFactory;
         private readonly SpeedBoost.Factory _speedBoostFactory;
+        private readonly StageMusic.Factory _stageMusicFactory;
 
         private SpaceshipDie _spaceshipDie;
 
-        public GameplayFactory(DiContainer container, Hud.Factory hudFactory, IStaticDataService staticDataService, Spaceship.Factory spaceshipFactory, Tile.Factory tileFactory, WorldGenerator.Factory worldGeneratorFactory, VirtualCamera.Factory virtualCameraFactory, Sun.Factory sunFactory, DistanceObservable distanceObservable, GameplayCameras cameras, SpaceshipShieldPortal.Factory spaceshipShieldPortalFactory, GameOverPanel.Factory gameOverPanelFactory, JumpBoost.Factory jumpBoostFactory, Shield.Factory shieldFactory, ShieldPortal.Factory shieldPortalFactory, Bird.Factory birdFactory, ScoreItem.Factory scoreItemFactory, SpeedBoost.Factory speedBoostFactory)
+        public GameplayFactory(DiContainer container, Hud.Factory hudFactory, IStaticDataService staticDataService, Spaceship.Factory spaceshipFactory, Tile.Factory tileFactory, WorldGenerator.Factory worldGeneratorFactory, VirtualCamera.Factory virtualCameraFactory, Sun.Factory sunFactory, DistanceObservable distanceObservable, GameplayCameras cameras, SpaceshipShieldPortal.Factory spaceshipShieldPortalFactory, GameOverPanel.Factory gameOverPanelFactory, JumpBoost.Factory jumpBoostFactory, Shield.Factory shieldFactory, ShieldPortal.Factory shieldPortalFactory, Bird.Factory birdFactory, ScoreItem.Factory scoreItemFactory, SpeedBoost.Factory speedBoostFactory, StageMusic.Factory stageMusicFactory)
         {
             _container = container;
             _hudFactory = hudFactory;
@@ -62,6 +64,7 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             _birdFactory = birdFactory;
             _scoreItemFactory = scoreItemFactory;
             _speedBoostFactory = speedBoostFactory;
+            _stageMusicFactory = stageMusicFactory;
         }
 
         public async UniTask CreateGameOverPanel()
@@ -210,6 +213,11 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             speedBoost.transform.position = position;
 
             return speedBoost;
+        }
+
+        public async UniTask CreateStageMusic()
+        {
+            await _stageMusicFactory.Create(GameplayFactoryAssets.StageMusic);
         }
     }
 }
