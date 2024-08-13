@@ -29,6 +29,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay
         public async void Initialize()
         {
             await _gameplayFactory.CreateStartCamera();
+            await _gameplayFactory.CreateStageMusic();
 
             Spaceship.Spaceship spaceship = await _gameplayFactory.CreateSpaceship();
             SpaceshipModel spaceshipModel = await _spaceshipModelFactory.CreateSpaceshipModel(_persistentProgress.Progress.AvailableSpaceships.CurrentSpaceshipType, spaceship.GetComponentInChildren< Assets.RaceTheSun.Sources.Gameplay.ModelPoint>().transform.position, spaceship.transform);
@@ -46,7 +47,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay
             await _gameplayFactory.CreateCollisionPortalCamera();
             await _gameplayFactory.CreateShieldCamera();
             await _gameplayFactory.CreateGameOverPanel();
-            await _gameplayFactory.CreateStageMusic();
 
             _gameplayStateMachine.RegisterState(_statesFactory.Create<GameStartState>());
             _gameplayStateMachine.RegisterState(_statesFactory.Create<GameLoopState>());

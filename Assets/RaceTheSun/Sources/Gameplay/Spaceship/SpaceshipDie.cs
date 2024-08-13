@@ -1,4 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.StateMachine.States;
+﻿using Assets.RaceTheSun.Sources.Audio;
+using Assets.RaceTheSun.Sources.Gameplay.StateMachine.States;
 using Assets.RaceTheSun.Sources.Services.WaitingService;
 using Cysharp.Threading.Tasks;
 using System;
@@ -15,16 +16,18 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         private Cameras.GameplayCameras _cameras;
         private GameplayStateMachine _gameplayStateMachine;
         private WaitingService _waitingService;
+        private StageMusic _stageMusic;
         private SpaceshipShieldPortal _spaceshipShieldPortal;
 
         public event Action Died;
 
         [Inject]
-        private void Construct(Cameras.GameplayCameras cameras, GameplayStateMachine gameplayStateMachine, WaitingService waitingService)
+        private void Construct(Cameras.GameplayCameras cameras, GameplayStateMachine gameplayStateMachine, WaitingService waitingService, Audio.StageMusic stageMusic)
         {
             _cameras = cameras;
             _gameplayStateMachine = gameplayStateMachine;
             _waitingService = waitingService;
+            _stageMusic = stageMusic;
         }
 
         public event Action<int> ShieldsCountChanged;
@@ -48,6 +51,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             else
             {
                 Debug.Log("died");
+                _stageMusic.Pause();
                 Died?.Invoke();
                 _cameras.IncludeCamera(Cameras.GameplayCameraType.SideCamera);
                 _waitingService.Wait(2, callback: () => _gameplayStateMachine.Enter<RevivalState>().Forget());

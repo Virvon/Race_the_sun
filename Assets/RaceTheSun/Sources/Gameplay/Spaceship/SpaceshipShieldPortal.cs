@@ -1,4 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.Cameras;
+﻿using Assets.RaceTheSun.Sources.Audio;
+using Assets.RaceTheSun.Sources.Gameplay.Cameras;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
 using Cysharp.Threading.Tasks;
 using System.Collections;
@@ -14,23 +15,30 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         private Spaceship _spaceship;
         private GameplayCameras _cameras;
         private CollisionPortalPoint _collisionPortalPoint;
+        private SpaceshipTurning _spaceshipTurning;
+        private StageMusic _stageMusic;
 
         [Inject]
-        private void Construct(IGameplayFactory gameplayFactory, SpaceshipMovement spaceshipMovement, Spaceship spaceship, GameplayCameras cameras, CollisionPortalPoint collisionPortalPoint)
+        private void Construct(IGameplayFactory gameplayFactory, SpaceshipMovement spaceshipMovement, Spaceship spaceship, GameplayCameras cameras, CollisionPortalPoint collisionPortalPoint, SpaceshipTurning spaceshipTurning, StageMusic stageMusic)
         {
             _gameplayFactory = gameplayFactory;
             _spaceshipMovement = spaceshipMovement;
             _spaceship = spaceship;
             _cameras = cameras;
             _collisionPortalPoint = collisionPortalPoint;
+            _spaceshipTurning = spaceshipTurning;
+            _stageMusic = stageMusic;
         }
 
         public void Activate(bool createdCollisionPortal = true)
         {
+            _stageMusic.Play();
+
             Vector3 revivalPosition = new Vector3(_spaceship.transform.position.x, 120, _spaceship.transform.position.z + 2);
             transform.position = revivalPosition;
 
             _spaceshipMovement.Reset();
+            _spaceshipTurning.Reset();
             
             if(createdCollisionPortal)
                 _gameplayFactory.CreateShieldPortal(_collisionPortalPoint.transform.position);

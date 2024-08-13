@@ -33,6 +33,16 @@ namespace Assets.RaceTheSun.Sources.Audio
             _currentSpcaceshipStage.StageChanged -= ChangeAudioClip;
         }
 
+        public void Pause()
+        {
+            _audioSource.Pause();
+        }
+
+        public void Play()
+        {
+            _audioSource.Play();
+        }
+
         private void ChangeAudioClip(Stage currentStage)
         {
             if (_coroutine != null)

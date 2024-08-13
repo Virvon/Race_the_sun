@@ -108,7 +108,7 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             _container.Bind<CollisionPortalPoint>().FromInstance(spaceship.GetComponentInChildren<CollisionPortalPoint>()).AsSingle();
             _distanceObservable.Init(spaceship);
             _container.Bind<Battery>().FromInstance(spaceship.GetComponentInChildren<Battery>()).AsSingle();
-            
+            _container.Bind<SpaceshipTurning>().FromInstance(spaceship.GetComponentInChildren<SpaceshipTurning>()).AsSingle();
 
             _spaceshipDie = spaceship.GetComponentInChildren<SpaceshipDie>();
 
@@ -217,7 +217,9 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
 
         public async UniTask CreateStageMusic()
         {
-            await _stageMusicFactory.Create(GameplayFactoryAssets.StageMusic);
+            StageMusic stageMusic = await _stageMusicFactory.Create(GameplayFactoryAssets.StageMusic);
+
+            _container.Bind<StageMusic>().FromInstance(stageMusic).AsSingle();
         }
     }
 }

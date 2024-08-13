@@ -30,12 +30,27 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
                 horizontal = horizontal > 0 ? 1 : -1;
 
             Turn(horizontal);
-            _model.transform.rotation = Quaternion.Euler(0, 0, _currentTurn * -35);
+            RotatiModel(_currentTurn);
+        }
+
+        private void RotatiModel(float angle)
+        {
+            _model.transform.rotation = Quaternion.Euler(0, 0, angle * -35);
         }
 
         public void Init(SpaceshipModel spaceshipModel)
         {
             _model = spaceshipModel;
+        }
+
+        public void Reset()
+        {
+            if (_turning != null)
+                StopCoroutine(_turning);
+
+            _currentTurn = 0;
+            _targetTurn = 0;
+            TurnFactor = 0;
         }
 
         private void Turn(float horizontal)
@@ -58,6 +73,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
                 _turning = StartCoroutine(Turning(_targetTurn, duration));
             }
         }
+
+        
 
         private IEnumerator Turning(float targetTurn, float duration)
         {
