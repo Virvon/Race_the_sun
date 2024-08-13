@@ -3,13 +3,13 @@ using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using UnityEngine;
+using Virvon.MyBakery.Services.Input;
 using Zenject;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 {
     public class SpaceshipMovement : MonoBehaviour
     {
-        [SerializeField] private PlayerInput _playerInput;
         [SerializeField] private float _maxDistance;
         [SerializeField] private LayerMask _layerMask;
         [SerializeField] private float _minSpeed;

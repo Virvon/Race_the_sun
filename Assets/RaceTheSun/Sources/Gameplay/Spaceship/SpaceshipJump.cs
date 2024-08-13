@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using Virvon.MyBakery.Services.Input;
+using Zenject;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 {
@@ -14,18 +16,40 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
         private Coroutine _jumping;
         private int _jumpBoostsCount;
+        private IInputService _inputService;
 
         public event Action<int> JumpBoostsCountChanged;
         public event Action Jumped;
 
+        [Inject]
+        private void Construct(IInputService inputService)
+        {
+            _inputService = inputService;
+
+            _inputService.Jumped += OnJumped;
+        }
+
         public Vector3 JumpPosition { get; private set; }
         public bool IsJumped { get; private set; }
 
-        private void Update()
+        private void OnDestroy()
         {
-            if (Input.GetKeyDown(KeyCode.Space) && _jumpBoostsCount > 0)
+            _inputService.Jumped -= OnJumped;
+        }
+
+        public void GiveJumpBoost()
+        {
+            _jumpBoostsCount++;
+            JumpBoostsCountChanged?.Invoke(_jumpBoostsCount);
+        }
+
+        private void OnJumped()
+        {
+            Debug.Log("jump");
+
+            if (_jumpBoostsCount > 0)
             {
-                if(_jumping != null)
+                if (_jumping != null)
                 {
                     StopCoroutine(_jumping);
                 }
@@ -36,12 +60,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
                 JumpBoostsCountChanged?.Invoke(_jumpBoostsCount);
                 Jumped?.Invoke();
             }
-        }
-
-        public void GiveJumpBoost()
-        {
-            _jumpBoostsCount++;
-            JumpBoostsCountChanged?.Invoke(_jumpBoostsCount);
         }
 
         private IEnumerator Jumping()

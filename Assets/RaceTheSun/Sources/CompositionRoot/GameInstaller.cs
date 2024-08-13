@@ -9,6 +9,8 @@ using Assets.RaceTheSun.Sources.Services.TimeScale;
 using Assets.RaceTheSun.Sources.Services.WaitingService;
 using Assets.RaceTheSun.Sources.UI.LoadingCurtain;
 using Cysharp.Threading.Tasks;
+using System;
+using Virvon.MyBakery.Services.Input;
 using Zenject;
 
 namespace Assets.RaceTheSun.Sources.CompositionRoot
@@ -21,7 +23,7 @@ namespace Assets.RaceTheSun.Sources.CompositionRoot
             BindLoadingCurtain();
             BindAssetProvider();
             BindSceneLoader();
-            //BindInputService();
+            BindInputService();
             BindGameplayFactory();
             BindStaticDataService();
             BindSaveLoadService();
@@ -30,6 +32,11 @@ namespace Assets.RaceTheSun.Sources.CompositionRoot
             BindTimeScale();
             BindCoroutineRunner();
             BindWaitingService();
+        }
+
+        private void BindInputService()
+        {
+            Container.BindInterfacesAndSelfTo<InputService>().AsSingle();
         }
 
         private void BindWaitingService()

@@ -2,12 +2,13 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using Virvon.MyBakery.Services.Input;
+using Zenject;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 {
     public class SpaceshipTurning : MonoBehaviour
     {
-        [SerializeField] private PlayerInput _playerInput;
         [SerializeField] private float _turnDuration;
         [SerializeField] private float _maxDeviation;
         
@@ -16,6 +17,13 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         private float _currentTurn;
         private float _targetTurn;
         private Coroutine _turning;
+        private IInputService _inputService;
+
+        [Inject]
+        private void Construct (IInputService inputService)
+        {
+            _inputService = inputService;
+        }
 
         public float TurnFactor { get; private set; }
 
@@ -24,12 +32,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             if (_model == null)
                 return;
 
-            float horizontal = _playerInput.MoveInput.x;
-
-            if (horizontal != 0)
-                horizontal = horizontal > 0 ? 1 : -1;
-
-            Turn(horizontal);
+            Turn(_inputService.Direction.x);
             RotatiModel(_currentTurn);
         }
 

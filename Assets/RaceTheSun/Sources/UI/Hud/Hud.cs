@@ -1,5 +1,6 @@
 ﻿using Assets.RaceTheSun.Sources.Animations;
 using Cysharp.Threading.Tasks;
+using System;
 using UnityEngine;
 using Zenject;
 

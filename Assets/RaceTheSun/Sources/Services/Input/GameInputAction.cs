@@ -35,6 +35,24 @@ public partial class @GameInputAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MovementDirectionInput"",
+                    ""type"": ""Value"",
+                    ""id"": ""1a6317c0-890f-41f8-92a6-dc8a37751648"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""0e771b9a-7b55-4681-9567-65d8999e127d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -103,6 +121,50 @@ public partial class @GameInputAction : IInputActionCollection2, IDisposable
                     ""action"": ""Swipe"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""c87da3b3-094b-423d-86af-d15725f076a1"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovementDirectionInput"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""84577012-511b-4924-98c2-1ce2050afbfb"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovementDirectionInput"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""ffc3ac25-00ad-4280-8ec0-3c63704aef1a"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovementDirectionInput"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a680765b-4c52-4e32-b415-b6adcc3ce2be"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -112,6 +174,8 @@ public partial class @GameInputAction : IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Swipe = m_Player.FindAction("Swipe", throwIfNotFound: true);
+        m_Player_MovementDirectionInput = m_Player.FindAction("MovementDirectionInput", throwIfNotFound: true);
+        m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -172,11 +236,15 @@ public partial class @GameInputAction : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Swipe;
+    private readonly InputAction m_Player_MovementDirectionInput;
+    private readonly InputAction m_Player_Jump;
     public struct PlayerActions
     {
         private @GameInputAction m_Wrapper;
         public PlayerActions(@GameInputAction wrapper) { m_Wrapper = wrapper; }
         public InputAction @Swipe => m_Wrapper.m_Player_Swipe;
+        public InputAction @MovementDirectionInput => m_Wrapper.m_Player_MovementDirectionInput;
+        public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -189,6 +257,12 @@ public partial class @GameInputAction : IInputActionCollection2, IDisposable
                 @Swipe.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwipe;
                 @Swipe.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwipe;
                 @Swipe.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwipe;
+                @MovementDirectionInput.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovementDirectionInput;
+                @MovementDirectionInput.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovementDirectionInput;
+                @MovementDirectionInput.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovementDirectionInput;
+                @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -196,6 +270,12 @@ public partial class @GameInputAction : IInputActionCollection2, IDisposable
                 @Swipe.started += instance.OnSwipe;
                 @Swipe.performed += instance.OnSwipe;
                 @Swipe.canceled += instance.OnSwipe;
+                @MovementDirectionInput.started += instance.OnMovementDirectionInput;
+                @MovementDirectionInput.performed += instance.OnMovementDirectionInput;
+                @MovementDirectionInput.canceled += instance.OnMovementDirectionInput;
+                @Jump.started += instance.OnJump;
+                @Jump.performed += instance.OnJump;
+                @Jump.canceled += instance.OnJump;
             }
         }
     }
@@ -203,5 +283,7 @@ public partial class @GameInputAction : IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnSwipe(InputAction.CallbackContext context);
+        void OnMovementDirectionInput(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
     }
 }

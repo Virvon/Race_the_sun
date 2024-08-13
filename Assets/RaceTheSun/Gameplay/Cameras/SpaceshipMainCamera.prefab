@@ -124,7 +124,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   _fromFirsPersonFollowOffset: {x: 0, y: 1, z: 1.5}
-  _fromThirdPersonFollowOffset: {x: 0, y: 3, z: -11}
+  _fromThirdPersonFollowOffset: {x: 0, y: 3, z: -14}
 --- !u!114 &3797519584511387569
 MonoBehaviour:
   m_ObjectHideFlags: 0
