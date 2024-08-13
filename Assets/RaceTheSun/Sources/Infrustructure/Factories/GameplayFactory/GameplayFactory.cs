@@ -109,6 +109,8 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             _distanceObservable.Init(spaceship);
             _container.Bind<Battery>().FromInstance(spaceship.GetComponentInChildren<Battery>()).AsSingle();
             _container.Bind<SpaceshipTurning>().FromInstance(spaceship.GetComponentInChildren<SpaceshipTurning>()).AsSingle();
+            _container.Bind<SpaceshipDie>().FromInstance(spaceship.GetComponentInChildren<SpaceshipDie>()).AsSingle();
+            _container.Bind<SpaceshipJump>().FromInstance(spaceship.GetComponentInChildren<SpaceshipJump>()).AsSingle();
 
             _spaceshipDie = spaceship.GetComponentInChildren<SpaceshipDie>();
 

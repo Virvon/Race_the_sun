@@ -29,10 +29,7 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-    - m_AssetGUID: 1d7e830b70e6b9649a08a616b09c27db
-      m_SubObjectName: 
-      m_SubObjectType: 
-      m_EditorAssetChanged: 0
+    AudioClip: {fileID: 8300000, guid: 0860f7df9d460cd42924754d83392cb8, type: 3}
   - Stage: 1
     Skybox:
       SkyboxColor: {r: 0.58431375, g: 0.25882354, b: 0.23529412, a: 1}
@@ -103,6 +100,7 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
+    AudioClip: {fileID: 8300000, guid: 86025b1f08bc04946ae9f57d27faa0ff, type: 3}
   - Stage: -1
     Skybox:
       SkyboxColor: {r: 0.3882353, g: 0.3882353, b: 0.3882353, a: 1}
@@ -125,6 +123,7 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
+    AudioClip: {fileID: 8300000, guid: be232be37fd7e694c8950cef355f0894, type: 3}
   - Stage: -2
     Skybox:
       SkyboxColor: {r: 0, g: 0, b: 0, a: 0}
@@ -223,6 +222,7 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 1
+    AudioClip: {fileID: 8300000, guid: 6f4d41bb5b4a79c44813ec4be3df112c, type: 3}
   - Stage: 2
     Skybox:
       SkyboxColor: {r: 1, g: 0.34901962, b: 0, a: 0}
@@ -293,6 +293,7 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
+    AudioClip: {fileID: 8300000, guid: 439e9ce37559d2b43b851a0ed8edce62, type: 3}
   - Stage: 3
     Skybox:
       SkyboxColor: {r: 0.21176471, g: 0.8509804, b: 0.2509804, a: 0}
@@ -363,6 +364,7 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
+    AudioClip: {fileID: 8300000, guid: ee4aa76d8408bfa4cb1da39812dff4aa, type: 3}
   - Stage: 4
     Skybox:
       SkyboxColor: {r: 1, g: 0.4509804, b: 0, a: 0}
@@ -441,3 +443,4 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
+    AudioClip: {fileID: 8300000, guid: b618f346935ac6940820b28b94b8e7f1, type: 3}

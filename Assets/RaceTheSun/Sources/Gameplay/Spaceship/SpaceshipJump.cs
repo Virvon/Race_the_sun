@@ -41,6 +41,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         public void GiveJumpBoost()
         {
             _jumpBoostsCount++;
+            JumpBoostsCountChanged?.Invoke(_jumpBoostsCount);
         }
 
         private IEnumerator Jumping()

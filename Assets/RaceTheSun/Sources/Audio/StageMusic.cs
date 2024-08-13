@@ -17,6 +17,7 @@ namespace Assets.RaceTheSun.Sources.Audio
         private Coroutine _coroutine;
         private CurrentSpaceshipStage _currentSpcaceshipStage;
         private IStaticDataService _staticDataService;
+        private bool _isPaused;
 
         [Inject]
         private void Construct(CurrentSpaceshipStage currentSpaceshipStage, IStaticDataService staticDataService)
@@ -24,8 +25,9 @@ namespace Assets.RaceTheSun.Sources.Audio
             _currentSpcaceshipStage = currentSpaceshipStage;
             _staticDataService = staticDataService;
 
+            _isPaused = false;
+
             _currentSpcaceshipStage.StageChanged += ChangeAudioClip;
-            Debug.Log("+=");
         }
 
         private void OnDestroy()
@@ -36,11 +38,16 @@ namespace Assets.RaceTheSun.Sources.Audio
         public void Pause()
         {
             _audioSource.Pause();
+            _isPaused = true;
         }
 
         public void Play()
         {
-            _audioSource.Play();
+            if(_isPaused)
+            {
+                _audioSource.Play();
+                _isPaused = false;
+            }
         }
 
         private void ChangeAudioClip(Stage currentStage)
