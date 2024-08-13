@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7130356093109155633}
   - component: {fileID: 2128922526030166458}
   - component: {fileID: 5540850139675650251}
+  - component: {fileID: 5509874344660710631}
   m_Layer: 0
   m_Name: ScoreItem
   m_TagString: Untagged
@@ -59,6 +60,26 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 12
   m_Center: {x: 0, y: 6, z: 0}
+--- !u!95 &5509874344660710631
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354885170394406579}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0ba08beb24838454bb73010dd00b6d07, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1861932554019506454
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,7 +107,7 @@ Transform:
   m_GameObject: {fileID: 1861932554019506454}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7130356093109155633}

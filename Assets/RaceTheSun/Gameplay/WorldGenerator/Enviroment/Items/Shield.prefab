@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5499122048404234794}
   - component: {fileID: -6399048900147260644}
   - component: {fileID: 8824249360814548830}
+  - component: {fileID: 3815756557229417828}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Untagged
@@ -59,6 +60,26 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 12
   m_Center: {x: 0, y: 6, z: 0}
+--- !u!95 &3815756557229417828
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4420645486729190170}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0ba08beb24838454bb73010dd00b6d07, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7103737196474205915
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,7 +92,7 @@ GameObject:
   - component: {fileID: 6805361722156405700}
   - component: {fileID: 8761039663721654030}
   m_Layer: 0
-  m_Name: shield
+  m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
