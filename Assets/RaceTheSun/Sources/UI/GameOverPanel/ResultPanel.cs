@@ -27,7 +27,6 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
 
         private void OnEnable()
         {
-            Debug.Log("enable");
             _gameOverPanelAnimationElement.Opened += OnOpened;
             _continueButton.onClick.AddListener(Hide);
         }
@@ -52,7 +51,6 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
 
         private void OnOpened()
         {
-            Debug.Log("OnOpened");
             _resultScorePanel.ShowResult();
         }
     }

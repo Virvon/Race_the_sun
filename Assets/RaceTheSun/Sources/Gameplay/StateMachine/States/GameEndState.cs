@@ -9,9 +9,9 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
 {
     public class GameEndState : IState
     {
-        private readonly GameStateMachine _gameStateMachine;
+        private readonly Infrastructure.GameStateMachine.GameStateMachine _gameStateMachine;
 
-        public GameEndState(GameStateMachine gameStateMachine)
+        public GameEndState(Infrastructure.GameStateMachine.GameStateMachine gameStateMachine)
         {
             _gameStateMachine = gameStateMachine;
         }

@@ -62,8 +62,6 @@ namespace Assets.RaceTheSun.Sources.Audio
 
         private IEnumerator Changer(AudioClip targetAudioClip)
         {
-            Debug.Log("Change " + targetAudioClip.name);
-
             float passedTime = 0;
             float progress;
             float startVolume = _audioSource.volume;
