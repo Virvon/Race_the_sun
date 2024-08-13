@@ -1,4 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
+﻿using Agava.YandexGames;
+using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
 using Assets.RaceTheSun.Sources.UI.GameOverPanel;
 using Cysharp.Threading.Tasks;
@@ -57,9 +58,18 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
 
         private void OnRevivalButtonClicked()
         {
+#if !UNITY_EDITOR && UNITY_WEBGL
+            InterstitialAd.Show(onCloseCallback: (_) =>
+            {
+                _gameplayStateMachine.Enter<GameLoopState>().Forget();
+                _spaceshipShieldPortal.Activate(false);
+                _revivalPanel.Hide();
+            });
+#else
             _gameplayStateMachine.Enter<GameLoopState>().Forget();
             _spaceshipShieldPortal.Activate(false);
             _revivalPanel.Hide();
+#endif
         }
     }
 }

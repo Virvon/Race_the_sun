@@ -37,10 +37,15 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
             _gameOverPanelAnimationElement.Opened -= OnOpened;
         }
 
+        public void SetScoreItemsValue(int value)
+        {
+            _scoreItemsValue.text =  value.ToString();
+        }
+
         public void Open()
         {
             _gameOverPanelAnimationElement.Open();
-            _scoreItemsValue.text = _scoreItemsCounter.ScoreItemsPerGame.ToString();
+            SetScoreItemsValue(_scoreItemsCounter.ScoreItemsPerGame);
         }
 
         private void Hide()
