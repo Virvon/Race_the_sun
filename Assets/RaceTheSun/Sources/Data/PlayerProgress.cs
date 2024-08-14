@@ -14,6 +14,7 @@ namespace Assets.RaceTheSun.Sources.Data
         public LevelProgress LevelProgress;
         public SpaceshipMainCameraSettings SpaceshipMainCameraSettings;
         public AvailableTrails AvailableTrails;
+        public MysteryBoxesData MysteryBoxes;
 
         public PlayerProgress(List<SpaceshipData> spaceshipDatas, List<TrailType> trails)
         {
@@ -24,6 +25,7 @@ namespace Assets.RaceTheSun.Sources.Data
             LevelProgress = new(Upgrading);
             SpaceshipMainCameraSettings = new();
             AvailableTrails = new(trails);
+            MysteryBoxes = new();
         }
     }
 }

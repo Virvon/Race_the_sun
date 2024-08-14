@@ -17,9 +17,9 @@ namespace Assets.RaceTheSun.Sources.Gameplay.CollectItems
         private IItemVisitor _itemVisitor;
 
         [Inject]
-        private void Construct(ScoreItemsCounter scoreItemsCounter)
+        private void Construct(ScoreItemsCounter scoreItemsCounter, IPersistentProgressService persistentProgressService)
         {
-            _itemVisitor = new ItemVisitor(_spaceship, _spaceshipDie, _spaceshipJump, scoreItemsCounter);
+            _itemVisitor = new ItemVisitor(_spaceship, _spaceshipDie, _spaceshipJump, scoreItemsCounter, persistentProgressService);
         }
 
         private void Update()
@@ -52,13 +52,15 @@ namespace Assets.RaceTheSun.Sources.Gameplay.CollectItems
             private readonly SpaceshipDie _spaceshipDie;
             private readonly SpaceshipJump _spaceshipJump;
             private readonly ScoreItemsCounter _scoreItemsCounter;
+            private readonly IPersistentProgressService _persistentProgressService;
 
-            public ItemVisitor(Spaceship.Spaceship spaceship, SpaceshipDie spaceshipDie, SpaceshipJump spaceshipJump, ScoreItemsCounter scoreItemsCounter)
+            public ItemVisitor(Spaceship.Spaceship spaceship, SpaceshipDie spaceshipDie, SpaceshipJump spaceshipJump, ScoreItemsCounter scoreItemsCounter, IPersistentProgressService persistentProgressService)
             {
                 _spaceship = spaceship;
                 _spaceshipDie = spaceshipDie;
                 _spaceshipJump = spaceshipJump;
                 _scoreItemsCounter = scoreItemsCounter;
+                _persistentProgressService = persistentProgressService;
             }
 
             public void Visit(Shield shield)
@@ -83,7 +85,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.CollectItems
 
             public void Visit(MysteryBox mysteryBox)
             {
-                
+                _persistentProgressService.Progress.MysteryBoxes.Give();
             }
         }
     }

@@ -19,6 +19,7 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService
         private Dictionary<SpaceshipType, SpaceshipConfig> _spaceshipConfigs;
         private GameplayWorldConfig _gameplayWorldConfig;
         private Dictionary<TrailType, TrailConfig> _trailConfigs;
+        private MysteryBoxRewardsConfig _mysteryBoxRewardsConfig;
 
         public StaticDataService(IAssetProvider assetsProvider)
         {
@@ -32,9 +33,13 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService
             tasks.Add(LoadGameplayWorldConfig());
             tasks.Add(LoadSpaceshipConfigs());
             tasks.Add(LoadTrailConfigs());
+            tasks.Add(LoadMysteryBoxRewardsConfig());
 
             await UniTask.WhenAll(tasks);
         }
+
+        public MysteryBoxRewardsConfig GetMysteryBoxRewards() =>
+            _mysteryBoxRewardsConfig;
 
         public TrailConfig[] GetTrails() =>
             _trailConfigs.Values.ToArray();
@@ -53,6 +58,12 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService
 
         public StageConfig GetStage(Stage stage) =>
             _stageConfigs.TryGetValue(stage, out StageConfig config) ? config : null;
+
+        private async UniTask LoadMysteryBoxRewardsConfig()
+        {
+            MysteryBoxRewardsConfig[] configs = await GetConfigs<MysteryBoxRewardsConfig>();
+            _mysteryBoxRewardsConfig = configs.First();
+        }
 
         private async UniTask LoadSpaceshipConfigs()
         {
@@ -84,5 +95,7 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService
 
         private async UniTask<List<string>> GetConfigKeys<TConfig>() =>
             await _assetsProvider.GetAssetsListByLabel<TConfig>(AssetLabels.Configs);
+
+
     }
 }

@@ -14,5 +14,6 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService
         GameplayWorldConfig GetGameplayWorld();
         TrailConfig GetTrail(TrailType type);
         TrailConfig[] GetTrails();
+        MysteryBoxRewardsConfig GetMysteryBoxRewards();
     }
 }
