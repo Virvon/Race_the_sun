@@ -8,10 +8,12 @@ namespace Assets.RaceTheSun.Sources.Data
     public class UpgradingData
     {
         public List<UpgradeType> UpgradedTypes;
+        public int AttachmentCellsCount;
 
         public UpgradingData()
         {
             UpgradedTypes = new();
+            AttachmentCellsCount = 0;
         }
 
         public void Upgrade(int level)

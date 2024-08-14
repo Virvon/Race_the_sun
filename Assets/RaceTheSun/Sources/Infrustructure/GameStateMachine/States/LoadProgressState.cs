@@ -58,6 +58,11 @@ namespace Assets.RaceTheSun.Sources.Infrustructure.GameStateMachine.States
             progress.Wallet.Value = 6000;
             progress.Upgrading.UpgradedTypes.Add(Upgrading.UpgradeType.JumpBoost);
             progress.Upgrading.UpgradedTypes.Add(Upgrading.UpgradeType.ShieldPortal);
+            progress.Upgrading.UpgradedTypes.Add(Upgrading.UpgradeType.Magnet);
+            progress.Upgrading.UpgradedTypes.Add(Upgrading.UpgradeType.JumpBoostsStorage);
+            progress.Upgrading.UpgradedTypes.Add(Upgrading.UpgradeType.ShieldPortalsStorage);
+
+            progress.Upgrading.AttachmentCellsCount = 2;
 
             return progress;
         }

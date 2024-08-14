@@ -1,6 +1,8 @@
 ﻿using Assets.RaceTheSun.Sources.MainMenu.Spaceship;
 using Assets.RaceTheSun.Sources.Trail;
+using Assets.RaceTheSun.Sources.Upgrading;
 using System;
+using System.Collections.Generic;
 
 namespace Assets.RaceTheSun.Sources.Data
 {
@@ -14,6 +16,7 @@ namespace Assets.RaceTheSun.Sources.Data
         public StatData FloatTimeBoost;
         public bool IsUnlocked;
         public TrailType TrailType;
+        public List<UpgradeType> UpgradeTypes;
 
         public SpaceshipData(SpaceshipType type, float batteryBoost, float experienceMultiplierBoost, float pickupRangeBoost, float floatTimeBoost, bool isUnlocked)
         {
@@ -24,6 +27,7 @@ namespace Assets.RaceTheSun.Sources.Data
             FloatTimeBoost = new StatData(StatType.FloatTime, floatTimeBoost);
             IsUnlocked = isUnlocked;
             TrailType = TrailType.Basic;
+            UpgradeTypes = new List<UpgradeType>();
         }
 
         public float GetStat(StatType statType)

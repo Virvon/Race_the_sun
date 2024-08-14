@@ -32,6 +32,7 @@ namespace Assets.RaceTheSun.Sources.CompositionRoot
             BindTimeScale();
             BindCoroutineRunner();
             BindWaitingService();
+            Container.BindInterfacesAndSelfTo<Attachment.Attachment>().AsSingle();
         }
 
         private void BindInputService()

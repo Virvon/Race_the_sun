@@ -21,6 +21,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
             _modelPoint = modelPoint;
         }
 
+        public SpaceshipType SpaceshipType { get; private set; }
+
         private void OnEnable() =>
             _currentClickedSpaceshipWatcher.CurrentSpaceshipChanged += OnSpaceshipChanged;
 
@@ -29,6 +31,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
 
         private async void OnSpaceshipChanged(SpaceshipType type)
         {
+            SpaceshipType = type;
+
             foreach (SpaceshipStatPanel spaceshipStatPanel in _spaceshipStatPanels)
                 spaceshipStatPanel.ResetSpaceship(type);
 

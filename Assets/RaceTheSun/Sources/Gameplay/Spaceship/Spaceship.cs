@@ -1,4 +1,6 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator;
+﻿using Assets.RaceTheSun.Sources.Attachment;
+using Assets.RaceTheSun.Sources.Data;
+using Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator;
 using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine;
@@ -17,11 +19,18 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         private BoostedSpeed _boostedSpeed;
         private Sun.Sun _sun;
         private ISpeedProvider _speedProvider;
+        private AttachmentStats _attachmentStats;
 
         [Inject]
-        private void Construct(ScoreCounter.ScoreCounter scoreCounter)
+        private void Construct(ScoreCounter.ScoreCounter scoreCounter, Attachment.Attachment attachment, IPersistentProgressService persistentProgressService)
         {
             scoreCounter.Init(this);
+
+            _attachmentStats = GetAttachmentStats(attachment, persistentProgressService);
+
+            Debug.Log(_attachmentStats.CollectRadius);
+            Debug.Log(_attachmentStats.MaxJumpBoostsCount);
+            Debug.Log(_attachmentStats.MaxShileldsCount);
         }
 
         public float Speed { get; private set; }
@@ -56,7 +65,17 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             _speedProvider = new BatterySpeed(_speedProvider, _battery);
         }
 
-        
+        private AttachmentStats GetAttachmentStats(Attachment.Attachment attachment, IPersistentProgressService persistentProgressService)
+        {
+            SpaceshipData spaceshipData = persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(persistentProgressService.Progress.AvailableSpaceships.CurrentSpaceshipType);
+
+            IAttachmentStatsProvider attachmentStatsProvider = new DefaultAttachmentStats();
+
+            foreach(Upgrading.UpgradeType upgradeType in spaceshipData.UpgradeTypes)
+                attachmentStatsProvider = attachment.Wrap(upgradeType, attachmentStatsProvider);
+
+            return attachmentStatsProvider.GetStats();
+        }
 
         public class Factory : PlaceholderFactory<string, UniTask<Spaceship>>
         {
