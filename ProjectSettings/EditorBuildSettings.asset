@@ -4,6 +4,9 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/RaceTheSun/Scenes/BootstrapScene.unity
+    guid: ade32586e4f79ff4d857cc61ada3abca
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 5d8d502736e88734286b2c41669e6567, type: 2}

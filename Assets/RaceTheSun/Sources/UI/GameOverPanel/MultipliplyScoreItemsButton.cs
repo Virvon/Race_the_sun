@@ -1,4 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.ScoreCounter;
+﻿using Agava.YandexGames;
+using Assets.RaceTheSun.Sources.Gameplay.ScoreCounter;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -60,6 +61,7 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
             _resultPanel.SetScoreItemsValue(_reward + _scoreItemsCounter.ScoreItemsPerGame);
             gameObject.SetActive(false);
 #endif
+            
         }
     }
 }

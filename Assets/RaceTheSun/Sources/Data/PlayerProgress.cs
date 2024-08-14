@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.RaceTheSun.Sources.Trail;
+using System;
 using System.Collections.Generic;
 
 namespace Assets.RaceTheSun.Sources.Data
@@ -12,8 +13,9 @@ namespace Assets.RaceTheSun.Sources.Data
         public UpgradingData Upgrading;
         public LevelProgress LevelProgress;
         public SpaceshipMainCameraSettings SpaceshipMainCameraSettings;
+        public AvailableTrails AvailableTrails;
 
-        public PlayerProgress(List<SpaceshipData> spaceshipDatas)
+        public PlayerProgress(List<SpaceshipData> spaceshipDatas, List<TrailType> trails)
         {
             Wallet = new();
             AvailableStatsToUpgrade = new();
@@ -21,6 +23,7 @@ namespace Assets.RaceTheSun.Sources.Data
             Upgrading = new();
             LevelProgress = new(Upgrading);
             SpaceshipMainCameraSettings = new();
+            AvailableTrails = new(trails);
         }
     }
 }

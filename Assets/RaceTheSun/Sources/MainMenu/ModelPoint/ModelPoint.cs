@@ -1,6 +1,7 @@
 ﻿using Assets.RaceTheSun.Sources.Data;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
+using Assets.RaceTheSun.Sources.Trail;
 using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine;
@@ -34,8 +35,13 @@ namespace Assets.RaceTheSun.Sources.MainMenu.ModelPoint
             _currentModel = await _spaceshipModelFactory.CreateSpaceshipModel(spaceshipType, transform.position);
         }
 
+        public void ChangeTrail(TrailType trailType)
+        {
+            _currentModel.GetComponentInChildren<TrailSpawner>().CreateTrails(trailType);
+        }
+
         public class Factory : PlaceholderFactory<string, UniTask<ModelPoint>>
         {
-        } 
+        }
     }
 }

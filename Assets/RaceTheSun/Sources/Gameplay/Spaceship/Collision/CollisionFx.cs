@@ -21,7 +21,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
         private void OnDied()
         {
-            Debug.Log("instantiate");
             Instantiate(_particleSystemPrefab, transform.position + _instantiateOffset, Quaternion.identity);
         }
     }

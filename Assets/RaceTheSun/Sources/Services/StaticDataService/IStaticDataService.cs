@@ -1,5 +1,6 @@
 ﻿using Assets.RaceTheSun.Sources.Data;
 using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
+using Assets.RaceTheSun.Sources.Trail;
 using Cysharp.Threading.Tasks;
 
 namespace Assets.RaceTheSun.Sources.Services.StaticDataService
@@ -11,5 +12,7 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService
         SpaceshipConfig GetSpaceship(SpaceshipType type);
         SpaceshipConfig[] GetSpaceships();
         GameplayWorldConfig GetGameplayWorld();
+        TrailConfig GetTrail(TrailType type);
+        TrailConfig[] GetTrails();
     }
 }

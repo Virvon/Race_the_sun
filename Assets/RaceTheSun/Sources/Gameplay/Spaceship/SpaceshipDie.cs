@@ -50,7 +50,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             }
             else
             {
-                Debug.Log("died");
                 _stageMusic.Pause();
                 Died?.Invoke();
                 _cameras.IncludeCamera(Cameras.GameplayCameraType.SideCamera);

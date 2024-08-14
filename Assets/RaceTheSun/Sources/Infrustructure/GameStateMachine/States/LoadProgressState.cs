@@ -4,6 +4,7 @@ using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine.States;
 using Assets.RaceTheSun.Sources.MainMenu.Spaceship;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
+using Assets.RaceTheSun.Sources.Trail;
 using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,10 +46,13 @@ namespace Assets.RaceTheSun.Sources.Infrustructure.GameStateMachine.States
         {
             List<SpaceshipData> spaceshipDatas = new();
             SpaceshipConfig[] spaceshipConfigs = _staticDataService.GetSpaceships();
-            
             spaceshipDatas.AddRange(spaceshipConfigs.Select(spaceshipConfig => new SpaceshipData(spaceshipConfig.Type, spaceshipConfig.Battery.StartBoost, spaceshipConfig.ExperienceMultiplier.StartBoost, spaceshipConfig.PickUpRange.StartBoost, spaceshipConfig.FloatTime.StartBoost, spaceshipConfig.IsUnlockedOnStart)));
 
-            PlayerProgress progress = new(spaceshipDatas);
+            List<TrailType> trails = new();
+            TrailConfig[] trailConfigs = _staticDataService.GetTrails();
+            trails.AddRange(trailConfigs.Where(trailConfig => trailConfig.IsUnlockedOnStart).Select(trailConfig => trailConfig.Type));
+
+            PlayerProgress progress = new(spaceshipDatas, trails);
 
             progress.AvailableStatsToUpgrade.Stats.Add(StatType.Battery);
             progress.Wallet.Value = 6000;

@@ -2,6 +2,7 @@
 using Assets.RaceTheSun.Sources.Infrastructure;
 using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
 using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
+using Assets.RaceTheSun.Sources.Trail;
 using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService
         private Dictionary<Stage, StageConfig> _stageConfigs;
         private Dictionary<SpaceshipType, SpaceshipConfig> _spaceshipConfigs;
         private GameplayWorldConfig _gameplayWorldConfig;
+        private Dictionary<TrailType, TrailConfig> _trailConfigs;
 
         public StaticDataService(IAssetProvider assetsProvider)
         {
@@ -29,9 +31,16 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService
 
             tasks.Add(LoadGameplayWorldConfig());
             tasks.Add(LoadSpaceshipConfigs());
+            tasks.Add(LoadTrailConfigs());
 
             await UniTask.WhenAll(tasks);
         }
+
+        public TrailConfig[] GetTrails() =>
+            _trailConfigs.Values.ToArray();
+
+        public TrailConfig GetTrail(TrailType type) =>
+            _trailConfigs.TryGetValue(type, out TrailConfig config) ? config : null;
 
         public GameplayWorldConfig GetGameplayWorld() =>
             _gameplayWorldConfig;
@@ -50,6 +59,13 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService
             SpaceshipConfig[] spaceshipConfigs = await GetConfigs<SpaceshipConfig>();
 
             _spaceshipConfigs = spaceshipConfigs.ToDictionary(value => value.Type, value => value);
+        }
+
+        private async UniTask LoadTrailConfigs()
+        {
+            TrailConfig[] trailConfigs = await GetConfigs<TrailConfig>();
+
+            _trailConfigs = trailConfigs.ToDictionary(value => value.Type, value => value);
         }
 
         private async UniTask LoadGameplayWorldConfig()

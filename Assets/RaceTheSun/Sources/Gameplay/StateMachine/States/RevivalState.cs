@@ -69,7 +69,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
             _gameplayStateMachine.Enter<GameLoopState>().Forget();
             _spaceshipShieldPortal.Activate(false);
             _revivalPanel.Hide();
-#endif
+#endif 
         }
     }
 }

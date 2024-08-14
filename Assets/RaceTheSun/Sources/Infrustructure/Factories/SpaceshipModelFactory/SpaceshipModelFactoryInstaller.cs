@@ -14,6 +14,10 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory
             Container
                .BindFactory<AssetReferenceGameObject, UniTask<SpaceshipModel>, SpaceshipModel.Factory>()
                .FromFactory<RefefencePrefabFactoryAsync<SpaceshipModel>>();
+
+            Container
+               .BindFactory<AssetReferenceGameObject, UniTask<Trail.Trail>, Trail.Trail.Factory>()
+               .FromFactory<RefefencePrefabFactoryAsync<Trail.Trail>>();
         }
     }
 }

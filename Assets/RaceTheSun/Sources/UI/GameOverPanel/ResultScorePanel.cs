@@ -23,7 +23,6 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
 
         public void ShowResult()
         {
-            Debug.Log("Show " + _scoreCounter.Score);
             StartCoroutine(ShowAnimator((int)_scoreCounter.Score));
         }
 
