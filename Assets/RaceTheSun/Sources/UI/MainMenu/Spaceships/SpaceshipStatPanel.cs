@@ -11,7 +11,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
     {
         [SerializeField] private Button _upgradeButton;
         [SerializeField] private StatType _statType;
-        [SerializeField] private Image _progressbarValue;
+        [SerializeField] private MPUIKIT.MPImage _progressbarValue;
 
         private IPersistentProgressService _persistentProgress;
         private IStaticDataService _staticDataService;

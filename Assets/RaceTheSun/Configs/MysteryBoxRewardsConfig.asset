@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbfef404ba96c6c468adcddc097b2dd8, type: 3}
   m_Name: MysteryBoxRewardsConfig
   m_EditorClassIdentifier: 
-  MinScoreItemsRewardChance: 0
-  MinScoreItemsRewardMinCount: 0
-  MinScoreItemsRewardMaxCount: 0
-  MaxScoreItemsRewardChance: 0
-  MaxScoreItemsRewardMinCount: 0
-  MaxScoreItemsRewardMaxCount: 0
-  ExperienceRewardChance: 0
+  MinScoreItemsRewardChance: 60
+  MinScoreItemsRewardMinCount: 50
+  MinScoreItemsRewardMaxCount: 20
+  MaxScoreItemsRewardChance: 20
+  MaxScoreItemsRewardMinCount: 500
+  MaxScoreItemsRewardMaxCount: 1000
+  ExperienceRewardChance: 20

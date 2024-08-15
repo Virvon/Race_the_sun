@@ -9,7 +9,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
     public class ExperienceProgressPanel : MonoBehaviour
     {
         [SerializeField] private TMP_Text _levelValue;
-        [SerializeField] private Image _progressbar;
+        [SerializeField] private MPUIKIT.MPImage _progressbar;
         [SerializeField] private TMP_Text _maxLevelText;
 
         [Inject]
