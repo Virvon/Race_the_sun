@@ -19,22 +19,22 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         private BoostedSpeed _boostedSpeed;
         private Sun.Sun _sun;
         private ISpeedProvider _speedProvider;
-        private AttachmentStats _attachmentStats;
+       
 
         [Inject]
         private void Construct(ScoreCounter.ScoreCounter scoreCounter, Attachment.Attachment attachment, IPersistentProgressService persistentProgressService)
         {
             scoreCounter.Init(this);
 
-            _attachmentStats = GetAttachmentStats(attachment, persistentProgressService);
+            AttachmentStats = GetAttachmentStats(attachment, persistentProgressService);
 
-            Debug.Log(_attachmentStats.CollectRadius);
-            Debug.Log(_attachmentStats.MaxJumpBoostsCount);
-            Debug.Log(_attachmentStats.MaxShileldsCount);
+            Debug.Log(AttachmentStats.CollectRadius);
+            Debug.Log(AttachmentStats.MaxJumpBoostsCount);
+            Debug.Log(AttachmentStats.MaxShileldsCount);
         }
 
         public float Speed { get; private set; }
-
+        public AttachmentStats AttachmentStats { get; private set; }
         private void Update()
         {
             if(_speedProvider != null)

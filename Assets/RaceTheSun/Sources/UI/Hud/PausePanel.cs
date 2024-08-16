@@ -1,5 +1,6 @@
 ﻿using Assets.RaceTheSun.Sources.Audio;
 using Assets.RaceTheSun.Sources.Services.TimeScale;
+using System;
 using Zenject;
 
 namespace Assets.RaceTheSun.Sources.Animations

@@ -1,21 +1,24 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
+﻿using Assets.RaceTheSun.Sources.Animations;
+using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using TMPro;
 using UnityEngine;
 using Zenject;
 
 namespace Assets.RaceTheSun.Sources.UI.ScoreView
 {
-    public class JumpBoostsCountPanel : MonoBehaviour
+    public class JumpBoostsCountPanel : HudAnimationElement
     {
         [SerializeField] private TMP_Text _jumpBoostsCountValue;
+        [SerializeField] private TMP_Text _maxJumpBoostsCountValue;
         [SerializeField] private GameObject _infoPanel;
 
         private SpaceshipJump _spaceshipJump;
 
         [Inject]
-        private void Construct(SpaceshipJump spaceshipJump)
+        private void Construct(SpaceshipJump spaceshipJump, Spaceship spaceship)
         {
             _spaceshipJump = spaceshipJump;
+            _maxJumpBoostsCountValue.text = spaceship.AttachmentStats.MaxJumpBoostsCount.ToString();
 
             _spaceshipJump.JumpBoostsCountChanged += ChangeInfo;
 

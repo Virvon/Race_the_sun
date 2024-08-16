@@ -1,21 +1,24 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
+﻿using Assets.RaceTheSun.Sources.Animations;
+using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using TMPro;
 using UnityEngine;
 using Zenject;
 
 namespace Assets.RaceTheSun.Sources.UI.ScoreView
 {
-    public class ShieldCountPanel : MonoBehaviour
+    public class ShieldCountPanel : HudAnimationElement
     {
         [SerializeField] private TMP_Text _shieldsCountValue;
+        [SerializeField] private TMP_Text _maxShieldsCountValue;
         [SerializeField] private GameObject _infoPanel;
 
         private SpaceshipDie _spaceshipDie;
 
         [Inject]
-        private void Construct(SpaceshipDie spaceshipDie)
+        private void Construct(SpaceshipDie spaceshipDie, Spaceship spaceship)
         {
             _spaceshipDie = spaceshipDie;
+            _maxShieldsCountValue.text = spaceship.AttachmentStats.MaxShileldsCount.ToString();
 
             _spaceshipDie.ShieldsCountChanged += ChangeInfo;
 
