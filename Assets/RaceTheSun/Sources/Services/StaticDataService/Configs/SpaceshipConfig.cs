@@ -14,6 +14,8 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService.Configs
         public SpaceshipType Type;
         public AssetReferenceGameObject ModelPrefabReference;
 
+        public StatType UnlockedStatType;
+
         public bool IsUnlockedOnStart;
         public int BuyCost;
 
@@ -27,7 +29,8 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService.Configs
         public StatConfig PickUpRange;
         public StatConfig FloatTime;
 
-        
+        public string Name;
+        public string Title;
 
         public StatConfig GetStat(StatType statType)
         {

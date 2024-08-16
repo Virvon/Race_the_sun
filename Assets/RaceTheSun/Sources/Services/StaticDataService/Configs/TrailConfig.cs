@@ -11,5 +11,7 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService.Configs
         public AssetReferenceGameObject Reference;
         public int BuyCost;
         public bool IsUnlockedOnStart;
+        public string Name;
+        public string Title;
     }
 }

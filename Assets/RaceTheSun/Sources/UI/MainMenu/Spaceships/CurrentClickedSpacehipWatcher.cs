@@ -27,12 +27,22 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
             _persistentProgressService.Progress.AvailableSpaceships.SpaceshipUnlocked += OnSpaceshipUnlocked;
         }
 
+        private void Start()
+        {
+            Reset();
+        }
+
         private void OnDisable()
         {
             foreach (SpaceshipButton spaceshipInfoButton in _spaceshipButtons)
                 spaceshipInfoButton.Clicked -= OnSpaceshipButtonClicked;
 
             _persistentProgressService.Progress.AvailableSpaceships.SpaceshipUnlocked -= OnSpaceshipUnlocked;
+        }
+
+        public void Reset()
+        {
+            CurrentSpaceshipChanged?.Invoke(_persistentProgressService.Progress.AvailableSpaceships.CurrentSpaceshipType);
         }
 
         private void OnSpaceshipButtonClicked(SpaceshipType spaceshipType) =>

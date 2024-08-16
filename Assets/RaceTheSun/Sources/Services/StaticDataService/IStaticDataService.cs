@@ -1,6 +1,7 @@
 ﻿using Assets.RaceTheSun.Sources.Data;
 using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
 using Assets.RaceTheSun.Sources.Trail;
+using Assets.RaceTheSun.Sources.Upgrading;
 using Cysharp.Threading.Tasks;
 
 namespace Assets.RaceTheSun.Sources.Services.StaticDataService
@@ -15,5 +16,6 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService
         TrailConfig GetTrail(TrailType type);
         TrailConfig[] GetTrails();
         MysteryBoxRewardsConfig GetMysteryBoxRewards();
+        AttachmentConfig GetAttachment(UpgradeType type);
     }
 }

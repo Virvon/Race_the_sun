@@ -1,5 +1,6 @@
 ﻿using Agava.YandexGames;
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -10,6 +11,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
     {
         [SerializeField] private Button _button;
         [SerializeField] private int _reward;
+        [SerializeField] private TMP_Text _rewardValue;
 
         private IPersistentProgressService _persistentProgressService;
 
@@ -17,6 +19,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
         private void Construct(IPersistentProgressService persistentProgressService)
         {
             _persistentProgressService = persistentProgressService;
+
+            _rewardValue.text = _reward.ToString();
 
             _button.onClick.AddListener(OnButtonClick);
         }

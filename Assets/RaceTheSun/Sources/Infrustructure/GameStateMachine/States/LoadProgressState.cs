@@ -8,6 +8,7 @@ using Assets.RaceTheSun.Sources.Trail;
 using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace Assets.RaceTheSun.Sources.Infrustructure.GameStateMachine.States
 {
@@ -46,12 +47,12 @@ namespace Assets.RaceTheSun.Sources.Infrustructure.GameStateMachine.States
         {
             List<SpaceshipData> spaceshipDatas = new();
             SpaceshipConfig[] spaceshipConfigs = _staticDataService.GetSpaceships();
-            spaceshipDatas.AddRange(spaceshipConfigs.Select(spaceshipConfig => new SpaceshipData(spaceshipConfig.Type, spaceshipConfig.Battery.StartBoost, spaceshipConfig.ExperienceMultiplier.StartBoost, spaceshipConfig.PickUpRange.StartBoost, spaceshipConfig.FloatTime.StartBoost, spaceshipConfig.IsUnlockedOnStart)));
+            spaceshipDatas.AddRange(spaceshipConfigs.Select(spaceshipConfig => new SpaceshipData(spaceshipConfig.Type, spaceshipConfig.Battery.StartBoost, spaceshipConfig.ExperienceMultiplier.StartBoost, spaceshipConfig.PickUpRange.StartBoost, spaceshipConfig.FloatTime.StartBoost, spaceshipConfig.IsUnlockedOnStart, spaceshipConfig.Battery.StartLevel, spaceshipConfig.ExperienceMultiplier.StartLevel, spaceshipConfig.PickUpRange.StartLevel, spaceshipConfig.FloatTime.StartLevel)));
 
             List<TrailType> trails = new();
             TrailConfig[] trailConfigs = _staticDataService.GetTrails();
             trails.AddRange(trailConfigs.Where(trailConfig => trailConfig.IsUnlockedOnStart).Select(trailConfig => trailConfig.Type));
-
+            Debug.Log(trails.Count);
             PlayerProgress progress = new(spaceshipDatas, trails);
 
             progress.AvailableStatsToUpgrade.Stats.Add(StatType.Battery);
@@ -60,7 +61,8 @@ namespace Assets.RaceTheSun.Sources.Infrustructure.GameStateMachine.States
             progress.Upgrading.UpgradedTypes.Add(Upgrading.UpgradeType.ShieldPortal);
             progress.Upgrading.UpgradedTypes.Add(Upgrading.UpgradeType.Magnet);
             progress.Upgrading.UpgradedTypes.Add(Upgrading.UpgradeType.JumpBoostsStorage);
-            progress.Upgrading.UpgradedTypes.Add(Upgrading.UpgradeType.ShieldPortalsStorage);
+            progress.Upgrading.UpgradedTypes.Add(Upgrading.UpgradeType.FirstAttachmentCell);
+            progress.Upgrading.UpgradedTypes.Add(Upgrading.UpgradeType.SecondAttachmentCell);
 
             progress.Upgrading.AttachmentCellsCount = 2;
 

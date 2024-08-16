@@ -1,10 +1,20 @@
-﻿using Assets.RaceTheSun.Sources.Upgrading;
+﻿using Assets.RaceTheSun.Sources.Services.StaticDataService;
+using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
+using Assets.RaceTheSun.Sources.Upgrading;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets.RaceTheSun.Sources.Attachment
 {
     public class Attachment
     {
+        private readonly IStaticDataService _staticDataService;
+
+        public Attachment(IStaticDataService staticDataService)
+        {
+            _staticDataService = staticDataService;
+        }
+
         public IAttachmentStatsProvider Wrap(UpgradeType attachmentUpgradeType, IAttachmentStatsProvider wrappedAttachmentStatsProvider)
         {
             switch (attachmentUpgradeType)
@@ -18,6 +28,13 @@ namespace Assets.RaceTheSun.Sources.Attachment
                 default:
                     return wrappedAttachmentStatsProvider;
             }
+        }
+
+        public Sprite GetIcon(UpgradeType attachmentUpgradeType)
+        {
+            AttachmentConfig attachmentConfig = _staticDataService.GetAttachment(attachmentUpgradeType);
+
+            return attachmentConfig != null ? attachmentConfig.Icon : null;
         }
     }
 }

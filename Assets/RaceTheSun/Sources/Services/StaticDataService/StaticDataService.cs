@@ -3,6 +3,7 @@ using Assets.RaceTheSun.Sources.Infrastructure;
 using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
 using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
 using Assets.RaceTheSun.Sources.Trail;
+using Assets.RaceTheSun.Sources.Upgrading;
 using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService
         private GameplayWorldConfig _gameplayWorldConfig;
         private Dictionary<TrailType, TrailConfig> _trailConfigs;
         private MysteryBoxRewardsConfig _mysteryBoxRewardsConfig;
+        private Dictionary<UpgradeType, AttachmentConfig> _attachmentConfigs;
 
         public StaticDataService(IAssetProvider assetsProvider)
         {
@@ -34,9 +36,13 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService
             tasks.Add(LoadSpaceshipConfigs());
             tasks.Add(LoadTrailConfigs());
             tasks.Add(LoadMysteryBoxRewardsConfig());
+            tasks.Add(LoadAttachmentConfigs());
 
             await UniTask.WhenAll(tasks);
         }
+
+        public AttachmentConfig GetAttachment(UpgradeType type) =>
+            _attachmentConfigs.TryGetValue(type, out AttachmentConfig config) ? config : null;
 
         public MysteryBoxRewardsConfig GetMysteryBoxRewards() =>
             _mysteryBoxRewardsConfig;
@@ -63,6 +69,13 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService
         {
             MysteryBoxRewardsConfig[] configs = await GetConfigs<MysteryBoxRewardsConfig>();
             _mysteryBoxRewardsConfig = configs.First();
+        }
+
+        private async UniTask LoadAttachmentConfigs()
+        {
+            AttachmentConfig[] attachmentConfigs = await GetConfigs<AttachmentConfig>();
+
+            _attachmentConfigs = attachmentConfigs.ToDictionary(value => value.AttachmentUpgradeType, value => value);
         }
 
         private async UniTask LoadSpaceshipConfigs()

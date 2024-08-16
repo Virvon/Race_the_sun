@@ -10,5 +10,7 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService.Configs
         public float StartValue;
         public float StartBoost;
         public float MaxBoost;
+        public int StartLevel;
+        public float UpgradeValue;
     }
 }

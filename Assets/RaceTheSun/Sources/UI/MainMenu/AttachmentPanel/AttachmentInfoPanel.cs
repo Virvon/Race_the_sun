@@ -1,4 +1,5 @@
 ﻿using Assets.RaceTheSun.Sources.Data;
+using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.Upgrading;
 using System;
 using TMPro;
@@ -15,16 +16,20 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
         [SerializeField] private TMP_Text _buttonText;
         [SerializeField] private string _removeText;
         [SerializeField] private string _equipText;
+        [SerializeField] private TMP_Text _upgradeName;
+        [SerializeField] private TMP_Text _title;
 
         private IPersistentProgressService _persistentProgressService;
+        private IStaticDataService _staticDataService;
         private bool _isHided;
 
         public event Action Clicked;
 
         [Inject]
-        private void Construct(IPersistentProgressService persistentProgressService)
+        private void Construct(IPersistentProgressService persistentProgressService, IStaticDataService staticDataService)
         {
             _persistentProgressService = persistentProgressService;
+            _staticDataService = staticDataService;
 
             _button.onClick.AddListener(OnButtonClick);
 
@@ -67,6 +72,9 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
                 _button.interactable = false;
                 _buttonText.text = "";
             }
+
+            _upgradeName.text = _staticDataService.GetAttachment(upgradeType).Name;
+            _title.text = _staticDataService.GetAttachment(upgradeType).Title;
         }
 
         private void OnButtonClick()

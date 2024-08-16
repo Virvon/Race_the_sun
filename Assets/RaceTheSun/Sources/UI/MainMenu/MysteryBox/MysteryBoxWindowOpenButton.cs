@@ -26,8 +26,8 @@ namespace Assets.RaceTheSun.Sources.UI.MysteryBox
 
         private void OnDestroy()
         {
-            _button.onClick.RemoveListener(OnButtonClick);
             _persistentProgressService.Progress.MysteryBoxes.CountChanged -= OnMysteryBoxesCountChanged;
+            _button.onClick.RemoveListener(OnButtonClick);
         }
 
         private void OnMysteryBoxesCountChanged(int count)

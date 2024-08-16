@@ -23,6 +23,9 @@ namespace Assets.RaceTheSun.Sources.Data
         public SpaceshipData GetSpaceshipData(SpaceshipType type) => 
             Spaceships.First(spaceshipData => spaceshipData.Type == type);
 
+        public SpaceshipData GetCurrentSpaceshipData() =>
+            GetSpaceshipData(CurrentSpaceshipType);
+
         public void Unlock(SpaceshipType type)
         {
             GetSpaceshipData(type).IsUnlocked = true;

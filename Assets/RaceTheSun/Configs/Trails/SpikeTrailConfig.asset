@@ -20,3 +20,6 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   BuyCost: 0
   IsUnlockedOnStart: 0
+  Name: "\u041C\u043E\u0449\u043D\u044B\u0439 \u0441\u043B\u0435\u0434"
+  Title: "\u041A\u043B\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043A\u0438\u0439
+    \u0441\u043B\u0435\u0434"

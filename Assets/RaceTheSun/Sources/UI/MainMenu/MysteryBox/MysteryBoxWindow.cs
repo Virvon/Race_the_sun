@@ -1,4 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.Services.StaticDataService;
+﻿using Agava.YandexGames;
+using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
 using Assets.RaceTheSun.Sources.UI.MainMenu;
 using System;
@@ -55,7 +56,36 @@ namespace Assets.RaceTheSun.Sources.UI.MysteryBox
         }
 
         private void OnOpenMysteryBoxButtonCllicked()
-        {    
+        {
+#if !UNITY_EDITOR && UNITY_WEBGL
+            InterstitialAd.Show(onCloseCallback: (_) =>
+            {
+                MysteryBoxRewardsConfig mysteryBoxRewardsConfig = _staticDataService.GetMysteryBoxRewards();
+
+                int chance = Random.Range(0, 100);
+
+                if (chance <= mysteryBoxRewardsConfig.MinScoreItemsRewardChance)
+                {
+                    int reward = Random.Range(mysteryBoxRewardsConfig.MinScoreItemsRewardMinCount, mysteryBoxRewardsConfig.MinScoreItemsRewardMaxCount);
+
+                    _rewardPanel.ShowScoreItemsReward(reward);
+                    _persistentProgressService.Progress.Wallet.Take(reward);
+                }
+                else if (chance <= mysteryBoxRewardsConfig.ExperienceRewardChance + mysteryBoxRewardsConfig.MinScoreItemsRewardChance)
+                {
+                    _rewardPanel.ShowExperienveReward();
+                }
+                else
+                {
+                    int reward = Random.Range(mysteryBoxRewardsConfig.MaxScoreItemsRewardMinCount, mysteryBoxRewardsConfig.MaxScoreItemsRewardMaxCount);
+
+                    _rewardPanel.ShowScoreItemsReward(reward);
+                    _persistentProgressService.Progress.Wallet.Take(reward);
+                }
+
+                _persistentProgressService.Progress.MysteryBoxes.Take();
+            });
+# else
             MysteryBoxRewardsConfig mysteryBoxRewardsConfig = _staticDataService.GetMysteryBoxRewards();
 
             int chance = Random.Range(0, 100);
@@ -69,7 +99,7 @@ namespace Assets.RaceTheSun.Sources.UI.MysteryBox
             }
             else if (chance <= mysteryBoxRewardsConfig.ExperienceRewardChance + mysteryBoxRewardsConfig.MinScoreItemsRewardChance)
             {
-                Debug.Log("experience");
+                _rewardPanel.ShowExperienveReward();
             }
             else
             {
@@ -80,6 +110,7 @@ namespace Assets.RaceTheSun.Sources.UI.MysteryBox
             }
 
             _persistentProgressService.Progress.MysteryBoxes.Take();
+#endif
         }
     }
 }

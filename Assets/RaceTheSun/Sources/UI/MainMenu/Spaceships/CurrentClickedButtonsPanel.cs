@@ -43,8 +43,11 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
             _selectButton.onClick.RemoveListener(OnSelectButtonClicked);
         }
 
-        private void OnSelectButtonClicked() =>
+        private void OnSelectButtonClicked()
+        {
             _persistentProgressService.Progress.AvailableSpaceships.Selcect(_currentSpaceshipType);
+            _currentClickedSpaceshipWatcher.Reset();
+        }
 
         private void OnCurrentSpaceshipChanged(SpaceshipType type)
         {
@@ -56,6 +59,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
             {
                 _buyButton.gameObject.SetActive(false);
                 _selectOrCustomizePanel.SetActive(true);
+
+                _selectButton.interactable = _persistentProgressService.Progress.AvailableSpaceships.CurrentSpaceshipType != type;
             }
             else
             {
@@ -70,6 +75,9 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
             if(_persistentProgressService.Progress.Wallet.TryTake(_staticDataService.GetSpaceship(_currentSpaceshipType).BuyCost))
             {
                 _persistentProgressService.Progress.AvailableSpaceships.Unlock(_currentSpaceshipType);
+                _persistentProgressService.Progress.AvailableStatsToUpgrade.Add(_staticDataService.GetSpaceship(_currentSpaceshipType).UnlockedStatType);
+                _persistentProgressService.Progress.AvailableSpaceships.CurrentSpaceshipType = _currentSpaceshipType;
+                _currentClickedSpaceshipWatcher.Reset();
             }
             else
             {

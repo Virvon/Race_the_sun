@@ -18,6 +18,7 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  UnlockedStatType: 2
   IsUnlockedOnStart: 0
   BuyCost: 5000
   BatteryMaterialsInfo:
@@ -31,18 +32,32 @@ MonoBehaviour:
     StartValue: 5
     StartBoost: 0
     MaxBoost: 5
+    StartLevel: 1
+    UpgradeValue: 1
   ExperienceMultiplier:
     Type: 0
     StartValue: 0
     StartBoost: 0
     MaxBoost: 1
+    StartLevel: 1
+    UpgradeValue: 0.2
   PickUpRange:
     Type: 0
     StartValue: 3
     StartBoost: 1
     MaxBoost: 3
+    StartLevel: 2
+    UpgradeValue: 0.5
   FloatTime:
     Type: 0
     StartValue: 2
     StartBoost: 0
     MaxBoost: 2
+    StartLevel: 1
+    UpgradeValue: 0.2
+  Name: "\u0421\u0442\u0440\u0435\u043B\u0430"
+  Title: "\u0413\u0440\u0443\u0437\u043E\u0432\u043E\u0435 \u0441\u0443\u0434\u043D\u043E,
+    \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0435\u043C\u043E\u0435 \u043F\u0435\u0447\u0430\u043B\u044C\u043D\u043E
+    \u0438\u0437\u0432\u0435\u0441\u0442\u043D\u043E\u0439 \u044D\u0441\u043A\u0430\u0434\u0440\u0438\u043B\u044C\u0435\u0439
+    \u0423\u0438\u0441\u043A\u0435\u0440. \u041A\u0430\u043A \u044D\u0442\u043E \u0437\u0434\u0435\u0441\u044C
+    \u043E\u043A\u0430\u0437\u0430\u043B\u043E\u0441\u044C?"

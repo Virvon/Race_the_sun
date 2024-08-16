@@ -6,8 +6,12 @@ namespace Assets.RaceTheSun.Sources.UI.MysteryBox
 {
     public class RewardPanel : MonoBehaviour
     {
+        private const string ExperienceMessage = "Опыт";
+
         [SerializeField] private TMP_Text _value;
         [SerializeField] private Button _closeButtone;
+        [SerializeField] private GameObject _scoreItemsIcon;
+        [SerializeField] private GameObject _experienceIcon;
 
         private void OnEnable()
         {
@@ -21,7 +25,17 @@ namespace Assets.RaceTheSun.Sources.UI.MysteryBox
 
         public void ShowScoreItemsReward(int reward)
         {
+            _experienceIcon.SetActive(false);
+            _scoreItemsIcon.SetActive(true);
             _value.text = reward.ToString();
+            gameObject.SetActive(true);
+        }
+
+        public void ShowExperienveReward()
+        {
+            _experienceIcon.SetActive(true);
+            _scoreItemsIcon.SetActive(false);
+            _value.text = ExperienceMessage;
             gameObject.SetActive(true);
         }
 

@@ -13,12 +13,14 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
     {
         [SerializeField] private TrailButton[] _trailButtons;
         [SerializeField] private TrailInfoPanel _trailInfoPanel;
+        [SerializeField] private CurrentClickedSpaceshipInfo _currentClickedSpaceshipInfo;
 
         private MainMenuCameras _mainMenuCameras;
         private ModelPoint _modelPoint;
         private IPersistentProgressService _persistentProgressService;
         private IStaticDataService _staticDataService;
         private TrailType _currentTrailType;
+        private GameObject _currentSelectedFrame;
 
         [Inject]
         private void Construct(MainMenuCameras mainMenuCameras, ModelPoint modelPoint, IPersistentProgressService persistentProgressService, IStaticDataService staticDataService)
@@ -45,6 +47,9 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
         public override void Hide()
         {
             gameObject.SetActive(false);
+            _currentSelectedFrame?.SetActive(false);
+            _trailInfoPanel.Hide();
+            _modelPoint.ChangeTrail(_persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(_currentClickedSpaceshipInfo.SpaceshipType).TrailType);
         }
 
         public override void Open()
@@ -53,18 +58,22 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
             gameObject.SetActive(true);
         }
 
-        private void OnTrailButtonClicked(TrailType trailType)
+        private void OnTrailButtonClicked(TrailType trailType, GameObject selectedFrame)
         {
             _currentTrailType = trailType;
             _trailInfoPanel.ShowInfo(_currentTrailType);
             _modelPoint.ChangeTrail(_currentTrailType);
+
+            _currentSelectedFrame?.SetActive(false);
+            _currentSelectedFrame = selectedFrame;
+            _currentSelectedFrame.SetActive(true);
         }
 
         private void OnTrailInfoClicked()
         {
             if (_persistentProgressService.Progress.AvailableTrails.IsUnlocked(_currentTrailType))
             {
-                _persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(_persistentProgressService.Progress.AvailableSpaceships.CurrentSpaceshipType).TrailType = _currentTrailType;
+                _persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(_currentClickedSpaceshipInfo.SpaceshipType).TrailType = _currentTrailType;
                 _trailInfoPanel.Hide();
             }
             else if (_persistentProgressService.Progress.Wallet.TryTake(_staticDataService.GetTrail(_currentTrailType).BuyCost))

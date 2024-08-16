@@ -17,10 +17,16 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.TrailPanel
         [SerializeField] private Button _button;
         [SerializeField] private string _unlockedButtonText;
         [SerializeField] private TMP_Text _buttonText;
+        [SerializeField] private TMP_Text _trailName;
+        [SerializeField] private TMP_Text _trailTitle;
 
         private IPersistentProgressService _persistentProgressService;
         private IStaticDataService _staticDataService;
         private bool _isHided;
+        private TrailType _currentTrailType;
+
+        public bool IsLocked { get; private set; }
+        public bool IsUsed { get; private set; }
 
         public event Action Clicked;
 
@@ -66,6 +72,9 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.TrailPanel
                 _button.interactable = trailCost <= _persistentProgressService.Progress.Wallet.Value;
                 _buttonText.text = trailCost.ToString();
             }
+
+            _trailName.text = _staticDataService.GetTrail(trailType).Name;
+            _trailTitle.text = _staticDataService.GetTrail(trailType).Title;
         }
 
         private void OnButtonClicked()

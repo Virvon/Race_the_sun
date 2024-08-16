@@ -18,32 +18,32 @@ namespace Assets.RaceTheSun.Sources.Data
         public TrailType TrailType;
         public List<UpgradeType> UpgradeTypes;
 
-        public SpaceshipData(SpaceshipType type, float batteryBoost, float experienceMultiplierBoost, float pickupRangeBoost, float floatTimeBoost, bool isUnlocked)
+        public SpaceshipData(SpaceshipType type, float batteryBoost, float experienceMultiplierBoost, float pickupRangeBoost, float floatTimeBoost, bool isUnlocked, int startBateryLevel, int startExperienceMultipllierLevel, int startPickUpRangeLevel, int startFloatTimeLevel)
         {
             Type = type;
-            BatteryBoost = new StatData(StatType.Battery, batteryBoost);
-            ExperienceMultiplierBoost = new StatData(StatType.ExperienceMultiplier, experienceMultiplierBoost);
-            PickupRangeBoost = new StatData(StatType.PickUpRange, pickupRangeBoost);
-            FloatTimeBoost = new StatData(StatType.FloatTime, floatTimeBoost);
+            BatteryBoost = new StatData(StatType.Battery, batteryBoost, startBateryLevel);
+            ExperienceMultiplierBoost = new StatData(StatType.ExperienceMultiplier, experienceMultiplierBoost, startExperienceMultipllierLevel);
+            PickupRangeBoost = new StatData(StatType.PickUpRange, pickupRangeBoost, startPickUpRangeLevel);
+            FloatTimeBoost = new StatData(StatType.FloatTime, floatTimeBoost, startFloatTimeLevel);
             IsUnlocked = isUnlocked;
             TrailType = TrailType.Basic;
             UpgradeTypes = new List<UpgradeType>();
         }
 
-        public float GetStat(StatType statType)
+        public StatData GetStat(StatType statType)
         {
             switch (statType)
             {
                 case StatType.Battery:
-                    return BatteryBoost.Value;
+                    return BatteryBoost;
                 case StatType.ExperienceMultiplier:
-                    return ExperienceMultiplierBoost.Value;
+                    return ExperienceMultiplierBoost;
                 case StatType.PickUpRange:
-                    return PickupRangeBoost.Value;
+                    return PickupRangeBoost;
                 case StatType.FloatTime:
-                    return FloatTimeBoost.Value;
+                    return FloatTimeBoost;
                 default:
-                    return 0;
+                    return null;
             }
         }
     }
