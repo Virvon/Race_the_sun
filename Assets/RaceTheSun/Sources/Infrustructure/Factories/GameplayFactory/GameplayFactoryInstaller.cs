@@ -80,6 +80,10 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             Container
                 .BindFactory<string, UniTask<StageMusic>, StageMusic.Factory>()
                 .FromFactory<KeyPrefabFactoryAsync<StageMusic>>();
+
+            Container
+                .BindFactory<string, UniTask<Gameplay.Spaceship.Plane>, Gameplay.Spaceship.Plane.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<Gameplay.Spaceship.Plane>>();
         }
     }
 }

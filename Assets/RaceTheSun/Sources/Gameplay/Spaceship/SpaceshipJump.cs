@@ -13,22 +13,24 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         [SerializeField] private float _duration;
         [SerializeField] private float _jumpHeight;
         [SerializeField] private SpaceshipFloat _spaceshipFloat;
+        [SerializeField] private Spaceship _spaceship;
 
         private Coroutine _jumping;
-        private int _jumpBoostsCount;
         private IInputService _inputService;
 
-        public event Action<int> JumpBoostsCountChanged;
+        public event Action JumpBoostsCountChanged;
         public event Action Jumped;
 
         [Inject]
         private void Construct(IInputService inputService)
         {
             _inputService = inputService;
+            JumpBoostsCount = 0;
 
             _inputService.Jumped += OnJumped;
         }
 
+        public int JumpBoostsCount { get; private set; }
         public Vector3 JumpPosition { get; private set; }
         public bool IsJumped { get; private set; }
 
@@ -39,15 +41,16 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
         public void GiveJumpBoost()
         {
-            _jumpBoostsCount++;
-            JumpBoostsCountChanged?.Invoke(_jumpBoostsCount);
+            if (JumpBoostsCount >= _spaceship.AttachmentStats.MaxJumpBoostsCount)
+                return;
+
+            JumpBoostsCount++;
+            JumpBoostsCountChanged?.Invoke();
         }
 
         private void OnJumped()
         {
-            Debug.Log("jump");
-
-            if (_jumpBoostsCount > 0)
+            if (JumpBoostsCount > 0)
             {
                 if (_jumping != null)
                 {
@@ -56,8 +59,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
                 _spaceshipFloat.Stop();
                 _jumping = StartCoroutine(Jumping());
-                _jumpBoostsCount--;
-                JumpBoostsCountChanged?.Invoke(_jumpBoostsCount);
+                JumpBoostsCount--;
+                JumpBoostsCountChanged?.Invoke();
                 Jumped?.Invoke();
             }
         }

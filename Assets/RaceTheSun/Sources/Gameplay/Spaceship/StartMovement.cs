@@ -33,8 +33,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             StartCoroutine(UpperMover(startCallback, finishCallback));
         }
 
-       
-
         private IEnumerator UpperMover(Action startCallback, Action finishCallback)
         {
             _spaceship.transform.position = new Vector3(0, 2.4f, 0);
@@ -49,9 +47,9 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
         private IEnumerator SpaceshipMover(Action endCallback)
         {
-            Vector3 startPosition = new Vector3(0, 5, -100);
-            Vector3 endPosition = new Vector3(0, 5, 30);
-            float duration = 1f;
+            Vector3 startPosition = new Vector3(0, 5.5f, -900);
+            Vector3 endPosition = new Vector3(0, 5.5f, 100);
+            float duration = 3;
             float time = 0;
 
             _spaceshipMovement.IsStopped = true;

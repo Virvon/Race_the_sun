@@ -1,5 +1,6 @@
 ﻿using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
+using System;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -22,11 +23,13 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
             _isBetweenStages = true;
             _currentTile = 0;
             _staticDataService = staticDataService;
+            CurrentStageNumber = 1;
 
             _tilesToGenerate = _staticDataService.GetStage(Stage.StartStage).Tiles;
         }
 
         public Stage GeneratedStageType { get; private set; }
+        public int CurrentStageNumber { get; private set; }
 
         public AssetReferenceGameObject GetTile()
         {
@@ -81,6 +84,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
             {
                 _isBetweenStages = true;
                 GeneratedStageType = Stage.BetweenStages;
+                CurrentStageNumber++;
                 stageConfig = _staticDataService.GetStage(GeneratedStageType);
             }
 

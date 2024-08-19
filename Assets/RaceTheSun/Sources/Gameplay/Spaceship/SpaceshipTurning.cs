@@ -38,7 +38,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
         private void RotatiModel(float angle)
         {
-            _model.transform.rotation = Quaternion.Euler(0, 0, angle * -35);
+            _model.transform.rotation = Quaternion.Euler(-10, 0, angle * -35);
         }
 
         public void Init(SpaceshipModel spaceshipModel)
@@ -94,7 +94,5 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
                 yield return null;
             }
         }
-
-        
     }
 }

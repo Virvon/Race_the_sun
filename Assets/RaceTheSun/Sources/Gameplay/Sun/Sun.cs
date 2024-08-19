@@ -13,12 +13,14 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
         [SerializeField] private float _finishHeight;
         [SerializeField] private float _downMoveSpeed;
         [SerializeField] private float _upMoveSpeed;
+        [SerializeField] private float _hidedHeight;
 
         private Transform _spaceship;
         private bool _isShadowed;
         private float _progress;
         private Battery _battery;
         private bool _isMovedDown;
+        private bool _isHided;
         
         [Inject]
         private void Construct(Spaceship.Spaceship spaceship)
@@ -27,20 +29,37 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
             _isShadowed = false;
             _battery = spaceship.GetComponentInChildren<Battery>();
             _isMovedDown = true;
+            _isHided = false;
 
             spaceship.Init(this);
         }
 
         private void Update()
         {
+            if (_isHided)
+                return;
+
             float positionY = GetHeight();
             Move(positionY);
             CheckShadowed();
         }
-        
+
+        public void Reset()
+        {
+            _isHided = false;
+            Move(_startHeight);
+        }
+
         public void SetMovementDirection(bool isMovedDown)
         {
             _isMovedDown = isMovedDown;
+        }
+
+        public void Hide()
+        {
+            _isHided = true;
+            Move(_hidedHeight);
+            _battery.ChangeShadowed(false);
         }
 
         private void CheckShadowed()

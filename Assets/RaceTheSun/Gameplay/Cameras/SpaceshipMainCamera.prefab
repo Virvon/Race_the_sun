@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 3
-  m_FollowOffset: {x: 0, y: 4, z: -10}
+  m_FollowOffset: {x: 0, y: 3, z: -14}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
@@ -124,7 +124,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   _fromFirsPersonFollowOffset: {x: 0, y: 1, z: 1.5}
-  _fromThirdPersonFollowOffset: {x: 0, y: 3, z: -14}
+  _fromThirdPersonFollowOffset: {x: 0, y: 2, z: -16}
 --- !u!114 &3797519584511387569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,10 +146,10 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 40
+    FieldOfView: 30
     OrthographicSize: 10
     NearClipPlane: 0.1
-    FarClipPlane: 2500
+    FarClipPlane: 2200
     Dutch: 0
     ModeOverride: 0
     LensShift: {x: 0, y: 0}

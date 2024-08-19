@@ -22,7 +22,7 @@ namespace Assets.RaceTheSun.Sources.UI.ScoreView
 
             _spaceshipJump.JumpBoostsCountChanged += ChangeInfo;
 
-            ChangeInfo(0);
+            ChangeInfo();
         }
 
         private void OnDestroy()
@@ -30,13 +30,13 @@ namespace Assets.RaceTheSun.Sources.UI.ScoreView
             _spaceshipJump.JumpBoostsCountChanged -= ChangeInfo;
         }
 
-        private void ChangeInfo(int jumpBoostsCount)
+        private void ChangeInfo()
         {
-            _jumpBoostsCountValue.text = jumpBoostsCount.ToString();
+            _jumpBoostsCountValue.text = _spaceshipJump.JumpBoostsCount.ToString();
 
-            if (jumpBoostsCount > 0 && _infoPanel.activeSelf == false)
+            if (_spaceshipJump.JumpBoostsCount > 0 && _infoPanel.activeSelf == false)
                 _infoPanel.SetActive(true);
-            else if (jumpBoostsCount == 0)
+            else if (_spaceshipJump.JumpBoostsCount == 0)
                 _infoPanel.SetActive(false);
         }
     }

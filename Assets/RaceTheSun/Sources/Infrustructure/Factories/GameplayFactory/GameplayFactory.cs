@@ -41,10 +41,11 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         private readonly ScoreItem.Factory _scoreItemFactory;
         private readonly SpeedBoost.Factory _speedBoostFactory;
         private readonly StageMusic.Factory _stageMusicFactory;
+        private readonly Gameplay.Spaceship.Plane.Factory _planeFactory;
 
         private SpaceshipDie _spaceshipDie;
 
-        public GameplayFactory(DiContainer container, Hud.Factory hudFactory, IStaticDataService staticDataService, Spaceship.Factory spaceshipFactory, Tile.Factory tileFactory, WorldGenerator.Factory worldGeneratorFactory, VirtualCamera.Factory virtualCameraFactory, Sun.Factory sunFactory, DistanceObservable distanceObservable, GameplayCameras cameras, SpaceshipShieldPortal.Factory spaceshipShieldPortalFactory, GameOverPanel.Factory gameOverPanelFactory, JumpBoost.Factory jumpBoostFactory, Shield.Factory shieldFactory, ShieldPortal.Factory shieldPortalFactory, Bird.Factory birdFactory, ScoreItem.Factory scoreItemFactory, SpeedBoost.Factory speedBoostFactory, StageMusic.Factory stageMusicFactory)
+        public GameplayFactory(DiContainer container, Hud.Factory hudFactory, IStaticDataService staticDataService, Spaceship.Factory spaceshipFactory, Tile.Factory tileFactory, WorldGenerator.Factory worldGeneratorFactory, VirtualCamera.Factory virtualCameraFactory, Sun.Factory sunFactory, DistanceObservable distanceObservable, GameplayCameras cameras, SpaceshipShieldPortal.Factory spaceshipShieldPortalFactory, GameOverPanel.Factory gameOverPanelFactory, JumpBoost.Factory jumpBoostFactory, Shield.Factory shieldFactory, ShieldPortal.Factory shieldPortalFactory, Bird.Factory birdFactory, ScoreItem.Factory scoreItemFactory, SpeedBoost.Factory speedBoostFactory, StageMusic.Factory stageMusicFactory, Gameplay.Spaceship.Plane.Factory planeFactory)
         {
             _container = container;
             _hudFactory = hudFactory;
@@ -65,6 +66,7 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             _scoreItemFactory = scoreItemFactory;
             _speedBoostFactory = speedBoostFactory;
             _stageMusicFactory = stageMusicFactory;
+            _planeFactory = planeFactory;
         }
 
         public async UniTask CreateGameOverPanel()
@@ -162,15 +164,17 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         public async UniTask CreateSun()
         {
             Sun sun = await _sunFactory.Create(GameplayFactoryAssets.Sun);
+
             _container.Bind<Sun>().FromInstance(sun).AsSingle();
+            _container.Bind<SkyboxSettingsChanger>().FromInstance(sun.GetComponent<SkyboxSettingsChanger>()).AsSingle();
         }
 
         public async UniTask<JumpBoost> CreateJumpBoost(Vector3 position, Transform parent = null)
         {
             JumpBoost jumpBoost = await _jumpBoostFactory.Create(GameplayFactoryAssets.JumpBoost);
 
-            jumpBoost.transform.position = position;
             jumpBoost.transform.parent = parent;
+            jumpBoost.transform.position = position;
 
             return jumpBoost;
         }
@@ -179,8 +183,8 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         {
             Shield shield = await _shieldFactory.Create(GameplayFactoryAssets.Shield);
 
-            shield.transform.position = position;
             shield.transform.parent = parent;
+            shield.transform.position = position;
 
             return shield;
         }
@@ -222,6 +226,13 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             StageMusic stageMusic = await _stageMusicFactory.Create(GameplayFactoryAssets.StageMusic);
 
             _container.Bind<StageMusic>().FromInstance(stageMusic).AsSingle();
+        }
+
+        public async UniTask CreatePlane()
+        {
+            Gameplay.Spaceship.Plane plane = await _planeFactory.Create(GameplayFactoryAssets.Plane);
+
+            _container.Bind<Gameplay.Spaceship.Plane>().FromInstance(plane).AsSingle();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.Services.StaticDataService;
+﻿using Assets.RaceTheSun.Sources.Services.CoroutineRunner;
+using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         private List<BatteryCell> _cells;
 
         [Inject]
-        private void Construct(IStaticDataService staticDataService, IPersistentProgressService persistentProgressService)
+        private void Construct(IStaticDataService staticDataService, IPersistentProgressService persistentProgressService, ICoroutineRunner coroutineRunner)
         {
             SpaceshipConfig spaceshipConfig = staticDataService.GetSpaceship(persistentProgressService.Progress.AvailableSpaceships.CurrentSpaceshipType);
 
@@ -37,7 +38,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
                 _cells.Add(new BatteryCell(GetMinIncludeValue(_batteryMaterialsInfo[i].Position, _batteryMaterialsInfo.Count), _chargedMaterial, _dischargedMaterial, _batteryMaterialsInfo[i].Index));
            }
 
-            _cells.Add(new LastBatteryCell(GetMinIncludeValue(_batteryMaterialsInfo.Last().Position, _batteryMaterialsInfo.Count) , _chargedMaterial, _lowBatteryMaterial, _dischargedMaterial, _batteryMaterialsInfo.Last().Index));
+            _cells.Add(new LastBatteryCell(GetMinIncludeValue(_batteryMaterialsInfo.Last().Position, _batteryMaterialsInfo.Count) , _chargedMaterial, _lowBatteryMaterial, _dischargedMaterial, _batteryMaterialsInfo.Last().Index, coroutineRunner));
         }
 
         private void OnDestroy()
@@ -52,7 +53,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
         private float GetMinIncludeValue(int position, int cellsCount)
         {
-            return 1 - (0.5f / cellsCount) * position;
+            return 1 - (0.3f / cellsCount) * position;
         }
 
         private void OnBatteryValueChanged(float value)

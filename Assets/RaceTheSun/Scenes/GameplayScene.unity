@@ -15,9 +15,9 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  m_FogMode: 1
-  m_FogDensity: 0.01
+  m_FogColor: {r: 0.7372549, g: 0.7372549, b: 0.7372549, a: 1}
+  m_FogMode: 3
+  m_FogDensity: 0.0009
   m_LinearFogStart: 0
   m_LinearFogEnd: 700
   m_AmbientSkyColor: {r: 0, g: 0.3333335, b: 1, a: 1}
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.7263355, g: 0.7183165, b: 0.71795267, a: 1}
+  m_IndirectSpecularColor: {r: 0.34135434, g: 0.34044844, b: 0.34335056, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 175436494}
   - component: {fileID: 175436493}
   - component: {fileID: 175436496}
+  - component: {fileID: 175436497}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -173,7 +174,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.1
+  near clip plane: 0.9
   far clip plane: 5000
   field of view: 40
   orthographic: 0
@@ -268,6 +269,14 @@ MonoBehaviour:
           m_StringArgument: Acticated event
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!124 &175436497
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175436492}
+  m_Enabled: 1
 --- !u!1 &995389584
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,15 +4,15 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 {
     public class BatteryCell
     {
-        private readonly float _minIncludeValue;
-        private readonly Material _chargedMaterial;
-        private readonly Material _dischargedMaterial;
+        protected readonly float MinIncludeValue;
+        protected readonly Material DischargedMaterial;
+        protected readonly Material ChargedMaterial;
 
         public BatteryCell(float minIncludeValue, Material chargedMaterial, Material dischargedMaterial, int materialIndex)
         {
-            _minIncludeValue = minIncludeValue;
-            _chargedMaterial = chargedMaterial;
-            _dischargedMaterial = dischargedMaterial;
+            MinIncludeValue = minIncludeValue;
+            ChargedMaterial = chargedMaterial;
+            DischargedMaterial = dischargedMaterial;
             MaterialIndex = materialIndex;
         }
 
@@ -24,15 +24,15 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         {
             material = null;
 
-            if(batteryValue < _minIncludeValue && CurrentMaterial != _dischargedMaterial)
+            if(batteryValue < MinIncludeValue && CurrentMaterial != DischargedMaterial)
             {
-                material = _dischargedMaterial;
+                material = DischargedMaterial;
                 CurrentMaterial = material;
                 return true;
             }
-            else if(batteryValue >= _minIncludeValue && CurrentMaterial != _chargedMaterial)
+            else if(batteryValue >= MinIncludeValue && CurrentMaterial != ChargedMaterial)
             {
-                material = _chargedMaterial;
+                material = ChargedMaterial;
                 CurrentMaterial = material;
                 return true;
             }

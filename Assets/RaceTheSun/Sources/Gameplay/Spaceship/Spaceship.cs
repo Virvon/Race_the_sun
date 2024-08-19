@@ -27,10 +27,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             scoreCounter.Init(this);
 
             AttachmentStats = GetAttachmentStats(attachment, persistentProgressService);
-
-            Debug.Log(AttachmentStats.CollectRadius);
-            Debug.Log(AttachmentStats.MaxJumpBoostsCount);
-            Debug.Log(AttachmentStats.MaxShileldsCount);
         }
 
         public float Speed { get; private set; }
@@ -62,7 +58,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             _speedProvider = new CollisionSpeed(_speedProvider, _spaceshipMovement, DefaultSpeed, _spaceshipDie);
             _boostedSpeed = new BoostedSpeed(_speedProvider, DefaultSpeed, this, _sun);
             _speedProvider = _boostedSpeed;
-            _speedProvider = new BatterySpeed(_speedProvider, _battery);
+            _speedProvider = new BatterySpeed(_speedProvider, _battery, _spaceshipDie);
         }
 
         private AttachmentStats GetAttachmentStats(Attachment.Attachment attachment, IPersistentProgressService persistentProgressService)

@@ -17,6 +17,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         public event Action<float> BatteryValueChanged;
 
         public bool Discharged => _battery == 0;
+        public float Value => _battery;
 
         private void Start()
         {

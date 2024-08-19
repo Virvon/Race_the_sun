@@ -1,6 +1,7 @@
 ﻿using Assets.RaceTheSun.Sources.Audio;
 using Assets.RaceTheSun.Sources.Gameplay.DistanceObserver;
 using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
+using TMPro;
 using UnityEngine;
 using Zenject;
 
@@ -8,6 +9,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
 {
     public class StartStageTile : Tile, IObserver
     {
+        private const string Title = "Уровень";
+
+        [SerializeField] private TMP_Text _stageNumber;
+        [SerializeField] private bool _needStageNumber;
+
         private CurrentSpaceshipStage _currentSpacehsipStage;
         private DistanceObservable _distanceObservable;
         private Stage _stage;
@@ -19,6 +25,9 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
             _distanceObservable = distanceObservable;
 
             _stage = currentGenerationStage.GeneratedStageType;
+            
+            if(_needStageNumber)
+                _stageNumber.text = $"{Title} {currentGenerationStage.CurrentStageNumber}";
         }
 
         private void Start()

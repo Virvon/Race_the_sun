@@ -20,6 +20,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         private SpaceshipShieldPortal _spaceshipShieldPortal;
 
         public event Action Died;
+        public event Action Stopped;
 
         [Inject]
         private void Construct(Cameras.GameplayCameras cameras, GameplayStateMachine gameplayStateMachine, WaitingService waitingService, Audio.StageMusic stageMusic)
@@ -58,8 +59,21 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             }
         }
 
+        public void Stop()
+        {
+            Debug.Log("stop");
+
+            _stageMusic.Pause();
+            Stopped?.Invoke();
+            _cameras.IncludeCamera(Cameras.GameplayCameraType.SideCamera);
+            _waitingService.Wait(2, callback: () => _gameplayStateMachine.Enter<ResultState>().Forget());
+        }
+
         public void GiveShield()
         {
+            if (_shieldsCount >= _spaceship.AttachmentStats.MaxShileldsCount)
+                return;
+
             _shieldsCount++;
             ShieldsCountChanged?.Invoke(_shieldsCount);
         }

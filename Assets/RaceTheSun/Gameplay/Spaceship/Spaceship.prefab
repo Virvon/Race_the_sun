@@ -185,6 +185,7 @@ MonoBehaviour:
   _duration: 1
   _jumpHeight: 50
   _spaceshipFloat: {fileID: 3129080722154805988}
+  _spaceship: {fileID: 997834433271052482}
 --- !u!114 &3129080722154805988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,7 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b97322992e47904da18a576696ba410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dischargerDuration: 2
+  _dischargerDuration: 6
 --- !u!114 &1154407479975181392
 MonoBehaviour:
   m_ObjectHideFlags: 0

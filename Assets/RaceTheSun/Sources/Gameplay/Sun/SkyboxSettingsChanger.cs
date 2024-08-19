@@ -31,7 +31,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
 
         private void Start()
         {
-            SetSkyboxMaterialSettings(_startSkyboxConfig.SkyboxColor, _startSkyboxConfig.AtmosphereThickness, _startSkyboxConfig.Exposure);
+            Reset();
         }
 
         private void OnEnable()
@@ -42,6 +42,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
         private void OnDisable()
         {
             _currentSpaceshipStage.StageChanged -= ChangeColor;
+        }
+
+        public void Reset()
+        {
+            SetSkyboxMaterialSettings(_startSkyboxConfig.SkyboxColor, _startSkyboxConfig.AtmosphereThickness, _startSkyboxConfig.Exposure);
         }
 
         private void SetSkyboxMaterialSettings(Color color, float atmosphereThickness, float exposure)

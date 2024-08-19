@@ -2,6 +2,7 @@
 using Assets.RaceTheSun.Sources.Gameplay.Cameras;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
 using Cysharp.Threading.Tasks;
+using System;
 using System.Collections;
 using UnityEngine;
 using Zenject;
@@ -17,6 +18,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         private CollisionPortalPoint _collisionPortalPoint;
         private SpaceshipTurning _spaceshipTurning;
         private StageMusic _stageMusic;
+
+        public event Action Activated;
 
         [Inject]
         private void Construct(IGameplayFactory gameplayFactory, SpaceshipMovement spaceshipMovement, Spaceship spaceship, GameplayCameras cameras, CollisionPortalPoint collisionPortalPoint, SpaceshipTurning spaceshipTurning, StageMusic stageMusic)
@@ -63,6 +66,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             _spaceship.transform.position = revivalPosition;
             _spaceshipMovement.IsStopped = false;
             _spaceship.gameObject.SetActive(true);
+
+            Activated?.Invoke();
 
             _cameras.IncludeCamera(GameplayCameraType.MainCamera);
         }

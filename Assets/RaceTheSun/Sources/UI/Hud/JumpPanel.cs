@@ -1,4 +1,5 @@
 ﻿using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -7,25 +8,40 @@ namespace Assets.RaceTheSun.Sources.UI.ScoreView
     public class JumpPanel : MonoBehaviour
     {
         private SpaceshipJump _spaceshipJump;
+        private SpaceshipDie _spaceshipDie;
+        private SpaceshipShieldPortal _spaceshipShieldPortal;
 
         [Inject]
-        private void Construct(SpaceshipJump spaceshipJump)
+        private void Construct(SpaceshipJump spaceshipJump, SpaceshipDie spaceshipDie, SpaceshipShieldPortal spaceshipShieldPortal)
         {
             _spaceshipJump = spaceshipJump;
+            _spaceshipDie = spaceshipDie;
+            _spaceshipShieldPortal = spaceshipShieldPortal;
 
             _spaceshipJump.JumpBoostsCountChanged += TryActive;
+            _spaceshipDie.Died += OnSpaceshipDie;
+            _spaceshipDie.Stopped += OnSpaceshipDie;
+            _spaceshipShieldPortal.Activated += TryActive;
 
-            TryActive(0);
+            TryActive();
         }
 
         private void OnDestroy()
         {
             _spaceshipJump.JumpBoostsCountChanged -= TryActive;
+            _spaceshipDie.Died -= OnSpaceshipDie;
+            _spaceshipDie.Stopped -= OnSpaceshipDie;
+            _spaceshipShieldPortal.Activated -= TryActive;
         }
 
-        private void TryActive(int jumpBoostsCount)
+        private void OnSpaceshipDie()
         {
-            gameObject.SetActive(jumpBoostsCount > 0);
+            gameObject.SetActive(false);
+        }
+
+        private void TryActive()
+        {
+            gameObject.SetActive(_spaceshipJump.JumpBoostsCount > 0);
         }
     }
 }

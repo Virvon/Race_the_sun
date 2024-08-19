@@ -25,7 +25,11 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-    - m_AssetGUID: 50279e0b215c0344d86282bc9f390cfb
+    - m_AssetGUID: 45135f17a9b41844f87929785bc7af59
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 1d7e830b70e6b9649a08a616b09c27db
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -103,15 +107,23 @@ MonoBehaviour:
     AudioClip: {fileID: 8300000, guid: 86025b1f08bc04946ae9f57d27faa0ff, type: 3}
   - Stage: -1
     Skybox:
-      SkyboxColor: {r: 0.3882353, g: 0.3882353, b: 0.3882353, a: 1}
-      AtmosphereThickness: 0.2
-      Exposure: 3.24
+      SkyboxColor: {r: 0.58431375, g: 0.25882354, b: 0.23529412, a: 1}
+      AtmosphereThickness: 0.8
+      Exposure: 0.9
     Tiles:
     - m_AssetGUID: 1d7e830b70e6b9649a08a616b09c27db
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
     - m_AssetGUID: 28041c6164e4a1d48a0136b93f88fbc0
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 1d7e830b70e6b9649a08a616b09c27db
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    - m_AssetGUID: 1d7e830b70e6b9649a08a616b09c27db
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -142,7 +154,7 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-    - m_AssetGUID: ad2ed0f814f156f4d9660bffb78e11c9
+    - m_AssetGUID: 009510f6237aa4e4a959833dae56a17c
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0

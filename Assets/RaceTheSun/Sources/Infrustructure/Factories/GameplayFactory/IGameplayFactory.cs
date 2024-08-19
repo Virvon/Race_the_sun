@@ -30,5 +30,6 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         UniTask<ScoreItem> CreateScoreItem(Vector3 position);
         UniTask<SpeedBoost> CreateSpeedBoost(Vector3 position);
         UniTask CreateStageMusic();
+        UniTask CreatePlane();
     }
 }

@@ -174,7 +174,7 @@ Light:
     m_UseCullingMatrixOverride: 0
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
-  m_Flare: {fileID: 0}
+  m_Flare: {fileID: 12100000, guid: a6e8496227b1de84da6fc29144d79731, type: 2}
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
@@ -238,11 +238,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ba53c97860178b49a14e34bbc6e102b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _radius: 500
-  _startHeight: 100
-  _finishHeight: -20
-  _downMoveSpeed: 0.002
+  _radius: 2000
+  _startHeight: 10
+  _finishHeight: 10
+  _downMoveSpeed: 0.008
   _upMoveSpeed: 0.004
+  _hidedHeight: 1500
 --- !u!114 &-74370086568080726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,4 +260,4 @@ MonoBehaviour:
     SkyboxColor: {r: 0.58431375, g: 0.25882354, b: 0.23529412, a: 0}
     AtmosphereThickness: 0.8
     Exposure: 0.9
-  _changeColorDuration: 0
+  _changeColorDuration: 0.5

@@ -38,12 +38,13 @@ namespace Assets.RaceTheSun.Sources.Gameplay
 
             await _gameplayFactory.CreateShpaceshipShieldPortal();
             await _gameplayFactory.CreateBird();
+            await _gameplayFactory.CreatePlane();
+            await _gameplayFactory.CreateSun();
             await _gameplayFactory.CreateWorldGenerator();
             await _gameplayFactory.CreateHud();
             await _gameplayFactory.CreateSpaceshipMainCamera();
             await _gameplayFactory.CreateSpaceshipSideCamera();
             await _gameplayFactory.CreateSpaceshipUpperCamera();
-            await _gameplayFactory.CreateSun();
             await _gameplayFactory.CreateCollisionPortalCamera();
             await _gameplayFactory.CreateShieldCamera();
             await _gameplayFactory.CreateGameOverPanel();
