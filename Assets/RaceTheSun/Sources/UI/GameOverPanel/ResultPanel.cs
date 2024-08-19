@@ -14,6 +14,7 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
         [SerializeField] private Button _continueButton;
         [SerializeField] private ResultScorePanel _resultScorePanel;
         [SerializeField] private TMP_Text _scoreItemsValue;
+        [SerializeField] private GameObject _header;
 
         private ScoreItemsCounter _scoreItemsCounter;
 
@@ -46,12 +47,14 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
         {
             _gameOverPanelAnimationElement.Open();
             SetScoreItemsValue(_scoreItemsCounter.ScoreItemsPerGame);
+            _header.SetActive(true);
         }
 
         private void Hide()
         {
             _gameOverPanelAnimationElement.Hided += ()=> Hided?.Invoke();
             _gameOverPanelAnimationElement.Hide();
+            _header.SetActive(false);
         }
 
         private void OnOpened()

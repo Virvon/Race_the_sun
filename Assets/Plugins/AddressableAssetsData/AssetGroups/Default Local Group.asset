@@ -514,7 +514,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3fe88237717b163468bf9c7da626a806
-    m_Address: Assets/RaceTheSun/Gameplay/Spaceship/Plane.prefab
+    m_Address: Plane
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

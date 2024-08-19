@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _radius: 2000
-  _startHeight: 10
+  _startHeight: 350
   _finishHeight: 10
   _downMoveSpeed: 0.008
   _upMoveSpeed: 0.004

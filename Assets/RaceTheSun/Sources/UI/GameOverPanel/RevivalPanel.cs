@@ -1,5 +1,6 @@
 ﻿using Assets.RaceTheSun.Sources.Animations;
 using Assets.RaceTheSun.Sources.UI.MainMenu;
+using MPUIKIT;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -9,10 +10,11 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
 {
     public class RevivalPanel : MonoBehaviour
     {
-        [SerializeField] private Image _timerValue;
+        [SerializeField] private MPImage _timerValue;
         [SerializeField] private float _duration;
         [SerializeField] private GameOverPanelAnimationElement _revivalPanelAnimationElement;
         [SerializeField] private Button _revivalButton;
+        [SerializeField] private GameObject _header;
 
         private Coroutine _timer;
 
@@ -34,12 +36,14 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
         public void Open()
         {
             _revivalPanelAnimationElement.Open();
+            _header.SetActive(true);
         }
 
         public void Hide(Action callback = null)
         {
             _revivalPanelAnimationElement.Hided += ()=> callback?.Invoke();
             _revivalPanelAnimationElement.Hide();
+            _header.SetActive(false);
         }
 
         private void OnRevivalPanelAnimationElementOpened()
