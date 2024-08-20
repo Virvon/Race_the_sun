@@ -1,4 +1,5 @@
 ﻿using Assets.RaceTheSun.Sources.Data;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,21 +13,36 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
         [SerializeField] private MPUIKIT.MPImage _progressbar;
         [SerializeField] private TMP_Text _maxLevelText;
 
+        private IPersistentProgressService _persistentProgressService;
+
         [Inject]
         private void Construct(IPersistentProgressService persistentProgressService)
         {
-            _levelValue.text = persistentProgressService.Progress.LevelProgress.Level.ToString();
+            _persistentProgressService = persistentProgressService;
+            
+            ChangeInfo();
 
-            if (persistentProgressService.Progress.LevelProgress.IsMaxLevel)
+            _persistentProgressService.Progress.LevelProgress.ExperienceCountChanged += ChangeInfo;
+        }
+
+        private void OnDestroy()
+        {
+            _persistentProgressService.Progress.LevelProgress.ExperienceCountChanged -= ChangeInfo;
+        }
+
+        private void ChangeInfo()
+        {
+            _levelValue.text = _persistentProgressService.Progress.LevelProgress.Level.ToString();
+
+            if (_persistentProgressService.Progress.LevelProgress.IsMaxLevel)
             {
                 _progressbar.fillAmount = 1;
-                _maxLevelText.enabled = true;
+                _maxLevelText.gameObject.SetActive(true);
             }
             else
             {
-                _progressbar.fillAmount = persistentProgressService.Progress.LevelProgress.Experience / LevelProgress.ExperienceToLevelUp;
+                _progressbar.fillAmount = (float)_persistentProgressService.Progress.LevelProgress.Experience / LevelProgress.ExperienceToLevelUp;
             }
-            
         }
     }
 }

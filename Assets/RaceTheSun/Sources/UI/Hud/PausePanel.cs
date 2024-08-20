@@ -1,12 +1,15 @@
 ﻿using Assets.RaceTheSun.Sources.Audio;
 using Assets.RaceTheSun.Sources.Services.TimeScale;
-using System;
+using Assets.RaceTheSun.Sources.UI.ScoreView;
+using UnityEngine;
 using Zenject;
 
 namespace Assets.RaceTheSun.Sources.Animations
 {
     public class PausePanel : HudAnimationElement
     {
+        [SerializeField] private JumpPanel _jumpPanel;
+
         private ITimeScale _timeScale;
         private StageMusic _stageMusic;
 
@@ -22,6 +25,7 @@ namespace Assets.RaceTheSun.Sources.Animations
         {
             _timeScale.Scale(TimeScaleType.Pause);
             _stageMusic.Pause();
+            _jumpPanel.Hide();
             base.Open();
         }
 
@@ -29,6 +33,7 @@ namespace Assets.RaceTheSun.Sources.Animations
         {
             _timeScale.Scale(TimeScaleType.Normal);
             _stageMusic.Play();
+            _jumpPanel.TryActive();
             base.Hide();
         }
     }

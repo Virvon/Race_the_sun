@@ -8,17 +8,24 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
 {
     public class ResultState : IState
     {
+        private const float ExperienceMultipllier = 0.0008f;
+
         private readonly GameplayStateMachine _gameplayStateMachine;
         private readonly ResultPanel _resultPanel;
+        private readonly IPersistentProgressService _persistentProgressService;
+        private readonly ScoreCounter.ScoreCounter _scoreCounter;
 
-        public ResultState(GameplayStateMachine gameplayStateMachine, ResultPanel resultPanel)
+        public ResultState(GameplayStateMachine gameplayStateMachine, ResultPanel resultPanel, IPersistentProgressService persistentProgressService, ScoreCounter.ScoreCounter scoreCounter)
         {
             _gameplayStateMachine = gameplayStateMachine;
             _resultPanel = resultPanel;
+            _persistentProgressService = persistentProgressService;
+            _scoreCounter = scoreCounter;
         }
 
         public UniTask Enter()
         {
+            _persistentProgressService.Progress.LevelProgress.UpdateExperience(GetExperience());
             _resultPanel.Open();
             _resultPanel.Hided += OnResultPanelHided;
             return default;
@@ -28,6 +35,12 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
         {
             _resultPanel.Hided -= OnResultPanelHided;
             return default;
+        }
+
+        private int GetExperience()
+        {
+            Debug.Log(_persistentProgressService.Progress.AvailableSpaceships.GetCurrentSpaceshipData().ExperienceMultiplier.Value);
+            return (int)(_scoreCounter.Score * ExperienceMultipllier * _persistentProgressService.Progress.AvailableSpaceships.GetCurrentSpaceshipData().ExperienceMultiplier.Value);
         }
 
         private void OnResultPanelHided()

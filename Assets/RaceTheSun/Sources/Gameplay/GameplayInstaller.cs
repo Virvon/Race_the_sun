@@ -25,6 +25,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay
             SpaceshipModelFactoryInstaller.Install(Container);
             Container.BindInterfacesAndSelfTo<ScoreItemsCounter>().AsSingle();
             Container.BindInterfacesAndSelfTo<MultiplierProgressCounter>().AsSingle();
+            Container.BindInterfacesAndSelfTo<AttachmentCellsUpgrader>().AsSingle();
         }
 
         private void BindCurrentSpaceshipStage()

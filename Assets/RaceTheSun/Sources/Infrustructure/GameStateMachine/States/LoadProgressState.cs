@@ -47,24 +47,17 @@ namespace Assets.RaceTheSun.Sources.Infrustructure.GameStateMachine.States
         {
             List<SpaceshipData> spaceshipDatas = new();
             SpaceshipConfig[] spaceshipConfigs = _staticDataService.GetSpaceships();
-            spaceshipDatas.AddRange(spaceshipConfigs.Select(spaceshipConfig => new SpaceshipData(spaceshipConfig.Type, spaceshipConfig.Battery.StartBoost, spaceshipConfig.ExperienceMultiplier.StartBoost, spaceshipConfig.PickUpRange.StartBoost, spaceshipConfig.FloatTime.StartBoost, spaceshipConfig.IsUnlockedOnStart, spaceshipConfig.Battery.StartLevel, spaceshipConfig.ExperienceMultiplier.StartLevel, spaceshipConfig.PickUpRange.StartLevel, spaceshipConfig.FloatTime.StartLevel)));
+            spaceshipDatas.AddRange(spaceshipConfigs.Select(spaceshipConfig => new SpaceshipData(spaceshipConfig.Type, spaceshipConfig.Battery.StartValue, spaceshipConfig.ExperienceMultiplier.StartValue, spaceshipConfig.PickUpRange.StartValue, spaceshipConfig.FloatTime.StartValue, spaceshipConfig.IsUnlockedOnStart, spaceshipConfig.Battery.StartLevel, spaceshipConfig.ExperienceMultiplier.StartLevel, spaceshipConfig.PickUpRange.StartLevel, spaceshipConfig.FloatTime.StartLevel)));
 
             List<TrailType> trails = new();
             TrailConfig[] trailConfigs = _staticDataService.GetTrails();
             trails.AddRange(trailConfigs.Where(trailConfig => trailConfig.IsUnlockedOnStart).Select(trailConfig => trailConfig.Type));
-            Debug.Log(trails.Count);
             PlayerProgress progress = new(spaceshipDatas, trails);
 
             progress.AvailableStatsToUpgrade.Stats.Add(StatType.Battery);
-            progress.Wallet.Value = 6000;
-            progress.Upgrading.UpgradedTypes.Add(Upgrading.UpgradeType.JumpBoost);
-            progress.Upgrading.UpgradedTypes.Add(Upgrading.UpgradeType.ShieldPortal);
-            progress.Upgrading.UpgradedTypes.Add(Upgrading.UpgradeType.Magnet);
-            progress.Upgrading.UpgradedTypes.Add(Upgrading.UpgradeType.JumpBoostsStorage);
-            progress.Upgrading.UpgradedTypes.Add(Upgrading.UpgradeType.FirstAttachmentCell);
-            progress.Upgrading.UpgradedTypes.Add(Upgrading.UpgradeType.SecondAttachmentCell);
 
-            progress.Upgrading.AttachmentCellsCount = 2;
+            progress.Wallet.Value = 100000;
+            progress.LevelProgress.UpdateExperience(10000);
 
             return progress;
         }

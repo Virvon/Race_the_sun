@@ -10,21 +10,21 @@ namespace Assets.RaceTheSun.Sources.Data
     public class SpaceshipData
     {
         public SpaceshipType Type;
-        public StatData BatteryBoost;
-        public StatData ExperienceMultiplierBoost;
+        public StatData Battery;
+        public StatData ExperienceMultiplier;
         public StatData PickupRangeBoost;
-        public StatData FloatTimeBoost;
+        public StatData FloatTime;
         public bool IsUnlocked;
         public TrailType TrailType;
         public List<UpgradeType> UpgradeTypes;
 
-        public SpaceshipData(SpaceshipType type, float batteryBoost, float experienceMultiplierBoost, float pickupRangeBoost, float floatTimeBoost, bool isUnlocked, int startBateryLevel, int startExperienceMultipllierLevel, int startPickUpRangeLevel, int startFloatTimeLevel)
+        public SpaceshipData(SpaceshipType type, float batteryValue, float experienceMultiplierValue, float pickupRangeValue, float floatTimeValue, bool isUnlocked, int startBateryLevel, int startExperienceMultipllierLevel, int startPickUpRangeLevel, int startFloatTimeLevel)
         {
             Type = type;
-            BatteryBoost = new StatData(StatType.Battery, batteryBoost, startBateryLevel);
-            ExperienceMultiplierBoost = new StatData(StatType.ExperienceMultiplier, experienceMultiplierBoost, startExperienceMultipllierLevel);
-            PickupRangeBoost = new StatData(StatType.PickUpRange, pickupRangeBoost, startPickUpRangeLevel);
-            FloatTimeBoost = new StatData(StatType.FloatTime, floatTimeBoost, startFloatTimeLevel);
+            Battery = new StatData(StatType.Battery, batteryValue, startBateryLevel);
+            ExperienceMultiplier = new StatData(StatType.ExperienceMultiplier, experienceMultiplierValue, startExperienceMultipllierLevel);
+            PickupRangeBoost = new StatData(StatType.PickUpRange, pickupRangeValue, startPickUpRangeLevel);
+            FloatTime = new StatData(StatType.FloatTime, floatTimeValue, startFloatTimeLevel);
             IsUnlocked = isUnlocked;
             TrailType = TrailType.Basic;
             UpgradeTypes = new List<UpgradeType>();
@@ -35,13 +35,13 @@ namespace Assets.RaceTheSun.Sources.Data
             switch (statType)
             {
                 case StatType.Battery:
-                    return BatteryBoost;
+                    return Battery;
                 case StatType.ExperienceMultiplier:
-                    return ExperienceMultiplierBoost;
+                    return ExperienceMultiplier;
                 case StatType.PickUpRange:
                     return PickupRangeBoost;
                 case StatType.FloatTime:
-                    return FloatTimeBoost;
+                    return FloatTime;
                 default:
                     return null;
             }

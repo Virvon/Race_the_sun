@@ -57,21 +57,23 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
                     StopCoroutine(_jumping);
                 }
 
+                float jumpHeight = IsJumped ? _jumpHeight / 2 : _jumpHeight;
+
                 _spaceshipFloat.Stop();
-                _jumping = StartCoroutine(Jumping());
+                _jumping = StartCoroutine(Jumping(jumpHeight));
                 JumpBoostsCount--;
                 JumpBoostsCountChanged?.Invoke();
                 Jumped?.Invoke();
             }
         }
 
-        private IEnumerator Jumping()
+        private IEnumerator Jumping(float jumpHeight)
         {
             float expiredSeconds = 0;
             float progress = 0;
 
             float startHeight = _rigidbody.position.y;
-            float finishHeight = startHeight + _jumpHeight;
+            float finishHeight = startHeight + jumpHeight;
 
             IsJumped = true;
 

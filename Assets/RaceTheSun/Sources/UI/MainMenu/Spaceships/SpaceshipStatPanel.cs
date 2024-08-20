@@ -12,12 +12,14 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
     public class SpaceshipStatPanel : MonoBehaviour
     {
         private const int StartUpgradeCost = 1000;
+        private const string MaxLevelText = "Макс. уровень";
 
         [SerializeField] private Button _upgradeButton;
         [SerializeField] private StatType _statType;
         [SerializeField] private MPUIKIT.MPImage _progressbarValue;
         [SerializeField] private GameObject _blockPanel;
         [SerializeField] private TMP_Text _upgradeCosteValue;
+        [SerializeField] private GameObject _icon;
 
         private IPersistentProgressService _persistentProgress;
         private IStaticDataService _staticDataService;
@@ -44,14 +46,21 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
         {
             _currentSpaceship = type;
 
-            float currentStatValue = _persistentProgress.Progress.AvailableSpaceships.GetSpaceshipData(type).GetStat(_statType).Value;
-            float maxStatValue = _staticDataService.GetSpaceship(type).GetStat(_statType).MaxBoost;
+            float currentStatLevel = _persistentProgress.Progress.AvailableSpaceships.GetSpaceshipData(_currentSpaceship).GetStat(_statType).Level;
+            float maxStatLevel = _staticDataService.GetSpaceship(_currentSpaceship).GetStat(_statType).MaxLevel;
 
-            _progressbarValue.fillAmount = currentStatValue / maxStatValue;
+            _progressbarValue.fillAmount = (currentStatLevel - 1) / (maxStatLevel - 1);
             _upgradeCosteValue.text = UpgradeCost.ToString();
 
             _blockPanel.SetActive(_persistentProgress.Progress.AvailableStatsToUpgrade.CheckAvailability(_statType) == false);
             _upgradeButton.interactable = _persistentProgress.Progress.AvailableStatsToUpgrade.CheckAvailability(_statType) && _persistentProgress.Progress.AvailableSpaceships.GetSpaceshipData(type).IsUnlocked;
+
+            if (_persistentProgress.Progress.AvailableSpaceships.GetSpaceshipData(_currentSpaceship).GetStat(_statType).Level >= _staticDataService.GetSpaceship(_currentSpaceship).GetStat(_statType).MaxLevel)
+            {
+                _upgradeButton.interactable = false;
+                _upgradeCosteValue.text = MaxLevelText;
+                _icon.SetActive(false);
+            }
         }
 
         private void OnUpgradeButtonClicked()

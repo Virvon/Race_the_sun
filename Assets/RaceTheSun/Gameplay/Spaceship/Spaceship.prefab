@@ -183,7 +183,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _duration: 1
-  _jumpHeight: 50
+  _jumpHeight: 30
   _spaceshipFloat: {fileID: 3129080722154805988}
   _spaceship: {fileID: 997834433271052482}
 --- !u!114 &3129080722154805988

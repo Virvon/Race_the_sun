@@ -64,8 +64,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
         public void Stop()
         {
-            Debug.Log("stop");
-
             _stageMusic.Pause();
             Stopped?.Invoke();
             _cameras.IncludeCamera(Cameras.GameplayCameraType.SideCamera);

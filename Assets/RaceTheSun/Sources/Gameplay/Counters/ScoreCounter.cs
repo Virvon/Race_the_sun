@@ -6,7 +6,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.ScoreCounter
 {
     public class ScoreCounter : ITickable
     {
-        private const int ScorePerSecond = 100;    
+        private const int ScorePerSecond = 750;    
         private const float SpeedMultiplier = 0.0032f;
 
         private readonly MultiplierProgressCounter _progressMultiplierCounter;

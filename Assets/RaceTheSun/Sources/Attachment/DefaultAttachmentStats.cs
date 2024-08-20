@@ -2,7 +2,7 @@
 {
     public class DefaultAttachmentStats : IAttachmentStatsProvider
     {
-        private const float CollectRadius = 5;
+        private const float CollectRadius = 0;
         private const int MaxJumpBoostsCount = 1;
         private const int MaxShieldsCount = 1;
 

@@ -1195,6 +1195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 2209278823108283151}
+  _jumpPanel: {fileID: 6829026925130060048}
 --- !u!1 &3049339466749757437
 GameObject:
   m_ObjectHideFlags: 0

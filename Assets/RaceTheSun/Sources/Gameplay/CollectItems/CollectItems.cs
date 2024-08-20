@@ -10,17 +10,26 @@ namespace Assets.RaceTheSun.Sources.Gameplay.CollectItems
     {
         private readonly Collider[] _overlapColliders = new Collider[128];
 
-        [SerializeField] private float _collectRadius;
         [SerializeField] private Spaceship.Spaceship _spaceship;
         [SerializeField] private SpaceshipDie _spaceshipDie;
         [SerializeField] private SpaceshipJump _spaceshipJump;
 
+        private float _collectRadius;
+        private IPersistentProgressService _persistentProgressService;
         private IItemVisitor _itemVisitor;
 
         [Inject]
         private void Construct(ScoreItemsCounter scoreItemsCounter, IPersistentProgressService persistentProgressService, CollectItemsSoundEffects collectItemsSoundEffects)
         {
+            _persistentProgressService = persistentProgressService;
             _itemVisitor = new ItemVisitor(_spaceship, _spaceshipDie, _spaceshipJump, scoreItemsCounter, persistentProgressService, collectItemsSoundEffects);
+        }
+
+        private void Start()
+        {
+            _collectRadius = _persistentProgressService.Progress.AvailableSpaceships.GetCurrentSpaceshipData().PickupRangeBoost.Value + _spaceship.AttachmentStats.CollectRadius;
+
+            Debug.Log("pick up range " + _collectRadius);
         }
 
         private void Update()

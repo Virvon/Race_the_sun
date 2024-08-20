@@ -9,8 +9,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
     {
         private const float FullBattery = 1;
 
-        [SerializeField] private float _dischargerDuration;
-
+        private float _dischargerDuration;
         private Coroutine _batteryDischarger;
         private float _battery;
 
@@ -19,9 +18,13 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         public bool Discharged => _battery == 0;
         public float Value => _battery;
 
-        private void Start()
+        [Inject]
+        private void Construct(IPersistentProgressService persistentProgressService)
         {
+            _dischargerDuration = persistentProgressService.Progress.AvailableSpaceships.GetCurrentSpaceshipData().Battery.Value;
             _battery = FullBattery;
+
+            Debug.Log("battery " + _dischargerDuration);
         }
 
         public void ChangeShadowed(bool isShadowed)

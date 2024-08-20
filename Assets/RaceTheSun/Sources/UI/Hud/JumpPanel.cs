@@ -19,8 +19,8 @@ namespace Assets.RaceTheSun.Sources.UI.ScoreView
             _spaceshipShieldPortal = spaceshipShieldPortal;
 
             _spaceshipJump.JumpBoostsCountChanged += TryActive;
-            _spaceshipDie.Died += OnSpaceshipDie;
-            _spaceshipDie.Stopped += OnSpaceshipDie;
+            _spaceshipDie.Died += Hide;
+            _spaceshipDie.Stopped += Hide;
             _spaceshipShieldPortal.Activated += TryActive;
 
             TryActive();
@@ -29,17 +29,17 @@ namespace Assets.RaceTheSun.Sources.UI.ScoreView
         private void OnDestroy()
         {
             _spaceshipJump.JumpBoostsCountChanged -= TryActive;
-            _spaceshipDie.Died -= OnSpaceshipDie;
-            _spaceshipDie.Stopped -= OnSpaceshipDie;
+            _spaceshipDie.Died -= Hide;
+            _spaceshipDie.Stopped -= Hide;
             _spaceshipShieldPortal.Activated -= TryActive;
         }
 
-        private void OnSpaceshipDie()
+        public void Hide()
         {
             gameObject.SetActive(false);
         }
 
-        private void TryActive()
+        public void TryActive()
         {
             gameObject.SetActive(_spaceshipJump.JumpBoostsCount > 0);
         }

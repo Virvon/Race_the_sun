@@ -1,19 +1,24 @@
 ﻿using System.Collections;
 using UnityEngine;
+using Zenject;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 {
     public class SpaceshipFloat : MonoBehaviour
     {
         [SerializeField] private Rigidbody _rigidbody;
-        [SerializeField] private float _floatTime;
 
+        private float _floatTime;
         private Coroutine _floating;
         private RigidbodyConstraints _startConstraints;
 
-        private void Start()
+        [Inject]
+        private void Construct(IPersistentProgressService persistentProgressService)
         {
+            _floatTime = persistentProgressService.Progress.AvailableSpaceships.GetCurrentSpaceshipData().FloatTime.Value;
             _startConstraints = _rigidbody.constraints;
+
+            Debug.Log("Float time " + _floatTime);
         }
 
         public void Float()

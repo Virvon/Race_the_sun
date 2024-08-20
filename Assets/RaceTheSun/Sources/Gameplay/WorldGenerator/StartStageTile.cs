@@ -17,17 +17,21 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
         private CurrentSpaceshipStage _currentSpacehsipStage;
         private DistanceObservable _distanceObservable;
         private Stage _stage;
+        private int _currentStageNumber;
+        private AttachmentCellsUpgrader _attachmentCellsUpgrader;
 
         [Inject]
-        private void Construct(DistanceObservable distanceObservable, CurrentSpaceshipStage currentSpacehsipStage, CurrentGenerationStage currentGenerationStage)
+        private void Construct(DistanceObservable distanceObservable, CurrentSpaceshipStage currentSpacehsipStage, CurrentGenerationStage currentGenerationStage, AttachmentCellsUpgrader attachmentCellsUpgrader)
         {
             _currentSpacehsipStage = currentSpacehsipStage;
             _distanceObservable = distanceObservable;
+            _currentStageNumber = currentGenerationStage.CurrentStageNumber;
+            _attachmentCellsUpgrader = attachmentCellsUpgrader;
 
             _stage = currentGenerationStage.GeneratedStageType;
             
             if(_needStageNumber)
-                _stageNumber.text = $"{Title} {currentGenerationStage.CurrentStageNumber}";
+                _stageNumber.text = $"{Title} {_currentStageNumber}";
         }
 
         private void Start()
@@ -38,6 +42,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
         public virtual void Invoke()
         {
             _currentSpacehsipStage.SetCurrentStage(_stage);
+            _attachmentCellsUpgrader.TryUpgrade(_currentStageNumber);
         }
     }
 }

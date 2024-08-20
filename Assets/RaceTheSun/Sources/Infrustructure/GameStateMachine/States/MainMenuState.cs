@@ -1,6 +1,7 @@
 ﻿using Assets.RaceTheSun.Sources.Infrastructure.SceneManagement;
 using Assets.RaceTheSun.Sources.UI.LoadingCurtain;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine.States
 {

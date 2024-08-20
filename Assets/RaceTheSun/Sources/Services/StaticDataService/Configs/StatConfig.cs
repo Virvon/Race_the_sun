@@ -1,5 +1,6 @@
 ﻿using Assets.RaceTheSun.Sources.MainMenu.Spaceship;
 using System;
+using UnityEngine;
 
 namespace Assets.RaceTheSun.Sources.Services.StaticDataService.Configs
 {
@@ -8,9 +9,8 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService.Configs
     {
         public StatType Type;
         public float StartValue;
-        public float StartBoost;
-        public float MaxBoost;
         public int StartLevel;
+        public int MaxLevel;
         public float UpgradeValue;
     }
 }

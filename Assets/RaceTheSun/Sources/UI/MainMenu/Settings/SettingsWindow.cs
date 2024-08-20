@@ -8,6 +8,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Settings
     public class SettingsWindow : OpenableWindow
     {
         private const string MusicMixer = "Music";
+        private const string SoundsMixer = "Sounds";
+        private const int MinValue = -20;
 
         [SerializeField] private Slider _musicVolumeSlider;
         [SerializeField] private Slider _soundsVolumeSlider;
@@ -23,11 +25,14 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Settings
             _musicVolumeSlider.value = _persistentProgressService.Progress.AudioSettings.MusicVolume;
             _soundsVolumeSlider.value = _persistentProgressService.Progress.AudioSettings.SoundsVolume;
 
-            ChangeMusicMixer(_persistentProgressService.Progress.AudioSettings.MusicVolume);
-
             _musicVolumeSlider.onValueChanged.AddListener(OnMusicSliderValueChanged);
             _soundsVolumeSlider.onValueChanged.AddListener(OnSoundsSliderValueChanged);
 
+            _musicVolumeSlider.value = _persistentProgressService.Progress.AudioSettings.MusicVolume;
+            _soundsVolumeSlider.value = _persistentProgressService.Progress.AudioSettings.SoundsVolume;
+
+            ChangeMixerVolume(MusicMixer, _persistentProgressService.Progress.AudioSettings.MusicVolume);
+            ChangeMixerVolume(SoundsMixer, _persistentProgressService.Progress.AudioSettings.SoundsVolume);
         }
 
         private void OnDestroy()
@@ -46,20 +51,24 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Settings
             gameObject.SetActive(true);
         }
 
-        private void OnSoundsSliderValueChanged(float value)
-        {
-            _persistentProgressService.Progress.AudioSettings.SoundsVolume = value;
-        }
-
         private void OnMusicSliderValueChanged(float value)
         {
             _persistentProgressService.Progress.AudioSettings.MusicVolume = value;
-            ChangeMusicMixer(value);
+            ChangeMixerVolume(MusicMixer, value);
         }
 
-        private void ChangeMusicMixer(float value)
+        private void OnSoundsSliderValueChanged(float value)
         {
-            _audioMixer.SetFloat(MusicMixer, value);
+            _persistentProgressService.Progress.AudioSettings.SoundsVolume = value;
+            ChangeMixerVolume(SoundsMixer, value);
+        }
+
+        private void ChangeMixerVolume(string mixerName, float value)
+        {
+            if (value <= MinValue)
+                value = -80;
+
+            _audioMixer.SetFloat(mixerName, value);
         }
     }
 }

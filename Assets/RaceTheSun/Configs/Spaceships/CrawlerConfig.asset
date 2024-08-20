@@ -36,30 +36,26 @@ MonoBehaviour:
   Battery:
     Type: 0
     StartValue: 5
-    StartBoost: 0
-    MaxBoost: 5
     StartLevel: 1
-    UpgradeValue: 1
+    MaxLevel: 5
+    UpgradeValue: 0.75
   ExperienceMultiplier:
-    Type: 0
-    StartValue: 0
-    StartBoost: 0
-    MaxBoost: 1
+    Type: 1
+    StartValue: 1
     StartLevel: 1
-    UpgradeValue: 0.2
-  PickUpRange:
-    Type: 0
-    StartValue: 3
-    StartBoost: 0
-    MaxBoost: 3
-    StartLevel: 1
+    MaxLevel: 5
     UpgradeValue: 0.5
+  PickUpRange:
+    Type: 2
+    StartValue: 35
+    StartLevel: 1
+    MaxLevel: 5
+    UpgradeValue: 17.5
   FloatTime:
-    Type: 0
-    StartValue: 2
-    StartBoost: 0.5
-    MaxBoost: 2
+    Type: 3
+    StartValue: 1.5
     StartLevel: 2
-    UpgradeValue: 0.2
+    MaxLevel: 5
+    UpgradeValue: 0.5
   Name: "\u041A\u0440\u0430\u0443\u043B\u0435\u0440"
   Title: "\u0411\u043E\u043B\u044C\u0448\u043E\u0439 \u0438 \u043A\u0440\u0430\u0441\u0438\u0432\u044B\u0439."
