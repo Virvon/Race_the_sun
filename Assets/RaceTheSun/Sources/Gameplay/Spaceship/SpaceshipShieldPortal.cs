@@ -18,11 +18,12 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         private CollisionPortalPoint _collisionPortalPoint;
         private SpaceshipTurning _spaceshipTurning;
         private StageMusic _stageMusic;
+        private PortalSound _portalSound;
 
         public event Action Activated;
 
         [Inject]
-        private void Construct(IGameplayFactory gameplayFactory, SpaceshipMovement spaceshipMovement, Spaceship spaceship, GameplayCameras cameras, CollisionPortalPoint collisionPortalPoint, SpaceshipTurning spaceshipTurning, StageMusic stageMusic)
+        private void Construct(IGameplayFactory gameplayFactory, SpaceshipMovement spaceshipMovement, Spaceship spaceship, GameplayCameras cameras, CollisionPortalPoint collisionPortalPoint, SpaceshipTurning spaceshipTurning, StageMusic stageMusic, PortalSound portalSound)
         {
             _gameplayFactory = gameplayFactory;
             _spaceshipMovement = spaceshipMovement;
@@ -31,11 +32,13 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             _collisionPortalPoint = collisionPortalPoint;
             _spaceshipTurning = spaceshipTurning;
             _stageMusic = stageMusic;
+            _portalSound = portalSound;
         }
 
         public void Activate(bool createdCollisionPortal = true)
         {
             _stageMusic.Play();
+            _portalSound.Play();
 
             Vector3 revivalPosition = new Vector3(_spaceship.transform.position.x, 120, _spaceship.transform.position.z + 2);
             transform.position = revivalPosition;

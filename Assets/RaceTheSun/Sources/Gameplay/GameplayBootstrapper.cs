@@ -30,6 +30,9 @@ namespace Assets.RaceTheSun.Sources.Gameplay
         {
             await _gameplayFactory.CreateStartCamera();
             await _gameplayFactory.CreateStageMusic();
+            await _gameplayFactory.CreateCollectItemsSoundEffects();
+            await _gameplayFactory.CreatePortalSound();
+            await _gameplayFactory.CreateDestroySound();
 
             Spaceship.Spaceship spaceship = await _gameplayFactory.CreateSpaceship();
             SpaceshipModel spaceshipModel = await _spaceshipModelFactory.CreateSpaceshipModel(_persistentProgress.Progress.AvailableSpaceships.CurrentSpaceshipType, spaceship.GetComponentInChildren< Assets.RaceTheSun.Sources.Gameplay.ModelPoint>().transform.position, spaceship.transform);

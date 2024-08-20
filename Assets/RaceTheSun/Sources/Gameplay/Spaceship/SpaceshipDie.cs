@@ -17,18 +17,20 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         private GameplayStateMachine _gameplayStateMachine;
         private WaitingService _waitingService;
         private StageMusic _stageMusic;
+        private DestroySound _destroySound;
         private SpaceshipShieldPortal _spaceshipShieldPortal;
 
         public event Action Died;
         public event Action Stopped;
 
         [Inject]
-        private void Construct(Cameras.GameplayCameras cameras, GameplayStateMachine gameplayStateMachine, WaitingService waitingService, Audio.StageMusic stageMusic)
+        private void Construct(Cameras.GameplayCameras cameras, GameplayStateMachine gameplayStateMachine, WaitingService waitingService, Audio.StageMusic stageMusic, DestroySound destroySound)
         {
             _cameras = cameras;
             _gameplayStateMachine = gameplayStateMachine;
             _waitingService = waitingService;
             _stageMusic = stageMusic;
+            _destroySound = destroySound;
         }
 
         public event Action<int> ShieldsCountChanged;
@@ -51,6 +53,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             }
             else
             {
+                _destroySound.Play();
                 _stageMusic.Pause();
                 Died?.Invoke();
                 _cameras.IncludeCamera(Cameras.GameplayCameraType.SideCamera);

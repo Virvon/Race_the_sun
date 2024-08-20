@@ -28,5 +28,8 @@
         public const string SpeedBoost = "SpeedBoost";
         public const string StageMusic = "StageMusic";
         public const string Plane = "Plane";
+        public const string CollectItemsSoundEffects = "CollectItemsSoundEffects";
+        public const string PortalSound = "PortalSound";
+        public const string DestroySound = "DestroySound";
     }
 }

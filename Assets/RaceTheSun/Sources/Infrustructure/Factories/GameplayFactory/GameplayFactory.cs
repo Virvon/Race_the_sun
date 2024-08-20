@@ -42,10 +42,13 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         private readonly SpeedBoost.Factory _speedBoostFactory;
         private readonly StageMusic.Factory _stageMusicFactory;
         private readonly Gameplay.Spaceship.Plane.Factory _planeFactory;
+        private readonly CollectItemsSoundEffects.Factory _collectItemsSoundEffectsFactory;
+        private readonly PortalSound.Factory _portalSoundFactory;
+        private readonly DestroySound.Factory _destroySoundFactory;
 
         private SpaceshipDie _spaceshipDie;
 
-        public GameplayFactory(DiContainer container, Hud.Factory hudFactory, IStaticDataService staticDataService, Spaceship.Factory spaceshipFactory, Tile.Factory tileFactory, WorldGenerator.Factory worldGeneratorFactory, VirtualCamera.Factory virtualCameraFactory, Sun.Factory sunFactory, DistanceObservable distanceObservable, GameplayCameras cameras, SpaceshipShieldPortal.Factory spaceshipShieldPortalFactory, GameOverPanel.Factory gameOverPanelFactory, JumpBoost.Factory jumpBoostFactory, Shield.Factory shieldFactory, ShieldPortal.Factory shieldPortalFactory, Bird.Factory birdFactory, ScoreItem.Factory scoreItemFactory, SpeedBoost.Factory speedBoostFactory, StageMusic.Factory stageMusicFactory, Gameplay.Spaceship.Plane.Factory planeFactory)
+        public GameplayFactory(DiContainer container, Hud.Factory hudFactory, IStaticDataService staticDataService, Spaceship.Factory spaceshipFactory, Tile.Factory tileFactory, WorldGenerator.Factory worldGeneratorFactory, VirtualCamera.Factory virtualCameraFactory, Sun.Factory sunFactory, DistanceObservable distanceObservable, GameplayCameras cameras, SpaceshipShieldPortal.Factory spaceshipShieldPortalFactory, GameOverPanel.Factory gameOverPanelFactory, JumpBoost.Factory jumpBoostFactory, Shield.Factory shieldFactory, ShieldPortal.Factory shieldPortalFactory, Bird.Factory birdFactory, ScoreItem.Factory scoreItemFactory, SpeedBoost.Factory speedBoostFactory, StageMusic.Factory stageMusicFactory, Gameplay.Spaceship.Plane.Factory planeFactory, CollectItemsSoundEffects.Factory collectItemsSoundEffectsFactory, PortalSound.Factory portalSoundFactory, DestroySound.Factory destroySoundFactory)
         {
             _container = container;
             _hudFactory = hudFactory;
@@ -67,6 +70,9 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             _speedBoostFactory = speedBoostFactory;
             _stageMusicFactory = stageMusicFactory;
             _planeFactory = planeFactory;
+            _collectItemsSoundEffectsFactory = collectItemsSoundEffectsFactory;
+            _portalSoundFactory = portalSoundFactory;
+            _destroySoundFactory = destroySoundFactory;
         }
 
         public async UniTask CreateGameOverPanel()
@@ -233,6 +239,27 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             Gameplay.Spaceship.Plane plane = await _planeFactory.Create(GameplayFactoryAssets.Plane);
 
             _container.Bind<Gameplay.Spaceship.Plane>().FromInstance(plane).AsSingle();
+        }
+
+        public async UniTask CreateCollectItemsSoundEffects()
+        {
+            CollectItemsSoundEffects collectItemsSoundEffects = await _collectItemsSoundEffectsFactory.Create(GameplayFactoryAssets.CollectItemsSoundEffects);
+
+            _container.Bind<CollectItemsSoundEffects>().FromInstance(collectItemsSoundEffects).AsSingle();
+        }
+
+        public async UniTask CreatePortalSound()
+        {
+            PortalSound portalSound = await _portalSoundFactory.Create(GameplayFactoryAssets.PortalSound);
+
+            _container.Bind<PortalSound>().FromInstance(portalSound).AsSingle();
+        }
+
+        public async UniTask CreateDestroySound()
+        {
+            DestroySound destroySound = await _destroySoundFactory.Create(GameplayFactoryAssets.DestroySound);
+
+            _container.Bind<DestroySound>().FromInstance(destroySound).AsSingle();
         }
     }
 }

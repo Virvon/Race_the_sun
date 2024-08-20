@@ -19,6 +19,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         private BoostedSpeed _boostedSpeed;
         private Sun.Sun _sun;
         private ISpeedProvider _speedProvider;
+
+        public event Action SpeedBoosted;
        
 
         [Inject]
@@ -45,6 +47,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         public void BoostSpeed()
         {
             _boostedSpeed.Boost();
+            SpeedBoosted?.Invoke();
         }
 
         public void StopBoostSpeed()

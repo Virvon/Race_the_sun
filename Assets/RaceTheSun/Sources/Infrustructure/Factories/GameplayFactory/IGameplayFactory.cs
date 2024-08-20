@@ -31,5 +31,8 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         UniTask<SpeedBoost> CreateSpeedBoost(Vector3 position);
         UniTask CreateStageMusic();
         UniTask CreatePlane();
+        UniTask CreateCollectItemsSoundEffects();
+        UniTask CreatePortalSound();
+        UniTask CreateDestroySound();
     }
 }

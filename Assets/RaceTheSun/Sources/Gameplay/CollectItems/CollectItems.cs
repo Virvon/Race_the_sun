@@ -1,4 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.ScoreCounter;
+﻿using Assets.RaceTheSun.Sources.Audio;
+using Assets.RaceTheSun.Sources.Gameplay.ScoreCounter;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using UnityEngine;
 using Zenject;
@@ -17,9 +18,9 @@ namespace Assets.RaceTheSun.Sources.Gameplay.CollectItems
         private IItemVisitor _itemVisitor;
 
         [Inject]
-        private void Construct(ScoreItemsCounter scoreItemsCounter, IPersistentProgressService persistentProgressService)
+        private void Construct(ScoreItemsCounter scoreItemsCounter, IPersistentProgressService persistentProgressService, CollectItemsSoundEffects collectItemsSoundEffects)
         {
-            _itemVisitor = new ItemVisitor(_spaceship, _spaceshipDie, _spaceshipJump, scoreItemsCounter, persistentProgressService);
+            _itemVisitor = new ItemVisitor(_spaceship, _spaceshipDie, _spaceshipJump, scoreItemsCounter, persistentProgressService, collectItemsSoundEffects);
         }
 
         private void Update()
@@ -53,29 +54,34 @@ namespace Assets.RaceTheSun.Sources.Gameplay.CollectItems
             private readonly SpaceshipJump _spaceshipJump;
             private readonly ScoreItemsCounter _scoreItemsCounter;
             private readonly IPersistentProgressService _persistentProgressService;
+            private readonly CollectItemsSoundEffects _collectItemsSoundEffects;
 
-            public ItemVisitor(Spaceship.Spaceship spaceship, SpaceshipDie spaceshipDie, SpaceshipJump spaceshipJump, ScoreItemsCounter scoreItemsCounter, IPersistentProgressService persistentProgressService)
+            public ItemVisitor(Spaceship.Spaceship spaceship, SpaceshipDie spaceshipDie, SpaceshipJump spaceshipJump, ScoreItemsCounter scoreItemsCounter, IPersistentProgressService persistentProgressService, CollectItemsSoundEffects collectItemsSoundEffects)
             {
                 _spaceship = spaceship;
                 _spaceshipDie = spaceshipDie;
                 _spaceshipJump = spaceshipJump;
                 _scoreItemsCounter = scoreItemsCounter;
                 _persistentProgressService = persistentProgressService;
+                _collectItemsSoundEffects = collectItemsSoundEffects;
             }
 
             public void Visit(Shield shield)
             {
                 _spaceshipDie.GiveShield();
+                _collectItemsSoundEffects.TakeItem();
             }
 
             public void Visit(JumpBoost jumpBoost)
             {
                 _spaceshipJump.GiveJumpBoost();
+                _collectItemsSoundEffects.TakeItem();
             }
 
             public void Visit(ScoreItem scoreItem)
             {
                 _scoreItemsCounter.Give();
+                _collectItemsSoundEffects.TakeScoreItem();
             }
 
             public void Visit(SpeedBoost speedBoost)
@@ -86,6 +92,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.CollectItems
             public void Visit(MysteryBox mysteryBox)
             {
                 _persistentProgressService.Progress.MysteryBoxes.Give();
+                _collectItemsSoundEffects.TakeItem();
             }
         }
     }

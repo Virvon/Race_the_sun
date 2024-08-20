@@ -84,6 +84,18 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             Container
                 .BindFactory<string, UniTask<Gameplay.Spaceship.Plane>, Gameplay.Spaceship.Plane.Factory>()
                 .FromFactory<KeyPrefabFactoryAsync<Gameplay.Spaceship.Plane>>();
+
+            Container
+                .BindFactory<string, UniTask<CollectItemsSoundEffects>, CollectItemsSoundEffects.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<CollectItemsSoundEffects>>();
+
+            Container
+                .BindFactory<string, UniTask<PortalSound>, PortalSound.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<PortalSound>>();
+
+            Container
+                .BindFactory<string, UniTask<DestroySound>, DestroySound.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<DestroySound>>();
         }
     }
 }
