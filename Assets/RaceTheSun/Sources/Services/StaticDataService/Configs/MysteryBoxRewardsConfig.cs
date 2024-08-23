@@ -14,5 +14,6 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService.Configs
         public int MaxScoreItemsRewardMaxCount;
 
         public int ExperienceRewardChance;
+        public int ExperienceReward;
     }
 }

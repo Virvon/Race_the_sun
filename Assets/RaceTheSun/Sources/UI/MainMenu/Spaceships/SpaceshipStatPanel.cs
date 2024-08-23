@@ -26,6 +26,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
 
         private SpaceshipType _currentSpaceship;
 
+        public event Action Updated;
+
         [Inject]
         private void Construct(IPersistentProgressService persistentProgress, IStaticDataService staticDataService)
         {
@@ -36,6 +38,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
         }
 
         public int UpgradeCost => _persistentProgress.Progress.AvailableSpaceships.GetSpaceshipData(_currentSpaceship).GetStat(_statType).Level * StartUpgradeCost;
+        public StatType StatType => _statType;
 
         private void OnDestroy()
         {
@@ -61,6 +64,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
                 _upgradeCosteValue.text = MaxLevelText;
                 _icon.SetActive(false);
             }
+
+            Updated?.Invoke();
         }
 
         private void OnUpgradeButtonClicked()

@@ -14,6 +14,7 @@ namespace Assets.RaceTheSun.Sources.UI.MysteryBox
     {
         [SerializeField] private Button _openMysteryBoxButton;
         [SerializeField] private RewardPanel _rewardPanel;
+        [SerializeField] private MysteryBoxWindowOpenButton _mysteryBoxWindowOpenButton;
 
         private IStaticDataService _staticDataService;
         private IPersistentProgressService _persistentProgressService;
@@ -24,17 +25,15 @@ namespace Assets.RaceTheSun.Sources.UI.MysteryBox
             _staticDataService = staticDataService;
             _persistentProgressService = persistentProgressService;
 
+            _openMysteryBoxButton.onClick.AddListener(OnOpenMysteryBoxButtonCllicked);
+
             if (_persistentProgressService.Progress.MysteryBoxes.GetEndDate() <= DateTime.Now)
                 _persistentProgressService.Progress.MysteryBoxes.Count = 0;
-
-            _openMysteryBoxButton.onClick.AddListener(OnOpenMysteryBoxButtonCllicked);
-            _persistentProgressService.Progress.MysteryBoxes.CountChanged += OnMysteryBoxCountChanged;
         }
 
         private void OnDestroy()
         {
             _openMysteryBoxButton.onClick.RemoveListener(OnOpenMysteryBoxButtonCllicked);
-            _persistentProgressService.Progress.MysteryBoxes.CountChanged -= OnMysteryBoxCountChanged;
         }
 
         public override void Hide()
@@ -47,14 +46,6 @@ namespace Assets.RaceTheSun.Sources.UI.MysteryBox
             gameObject.SetActive(true);
         }
 
-        private void OnMysteryBoxCountChanged(int count)
-        {
-            if (count <= 0)
-            {
-                Hide();
-            }
-        }
-
         private void OnOpenMysteryBoxButtonCllicked()
         {
 #if !UNITY_EDITOR && UNITY_WEBGL
@@ -62,28 +53,35 @@ namespace Assets.RaceTheSun.Sources.UI.MysteryBox
             {
                 MysteryBoxRewardsConfig mysteryBoxRewardsConfig = _staticDataService.GetMysteryBoxRewards();
 
-                int chance = Random.Range(0, 100);
+            int chance = Random.Range(0, 100);
 
-                if (chance <= mysteryBoxRewardsConfig.MinScoreItemsRewardChance)
-                {
-                    int reward = Random.Range(mysteryBoxRewardsConfig.MinScoreItemsRewardMinCount, mysteryBoxRewardsConfig.MinScoreItemsRewardMaxCount);
+            if (chance <= mysteryBoxRewardsConfig.MinScoreItemsRewardChance)
+            {
+                int reward = Random.Range(mysteryBoxRewardsConfig.MinScoreItemsRewardMinCount, mysteryBoxRewardsConfig.MinScoreItemsRewardMaxCount);
 
-                    _rewardPanel.ShowScoreItemsReward(reward);
-                    _persistentProgressService.Progress.Wallet.Take(reward);
-                }
-                else if (chance <= mysteryBoxRewardsConfig.ExperienceRewardChance + mysteryBoxRewardsConfig.MinScoreItemsRewardChance)
-                {
-                    _rewardPanel.ShowExperienveReward();
-                }
-                else
-                {
-                    int reward = Random.Range(mysteryBoxRewardsConfig.MaxScoreItemsRewardMinCount, mysteryBoxRewardsConfig.MaxScoreItemsRewardMaxCount);
+                _rewardPanel.ShowScoreItemsReward(reward);
+                _persistentProgressService.Progress.Wallet.Give(reward);
+            }
+            else if (chance <= mysteryBoxRewardsConfig.ExperienceRewardChance + mysteryBoxRewardsConfig.MinScoreItemsRewardChance)
+            {
+                _rewardPanel.ShowExperienveReward();
+                _persistentProgressService.Progress.LevelProgress.UpdateExperience(mysteryBoxRewardsConfig.ExperienceReward);
+            }
+            else
+            {
+                int reward = Random.Range(mysteryBoxRewardsConfig.MaxScoreItemsRewardMinCount, mysteryBoxRewardsConfig.MaxScoreItemsRewardMaxCount);
 
-                    _rewardPanel.ShowScoreItemsReward(reward);
-                    _persistentProgressService.Progress.Wallet.Take(reward);
-                }
+                _rewardPanel.ShowScoreItemsReward(reward);
+                _persistentProgressService.Progress.Wallet.Give(reward);
+            }
 
-                _persistentProgressService.Progress.MysteryBoxes.Take();
+            _persistentProgressService.Progress.MysteryBoxes.Take();
+
+            if (_persistentProgressService.Progress.MysteryBoxes.Count <= 0)
+            {
+                Hide();
+                _mysteryBoxWindowOpenButton.gameObject.SetActive(false);
+            }
             });
 # else
             MysteryBoxRewardsConfig mysteryBoxRewardsConfig = _staticDataService.GetMysteryBoxRewards();
@@ -95,21 +93,28 @@ namespace Assets.RaceTheSun.Sources.UI.MysteryBox
                 int reward = Random.Range(mysteryBoxRewardsConfig.MinScoreItemsRewardMinCount, mysteryBoxRewardsConfig.MinScoreItemsRewardMaxCount);
 
                 _rewardPanel.ShowScoreItemsReward(reward);
-                _persistentProgressService.Progress.Wallet.Take(reward);
+                _persistentProgressService.Progress.Wallet.Give(reward);
             }
             else if (chance <= mysteryBoxRewardsConfig.ExperienceRewardChance + mysteryBoxRewardsConfig.MinScoreItemsRewardChance)
             {
                 _rewardPanel.ShowExperienveReward();
+                _persistentProgressService.Progress.LevelProgress.UpdateExperience(mysteryBoxRewardsConfig.ExperienceReward);
             }
             else
             {
                 int reward = Random.Range(mysteryBoxRewardsConfig.MaxScoreItemsRewardMinCount, mysteryBoxRewardsConfig.MaxScoreItemsRewardMaxCount);
 
                 _rewardPanel.ShowScoreItemsReward(reward);
-                _persistentProgressService.Progress.Wallet.Take(reward);
+                _persistentProgressService.Progress.Wallet.Give(reward);
             }
 
             _persistentProgressService.Progress.MysteryBoxes.Take();
+
+            if (_persistentProgressService.Progress.MysteryBoxes.Count <= 0)
+            {
+                Hide();
+                _mysteryBoxWindowOpenButton.gameObject.SetActive(false);
+            }
 #endif
         }
     }

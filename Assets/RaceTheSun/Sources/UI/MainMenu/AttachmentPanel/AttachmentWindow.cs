@@ -76,7 +76,6 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
                 {
                     if (attachmentCell.TryRemove(_currentUpgradeType, _currentClickedSpaceshipInfo.SpaceshipType))
                     {
-                        Debug.Log("remove");
                         break;
                     }
                 }
@@ -87,12 +86,12 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
                 {
                     if (attachmentCell.TryUse(_currentUpgradeType, _currentClickedSpaceshipInfo.SpaceshipType))
                     {
-                        Debug.Log("use");
                         break;
                     }
                 }
             }
 
+            _currentSelectFrame.SetActive(false);
             _attachmentInfoPanel.Hide();
         }
     }

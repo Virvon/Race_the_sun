@@ -12,7 +12,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
         private readonly float _defaultSpeed;
         private readonly SpaceshipDie _spaceshipDie;
         
-
         private float _speed;
 
         public CollisionSpeed(ISpeedProvider wrappedEntity, SpaceshipMovement spaceshipMovement, float defaultSpeed, SpaceshipDie spaceshipDie) : base(wrappedEntity)
@@ -21,6 +20,15 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
             _defaultSpeed = defaultSpeed;
             _speed = _defaultSpeed;
             _spaceshipDie = spaceshipDie;
+
+            IsCollidedPerStage = false;
+        }
+
+        public bool IsCollidedPerStage { get; private set; }
+
+        public void Reset()
+        {
+            IsCollidedPerStage = false;
         }
 
         protected override float GetSpeedInternal()
@@ -41,6 +49,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
                     _speed = MinSpeed;
                 else if (_spaceshipDie.TryRevive() == false)
                     _speed = 0;
+
+                IsCollidedPerStage = true;
             }
 
             return _speed;

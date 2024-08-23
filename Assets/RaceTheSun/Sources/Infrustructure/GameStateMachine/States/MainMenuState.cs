@@ -9,11 +9,13 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine.States
     {
         private readonly ILoadingCurtain _loadingCurtainProxy;
         private readonly ISceneLoader _sceneLoader;
+        private readonly ISaveLoadService _saveLoadService;
 
-        public MainMenuState(ILoadingCurtain loadingCurtainProxy, ISceneLoader sceneLoader)
+        public MainMenuState(ILoadingCurtain loadingCurtainProxy, ISceneLoader sceneLoader, ISaveLoadService saveLoadService)
         {
             _loadingCurtainProxy = loadingCurtainProxy;
             _sceneLoader = sceneLoader;
+            _saveLoadService = saveLoadService;
         }
 
         public async UniTask Enter()
@@ -25,6 +27,7 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine.States
 
         public UniTask Exit()
         {
+            _saveLoadService.SaveProgress();
             return default;
         }
     }

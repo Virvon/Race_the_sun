@@ -128,6 +128,11 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         public async UniTask CreateHud()
         {
             Hud hud = await _hudFactory.Create(GameplayFactoryAssets.Hud);
+
+            PerfectStagePanel perfectStagePanel = hud.GetComponentInChildren<PerfectStagePanel>();
+            perfectStagePanel.gameObject.SetActive(false);
+
+            _container.Bind<PerfectStagePanel>().FromInstance(perfectStagePanel).AsSingle();
         }
 
         public async UniTask<GameObject> CreateTile(AssetReferenceGameObject tileReference, Vector3 position, Transform parent)
@@ -173,6 +178,7 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
 
             _container.Bind<Sun>().FromInstance(sun).AsSingle();
             _container.Bind<SkyboxSettingsChanger>().FromInstance(sun.GetComponent<SkyboxSettingsChanger>()).AsSingle();
+            _spaceshipDie.Init(sun);
         }
 
         public async UniTask<JumpBoost> CreateJumpBoost(Vector3 position, Transform parent = null)

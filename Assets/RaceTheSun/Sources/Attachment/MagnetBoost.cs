@@ -2,7 +2,7 @@
 {
     public class MagnetBoost : AttachmentStatsDecorator
     {
-        private const float BoostedCollectRadius = 60;
+        private const float BoostedCollectRadius = 15;
 
         public MagnetBoost(IAttachmentStatsProvider wrappedEntity) : base(wrappedEntity)
         {

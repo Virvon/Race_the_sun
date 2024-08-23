@@ -17,8 +17,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         {
             _floatTime = persistentProgressService.Progress.AvailableSpaceships.GetCurrentSpaceshipData().FloatTime.Value;
             _startConstraints = _rigidbody.constraints;
-
-            Debug.Log("Float time " + _floatTime);
         }
 
         public void Float()

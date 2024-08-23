@@ -15,7 +15,7 @@ namespace Assets.RaceTheSun.Sources.UI.ScoreView
         private SpaceshipDie _spaceshipDie;
 
         [Inject]
-        private void Construct(SpaceshipDie spaceshipDie, Spaceship spaceship)
+        private void Construct(SpaceshipDie spaceshipDie, Spaceship spaceship, IPersistentProgressService persistentProgressService)
         {
             _spaceshipDie = spaceshipDie;
             _maxShieldsCountValue.text = spaceship.AttachmentStats.MaxShileldsCount.ToString();
@@ -23,6 +23,9 @@ namespace Assets.RaceTheSun.Sources.UI.ScoreView
             _spaceshipDie.ShieldsCountChanged += ChangeInfo;
 
             ChangeInfo(0);
+
+            if (persistentProgressService.Progress.Upgrading.IsUpgraded(Upgrading.UpgradeType.ShieldPortal) == false)
+                gameObject.SetActive(false);
         }
 
         private void OnDestroy()

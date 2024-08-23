@@ -14,6 +14,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         [SerializeField] private Spaceship _spaceship;
         [SerializeField] private SpaceshipMovement _spaceshipMovement;
         [SerializeField] private CollisionPortalPoint _collisionPortalPoint;
+        [SerializeField] private SpaceshipTurning _spaceshipTurning;
 
         private Cameras.GameplayCameras _cameras;
 
@@ -47,12 +48,13 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
         private IEnumerator SpaceshipMover(Action endCallback)
         {
-            Vector3 startPosition = new Vector3(0, 5.5f, -900);
-            Vector3 endPosition = new Vector3(0, 5.5f, 100);
+            Vector3 startPosition = new Vector3(0, 6.2f, -900);
+            Vector3 endPosition = new Vector3(0, 6.2f, 100);
             float duration = 3;
             float time = 0;
 
             _spaceshipMovement.IsStopped = true;
+            _spaceshipTurning.CanTurn = false;
             _cameras.IncludeCamera(Cameras.GameplayCameraType.StartCamera);
 
             while (_spaceship.transform.position != endPosition)
@@ -67,6 +69,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
             _cameras.IncludeCamera(Cameras.GameplayCameraType.MainCamera);
             _spaceshipMovement.IsStopped = false;
+            _spaceshipTurning.CanTurn = true;
             endCallback?.Invoke();
         }
     }

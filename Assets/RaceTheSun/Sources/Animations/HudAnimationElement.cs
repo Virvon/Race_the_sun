@@ -18,7 +18,7 @@ namespace Assets.RaceTheSun.Sources.Animations
 
         public override void Open()
         {
-            if (_isActivated == false)
+            if (_isActivated == false && gameObject.activeSelf)
             {
                 _isActivated = true;
                 _animator.SetTrigger(AnimationPath.ActivateElement);
@@ -34,7 +34,7 @@ namespace Assets.RaceTheSun.Sources.Animations
 
         private void SetOpen(bool isOpened)
         {
-            if(_isOpened == isOpened)
+            if(_isOpened == isOpened || gameObject.activeSelf == false)
                 return;
 
             _isOpened = isOpened;

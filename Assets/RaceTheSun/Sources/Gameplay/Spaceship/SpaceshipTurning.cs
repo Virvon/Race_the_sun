@@ -12,6 +12,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         [SerializeField] private float _turnDuration;
         [SerializeField] private float _maxDeviation;
         
+        public bool CanTurn;
         private SpaceshipModel _model;
 
         private float _currentTurn;
@@ -29,7 +30,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
         private void FixedUpdate()
         {
-            if (_model == null)
+            if (_model == null || CanTurn == false)
                 return;
 
             Turn(_inputService.Direction.x);

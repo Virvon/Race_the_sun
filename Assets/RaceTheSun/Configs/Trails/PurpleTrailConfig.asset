@@ -18,7 +18,7 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  BuyCost: 0
+  BuyCost: 500
   IsUnlockedOnStart: 0
   Name: "\u0424\u0438\u043E\u043B\u0435\u0442\u043E\u0432\u044B\u0439 \u0441\u043B\u0435\u0434"
   Title: "\u0424\u0438\u043E\u043B\u0435\u0442\u043E\u0432\u044B\u0439 \u0441\u043B\u0435\u0434,

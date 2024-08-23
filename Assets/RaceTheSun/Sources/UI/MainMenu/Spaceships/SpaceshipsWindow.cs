@@ -27,7 +27,6 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
         {
             gameObject.SetActive(true);
             _mainMenuCameras.IncludeCamera(MainMenuCameraType.SelectionCamera);
-            //_curentClickedSpaceshipWatcher.Reset();
         }
     }
 }

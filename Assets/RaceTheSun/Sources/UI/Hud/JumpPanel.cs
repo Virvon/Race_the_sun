@@ -26,6 +26,8 @@ namespace Assets.RaceTheSun.Sources.UI.ScoreView
             TryActive();
         }
 
+        public bool IsActivated;
+
         private void OnDestroy()
         {
             _spaceshipJump.JumpBoostsCountChanged -= TryActive;
@@ -37,11 +39,13 @@ namespace Assets.RaceTheSun.Sources.UI.ScoreView
         public void Hide()
         {
             gameObject.SetActive(false);
+            IsActivated = false;
         }
 
         public void TryActive()
         {
-            gameObject.SetActive(_spaceshipJump.JumpBoostsCount > 0);
+            IsActivated = _spaceshipJump.JumpBoostsCount > 0;
+            gameObject.SetActive(IsActivated);
         }
     }
 }

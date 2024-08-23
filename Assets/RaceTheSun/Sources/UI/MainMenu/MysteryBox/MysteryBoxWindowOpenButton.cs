@@ -17,23 +17,15 @@ namespace Assets.RaceTheSun.Sources.UI.MysteryBox
         {
             _persistentProgressService = persistentProgressService;
 
+            _button.onClick.AddListener(OnButtonClick);
+
             if (_persistentProgressService.Progress.MysteryBoxes.GetEndDate() <= DateTime.Now || persistentProgressService.Progress.MysteryBoxes.Count == 0)
                 gameObject.SetActive(false);
-
-            _button.onClick.AddListener(OnButtonClick);
-            _persistentProgressService.Progress.MysteryBoxes.CountChanged += OnMysteryBoxesCountChanged;
         }
 
         private void OnDestroy()
         {
-            _persistentProgressService.Progress.MysteryBoxes.CountChanged -= OnMysteryBoxesCountChanged;
             _button.onClick.RemoveListener(OnButtonClick);
-        }
-
-        private void OnMysteryBoxesCountChanged(int count)
-        {
-            if (count <= 0)
-                gameObject.SetActive(false);
         }
 
         private void OnButtonClick()

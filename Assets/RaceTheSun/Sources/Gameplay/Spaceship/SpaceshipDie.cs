@@ -18,6 +18,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         private WaitingService _waitingService;
         private StageMusic _stageMusic;
         private DestroySound _destroySound;
+        private Sun.Sun _sun;
+
         private SpaceshipShieldPortal _spaceshipShieldPortal;
 
         public event Action Died;
@@ -40,6 +42,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             _spaceshipShieldPortal = spaceshipShieldPortal;
         }
 
+        public void Init(Sun.Sun sun)
+        {
+            _sun = sun;
+        }
+
         public bool TryRevive()
         {
             _spaceship.gameObject.SetActive(false);
@@ -53,6 +60,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             }
             else
             {
+                _sun.IsStopped = true;
                 _destroySound.Play();
                 _stageMusic.Pause();
                 Died?.Invoke();
@@ -64,6 +72,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
         public void Stop()
         {
+            _sun.IsStopped = true;
             _stageMusic.Pause();
             Stopped?.Invoke();
             _cameras.IncludeCamera(Cameras.GameplayCameraType.SideCamera);

@@ -45,10 +45,10 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
 #if !UNITY_EDITOR && UNITY_WEBGL
             InterstitialAd.Show(onCloseCallback: (_) =>
             {
-                _persistentProgressService.Progress.Wallet.Take(_reward);
+                _persistentProgressService.Progress.Wallet.Give(_reward);
             });
 #else
-            _persistentProgressService.Progress.Wallet.Take(_reward);
+            _persistentProgressService.Progress.Wallet.Give(_reward);
 #endif
         }
     }

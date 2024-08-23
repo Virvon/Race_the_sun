@@ -31,6 +31,7 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService.Configs
 
         public string Name;
         public string Title;
+        public string UnlockText;
 
         public StatConfig GetStat(StatType statType)
         {

@@ -12,7 +12,7 @@ namespace Assets.RaceTheSun.Sources.Data
         public SpaceshipType Type;
         public StatData Battery;
         public StatData ExperienceMultiplier;
-        public StatData PickupRangeBoost;
+        public StatData PickUpRange;
         public StatData FloatTime;
         public bool IsUnlocked;
         public TrailType TrailType;
@@ -23,7 +23,7 @@ namespace Assets.RaceTheSun.Sources.Data
             Type = type;
             Battery = new StatData(StatType.Battery, batteryValue, startBateryLevel);
             ExperienceMultiplier = new StatData(StatType.ExperienceMultiplier, experienceMultiplierValue, startExperienceMultipllierLevel);
-            PickupRangeBoost = new StatData(StatType.PickUpRange, pickupRangeValue, startPickUpRangeLevel);
+            PickUpRange = new StatData(StatType.PickUpRange, pickupRangeValue, startPickUpRangeLevel);
             FloatTime = new StatData(StatType.FloatTime, floatTimeValue, startFloatTimeLevel);
             IsUnlocked = isUnlocked;
             TrailType = TrailType.Basic;
@@ -39,7 +39,7 @@ namespace Assets.RaceTheSun.Sources.Data
                 case StatType.ExperienceMultiplier:
                     return ExperienceMultiplier;
                 case StatType.PickUpRange:
-                    return PickupRangeBoost;
+                    return PickUpRange;
                 case StatType.FloatTime:
                     return FloatTime;
                 default:

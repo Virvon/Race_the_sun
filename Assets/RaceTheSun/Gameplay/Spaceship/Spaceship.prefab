@@ -104,13 +104,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 5699659358237058815}
-  _altitude: 4
+  _altitude: 5
   _maxDistance: 10
   _maxForce: 14000
   _layerMask:
     serializedVersion: 2
     m_Bits: 83
-  _damping: 3500
+  _damping: 6000
   _halfExtence: {x: 0.675, y: 0.37203634, z: 1.475}
 --- !u!1 &3350751564202882350
 GameObject:
@@ -199,7 +199,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 5699659358237058815}
-  _floatTime: 1
 --- !u!1 &3750234821986570821
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,7 +288,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b97322992e47904da18a576696ba410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dischargerDuration: 6
 --- !u!114 &1154407479975181392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,6 +375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _turnDuration: 0.3
   _maxDeviation: 0.4
+  CanTurn: 0
 --- !u!1 &6952589273879039241
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,7 +675,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e26d968b35cf1874abef3a219069d1aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collectRadius: 5
   _spaceship: {fileID: 997834433271052482}
   _spaceshipDie: {fileID: 6867741456451803694}
   _spaceshipJump: {fileID: 1793601898392911040}
@@ -739,6 +737,7 @@ MonoBehaviour:
   _spaceshipMovement: {fileID: 4442606206750293770}
   _battery: {fileID: 4024959007766294848}
   _spaceshipDie: {fileID: 6867741456451803694}
+  _spaceshipTurning: {fileID: 7435576250677095112}
 --- !u!65 &3106690647854551342
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -815,6 +814,7 @@ MonoBehaviour:
   _spaceship: {fileID: 997834433271052482}
   _spaceshipMovement: {fileID: 4442606206750293770}
   _collisionPortalPoint: {fileID: 8397933910233311415}
+  _spaceshipTurning: {fileID: 7435576250677095112}
 --- !u!1 &8835830059162219300
 GameObject:
   m_ObjectHideFlags: 0

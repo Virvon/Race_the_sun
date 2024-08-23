@@ -81,7 +81,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
                 _persistentProgressService.Progress.AvailableTrails.UnlockedTrails.Add(_currentTrailType);
                 _trailInfoPanel.ShowInfo(_currentTrailType);
             }
-                
+
+            _currentSelectedFrame.SetActive(false);
         }
     }
 }

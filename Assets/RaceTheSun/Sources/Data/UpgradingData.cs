@@ -43,6 +43,19 @@ namespace Assets.RaceTheSun.Sources.Data
             if (UpgradedTypes.Contains(type))
                 return;
 
+            switch (type)
+            {
+                case UpgradeType.FirstAttachmentCell:
+                    AttachmentCellsCount++;
+                    break;
+                case UpgradeType.SecondAttachmentCell:
+                    AttachmentCellsCount++;
+                    break;
+                case UpgradeType.ThirdAttachmentCell:
+                    AttachmentCellsCount++;
+                    break;
+            }
+
             UpgradedTypes.Add(type);
         }
 

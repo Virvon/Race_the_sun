@@ -23,8 +23,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         {
             _dischargerDuration = persistentProgressService.Progress.AvailableSpaceships.GetCurrentSpaceshipData().Battery.Value;
             _battery = FullBattery;
-
-            Debug.Log("battery " + _dischargerDuration);
         }
 
         public void ChangeShadowed(bool isShadowed)

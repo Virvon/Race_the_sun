@@ -19,6 +19,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.TrailPanel
         [SerializeField] private TMP_Text _buttonText;
         [SerializeField] private TMP_Text _trailName;
         [SerializeField] private TMP_Text _trailTitle;
+        [SerializeField] private CurrentClickedSpaceshipInfo _currentClickedSpaceshipInfo;
 
         private IPersistentProgressService _persistentProgressService;
         private IStaticDataService _staticDataService;
@@ -62,7 +63,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.TrailPanel
 
             if(_persistentProgressService.Progress.AvailableTrails.IsUnlocked(trailType))
             {
-                _button.interactable = _persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(_persistentProgressService.Progress.AvailableSpaceships.CurrentSpaceshipType).TrailType != trailType;
+                _button.interactable = _persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(_currentClickedSpaceshipInfo.SpaceshipType).TrailType != trailType;
                 _buttonText.text = _unlockedButtonText;
             }
             else

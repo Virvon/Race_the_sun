@@ -56,9 +56,6 @@ namespace Assets.RaceTheSun.Sources.Infrustructure.GameStateMachine.States
 
             progress.AvailableStatsToUpgrade.Stats.Add(StatType.Battery);
 
-            progress.Wallet.Value = 100000;
-            progress.LevelProgress.UpdateExperience(10000);
-
             return progress;
         }
     }

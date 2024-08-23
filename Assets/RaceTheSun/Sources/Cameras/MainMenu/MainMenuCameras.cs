@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.Cameras
 {

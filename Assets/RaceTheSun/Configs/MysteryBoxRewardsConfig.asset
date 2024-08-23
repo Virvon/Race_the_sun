@@ -19,3 +19,4 @@ MonoBehaviour:
   MaxScoreItemsRewardMinCount: 500
   MaxScoreItemsRewardMaxCount: 1000
   ExperienceRewardChance: 20
+  ExperienceReward: 400

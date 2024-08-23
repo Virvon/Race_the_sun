@@ -18,7 +18,7 @@
         public void Give()
         {
             ScoreItemsPerGame++;
-            _persistentProgressService.Progress.Wallet.Take(1);
+            _persistentProgressService.Progress.Wallet.Give(1);
             _progressMultiplierCounter.GiveScoreItem();
         }
     }

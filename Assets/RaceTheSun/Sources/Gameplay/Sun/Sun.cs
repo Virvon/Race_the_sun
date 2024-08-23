@@ -15,6 +15,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
         [SerializeField] private float _upMoveSpeed;
         [SerializeField] private float _hidedHeight;
 
+        public bool IsStopped;
         private Transform _spaceship;
         private bool _isShadowed;
         private float _progress;
@@ -30,13 +31,14 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
             _battery = spaceship.GetComponentInChildren<Battery>();
             _isMovedDown = true;
             _isHided = false;
+            IsStopped = false;
 
             spaceship.Init(this);
         }
 
         private void Update()
         {
-            if (_isHided)
+            if (_isHided || IsStopped)
                 return;
 
             float positionY = GetHeight();

@@ -27,9 +27,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.CollectItems
 
         private void Start()
         {
-            _collectRadius = _persistentProgressService.Progress.AvailableSpaceships.GetCurrentSpaceshipData().PickupRangeBoost.Value + _spaceship.AttachmentStats.CollectRadius;
-
-            Debug.Log("pick up range " + _collectRadius);
+            _collectRadius = _persistentProgressService.Progress.AvailableSpaceships.GetCurrentSpaceshipData().PickUpRange.Value + _spaceship.AttachmentStats.CollectRadius;
         }
 
         private void Update()

@@ -15,8 +15,10 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         [SerializeField] private SpaceshipMovement _spaceshipMovement;
         [SerializeField] private Battery _battery;
         [SerializeField] private SpaceshipDie _spaceshipDie;
+        [SerializeField] private SpaceshipTurning _spaceshipTurning;
 
         private BoostedSpeed _boostedSpeed;
+        private CollisionSpeed _collisionSpeed;
         private Sun.Sun _sun;
         private ISpeedProvider _speedProvider;
 
@@ -33,6 +35,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
         public float Speed { get; private set; }
         public AttachmentStats AttachmentStats { get; private set; }
+
         private void Update()
         {
             if(_speedProvider != null)
@@ -42,6 +45,15 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         public void Init(Sun.Sun sun)
         {
             _sun = sun;
+        }
+
+        public bool GetCollisionPerStage()
+        {
+            bool isCollidedPerStage = _collisionSpeed.IsCollidedPerStage;
+
+            _collisionSpeed.Reset();
+
+            return isCollidedPerStage;
         }
 
         public void BoostSpeed()
@@ -58,10 +70,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         public void UpdateSpeedDecorator()
         {
             _speedProvider = new SpaceshipSpeed(DefaultSpeed);
-            _speedProvider = new CollisionSpeed(_speedProvider, _spaceshipMovement, DefaultSpeed, _spaceshipDie);
+            _collisionSpeed = new CollisionSpeed(_speedProvider, _spaceshipMovement, DefaultSpeed, _spaceshipDie);
+            _speedProvider = _collisionSpeed;
             _boostedSpeed = new BoostedSpeed(_speedProvider, DefaultSpeed, this, _sun);
             _speedProvider = _boostedSpeed;
-            _speedProvider = new BatterySpeed(_speedProvider, _battery, _spaceshipDie);
+            _speedProvider = new BatterySpeed(_speedProvider, _battery, _spaceshipDie, _spaceshipTurning);
         }
 
         private AttachmentStats GetAttachmentStats(Attachment.Attachment attachment, IPersistentProgressService persistentProgressService)

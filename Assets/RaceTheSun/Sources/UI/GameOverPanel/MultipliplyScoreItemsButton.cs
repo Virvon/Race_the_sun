@@ -52,12 +52,12 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
 #if !UNITY_EDITOR && UNITY_WEBGL
             InterstitialAd.Show(onCloseCallback: (_) =>
             {
-                _persistentProgressService.Progress.Wallet.Take(_reward);
-                _resultPanel.SetScoreItemsValue(_reward + _scoreItemsCounter.ScoreItemsPerGame);
-                gameObject.SetActive(false);
+                 _persistentProgressService.Progress.Wallet.Give(_reward);
+            _resultPanel.SetScoreItemsValue(_reward + _scoreItemsCounter.ScoreItemsPerGame);
+            gameObject.SetActive(false);
             });
 #else
-            _persistentProgressService.Progress.Wallet.Take(_reward);
+            _persistentProgressService.Progress.Wallet.Give(_reward);
             _resultPanel.SetScoreItemsValue(_reward + _scoreItemsCounter.ScoreItemsPerGame);
             gameObject.SetActive(false);
 #endif

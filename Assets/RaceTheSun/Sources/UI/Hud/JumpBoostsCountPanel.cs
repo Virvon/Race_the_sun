@@ -15,7 +15,7 @@ namespace Assets.RaceTheSun.Sources.UI.ScoreView
         private SpaceshipJump _spaceshipJump;
 
         [Inject]
-        private void Construct(SpaceshipJump spaceshipJump, Spaceship spaceship)
+        private void Construct(SpaceshipJump spaceshipJump, Spaceship spaceship, PersistentProgressService persistentProgressService)
         {
             _spaceshipJump = spaceshipJump;
             _maxJumpBoostsCountValue.text = spaceship.AttachmentStats.MaxJumpBoostsCount.ToString();
@@ -23,6 +23,9 @@ namespace Assets.RaceTheSun.Sources.UI.ScoreView
             _spaceshipJump.JumpBoostsCountChanged += ChangeInfo;
 
             ChangeInfo();
+
+            if (persistentProgressService.Progress.Upgrading.IsUpgraded(Upgrading.UpgradeType.JumpBoost) == false)
+                gameObject.SetActive(false);
         }
 
         private void OnDestroy()

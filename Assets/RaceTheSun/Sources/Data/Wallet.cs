@@ -9,7 +9,7 @@ namespace Assets.RaceTheSun.Sources.Data
 
         public event Action<int> ValueChanged;
 
-        public void Take(int value)
+        public void Give(int value)
         {
             Value += value;
             ValueChanged?.Invoke(Value);

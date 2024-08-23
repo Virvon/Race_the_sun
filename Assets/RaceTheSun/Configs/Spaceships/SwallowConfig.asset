@@ -45,10 +45,10 @@ MonoBehaviour:
     UpgradeValue: 0.5
   PickUpRange:
     Type: 2
-    StartValue: 35
+    StartValue: 10
     StartLevel: 1
     MaxLevel: 5
-    UpgradeValue: 17.5
+    UpgradeValue: 5
   FloatTime:
     Type: 3
     StartValue: 1
@@ -58,3 +58,4 @@ MonoBehaviour:
   Name: "\u0421\u0432\u0430\u043B\u043B\u043E\u0432"
   Title: "\u0411\u0430\u0437\u043E\u0432\u044B\u0439 \u043A\u043E\u0440\u0430\u0431\u043B\u044C.
     \u042D\u0442\u043E \u0432\u0441\u0435."
+  UnlockText: 

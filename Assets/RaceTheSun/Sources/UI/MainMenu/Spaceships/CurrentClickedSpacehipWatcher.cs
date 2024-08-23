@@ -45,8 +45,10 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
             CurrentSpaceshipChanged?.Invoke(_persistentProgressService.Progress.AvailableSpaceships.CurrentSpaceshipType);
         }
 
-        private void OnSpaceshipButtonClicked(SpaceshipType spaceshipType) =>
+        private void OnSpaceshipButtonClicked(SpaceshipType spaceshipType)
+        {
             CurrentSpaceshipChanged?.Invoke(spaceshipType);
+        }
 
         private void OnSpaceshipUnlocked(SpaceshipType type) =>
             CurrentSpaceshipChanged?.Invoke(type);

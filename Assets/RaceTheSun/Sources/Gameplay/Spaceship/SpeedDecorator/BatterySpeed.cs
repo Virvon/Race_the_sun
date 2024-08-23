@@ -11,13 +11,15 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
         private float _speedMultiplier;
         private SpaceshipDie _spaceshipDie;
         private bool _isStopped;
+        private SpaceshipTurning _spaceshipTurning;
 
-        public BatterySpeed(ISpeedProvider wrappedEntity, Battery battery, SpaceshipDie spaceshipDie) : base(wrappedEntity)
+        public BatterySpeed(ISpeedProvider wrappedEntity, Battery battery, SpaceshipDie spaceshipDie, SpaceshipTurning spaceshipTurning) : base(wrappedEntity)
         {
             _battery = battery;
             _spaceshipDie = spaceshipDie;
             _speedMultiplier = 1;
             _isStopped = false;
+            _spaceshipTurning = spaceshipTurning;
         }
 
         protected override float GetSpeedInternal()
@@ -37,6 +39,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
                 {
                     _isStopped = true;
                     _spaceshipDie.Stop();
+                    _spaceshipTurning.CanTurn = false;
                 }
             }
 
