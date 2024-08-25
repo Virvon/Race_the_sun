@@ -1,5 +1,4 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
-using Cinemachine;
+﻿using Cinemachine;
 using System;
 using UnityEngine;
 
@@ -16,42 +15,27 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Cameras
         private StartCamera _startCamera;
         private ShieldPortalCamera _shieldPortalCamera;
         private CollisionPortalCamera _collisionPortalCamera;
-        private SpaceshipShieldPortal _spaceshipShieldPortal;
 
-        public GameplayCameras()
-        {
+        public GameplayCameras() =>
             _cinemachineBrain = Camera.main.GetComponent<CinemachineBrain>();
-        }
 
-        public void Init(SpaceshipMainCamera spaceshipMainCamera)
-        {
+        public void Init(SpaceshipMainCamera spaceshipMainCamera) =>
             _spaceshipMainCamera = spaceshipMainCamera;
-        }
 
-        public void Init(SpaceshipSideCamera spaceshipSideCamera)
-        {
+        public void Init(SpaceshipSideCamera spaceshipSideCamera) =>
             _spaceshipSideCamera = spaceshipSideCamera;
-        }
 
-        public void Init(SpaceshipUpperCamera spaceshipUpperCamera)
-        {
+        public void Init(SpaceshipUpperCamera spaceshipUpperCamera) =>
             _spaceshipUpperCamera = spaceshipUpperCamera;
-        }
 
-        public void Init(StartCamera startCamera)
-        {
+        public void Init(StartCamera startCamera) =>
             _startCamera = startCamera;
-        }
 
-        public void Init(ShieldPortalCamera shieldPortalCamera)
-        {
+        public void Init(ShieldPortalCamera shieldPortalCamera) =>
             _shieldPortalCamera = shieldPortalCamera;
-        }
 
-        public void Init(CollisionPortalCamera collisionPortalCamera)
-        {
+        public void Init(CollisionPortalCamera collisionPortalCamera) =>
             _collisionPortalCamera = collisionPortalCamera;
-        }
 
         public void IncludeCamera(GameplayCameraType type)
         {
@@ -90,6 +74,9 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Cameras
             _currentCamera.CinemachineVirtualCamera.Priority = (int)CameraPriority.Use;
         }
 
-        
+        public void ShakeSpaceshipMainCamera()
+        {
+            _spaceshipMainCamera.Shake();
+        }
     }
 }

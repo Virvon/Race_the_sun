@@ -45,9 +45,9 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
 
         public void Open()
         {
+            _header.SetActive(true);
             _gameOverPanelAnimationElement.Open();
             SetScoreItemsValue(_scoreItemsCounter.ScoreItemsPerGame);
-            _header.SetActive(true);
         }
 
         private void Hide()

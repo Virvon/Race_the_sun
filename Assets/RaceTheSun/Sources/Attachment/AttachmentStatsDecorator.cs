@@ -10,10 +10,8 @@ namespace Assets.RaceTheSun.Sources.Attachment
     {
         protected readonly IAttachmentStatsProvider WrappedEntity;
 
-        protected AttachmentStatsDecorator(IAttachmentStatsProvider wrappedEntity)
-        {
+        protected AttachmentStatsDecorator(IAttachmentStatsProvider wrappedEntity) =>
             WrappedEntity = wrappedEntity;
-        }
 
         public AttachmentStats GetStats() =>
             GetStatsInternal();

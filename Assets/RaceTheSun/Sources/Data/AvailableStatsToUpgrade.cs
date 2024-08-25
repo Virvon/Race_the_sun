@@ -10,10 +10,8 @@ namespace Assets.RaceTheSun.Sources.Data
     {
         public List<StatType> Stats;
 
-        public AvailableStatsToUpgrade()
-        {
-            Stats = new ();
-        }
+        public AvailableStatsToUpgrade() =>
+            Stats = new();
 
         public void Add(StatType stat)
         {

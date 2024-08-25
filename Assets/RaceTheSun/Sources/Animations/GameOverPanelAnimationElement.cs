@@ -7,14 +7,10 @@ namespace Assets.RaceTheSun.Sources.Animations
         public event Action Opened;
         public event Action Hided;
 
-        public void OnOpened()
-        {
+        public void OnOpened() =>
             Opened?.Invoke();
-        }
-        
-        public void OnHided()
-        {
+
+        public void OnHided() =>
             Hided?.Invoke();
-        }
     }
 }

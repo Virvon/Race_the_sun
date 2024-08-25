@@ -20,6 +20,11 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
                 infoButton.ShowedInformation -= OnInfoButtonShowedInformation;
         }
 
+        public void Hide()
+        {
+            _currentInformationButton?.HideInfo();
+        }
+
         private void OnInfoButtonShowedInformation(InformationButton informationButton)
         {
             _currentInformationButton?.HideInfo();

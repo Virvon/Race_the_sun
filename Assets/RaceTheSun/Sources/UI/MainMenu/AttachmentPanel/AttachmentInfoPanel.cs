@@ -18,6 +18,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
         [SerializeField] private string _equipText;
         [SerializeField] private TMP_Text _upgradeName;
         [SerializeField] private TMP_Text _title;
+        [SerializeField] private GameObject _lockIcon;
 
         private IPersistentProgressService _persistentProgressService;
         private IStaticDataService _staticDataService;
@@ -66,11 +67,14 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
                     _button.interactable = spaceshipData.UpgradeTypes.Count < _persistentProgressService.Progress.Upgrading.AttachmentCellsCount;
                     _buttonText.text = _equipText;
                 }
+
+                _lockIcon.SetActive(false);
             }
             else
             {
                 _button.interactable = false;
                 _buttonText.text = "";
+                _lockIcon.SetActive(true);
             }
 
             _upgradeName.text = _staticDataService.GetAttachment(upgradeType).Name;

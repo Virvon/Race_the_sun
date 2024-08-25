@@ -13,7 +13,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Bird
         private const float Delta = 0.5f;
         private const float ScoreItemPositionY = 0.5f;
         private const float ItemLiveTime = 5;
-
+        private const int MinItemNumber = 1;
         private readonly Vector3 _dropPositionOffset = new Vector3(0, -5, 0);
 
         [SerializeField] private float _speed;
@@ -83,7 +83,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Bird
 
             while(isItmeChoosed == false)
             {
-                int itemIndex = Random.Range(1, 4);
+                int itemIndex = Random.Range(MinItemNumber, 4);
 
                 switch (itemIndex)
                 {

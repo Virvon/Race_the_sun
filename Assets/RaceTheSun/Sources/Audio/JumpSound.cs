@@ -8,19 +8,13 @@ namespace Assets.RaceTheSun.Sources.Audio
         [SerializeField] private SpaceshipJump _spaceshipJump;
         [SerializeField] private AudioSource _audioSource;
 
-        private void OnEnable()
-        {
+        private void OnEnable() =>
             _spaceshipJump.Jumped += OnJumped;
-        }
 
-        private void OnDisable()
-        {
+        private void OnDisable() =>
             _spaceshipJump.Jumped -= OnJumped;
-        }
 
-        private void OnJumped()
-        {
+        private void OnJumped() =>
             _audioSource.Play();
-        }
     }
 }

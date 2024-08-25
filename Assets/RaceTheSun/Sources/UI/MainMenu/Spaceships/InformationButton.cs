@@ -39,7 +39,6 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
 
         private void OnOpenButtonClilcked()
         {
-            Debug.Log("open button clicked");
             ShowedInformation?.Invoke(this);
         }
     }

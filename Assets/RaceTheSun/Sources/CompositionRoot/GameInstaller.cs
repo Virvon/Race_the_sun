@@ -32,27 +32,43 @@ namespace Assets.RaceTheSun.Sources.CompositionRoot
             BindTimeScale();
             BindCoroutineRunner();
             BindWaitingService();
-            Container.BindInterfacesAndSelfTo<Attachment.Attachment>().AsSingle();
+            BindAttachment();
+        }
+
+        private void BindAttachment()
+        {
+            Container
+                .BindInterfacesAndSelfTo<Attachment.Attachment>()
+                .AsSingle();
         }
 
         private void BindInputService()
         {
-            Container.BindInterfacesAndSelfTo<InputService>().AsSingle();
+            Container
+                .BindInterfacesAndSelfTo<InputService>()
+                .AsSingle();
         }
 
         private void BindWaitingService()
         {
-            Container.BindInterfacesAndSelfTo<WaitingService>().AsSingle();
+            Container
+                .BindInterfacesAndSelfTo<WaitingService>()
+                .AsSingle();
         }
 
         private void BindCoroutineRunner()
         {
-            Container.Bind<ICoroutineRunner>().FromInstance(this).AsSingle();
+            Container
+                .Bind<ICoroutineRunner>()
+                .FromInstance(this)
+                .AsSingle();
         }
 
         private void BindTimeScale()
         {
-            Container.BindInterfacesAndSelfTo<TimeScale>().AsSingle();
+            Container
+                .BindInterfacesAndSelfTo<TimeScale>()
+                .AsSingle();
         }
 
         private void BindUiFactory()
@@ -65,14 +81,26 @@ namespace Assets.RaceTheSun.Sources.CompositionRoot
         }
 
 
-        private void BindPersistentProgressService() =>
-            Container.BindInterfacesAndSelfTo<PersistentProgressService>().AsSingle();
+        private void BindPersistentProgressService()
+        {
+            Container
+                .BindInterfacesAndSelfTo<PersistentProgressService>()
+                .AsSingle();
+        }
 
-        private void BindSaveLoadService() =>
-            Container.BindInterfacesAndSelfTo<SaveLoadService>().AsSingle();
+        private void BindSaveLoadService()
+        {
+            Container
+                .BindInterfacesAndSelfTo<SaveLoadService>()
+                .AsSingle();
+        }
 
-        private void BindStaticDataService() =>
-            Container.BindInterfacesAndSelfTo<StaticDataService>().AsSingle();
+        private void BindStaticDataService()
+        {
+            Container
+                .BindInterfacesAndSelfTo<StaticDataService>()
+                .AsSingle();
+        }
 
         private void BindGameplayFactory()
         {
@@ -83,16 +111,29 @@ namespace Assets.RaceTheSun.Sources.CompositionRoot
                 .AsSingle();
         }
 
-        private void BindSceneLoader() =>
-            Container.BindInterfacesTo<SceneLoader>().AsSingle();
+        private void BindSceneLoader()
+        {
+            Container
+                .BindInterfacesTo<SceneLoader>()
+                .AsSingle();
+        }
 
-        private void BindAssetProvider() =>
-            Container.BindInterfacesTo<AssetProvider>().AsSingle();
+        private void BindAssetProvider()
+        {
+            Container
+                .BindInterfacesTo<AssetProvider>()
+                .AsSingle();
+        }
 
         private void BindLoadingCurtain()
         {
-            Container.BindFactory<string, UniTask<LoadingCurtain>, LoadingCurtain.Factory>().FromFactory<KeyPrefabFactoryAsync<LoadingCurtain>>();
-            Container.BindInterfacesAndSelfTo<LoadingCurtainProxy>().AsSingle();
+            Container
+                .BindFactory<string, UniTask<LoadingCurtain>, LoadingCurtain.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<LoadingCurtain>>();
+
+            Container
+                .BindInterfacesAndSelfTo<LoadingCurtainProxy>()
+                .AsSingle();
         }
 
         private void BindGameStateMachine() =>

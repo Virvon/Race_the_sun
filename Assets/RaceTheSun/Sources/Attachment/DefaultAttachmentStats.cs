@@ -8,10 +8,8 @@
 
         private readonly AttachmentStats _attachmentStats;
 
-        public DefaultAttachmentStats()
-        {
+        public DefaultAttachmentStats() =>
             _attachmentStats = new(CollectRadius, MaxJumpBoostsCount, MaxShieldsCount);
-        }
 
         public AttachmentStats GetStats()
         {

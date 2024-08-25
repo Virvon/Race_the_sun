@@ -1,6 +1,8 @@
 ﻿using Assets.RaceTheSun.Sources.Attachment;
 using Assets.RaceTheSun.Sources.Data;
+using Assets.RaceTheSun.Sources.Gameplay.Cameras;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator;
+using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
 using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine;
@@ -21,13 +23,18 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         private CollisionSpeed _collisionSpeed;
         private Sun.Sun _sun;
         private ISpeedProvider _speedProvider;
+        private GameplayCameras _gameplayCameras;
+        private IGameplayFactory _gameplayFactory;
 
         public event Action SpeedBoosted;
        
 
         [Inject]
-        private void Construct(ScoreCounter.ScoreCounter scoreCounter, Attachment.Attachment attachment, IPersistentProgressService persistentProgressService)
+        private void Construct(ScoreCounter.ScoreCounter scoreCounter, Attachment.Attachment attachment, IPersistentProgressService persistentProgressService, GameplayCameras gameplayCameras, IGameplayFactory gameplayFactory)
         {
+            _gameplayCameras = gameplayCameras;
+            _gameplayFactory = gameplayFactory;
+
             scoreCounter.Init(this);
 
             AttachmentStats = GetAttachmentStats(attachment, persistentProgressService);
@@ -70,7 +77,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         public void UpdateSpeedDecorator()
         {
             _speedProvider = new SpaceshipSpeed(DefaultSpeed);
-            _collisionSpeed = new CollisionSpeed(_speedProvider, _spaceshipMovement, DefaultSpeed, _spaceshipDie);
+            _collisionSpeed = new CollisionSpeed(_speedProvider, _spaceshipMovement, DefaultSpeed, _spaceshipDie, _gameplayCameras, _gameplayFactory);
             _speedProvider = _collisionSpeed;
             _boostedSpeed = new BoostedSpeed(_speedProvider, DefaultSpeed, this, _sun);
             _speedProvider = _boostedSpeed;

@@ -1,7 +1,6 @@
 ﻿using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
 using Assets.RaceTheSun.Sources.Upgrading;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.RaceTheSun.Sources.Attachment
@@ -10,10 +9,8 @@ namespace Assets.RaceTheSun.Sources.Attachment
     {
         private readonly IStaticDataService _staticDataService;
 
-        public Attachment(IStaticDataService staticDataService)
-        {
+        public Attachment(IStaticDataService staticDataService) =>
             _staticDataService = staticDataService;
-        }
 
         public IAttachmentStatsProvider Wrap(UpgradeType attachmentUpgradeType, IAttachmentStatsProvider wrappedAttachmentStatsProvider)
         {

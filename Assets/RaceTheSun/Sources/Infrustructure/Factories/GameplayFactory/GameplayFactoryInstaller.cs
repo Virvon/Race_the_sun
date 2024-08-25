@@ -96,6 +96,10 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             Container
                 .BindFactory<string, UniTask<DestroySound>, DestroySound.Factory>()
                 .FromFactory<KeyPrefabFactoryAsync<DestroySound>>();
+
+            Container
+                .BindFactory<string, UniTask<CollisionFx>, CollisionFx.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<CollisionFx>>();
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Assets.RaceTheSun.Sources.Gameplay.Cameras;
+using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
+using UnityEngine;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
 {
@@ -11,17 +13,21 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
         private readonly SpaceshipMovement _spaceshipMovement;
         private readonly float _defaultSpeed;
         private readonly SpaceshipDie _spaceshipDie;
+        private readonly IGameplayFactory _gameplayFactory;
+        private readonly GameplayCameras _cameras;
         
         private float _speed;
 
-        public CollisionSpeed(ISpeedProvider wrappedEntity, SpaceshipMovement spaceshipMovement, float defaultSpeed, SpaceshipDie spaceshipDie) : base(wrappedEntity)
+        public CollisionSpeed(ISpeedProvider wrappedEntity, SpaceshipMovement spaceshipMovement, float defaultSpeed, SpaceshipDie spaceshipDie, GameplayCameras cameras, IGameplayFactory gameplayFactory) : base(wrappedEntity)
         {
             _spaceshipMovement = spaceshipMovement;
             _defaultSpeed = defaultSpeed;
             _speed = _defaultSpeed;
             _spaceshipDie = spaceshipDie;
+            _gameplayFactory = gameplayFactory;
 
             IsCollidedPerStage = false;
+            _cameras = cameras;
         }
 
         public bool IsCollidedPerStage { get; private set; }
@@ -46,9 +52,15 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
             if (_spaceshipMovement.IsCollided)
             {
                 if (_spaceshipMovement.CollisionInfo.Dot > DestoryDot)
+                {
                     _speed = MinSpeed;
+                    _cameras.ShakeSpaceshipMainCamera();
+                    _gameplayFactory.CreateCollisionFx(_spaceshipMovement.CollisionInfo.CollisionPosition, _spaceshipMovement.transform);
+                }
                 else if (_spaceshipDie.TryRevive() == false)
+                {
                     _speed = 0;
+                }
 
                 IsCollidedPerStage = true;
             }

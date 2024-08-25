@@ -8,7 +8,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
 {
     public class SpaceshipsWindow : OpenableWindow
     {
-        [SerializeField] private CurrentClickedSpacehipWatcher _curentClickedSpaceshipWatcher;
+        [SerializeField] private InformationPanelActivator _informationPanelActivator;
 
         private MainMenuCameras _mainMenuCameras;
 
@@ -21,6 +21,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
         public override void Hide()
         {
             gameObject.SetActive(false);
+            _informationPanelActivator.Hide();
         }
 
         public override void Open()

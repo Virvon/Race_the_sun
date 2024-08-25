@@ -40,9 +40,9 @@ namespace Assets.RaceTheSun.Sources.Gameplay
             spaceship.GetComponentInChildren<BatteryIndicator>().Init(spaceshipModel.GetComponentInChildren<MeshRenderer>());
 
             await _gameplayFactory.CreateSun();
+            await _gameplayFactory.CreatePlane();
             await _gameplayFactory.CreateShpaceshipShieldPortal();
             await _gameplayFactory.CreateBird();
-            await _gameplayFactory.CreatePlane();
             await _gameplayFactory.CreateWorldGenerator();
             await _gameplayFactory.CreateHud();
             await _gameplayFactory.CreateSpaceshipMainCamera();

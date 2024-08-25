@@ -27,10 +27,8 @@ namespace Assets.RaceTheSun.Sources.Animations
             SetOpen(true);
         }
 
-        public override void Hide()
-        {
+        public override void Hide() =>
             SetOpen(false);
-        }
 
         private void SetOpen(bool isOpened)
         {

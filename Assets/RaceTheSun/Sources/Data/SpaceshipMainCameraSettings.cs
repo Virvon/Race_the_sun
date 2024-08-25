@@ -9,10 +9,8 @@ namespace Assets.RaceTheSun.Sources.Data
 
         public event Action Changed;
 
-        public SpaceshipMainCameraSettings()
-        {
+        public SpaceshipMainCameraSettings() =>
             IsFromThirdPerson = true;
-        }
 
         public void Change(bool isFromThirdPerson)
         {

@@ -1,6 +1,7 @@
 ﻿using Assets.RaceTheSun.Sources.Audio;
 using Assets.RaceTheSun.Sources.Gameplay.ScoreCounter;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
+using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
 using UnityEngine;
 using Zenject;
 
@@ -13,6 +14,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.CollectItems
         [SerializeField] private Spaceship.Spaceship _spaceship;
         [SerializeField] private SpaceshipDie _spaceshipDie;
         [SerializeField] private SpaceshipJump _spaceshipJump;
+        [SerializeField] private CollectItemEffect _collectItemEffect;
+        [SerializeField] private ParticleSystem _destroyItemEffectPrefab;
 
         private float _collectRadius;
         private IPersistentProgressService _persistentProgressService;
@@ -39,6 +42,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.CollectItems
                 if (_overlapColliders[i].TryGetComponent(out IItem item))
                 {
                     TakeItem(item);
+                    Instantiate(_destroyItemEffectPrefab, _overlapColliders[i].transform.position, Quaternion.identity).GetComponent<DestroyItemEffect>().SetColor(item.DestroyEffectColor);
+                    _collectItemEffect.Show();
                     Destroy(_overlapColliders[i].gameObject);
                 }
             }

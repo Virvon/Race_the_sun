@@ -25,8 +25,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
 
         public UniTask Enter()
         {
-            _persistentProgressService.Progress.LevelProgress.UpdateExperience(GetExperience());
             _resultPanel.Open();
+            _persistentProgressService.Progress.LevelProgress.UpdateExperience(GetExperience());
             _resultPanel.Hided += OnResultPanelHided;
             return default;
         }

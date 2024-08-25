@@ -11,25 +11,17 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Cameras
         private CustomizeCamera _customizeCamera;
         private TrailCamera _trailCamera;
 
-        public void Init(MainMenuMainCamera mainMenuMainCamera)
-        {
+        public void Init(MainMenuMainCamera mainMenuMainCamera) =>
             _mainMenuMainCamera = mainMenuMainCamera;
-        }
 
-        public void Init(SelectionCamera trailCamera)
-        {
+        public void Init(SelectionCamera trailCamera) =>
             _selectionCamera = trailCamera;
-        }
 
-        public void Init(CustomizeCamera customizeCamera)
-        {
+        public void Init(CustomizeCamera customizeCamera) =>
             _customizeCamera = customizeCamera;
-        }
 
-        public void Init(TrailCamera trailCamera)
-        {
+        public void Init(TrailCamera trailCamera) =>
             _trailCamera = trailCamera;
-        }
 
         public void IncludeCamera(MainMenuCameraType type)
         {
@@ -61,7 +53,5 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Cameras
             _currentCamera.ResetPosition();
             _currentCamera.CinemachineFreeLook.Priority = (int)CameraPriority.Use;
         }
-
-
     }
 }

@@ -9,10 +9,8 @@ namespace Assets.RaceTheSun.Sources.Data
     {
         public List<TrailType> UnlockedTrails;
 
-        public AvailableTrails(List<TrailType> trails)
-        {
+        public AvailableTrails(List<TrailType> trails) =>
             UnlockedTrails = trails;
-        }
 
         public bool IsUnlocked(TrailType type) =>
             UnlockedTrails.Contains(type);

@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391b541fb12d3d14595c02f1dd51d9d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroyEffectColor: {r: 0.43867922, g: 0.7905249, b: 1, a: 1}
 --- !u!135 &6946561755339728881
 SphereCollider:
   m_ObjectHideFlags: 0

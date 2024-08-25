@@ -19,23 +19,18 @@ namespace Assets.RaceTheSun.Sources.Audio
         [SerializeField] private AudioSource _stage4AudioSource;
         [SerializeField] private AudioSource _bonusStageAudioSource;
         [SerializeField] private AudioSource _betweenStageAudioSource;
-
         [SerializeField] private float _fadingDuration;
         [SerializeField] private AudioMixer _mixer;
 
-        private AudioClip _currentAudioClip;
-        private Coroutine _coroutine;
         private CurrentSpaceshipStage _currentSpcaceshipStage;
-        private IStaticDataService _staticDataService;
         private bool _isPaused;
 
         private AudioSource _currentAudioSource;
 
         [Inject]
-        private void Construct(CurrentSpaceshipStage currentSpaceshipStage, IStaticDataService staticDataService)
+        private void Construct(CurrentSpaceshipStage currentSpaceshipStage)
         {
             _currentSpcaceshipStage = currentSpaceshipStage;
-            _staticDataService = staticDataService;
 
             _isPaused = false;
             _currentAudioSource = _startStageAudioSource;
@@ -43,10 +38,8 @@ namespace Assets.RaceTheSun.Sources.Audio
             _currentSpcaceshipStage.StageChanged += ChangeAudioClip;
         }
 
-        private void OnDestroy()
-        {
+        private void OnDestroy() =>
             _currentSpcaceshipStage.StageChanged -= ChangeAudioClip;
-        }
 
         public void Pause()
         {
@@ -65,18 +58,6 @@ namespace Assets.RaceTheSun.Sources.Audio
 
         private void ChangeAudioClip(Stage currentStage)
         {
-            //if (_coroutine != null)
-            //    StopCoroutine(_coroutine);
-
-            //AudioClip audioClip = _staticDataService.GetStage(currentStage).AudioClip;
-
-            //_coroutine = StartCoroutine(Changer(audioClip));
-
-            //_startStageAudioSource.Stop();
-            //_startStageAudioSource.clip = _staticDataService.GetStage(currentStage).AudioClip;
-            //_startStageAudioSource.Play();
-            //_isPaused = false;
-
             AudioSource targetAudioSource = null;
 
             switch (currentStage)
@@ -105,52 +86,12 @@ namespace Assets.RaceTheSun.Sources.Audio
             }
 
             if(targetAudioSource == null)
-            {
-                Debug.Log("audio source not founded");
                 return;
-            }
 
             _currentAudioSource.Stop();
             _currentAudioSource = targetAudioSource;
             _currentAudioSource.Play();
             _isPaused = false;
-        }
-
-        private IEnumerator Changer(AudioClip targetAudioClip)
-        {
-            float passedTime = 0;
-            float progress;
-            float startVolume = _startStageAudioSource.volume;
-
-            if(_currentAudioClip != null)
-            {
-                while(_startStageAudioSource.volume != 0)
-                {
-                    passedTime += Time.deltaTime;
-                    progress = passedTime / _fadingDuration;
-
-                    _startStageAudioSource.volume = Mathf.Lerp(startVolume, 0, progress);
-
-                    yield return null;
-                }
-            }
-
-            if(targetAudioClip != null)
-            {
-                _startStageAudioSource.clip = targetAudioClip;
-                _startStageAudioSource.Play();
-                passedTime = 0;
-
-                while (_startStageAudioSource.volume != startVolume)
-                {
-                    passedTime += Time.deltaTime;
-                    progress = passedTime / _fadingDuration;
-
-                    _startStageAudioSource.volume = Mathf.Lerp(0, startVolume, progress);
-
-                    yield return null;
-                }
-            }
         }
 
         public class Factory : PlaceholderFactory<string, UniTask<StageMusic>>

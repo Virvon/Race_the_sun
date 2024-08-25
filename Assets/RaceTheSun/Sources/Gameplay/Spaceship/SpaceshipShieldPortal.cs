@@ -20,11 +20,12 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         private StageMusic _stageMusic;
         private PortalSound _portalSound;
         private Sun.Sun _sun;
+        private Plane _plane;
 
         public event Action Activated;
 
         [Inject]
-        private void Construct(IGameplayFactory gameplayFactory, SpaceshipMovement spaceshipMovement, Spaceship spaceship, GameplayCameras cameras, CollisionPortalPoint collisionPortalPoint, SpaceshipTurning spaceshipTurning, StageMusic stageMusic, PortalSound portalSound, Sun.Sun sun)
+        private void Construct(IGameplayFactory gameplayFactory, SpaceshipMovement spaceshipMovement, Spaceship spaceship, GameplayCameras cameras, CollisionPortalPoint collisionPortalPoint, SpaceshipTurning spaceshipTurning, StageMusic stageMusic, PortalSound portalSound, Sun.Sun sun, Plane plane)
         {
             _gameplayFactory = gameplayFactory;
             _spaceshipMovement = spaceshipMovement;
@@ -35,6 +36,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             _stageMusic = stageMusic;
             _portalSound = portalSound;
             _sun = sun;
+            _plane = plane;
         }
 
         public void Activate(bool createdCollisionPortal = true)
@@ -59,6 +61,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         {
             if(includedCollisionPortalCamera)
             {
+                _plane.HideEffect();
                 _sun.IsStopped = true;
                 _cameras.IncludeCamera(GameplayCameraType.CollisionPortalCamera);
 
@@ -75,6 +78,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
             Activated?.Invoke();
 
+            _plane.ShowEffect();
             _sun.IsStopped = false;
             _cameras.IncludeCamera(GameplayCameraType.MainCamera);
         }

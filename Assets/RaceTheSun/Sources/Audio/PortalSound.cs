@@ -8,14 +8,11 @@ namespace Assets.RaceTheSun.Sources.Audio
     {
         [SerializeField] private AudioSource _audioSource;
 
-        public void Play()
-        {
+        public void Play() =>
             _audioSource.Play();
-        }
 
         public class Factory : PlaceholderFactory<string, UniTask<PortalSound>>
         {
-
         }
     }
 }

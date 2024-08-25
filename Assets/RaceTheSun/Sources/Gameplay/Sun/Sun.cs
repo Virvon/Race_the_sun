@@ -71,7 +71,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
             if (Physics.Raycast(transform.position, (_spaceship.position - transform.position).normalized, out RaycastHit hitInfo, Mathf.Infinity))
                 isShadowed = hitInfo.transform.TryGetComponent(out Spaceship.Spaceship _) == false;
 
-            if (isShadowed != _isShadowed)
+            if (isShadowed != _isShadowed && _battery.gameObject.activeSelf)
             {
                 _isShadowed = isShadowed;
                 _battery.ChangeShadowed(_isShadowed);

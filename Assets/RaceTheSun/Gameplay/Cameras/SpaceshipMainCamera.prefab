@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2866758313619043104}
   - component: {fileID: 1971145698597908738}
   - component: {fileID: 6698392987758551139}
+  - component: {fileID: 1614034438065019120}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -67,6 +68,23 @@ MonoBehaviour:
   m_YawDamping: 12.34
   m_RollDamping: 12.61
   m_AngularDamping: 0
+--- !u!114 &1614034438065019120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6089560291326200619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: e9ce97b7a206dc64d90931ea044e0c72, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 0
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &6199593414886363176
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,6 +96,7 @@ GameObject:
   - component: {fileID: 1768370319633952966}
   - component: {fileID: 7836448402095139353}
   - component: {fileID: 3797519584511387569}
+  - component: {fileID: 9091547807864620228}
   m_Layer: 0
   m_Name: SpaceshipMainCamera
   m_TagString: Untagged
@@ -125,6 +144,7 @@ MonoBehaviour:
       m_RotationOrder: 4
   _fromFirsPersonFollowOffset: {x: 0, y: 1, z: 1.5}
   _fromThirdPersonFollowOffset: {x: 0, y: 2, z: -16}
+  _cameraShake: {fileID: 9091547807864620228}
 --- !u!114 &3797519584511387569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,3 +183,19 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 2866758313619043104}
+--- !u!114 &9091547807864620228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6199593414886363176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4410cdaccf69cfb4c99166f2761abcf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _virtualCamera: {fileID: 3797519584511387569}
+  _shakeDuration: 0.4
+  _amplitudeGain: 0.3
+  _frequencyGain: 1.5

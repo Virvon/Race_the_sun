@@ -19,13 +19,16 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
         private void Construct(IPersistentProgressService persistentProgressService)
         {
             _persistentProgressService = persistentProgressService;
-            
+        }
+
+        private void OnEnable()
+        {
             ChangeInfo();
 
             _persistentProgressService.Progress.LevelProgress.ExperienceCountChanged += ChangeInfo;
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             _persistentProgressService.Progress.LevelProgress.ExperienceCountChanged -= ChangeInfo;
         }

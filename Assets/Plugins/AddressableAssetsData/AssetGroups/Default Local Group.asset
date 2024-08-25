@@ -533,6 +533,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 42067e3b521d3874284ee5eaec629121
+    m_Address: DestroyItemEffect
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 78dbb1e1e3415cb45b3bad8612e0a196
+    m_Address: CollisionFx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 01d6725a7c3e3d04aaaaf52334bff613, type: 2}
   m_SchemaSet:

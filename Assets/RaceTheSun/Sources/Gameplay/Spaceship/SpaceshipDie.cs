@@ -1,4 +1,5 @@
 ﻿using Assets.RaceTheSun.Sources.Audio;
+using Assets.RaceTheSun.Sources.Gameplay.Cameras;
 using Assets.RaceTheSun.Sources.Gameplay.StateMachine.States;
 using Assets.RaceTheSun.Sources.Services.WaitingService;
 using Cysharp.Threading.Tasks;
@@ -18,21 +19,24 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         private WaitingService _waitingService;
         private StageMusic _stageMusic;
         private DestroySound _destroySound;
+        private GameplayCameras _gameplayCameras;
         private Sun.Sun _sun;
 
         private SpaceshipShieldPortal _spaceshipShieldPortal;
+        private Plane _plane;
 
         public event Action Died;
         public event Action Stopped;
 
         [Inject]
-        private void Construct(Cameras.GameplayCameras cameras, GameplayStateMachine gameplayStateMachine, WaitingService waitingService, Audio.StageMusic stageMusic, DestroySound destroySound)
+        private void Construct(Cameras.GameplayCameras cameras, GameplayStateMachine gameplayStateMachine, WaitingService waitingService, Audio.StageMusic stageMusic, DestroySound destroySound, GameplayCameras gameplayCameras)
         {
             _cameras = cameras;
             _gameplayStateMachine = gameplayStateMachine;
             _waitingService = waitingService;
             _stageMusic = stageMusic;
             _destroySound = destroySound;
+            _gameplayCameras = gameplayCameras;
         }
 
         public event Action<int> ShieldsCountChanged;
@@ -45,6 +49,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         public void Init(Sun.Sun sun)
         {
             _sun = sun;
+        }
+
+        public void Init(Plane plane)
+        {
+            _plane = plane;
         }
 
         public bool TryRevive()
@@ -60,18 +69,25 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             }
             else
             {
+                _gameplayCameras.ShakeSpaceshipMainCamera();
+                _plane.HideEffect();
                 _sun.IsStopped = true;
                 _destroySound.Play();
                 _stageMusic.Pause();
                 Died?.Invoke();
-                _cameras.IncludeCamera(Cameras.GameplayCameraType.SideCamera);
-                _waitingService.Wait(2, callback: () => _gameplayStateMachine.Enter<RevivalState>().Forget());
+
+                _waitingService.Wait(0.4f, callback: ()=>{
+                    _cameras.IncludeCamera(Cameras.GameplayCameraType.SideCamera);
+                    _waitingService.Wait(2, callback: () => _gameplayStateMachine.Enter<RevivalState>().Forget());
+                });
+               
                 return false;
             }
         }
 
         public void Stop()
         {
+            _plane.HideEffect();
             _sun.IsStopped = true;
             _stageMusic.Pause();
             Stopped?.Invoke();

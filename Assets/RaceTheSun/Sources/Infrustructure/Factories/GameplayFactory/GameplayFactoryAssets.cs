@@ -31,5 +31,6 @@
         public const string CollectItemsSoundEffects = "CollectItemsSoundEffects";
         public const string PortalSound = "PortalSound";
         public const string DestroySound = "DestroySound";
+        public const string CollisionFx = "CollisionFx";
     }
 }
