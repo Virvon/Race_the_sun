@@ -22,9 +22,10 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
         private readonly Spaceship.Spaceship _spaceship;
         private readonly StartMovement _startMovement;
         private readonly ILoadingCurtain _loadingCurtain;
+        private readonly Sun.Sun _sun;
 
 
-        public GameStartState(GameplayStateMachine gameplayStateMachine, IStaticDataService staticDataService, WorldGenerator.WorldGenerator worldGenerator, IGameplayFactory gameplayFacotry, Spaceship.Spaceship spaceship, ILoadingCurtain loadingCurtain)
+        public GameStartState(GameplayStateMachine gameplayStateMachine, IStaticDataService staticDataService, WorldGenerator.WorldGenerator worldGenerator, IGameplayFactory gameplayFacotry, Spaceship.Spaceship spaceship, ILoadingCurtain loadingCurtain, Sun.Sun sun)
         {
             _gameplayStateMachine = gameplayStateMachine;
             _staticDataService = staticDataService;
@@ -33,6 +34,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
             _spaceship = spaceship;
             _startMovement = _spaceship.GetComponentInChildren<StartMovement>();
             _loadingCurtain = loadingCurtain;
+            _sun = sun;
         }
 
         public async UniTask Enter()
@@ -45,6 +47,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
             {
                 _gameplayStateMachine.Enter<GameLoopState>().Forget();
             });
+
+            _sun.Show();
         }
 
         public UniTask Exit()

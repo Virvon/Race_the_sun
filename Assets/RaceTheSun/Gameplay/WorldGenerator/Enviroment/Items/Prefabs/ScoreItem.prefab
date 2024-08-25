@@ -5007,6 +5007,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: aee3fd12667328349a4ce2235748f5ad, type: 2}
+    - target: {fileID: 7176473721244566709, guid: 995e0c35191a1b54c980c59c95199f77, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8245203762950105235, guid: 995e0c35191a1b54c980c59c95199f77, type: 3}
       propertyPath: m_Name
       value: Column
@@ -5077,6 +5081,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: aee3fd12667328349a4ce2235748f5ad, type: 2}
+    - target: {fileID: 7176473721244566709, guid: 995e0c35191a1b54c980c59c95199f77, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8245203762950105235, guid: 995e0c35191a1b54c980c59c95199f77, type: 3}
       propertyPath: m_Name
       value: Column (5)
@@ -5147,6 +5155,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: aee3fd12667328349a4ce2235748f5ad, type: 2}
+    - target: {fileID: 7176473721244566709, guid: 995e0c35191a1b54c980c59c95199f77, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8245203762950105235, guid: 995e0c35191a1b54c980c59c95199f77, type: 3}
       propertyPath: m_Name
       value: Column (2)
@@ -5217,6 +5229,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: aee3fd12667328349a4ce2235748f5ad, type: 2}
+    - target: {fileID: 7176473721244566709, guid: 995e0c35191a1b54c980c59c95199f77, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8245203762950105235, guid: 995e0c35191a1b54c980c59c95199f77, type: 3}
       propertyPath: m_Name
       value: Column (6)
@@ -5287,6 +5303,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: aee3fd12667328349a4ce2235748f5ad, type: 2}
+    - target: {fileID: 7176473721244566709, guid: 995e0c35191a1b54c980c59c95199f77, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8245203762950105235, guid: 995e0c35191a1b54c980c59c95199f77, type: 3}
       propertyPath: m_Name
       value: Column (3)
@@ -5357,6 +5377,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: aee3fd12667328349a4ce2235748f5ad, type: 2}
+    - target: {fileID: 7176473721244566709, guid: 995e0c35191a1b54c980c59c95199f77, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8245203762950105235, guid: 995e0c35191a1b54c980c59c95199f77, type: 3}
       propertyPath: m_Name
       value: Column (1)
@@ -5427,6 +5451,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: aee3fd12667328349a4ce2235748f5ad, type: 2}
+    - target: {fileID: 7176473721244566709, guid: 995e0c35191a1b54c980c59c95199f77, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8245203762950105235, guid: 995e0c35191a1b54c980c59c95199f77, type: 3}
       propertyPath: m_Name
       value: Column (4)
@@ -5497,6 +5525,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: aee3fd12667328349a4ce2235748f5ad, type: 2}
+    - target: {fileID: 7176473721244566709, guid: 995e0c35191a1b54c980c59c95199f77, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8245203762950105235, guid: 995e0c35191a1b54c980c59c95199f77, type: 3}
       propertyPath: m_Name
       value: Column (7)

@@ -144,8 +144,10 @@ MonoBehaviour:
   _startHeight: 350
   _finishHeight: 10
   _downMoveSpeed: 0.008
-  _upMoveSpeed: 0.02
+  _upMoveSpeed: 0.15
   _hidedHeight: 1500
+  _cutSceneHeaght: 800
+  _cutSceneDuration: 4
   IsStopped: 0
 --- !u!114 &-74370086568080726
 MonoBehaviour:

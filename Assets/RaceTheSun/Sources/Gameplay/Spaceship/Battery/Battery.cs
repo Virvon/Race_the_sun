@@ -7,6 +7,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 {
     public class Battery : MonoBehaviour
     {
+        [SerializeField] private Spaceship _spaceship;
+
         private const float FullBattery = 1;
 
         private float _dischargerDuration;
@@ -27,6 +29,9 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
         public void ChangeShadowed(bool isShadowed)
         {
+            if (_spaceship.gameObject.activeSelf == false)
+                return;
+
             if (isShadowed)
             {
                 _batteryDischarger = StartCoroutine(BatteryDischarger());

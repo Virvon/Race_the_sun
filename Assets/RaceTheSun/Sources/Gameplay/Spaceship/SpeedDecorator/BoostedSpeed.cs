@@ -70,6 +70,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
                 yield return null;
             }
 
+            _sun.SetMovementDirection(true);
+
             yield return new WaitForSeconds(BoostedSpeedTime);
 
             startSpeed = _speed;
@@ -88,8 +90,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
             }
 
             _isBoosted = false;
-
-            _sun.SetMovementDirection(true);
         }
     }
 }

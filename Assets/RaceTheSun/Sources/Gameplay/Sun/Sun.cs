@@ -1,6 +1,7 @@
 ﻿using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using Cysharp.Threading.Tasks;
 using System;
+using System.Collections;
 using UnityEngine;
 using Zenject;
 
@@ -14,14 +15,18 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
         [SerializeField] private float _downMoveSpeed;
         [SerializeField] private float _upMoveSpeed;
         [SerializeField] private float _hidedHeight;
+        [SerializeField] private float _cutSceneHeaght;
+        [SerializeField] private float _cutSceneDuration;
 
         public bool IsStopped;
+
         private Transform _spaceship;
         private bool _isShadowed;
         private float _progress;
         private Battery _battery;
         private bool _isMovedDown;
         private bool _isHided;
+        private float _positionY;
         
         [Inject]
         private void Construct(Spaceship.Spaceship spaceship)
@@ -31,7 +36,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
             _battery = spaceship.GetComponentInChildren<Battery>();
             _isMovedDown = true;
             _isHided = false;
-            IsStopped = false;
+            IsStopped = true;
+            _positionY = _cutSceneHeaght;
 
             spaceship.Init(this);
         }
@@ -41,8 +47,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
             if (_isHided || IsStopped)
                 return;
 
-            float positionY = GetHeight();
-            Move(positionY);
+            _positionY = GetHeight();
+            Move(_positionY);
             CheckShadowed();
         }
 
@@ -50,6 +56,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
         {
             _isHided = false;
             Move(_startHeight);
+        }
+
+        public void Show()
+        {
+            StartCoroutine(CutScene());
         }
 
         public void SetMovementDirection(bool isMovedDown)
@@ -71,7 +82,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
             if (Physics.Raycast(transform.position, (_spaceship.position - transform.position).normalized, out RaycastHit hitInfo, Mathf.Infinity))
                 isShadowed = hitInfo.transform.TryGetComponent(out Spaceship.Spaceship _) == false;
 
-            if (isShadowed != _isShadowed && _battery.gameObject.activeSelf)
+            if (isShadowed != _isShadowed)
             {
                 _isShadowed = isShadowed;
                 _battery.ChangeShadowed(_isShadowed);
@@ -82,8 +93,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
         {
             float positionZ = Mathf.Sqrt(Mathf.Pow(_radius, 2) - Mathf.Pow(positionY, 2));
 
-            transform.position = new Vector3(0, positionY, positionZ) + new Vector3(_spaceship.position.x, 2.4f, _spaceship.position.z);
-            transform.rotation = Quaternion.LookRotation((new Vector3(_spaceship.position.x, 2.4f, _spaceship.position.z) - transform.position).normalized);
+            transform.position = new Vector3(0, positionY, positionZ) + new Vector3(_spaceship.position.x, 6.2f, _spaceship.position.z);
+            transform.rotation = Quaternion.LookRotation((new Vector3(_spaceship.position.x, 6.2f, _spaceship.position.z) - transform.position).normalized);
         }
 
         private float GetHeight()
@@ -95,6 +106,25 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
             }
 
             return Mathf.Lerp(_startHeight, _finishHeight, _progress);
+        }
+
+        private IEnumerator CutScene()
+        {
+            float passedTime = 0;
+            float progress;
+
+            while(_positionY != _startHeight)
+            {
+                passedTime += Time.deltaTime;
+                progress = passedTime / _cutSceneDuration;
+
+                _positionY = Mathf.Lerp(_cutSceneHeaght, _startHeight, progress);
+                Move(_positionY);
+
+                yield return null;
+            }
+
+            IsStopped = false;
         }
 
         public class Factory : PlaceholderFactory<string, UniTask<Sun>>
