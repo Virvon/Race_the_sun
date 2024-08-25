@@ -165,4 +165,4 @@ MonoBehaviour:
     SkyboxColor: {r: 0.58431375, g: 0.25882354, b: 0.23529412, a: 0}
     AtmosphereThickness: 0.8
     Exposure: 0.9
-  _changeColorDuration: 0.5
+  _changeColorDuration: 1.6

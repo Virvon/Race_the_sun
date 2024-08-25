@@ -34,7 +34,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
 
         public override void Invoke()
         {
-            Debug.Log("invoke");
             _spaceship.transform.position = new Vector3(0, _spaceship.transform.position.y, 0);
             _worldGenerator.Replace();
 
