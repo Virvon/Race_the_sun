@@ -4838,6 +4838,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6221396874336465921}
   - component: {fileID: 8397933910233311415}
+  - component: {fileID: 512177893986975332}
   m_Layer: 0
   m_Name: CollisionPoint
   m_TagString: Untagged
@@ -4872,6 +4873,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4406b3c5823f224c8ded9cee6dde2ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &512177893986975332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699717646432838240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f0b75b77196254c8b5178715ccbd9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _particleSystemPrefab: {fileID: 6723682618211040658, guid: b1ff4e4fc7b35e943b023a8e61c1e0e4, type: 3}
+  _spaceshipDie: {fileID: 6867741456451803694}
 --- !u!1 &2032919595732273259
 GameObject:
   m_ObjectHideFlags: 0
