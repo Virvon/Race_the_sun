@@ -15,44 +15,45 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
         private int _currentStage;
         private AssetReferenceGameObject[] _tilesToGenerate;
         private bool _isBetweenStages;
-        private int _currentTile;
 
         public CurrentGenerationStage(IStaticDataService staticDataService)
         {
             _currentStage = 0;
             _isBetweenStages = true;
-            _currentTile = 0;
+            CurrentTile = 0;
             _staticDataService = staticDataService;
             CurrentStageNumber = 1;
 
             _tilesToGenerate = _staticDataService.GetStage(Stage.StartStage).Tiles;
         }
 
+        public int CurrentTile { get; private set; }
+
         public Stage GeneratedStageType { get; private set; }
         public int CurrentStageNumber { get; private set; }
 
         public AssetReferenceGameObject GetTile()
         {
-            _currentTile++;
+            CurrentTile++;
 
-            if(_currentTile == _tilesToGenerate.Length)
+            if(CurrentTile == _tilesToGenerate.Length)
             {
                 UpdateTilesToGenerate();
-                _currentTile = 0;
+                CurrentTile = 0;
             }    
 
-            return _tilesToGenerate[_currentTile];
+            return _tilesToGenerate[CurrentTile];
         }
 
         public void FinishStage()
         {
             UpdateTilesToGenerate();
-            _currentTile = 0;
+            CurrentTile = 0;
         }
 
         public void SetBonusLevel()
         {
-            _currentTile = 0;
+            CurrentTile = 0;
             _isBetweenStages = false;
             GeneratedStageType = Stage.BonusStage;
             _tilesToGenerate = _staticDataService.GetStage(GeneratedStageType).Tiles;
@@ -60,7 +61,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
 
         public void EndBonusLevel()
         {
-            _currentTile = 0;
+            CurrentTile = 0;
             _isBetweenStages = false;
             UpdateTilesToGenerate();
         }

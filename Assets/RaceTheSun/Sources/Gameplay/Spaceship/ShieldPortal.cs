@@ -6,9 +6,15 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 {
     public class ShieldPortal : MonoBehaviour
     {
+        [SerializeField] private float _destroyDelay;
+
+        private void Start()
+        {
+            Destroy(gameObject, _destroyDelay);
+        }
+
         public class Factory : PlaceholderFactory<string, UniTask<ShieldPortal>>
         {
-
         }
     }
 }

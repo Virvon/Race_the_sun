@@ -15,18 +15,29 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
         private WaitingService _waitingService;
         private Spaceship.Spaceship _spaceship;
         private PerfectStagePanel _perfectStagePanel;
+        private CurrentGenerationStage _currentGenerationStage;
+        private WorldGenerator _worldGenerator;
+
+        private int _index;
 
         [Inject]
-        private void Construct(Bird.Bird bird, WaitingService waitingService, Spaceship.Spaceship spaceship, PerfectStagePanel perfectStagePanel)
+        private void Construct(Bird.Bird bird, WaitingService waitingService, Spaceship.Spaceship spaceship, PerfectStagePanel perfectStagePanel, CurrentGenerationStage currentGenerationStage, WorldGenerator worldGenerator)
         {
             _bird = bird;
             _waitingService = waitingService;
             _spaceship = spaceship;
             _perfectStagePanel = perfectStagePanel;
+            _currentGenerationStage = currentGenerationStage;
+            _worldGenerator = worldGenerator;
+            _index = _currentGenerationStage.CurrentTile;
         }
 
         public override void Invoke()
         {
+            Debug.Log("invoke");
+            _spaceship.transform.position = new Vector3(0, _spaceship.transform.position.y, 0);
+            _worldGenerator.Replace();
+
             base.Invoke();
 
             Vector3[] movementPath = new Vector3[_birdMovementPath.Length];

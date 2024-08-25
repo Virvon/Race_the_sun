@@ -65,6 +65,16 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
             _tilesMatrix.Clear();
         }
 
+        public void Replace()
+        {
+            GameObject[] tiles = _tilesMatrix.OrderBy(value => value.transform.position.z).ToArray();
+
+            for(int z = 0; z < tiles.Length; z++)
+            {
+                tiles[z].transform.position = GridToWorldPosition(z - 1);
+            }
+        }
+
         private UniTask Empty(Vector3 spaceshipPositoin)
         {
             HashSet<GameObject> removedTiles = new();
