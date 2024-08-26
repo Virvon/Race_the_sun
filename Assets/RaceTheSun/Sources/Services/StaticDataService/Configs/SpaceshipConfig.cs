@@ -20,9 +20,9 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService.Configs
         public int BuyCost;
 
         public List<BatteryMaterialInfo> BatteryMaterialsInfo;
-        public Material ChargedBatteryMaterial;
-        public Material DischargedBatteryMaterial;
-        public Material LowBatteryMaterial;
+        public AssetReference ChargedBatteryMaterial;
+        public AssetReference DischargedBatteryMaterial;
+        public AssetReference LowBatteryMaterial;
 
         public StatConfig Battery;
         public StatConfig ExperienceMultiplier;

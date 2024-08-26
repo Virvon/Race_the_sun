@@ -29,6 +29,21 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.AssetManagement
             _assetRequest.Clear();
         }
 
+        public async UniTask<TAsset> Load<TAsset>(AssetReference reference)
+        {
+            AsyncOperationHandle handle;
+
+            if (_assetRequest.TryGetValue(reference.AssetGUID, out handle) == false)
+            {
+                handle = reference.LoadAssetAsync<TAsset>();
+                _assetRequest.Add(reference.AssetGUID, handle);
+            }
+
+            await handle.ToUniTask();
+
+            return (TAsset)handle.Result;
+        }
+
         public async UniTask<TAsset> Load<TAsset>(AssetReferenceGameObject reference) where TAsset : class
         {
             AsyncOperationHandle handle;

@@ -24,9 +24,21 @@ MonoBehaviour:
   BatteryMaterialsInfo:
   - Index: 4
     Position: 1
-  ChargedBatteryMaterial: {fileID: 2100000, guid: 3575c54627587a949b874ba0cdf31414, type: 2}
-  DischargedBatteryMaterial: {fileID: 2100000, guid: 0c0ebbcd7b6db2545b55d03db57fcce8, type: 2}
-  LowBatteryMaterial: {fileID: 2100000, guid: e5c6ac151af7b3048a7ad7e7d15097c0, type: 2}
+  ChargedBatteryMaterial:
+    m_AssetGUID: 3575c54627587a949b874ba0cdf31414
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  DischargedBatteryMaterial:
+    m_AssetGUID: 0c0ebbcd7b6db2545b55d03db57fcce8
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  LowBatteryMaterial:
+    m_AssetGUID: e5c6ac151af7b3048a7ad7e7d15097c0
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   Battery:
     Type: 0
     StartValue: 5

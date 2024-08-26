@@ -14,6 +14,10 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             ChargedMaterial = chargedMaterial;
             DischargedMaterial = dischargedMaterial;
             MaterialIndex = materialIndex;
+
+            Debug.Log("Cell info");
+            Debug.Log("Charged material " + (ChargedMaterial != null));
+            Debug.Log("Discharged material " +  (DischargedMaterial != null));
         }
 
         protected Material CurrentMaterial;

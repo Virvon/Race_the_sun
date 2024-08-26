@@ -55,7 +55,6 @@ namespace Assets.RaceTheSun.Sources.Infrustructure.GameStateMachine.States
             PlayerProgress progress = new(spaceshipDatas, trails);
 
             progress.AvailableStatsToUpgrade.Stats.Add(StatType.Battery);
-            progress.LevelProgress.UpdateExperience(10000);
 
             return progress;
         }

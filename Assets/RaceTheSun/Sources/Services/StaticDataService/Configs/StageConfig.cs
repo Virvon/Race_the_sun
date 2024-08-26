@@ -10,6 +10,5 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService.Configs
         public Stage Stage;
         public SkyboxConfig Skybox;
         public AssetReferenceGameObject[] Tiles;
-        public AudioClip AudioClip;
     }
 }

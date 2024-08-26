@@ -1,4 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.Infrastructure.SceneManagement;
+﻿using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
+using Assets.RaceTheSun.Sources.Infrastructure.SceneManagement;
 using Assets.RaceTheSun.Sources.UI.LoadingCurtain;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -10,12 +11,14 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine.States
         private readonly ILoadingCurtain _loadingCurtainProxy;
         private readonly ISceneLoader _sceneLoader;
         private readonly ISaveLoadService _saveLoadService;
+        private readonly IAssetProvider _assetProvider;
 
-        public MainMenuState(ILoadingCurtain loadingCurtainProxy, ISceneLoader sceneLoader, ISaveLoadService saveLoadService)
+        public MainMenuState(ILoadingCurtain loadingCurtainProxy, ISceneLoader sceneLoader, ISaveLoadService saveLoadService, IAssetProvider assetProvider)
         {
             _loadingCurtainProxy = loadingCurtainProxy;
             _sceneLoader = sceneLoader;
             _saveLoadService = saveLoadService;
+            _assetProvider = assetProvider;
         }
 
         public async UniTask Enter()
@@ -27,6 +30,7 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine.States
 
         public UniTask Exit()
         {
+            _assetProvider.CleanUp();
             _saveLoadService.SaveProgress();
             return default;
         }

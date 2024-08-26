@@ -1,4 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.Services.CoroutineRunner;
+﻿using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
+using Assets.RaceTheSun.Sources.Services.CoroutineRunner;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
 using System.Collections.Generic;
@@ -20,14 +21,14 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         private List<BatteryCell> _cells;
 
         [Inject]
-        private void Construct(IStaticDataService staticDataService, IPersistentProgressService persistentProgressService, ICoroutineRunner coroutineRunner)
+        private async void Construct(IStaticDataService staticDataService, IPersistentProgressService persistentProgressService, ICoroutineRunner coroutineRunner, IAssetProvider assetProvider)
         {
             SpaceshipConfig spaceshipConfig = staticDataService.GetSpaceship(persistentProgressService.Progress.AvailableSpaceships.CurrentSpaceshipType);
 
             _batteryMaterialsInfo = spaceshipConfig.BatteryMaterialsInfo;
-            _chargedMaterial = spaceshipConfig.ChargedBatteryMaterial;
-            _dischargedMaterial = spaceshipConfig.DischargedBatteryMaterial;
-            _lowBatteryMaterial = spaceshipConfig.LowBatteryMaterial;
+            _chargedMaterial = await assetProvider.Load<Material>(spaceshipConfig.ChargedBatteryMaterial);
+            _dischargedMaterial = await assetProvider.Load<Material>(spaceshipConfig.DischargedBatteryMaterial);
+            _lowBatteryMaterial = await assetProvider.Load<Material>(spaceshipConfig.LowBatteryMaterial);
 
             _battery.BatteryValueChanged += OnBatteryValueChanged;
 
