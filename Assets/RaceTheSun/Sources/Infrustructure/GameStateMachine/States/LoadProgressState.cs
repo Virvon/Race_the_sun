@@ -47,7 +47,7 @@ namespace Assets.RaceTheSun.Sources.Infrustructure.GameStateMachine.States
         {
             List<SpaceshipData> spaceshipDatas = new();
             SpaceshipConfig[] spaceshipConfigs = _staticDataService.GetSpaceships();
-            spaceshipDatas.AddRange(spaceshipConfigs.Select(spaceshipConfig => new SpaceshipData(spaceshipConfig.Type, spaceshipConfig.Battery.StartValue, spaceshipConfig.ExperienceMultiplier.StartValue, spaceshipConfig.PickUpRange.StartValue, spaceshipConfig.FloatTime.StartValue, spaceshipConfig.IsUnlockedOnStart, spaceshipConfig.Battery.StartLevel, spaceshipConfig.ExperienceMultiplier.StartLevel, spaceshipConfig.PickUpRange.StartLevel, spaceshipConfig.FloatTime.StartLevel)));
+            spaceshipDatas.AddRange(spaceshipConfigs.Select(spaceshipConfig => new SpaceshipData(spaceshipConfig.Type, spaceshipConfig.Battery.StartValue, spaceshipConfig.ExperienceMultiplier.StartValue, spaceshipConfig.PickUpRange.StartValue, spaceshipConfig.FloatTime.StartValue, spaceshipConfig.IsUnlockedOnStart, spaceshipConfig.Battery.StartLevel, spaceshipConfig.ExperienceMultiplier.StartLevel, spaceshipConfig.PickUpRange.StartLevel, spaceshipConfig.FloatTime.StartLevel, spaceshipConfig.StartLevel)));
 
             List<TrailType> trails = new();
             TrailConfig[] trailConfigs = _staticDataService.GetTrails();

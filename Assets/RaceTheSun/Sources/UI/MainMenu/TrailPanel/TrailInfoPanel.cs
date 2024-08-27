@@ -20,6 +20,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.TrailPanel
         [SerializeField] private TMP_Text _trailName;
         [SerializeField] private TMP_Text _trailTitle;
         [SerializeField] private CurrentClickedSpaceshipInfo _currentClickedSpaceshipInfo;
+        [SerializeField] private GameObject _buyIcon;
 
         private IPersistentProgressService _persistentProgressService;
         private IStaticDataService _staticDataService;
@@ -65,6 +66,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.TrailPanel
             {
                 _button.interactable = _persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(_currentClickedSpaceshipInfo.SpaceshipType).TrailType != trailType;
                 _buttonText.text = _unlockedButtonText;
+                _buyIcon.SetActive(false);
             }
             else
             {
@@ -72,6 +74,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.TrailPanel
 
                 _button.interactable = trailCost <= _persistentProgressService.Progress.Wallet.Value;
                 _buttonText.text = trailCost.ToString();
+                _buyIcon.SetActive(true);
             }
 
             _trailName.text = _staticDataService.GetTrail(trailType).Name;

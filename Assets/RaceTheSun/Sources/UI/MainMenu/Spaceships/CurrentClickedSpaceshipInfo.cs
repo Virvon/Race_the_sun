@@ -14,6 +14,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
         [SerializeField] private SpaceshipStatPanel[] _spaceshipStatPanels;
         [SerializeField] private TMP_Text _spaceshipName;
         [SerializeField] private TMP_Text _title;
+        [SerializeField] private TMP_Text _spaceshipLevel;
 
         private IPersistentProgressService _persistentProgressService;
         private ModelPoint _modelPoint;
@@ -29,11 +30,20 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
 
         public SpaceshipType SpaceshipType { get; private set; }
 
-        private void OnEnable() =>
+        private void OnEnable()
+        {
             _currentClickedSpaceshipWatcher.CurrentSpaceshipChanged += OnSpaceshipChanged;
+        }
 
-        private void OnDisable() =>
+        private void OnDisable()
+        {
             _currentClickedSpaceshipWatcher.CurrentSpaceshipChanged -= OnSpaceshipChanged;
+        }
+
+        public void UpdateLevel()
+        {
+            _spaceshipLevel.text = _persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(SpaceshipType).Level.ToString();
+        }
 
         private async void OnSpaceshipChanged(SpaceshipType type)
         {
@@ -41,6 +51,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
 
             _spaceshipName.text = _staticDataService.GetSpaceship(type).Name;
             _title.text = _staticDataService.GetSpaceship(type).Title;
+
+            UpdateLevel();
 
             foreach (SpaceshipStatPanel spaceshipStatPanel in _spaceshipStatPanels)
                 spaceshipStatPanel.ResetSpaceship(type);

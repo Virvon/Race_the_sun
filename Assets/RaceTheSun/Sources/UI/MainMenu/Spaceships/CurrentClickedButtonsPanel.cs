@@ -19,14 +19,15 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
 
         private IPersistentProgressService _persistentProgressService;
         private IStaticDataService _staticDataService;
-
+        private ISaveLoadService _saveLoadService;
         private SpaceshipType _currentSpaceshipType;
 
         [Inject]
-        private void Construct(IPersistentProgressService persistentProgressService, IStaticDataService staticDataService)
+        private void Construct(IPersistentProgressService persistentProgressService, IStaticDataService staticDataService, ISaveLoadService saveLoadService)
         {
             _persistentProgressService = persistentProgressService;
             _staticDataService = staticDataService;
+            _saveLoadService = saveLoadService;
         }
 
         private void OnEnable()
@@ -46,6 +47,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
         private void OnSelectButtonClicked()
         {
             _persistentProgressService.Progress.AvailableSpaceships.Selcect(_currentSpaceshipType);
+            _saveLoadService.SaveProgress();
             _currentClickedSpaceshipWatcher.Reset();
         }
 
@@ -77,6 +79,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
                 _persistentProgressService.Progress.AvailableSpaceships.Unlock(_currentSpaceshipType);
                 _persistentProgressService.Progress.AvailableStatsToUpgrade.Add(_staticDataService.GetSpaceship(_currentSpaceshipType).UnlockedStatType);
                 _persistentProgressService.Progress.AvailableSpaceships.CurrentSpaceshipType = _currentSpaceshipType;
+                _saveLoadService.SaveProgress();
                 _currentClickedSpaceshipWatcher.Reset();
             }
             else

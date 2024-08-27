@@ -19,16 +19,18 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
         private ModelPoint _modelPoint;
         private IPersistentProgressService _persistentProgressService;
         private IStaticDataService _staticDataService;
+        private ISaveLoadService _saveLoadService;
         private TrailType _currentTrailType;
         private GameObject _currentSelectedFrame;
 
         [Inject]
-        private void Construct(MainMenuCameras mainMenuCameras, ModelPoint modelPoint, IPersistentProgressService persistentProgressService, IStaticDataService staticDataService)
+        private void Construct(MainMenuCameras mainMenuCameras, ModelPoint modelPoint, IPersistentProgressService persistentProgressService, IStaticDataService staticDataService, ISaveLoadService saveLoadService)
         {
             _mainMenuCameras = mainMenuCameras;
             _modelPoint = modelPoint;
             _persistentProgressService = persistentProgressService;
             _staticDataService = staticDataService;
+            _saveLoadService = saveLoadService;
 
             foreach (TrailButton trailButton in _trailButtons)
                 trailButton.Clicked += OnTrailButtonClicked;
@@ -82,6 +84,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
                 _trailInfoPanel.ShowInfo(_currentTrailType);
             }
 
+            _saveLoadService.SaveProgress();
             _currentSelectedFrame.SetActive(false);
         }
     }

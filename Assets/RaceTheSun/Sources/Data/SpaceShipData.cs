@@ -17,8 +17,9 @@ namespace Assets.RaceTheSun.Sources.Data
         public bool IsUnlocked;
         public TrailType TrailType;
         public List<UpgradeType> UpgradeTypes;
+        public int Level;
 
-        public SpaceshipData(SpaceshipType type, float batteryValue, float experienceMultiplierValue, float pickupRangeValue, float floatTimeValue, bool isUnlocked, int startBateryLevel, int startExperienceMultipllierLevel, int startPickUpRangeLevel, int startFloatTimeLevel)
+        public SpaceshipData(SpaceshipType type, float batteryValue, float experienceMultiplierValue, float pickupRangeValue, float floatTimeValue, bool isUnlocked, int startBateryLevel, int startExperienceMultipllierLevel, int startPickUpRangeLevel, int startFloatTimeLevel, int startSpaceshipLevel)
         {
             Type = type;
             Battery = new StatData(StatType.Battery, batteryValue, startBateryLevel);
@@ -28,6 +29,7 @@ namespace Assets.RaceTheSun.Sources.Data
             IsUnlocked = isUnlocked;
             TrailType = TrailType.Basic;
             UpgradeTypes = new List<UpgradeType>();
+            Level = startSpaceshipLevel;
         }
 
         public StatData GetStat(StatType statType)

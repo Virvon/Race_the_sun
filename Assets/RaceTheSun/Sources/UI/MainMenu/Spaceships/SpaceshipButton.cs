@@ -2,6 +2,7 @@
 using Assets.RaceTheSun.Sources.MainMenu.Spaceship;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -16,6 +17,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
         [SerializeField] private GameObject _selectFrame;
         [SerializeField] private GameObject _blockPanel;
         [SerializeField] private GameObject _useIcon;
+        [SerializeField] private TMP_Text _ublockStatText;
 
         private IPersistentProgressService _persistentProgressService;
 
@@ -26,7 +28,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
         {
             _persistentProgressService = persistentProgressService;
 
-            Info.text = staticDataService.GetSpaceship(_spaceshipType).UnlockText;
+            Info.text = staticDataService.GetSpaceship(_spaceshipType).UnlockSpaceshipText;
+            _ublockStatText.text = staticDataService.GetSpaceship(_spaceshipType).UnlockStatText;
         }
 
         protected override void OnEnable()

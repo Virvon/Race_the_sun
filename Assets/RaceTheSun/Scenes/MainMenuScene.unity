@@ -272,6 +272,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8045332106415904546, guid: b737cb294ec7f53458aaf64e542d17a8, type: 3}
+      propertyPath: _duration
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b737cb294ec7f53458aaf64e542d17a8, type: 3}
 --- !u!1 &1126083041
@@ -584,7 +588,7 @@ MonoBehaviour:
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 1
+    m_Time: 0.6
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []

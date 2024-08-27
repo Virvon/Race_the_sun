@@ -19,9 +19,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             _dischargedMaterial = dischargedMaterial;
             _isBlinked = false;
             _coroutineRunner = coroutineRunner;
-
-            Debug.Log("Last battery");
-            Debug.Log("_discharged mat " + (_dischargedMaterial != null));
         }
 
         public override bool IsNeedToChangeMaterial(float batteryValue, out Material material)

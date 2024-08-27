@@ -78,7 +78,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
                 _waitingService.Wait(0.4f, callback: ()=>{
                     _cameras.IncludeCamera(Cameras.GameplayCameraType.SideCamera);
-                    _waitingService.Wait(2, callback: () => _gameplayStateMachine.Enter<RevivalState>().Forget());
+                    _waitingService.Wait(0.5f, callback: () => _gameplayStateMachine.Enter<RevivalState>().Forget());
                 });
                
                 return false;

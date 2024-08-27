@@ -14,11 +14,13 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
         [SerializeField] private TMP_Text _rewardValue;
 
         private IPersistentProgressService _persistentProgressService;
+        private ISaveLoadService _saveLoadService;
 
         [Inject]
-        private void Construct(IPersistentProgressService persistentProgressService)
+        private void Construct(IPersistentProgressService persistentProgressService, ISaveLoadService saveLoadService)
         {
             _persistentProgressService = persistentProgressService;
+            _saveLoadService = saveLoadService;
 
             _rewardValue.text = _reward.ToString();
 
@@ -46,9 +48,11 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
             InterstitialAd.Show(onCloseCallback: (_) =>
             {
                 _persistentProgressService.Progress.Wallet.Give(_reward);
+                _saveLoadService.SaveProgress();
             });
 #else
             _persistentProgressService.Progress.Wallet.Give(_reward);
+            _saveLoadService.SaveProgress();
 #endif
         }
     }

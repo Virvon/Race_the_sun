@@ -12,18 +12,38 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
     {
         [SerializeField] private float _showAnimationDuration;
         [SerializeField] private TMP_Text _text;
+        [SerializeField] private GameObject _highScoreText;
 
         private ScoreCounter _scoreCounter;
+        private IPersistentProgressService _persistentProgressService;
+        private bool _isOpened;
 
         [Inject]
-        private void Construct(ScoreCounter scoreCounter)
+        private void Construct(ScoreCounter scoreCounter, IPersistentProgressService persistentProgressService)
         {
             _scoreCounter = scoreCounter;
+            _persistentProgressService = persistentProgressService;
+            _isOpened = false;
         }
 
         public void ShowResult()
         {
-            StartCoroutine(ShowAnimator((int)_scoreCounter.Score));
+            if (_isOpened)
+                return;
+
+            int score = (int)_scoreCounter.Score;
+            
+            if(score > _persistentProgressService.Progress.HighScore)
+            {
+                _highScoreText.SetActive(true);
+                _persistentProgressService.Progress.HighScore = score;
+            }
+            else
+            {
+                _highScoreText.SetActive(false);
+            }
+
+            StartCoroutine(ShowAnimator(score));
         }
 
         private IEnumerator ShowAnimator(int resultScore)
@@ -31,6 +51,8 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
             int currentScore = 0;
             float passedTime = 0;
             float progress;
+
+            _isOpened = true;
 
             while(currentScore != resultScore)
             {
@@ -42,6 +64,8 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
 
                 yield return null;
             }
+
+            _isOpened = false;
         }
     }
 }

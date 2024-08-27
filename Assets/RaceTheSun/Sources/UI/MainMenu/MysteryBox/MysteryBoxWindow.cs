@@ -18,12 +18,14 @@ namespace Assets.RaceTheSun.Sources.UI.MysteryBox
 
         private IStaticDataService _staticDataService;
         private IPersistentProgressService _persistentProgressService;
+        private ISaveLoadService _saveLoadService;
 
         [Inject]
-        private void Construct(IStaticDataService staticDataService, IPersistentProgressService persistentProgressService)
+        private void Construct(IStaticDataService staticDataService, IPersistentProgressService persistentProgressService, ISaveLoadService saveLoadService)
         {
             _staticDataService = staticDataService;
             _persistentProgressService = persistentProgressService;
+            _saveLoadService = saveLoadService;
 
             _openMysteryBoxButton.onClick.AddListener(OnOpenMysteryBoxButtonCllicked);
 
@@ -76,6 +78,7 @@ namespace Assets.RaceTheSun.Sources.UI.MysteryBox
             }
 
             _persistentProgressService.Progress.MysteryBoxes.Take();
+            _saveLoadService.SaveProgress();
 
             if (_persistentProgressService.Progress.MysteryBoxes.Count <= 0)
             {
@@ -109,6 +112,7 @@ namespace Assets.RaceTheSun.Sources.UI.MysteryBox
             }
 
             _persistentProgressService.Progress.MysteryBoxes.Take();
+            _saveLoadService.SaveProgress();
 
             if (_persistentProgressService.Progress.MysteryBoxes.Count <= 0)
             {

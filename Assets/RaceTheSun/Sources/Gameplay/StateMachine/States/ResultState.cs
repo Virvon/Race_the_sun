@@ -39,6 +39,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
 
         private int GetExperience()
         {
+            return 1000;
             return (int)(_scoreCounter.Score * ExperienceMultipllier * _persistentProgressService.Progress.AvailableSpaceships.GetCurrentSpaceshipData().ExperienceMultiplier.Value);
         }
 

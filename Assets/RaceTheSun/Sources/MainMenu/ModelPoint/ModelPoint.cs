@@ -32,7 +32,7 @@ namespace Assets.RaceTheSun.Sources.MainMenu.ModelPoint
             if (_currentModel != null)
                 Destroy(_currentModel.gameObject);
 
-            _currentModel = await _spaceshipModelFactory.CreateSpaceshipModel(spaceshipType, transform.position);
+            _currentModel = await _spaceshipModelFactory.CreateSpaceshipModel(spaceshipType, transform.position, transform);
         }
 
         public void ChangeTrail(TrailType trailType)

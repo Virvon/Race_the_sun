@@ -17,5 +17,6 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService
         TrailConfig[] GetTrails();
         MysteryBoxRewardsConfig GetMysteryBoxRewards();
         AttachmentConfig GetAttachment(UpgradeType type);
+        LevelUnclockInfoConfig GetLevelUnlockInfo(int level);
     }
 }

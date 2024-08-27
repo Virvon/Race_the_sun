@@ -67,7 +67,8 @@ MonoBehaviour:
     StartLevel: 1
     MaxLevel: 5
     UpgradeValue: 0.5
-  Name: "\u0421\u0432\u0430\u043B\u043B\u043E\u0432"
+  Name: "\u041B\u0410\u0421\u0422\u041E\u0427\u041A\u0410"
   Title: "\u0411\u0430\u0437\u043E\u0432\u044B\u0439 \u043A\u043E\u0440\u0430\u0431\u043B\u044C.
     \u042D\u0442\u043E \u0432\u0441\u0435."
-  UnlockText: 
+  UnlockSpaceshipText: 
+  UnlockStatText: 

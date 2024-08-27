@@ -15,6 +15,7 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
         [SerializeField] private GameOverPanelAnimationElement _revivalPanelAnimationElement;
         [SerializeField] private Button _revivalButton;
         [SerializeField] private GameObject _header;
+        [SerializeField] private Button _hideButton;
 
         private Coroutine _timer;
 
@@ -25,12 +26,14 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
         {
             _revivalPanelAnimationElement.Opened += OnRevivalPanelAnimationElementOpened;
             _revivalButton.onClick.AddListener(OnRevivalButtonClicked);
+            _hideButton.onClick.AddListener(OnHideButtonClicked);
         }
 
         private void OnDisable()
         {
             _revivalPanelAnimationElement.Opened -= OnRevivalPanelAnimationElementOpened;
             _revivalButton.onClick.RemoveListener(OnRevivalButtonClicked);
+            _hideButton.onClick.RemoveListener(OnHideButtonClicked);
         }
 
         public void Open()
@@ -57,6 +60,14 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
                 StopCoroutine(_timer);
 
             RevivalButtonClicked?.Invoke();
+        }
+
+        private void OnHideButtonClicked()
+        {
+            if (_timer != null)
+                StopCoroutine(_timer);
+
+            RevivalTimeEnded?.Invoke();
         }
 
         private IEnumerator Timer()

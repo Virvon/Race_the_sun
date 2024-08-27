@@ -7,16 +7,21 @@ namespace Virvon.MyBakery.Services.Input
     {
         private readonly GameInputAction _gameInputAction;
 
+        private bool _isDirectionMovementStarted;
+
         public event Action Jumped;
 
         public InputService()
         {
             _gameInputAction = new GameInputAction();
             _gameInputAction.Enable();
+            _isDirectionMovementStarted = false;
 
-            _gameInputAction.Player.Jump.performed += ctx => Jumped?.Invoke();
+            _gameInputAction.Player.Jump.performed += _ => Jumped?.Invoke();
+            _gameInputAction.Player.MovementDirectionInput.started += _ => _isDirectionMovementStarted = true;
+            _gameInputAction.Player.MovementDirectionInput.canceled += _ => _isDirectionMovementStarted = false;
         }
 
-        public Vector2 Direction => _gameInputAction.Player.MovementDirectionInput.ReadValue<Vector2>();
+        public Vector2 Direction => _isDirectionMovementStarted ? _gameInputAction.Player.MovementDirectionInput.ReadValue<Vector2>() : Vector2.zero;
     }
 }

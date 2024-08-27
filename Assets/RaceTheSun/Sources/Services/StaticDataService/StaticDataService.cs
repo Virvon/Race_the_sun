@@ -22,6 +22,7 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService
         private Dictionary<TrailType, TrailConfig> _trailConfigs;
         private MysteryBoxRewardsConfig _mysteryBoxRewardsConfig;
         private Dictionary<UpgradeType, AttachmentConfig> _attachmentConfigs;
+        private Dictionary<int, LevelUnclockInfoConfig> _levelUnlockInfoConfigs;
 
         public StaticDataService(IAssetProvider assetsProvider)
         {
@@ -37,9 +38,13 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService
             tasks.Add(LoadTrailConfigs());
             tasks.Add(LoadMysteryBoxRewardsConfig());
             tasks.Add(LoadAttachmentConfigs());
+            tasks.Add(LoadLevelUnlockInfoConfigs());
 
             await UniTask.WhenAll(tasks);
         }
+
+        public LevelUnclockInfoConfig GetLevelUnlockInfo(int level) =>
+            _levelUnlockInfoConfigs.TryGetValue(level, out LevelUnclockInfoConfig config) ? config : null;
 
         public AttachmentConfig GetAttachment(UpgradeType type) =>
             _attachmentConfigs.TryGetValue(type, out AttachmentConfig config) ? config : null;
@@ -69,6 +74,12 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService
         {
             MysteryBoxRewardsConfig[] configs = await GetConfigs<MysteryBoxRewardsConfig>();
             _mysteryBoxRewardsConfig = configs.First();
+        }
+
+        private async UniTask LoadLevelUnlockInfoConfigs()
+        {
+            LevelsConfig[] levelConfigs = await GetConfigs<LevelsConfig>();
+            _levelUnlockInfoConfigs = levelConfigs.First().LevelUnclockInfoConfigs.ToDictionary(value => value.Level, value => value);
         }
 
         private async UniTask LoadAttachmentConfigs()

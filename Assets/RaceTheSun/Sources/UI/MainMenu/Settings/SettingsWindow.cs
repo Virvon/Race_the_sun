@@ -16,11 +16,13 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Settings
         [SerializeField] private AudioMixer _audioMixer;
 
         private IPersistentProgressService _persistentProgressService;
+        private ISaveLoadService _saveLoadService;
 
         [Inject]
-        private void Construct(IPersistentProgressService persistentProgressService)
+        private void Construct(IPersistentProgressService persistentProgressService, ISaveLoadService saveLoadService)
         {
             _persistentProgressService = persistentProgressService;
+            _saveLoadService = saveLoadService;
 
             _musicVolumeSlider.value = _persistentProgressService.Progress.AudioSettings.MusicVolume;
             _soundsVolumeSlider.value = _persistentProgressService.Progress.AudioSettings.SoundsVolume;
@@ -43,6 +45,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Settings
 
         public override void Hide()
         {
+            _saveLoadService.SaveProgress();
             gameObject.SetActive(false);
         }
 

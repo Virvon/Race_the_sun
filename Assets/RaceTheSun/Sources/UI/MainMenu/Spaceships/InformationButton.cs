@@ -25,6 +25,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
         protected virtual void OnDisable()
         {
             _closeButton.onClick.RemoveListener(HideInfo);
+            _openButton.onClick.RemoveListener(OnOpenButtonClilcked);
         }
 
         public virtual void OpenInfo()

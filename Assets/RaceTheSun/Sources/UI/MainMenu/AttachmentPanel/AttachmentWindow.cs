@@ -15,13 +15,15 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
 
         private UpgradeType _currentUpgradeType;
         private IPersistentProgressService _persistentProgressService;
+        private ISaveLoadService _saveLoadService;
         private GameObject _currentSelectFrame;
 
 
         [Inject]
-        private void Construct(IPersistentProgressService persistentProgressService)
+        private void Construct(IPersistentProgressService persistentProgressService, ISaveLoadService saveLoadService)
         {
             _persistentProgressService = persistentProgressService;
+            _saveLoadService = saveLoadService;
 
             foreach (AttachmentButton attachmentButton in _attachmentButtons)
                 attachmentButton.Clicked += OnAttachmentButtonClicked;
@@ -91,6 +93,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
                 }
             }
 
+            _saveLoadService.SaveProgress();
             _currentSelectFrame.SetActive(false);
             _attachmentInfoPanel.Hide();
         }

@@ -69,16 +69,17 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
                 }
 
                 _lockIcon.SetActive(false);
+                _title.text = _staticDataService.GetAttachment(upgradeType).Title;
             }
             else
             {
                 _button.interactable = false;
                 _buttonText.text = "";
                 _lockIcon.SetActive(true);
+                _title.text = $"Разблокируется на уровне {(int)upgradeType}";
             }
 
             _upgradeName.text = _staticDataService.GetAttachment(upgradeType).Name;
-            _title.text = _staticDataService.GetAttachment(upgradeType).Title;
         }
 
         private void OnButtonClick()

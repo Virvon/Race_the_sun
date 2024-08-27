@@ -16,6 +16,8 @@ namespace Assets.RaceTheSun.Sources.Data
         public AvailableTrails AvailableTrails;
         public MysteryBoxesData MysteryBoxes;
         public AudioSettings AudioSettings;
+        public int HighScore;
+        public Education Education;
 
         public PlayerProgress(List<SpaceshipData> spaceshipDatas, List<TrailType> trails)
         {
@@ -28,6 +30,8 @@ namespace Assets.RaceTheSun.Sources.Data
             AvailableTrails = new(trails);
             MysteryBoxes = new();
             AudioSettings = new();
+            HighScore = 0;
+            Education = new();
         }
     }
 }

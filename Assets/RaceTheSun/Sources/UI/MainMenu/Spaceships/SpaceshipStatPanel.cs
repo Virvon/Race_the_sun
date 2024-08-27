@@ -12,7 +12,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
     public class SpaceshipStatPanel : MonoBehaviour
     {
         private const int StartUpgradeCost = 1000;
-        private const string MaxLevelText = "Макс. уровень";
+        private const string MaxLevelText = "МАКС. УРОВЕНЬ";
 
         [SerializeField] private Button _upgradeButton;
         [SerializeField] private StatType _statType;
@@ -20,19 +20,21 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
         [SerializeField] private GameObject _blockPanel;
         [SerializeField] private TMP_Text _upgradeCosteValue;
         [SerializeField] private GameObject _icon;
+        [SerializeField] private CurrentClickedSpaceshipInfo _currentClickedSpaceshipInfo;
 
         private IPersistentProgressService _persistentProgress;
         private IStaticDataService _staticDataService;
-
+        private ISaveLoadService _saveLoadService;
         private SpaceshipType _currentSpaceship;
 
         public event Action Updated;
 
         [Inject]
-        private void Construct(IPersistentProgressService persistentProgress, IStaticDataService staticDataService)
+        private void Construct(IPersistentProgressService persistentProgress, IStaticDataService staticDataService,ISaveLoadService saveLoadService)
         {
             _persistentProgress = persistentProgress;
             _staticDataService = staticDataService;
+            _saveLoadService = saveLoadService;
 
             _upgradeButton.onClick.AddListener(OnUpgradeButtonClicked);
         }
@@ -72,8 +74,11 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
         {
             if (_persistentProgress.Progress.Wallet.TryTake(UpgradeCost))
             {
+                _persistentProgress.Progress.AvailableSpaceships.GetSpaceshipData(_currentSpaceship).Level++;
                 _persistentProgress.Progress.AvailableSpaceships.GetSpaceshipData(_currentSpaceship).GetStat(_statType).Level++;
                 _persistentProgress.Progress.AvailableSpaceships.GetSpaceshipData(_currentSpaceship).GetStat(_statType).Value += _staticDataService.GetSpaceship(_currentSpaceship).GetStat(_statType).UpgradeValue;
+                _saveLoadService.SaveProgress();
+                _currentClickedSpaceshipInfo.UpdateLevel();
                 ResetSpaceship(_currentSpaceship);
             }
         }

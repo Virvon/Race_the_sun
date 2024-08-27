@@ -8,10 +8,10 @@ namespace Assets.RaceTheSun.Sources.Data
         public const int MaxLevel = 10;
         public const int ExperienceToLevelUp = 1000;
 
-
         public UpgradingData UpgradingData;
         public int Experience;
         public int Level;
+        public int LastShowedLevel;
 
         public event Action ExperienceCountChanged;
 
@@ -21,6 +21,7 @@ namespace Assets.RaceTheSun.Sources.Data
 
             Experience = 0;
             Level = 1;
+            LastShowedLevel = 1;
         }
 
         public bool IsMaxLevel => Level >= MaxLevel;
