@@ -558,6 +558,42 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c7442e10ecbe4864c8547d1d2c186a60
+    m_Address: ScoreItemsIcon
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b2b643f77d73ac04ca5c59618519e937
+    m_Address: LevelConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Configs
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fde71bf5b48b76149b2a130be9b7df87
+    m_Address: JumpBoostIconSprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1ae998c413f91e14fae22b60a860246d
+    m_Address: JumpBoostStorageIconSprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b0ac8ff2042ff734abccc1175cb6498c
+    m_Address: MagneteIconSprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f79a95a81bb5c564db2114a60b588e17
+    m_Address: ShiedlStorageIconSprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bf1e927fbb49fa243bd13726ce779f29
+    m_Address: ShiedlIconSprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 01d6725a7c3e3d04aaaaf52334bff613, type: 2}
   m_SchemaSet:

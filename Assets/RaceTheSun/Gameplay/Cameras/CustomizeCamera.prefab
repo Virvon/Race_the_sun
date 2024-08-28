@@ -61,7 +61,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 50
+    FieldOfView: 42
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 5.999344, z: -1.0026032}
+  m_FollowOffset: {x: 0, y: 5.9992623, z: -0.10275043}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 5.999344, z: -1.0026032}
+  m_FollowOffset: {x: 0, y: 5.9992623, z: -0.10275043}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -323,8 +323,8 @@ MonoBehaviour:
   m_LookaheadIgnoreY: 0
   m_HorizontalDamping: 0
   m_VerticalDamping: 0
-  m_ScreenX: 0.5
-  m_ScreenY: 0.5
+  m_ScreenX: 0.3
+  m_ScreenY: 0.47
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_SoftZoneWidth: 0.8
@@ -392,7 +392,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_CommonLens: 1
   m_Lens:
-    FieldOfView: 50
+    FieldOfView: 42
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -463,7 +463,7 @@ MonoBehaviour:
   m_BindingMode: 4
   m_SplineCurvature: 1
   m_Orbits:
-  - m_Height: 6
+  - m_Height: 5.5
     m_Radius: 1
   - m_Height: 0
     m_Radius: 5
@@ -504,7 +504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cinemachineFreeLook: {fileID: 5785285873314114640}
   _yAxisValue: 0.9996207
-  _xAxisValue: -90
+  _xAxisValue: -106
 --- !u!1 &6705553210486509799
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,7 +564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 5.999344, z: -1.0026032}
+  m_FollowOffset: {x: 0, y: 5.9992623, z: -0.10275043}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -693,7 +693,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 50
+    FieldOfView: 42
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -815,7 +815,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 50
+    FieldOfView: 42
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000

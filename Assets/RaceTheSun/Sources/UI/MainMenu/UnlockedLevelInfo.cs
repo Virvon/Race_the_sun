@@ -10,7 +10,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
 {
     public class UnlockedLevelInfo : MonoBehaviour
     {
-        private const string LevelName = "УРОВЕНЬ";
+        private const string LevelName = "ОТКРЫТ УРОВЕНЬ";
 
         [SerializeField] private TMP_Text _levelInfo;
         [SerializeField] private Image _icon;

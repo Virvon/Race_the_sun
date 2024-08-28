@@ -13,7 +13,7 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
 
         [SerializeField] private Button _button;
         [SerializeField] private TMP_Text _rewardValue;
-        [SerializeField] private ResultPanel _resultPanel;
+        [SerializeField] private ResultScoreItems _resultScoreItems;
 
         private IPersistentProgressService _persistentProgressService;
         private ScoreItemsCounter _scoreItemsCounter;
@@ -44,7 +44,7 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
             if (_scoreItemsCounter.ScoreItemsPerGame < 10)
                 return MinReward;
             else
-                return _scoreItemsCounter.ScoreItemsPerGame * 2;
+                return _scoreItemsCounter.ScoreItemsPerGame;
         }
 
         private void OnButtonClick()
@@ -53,12 +53,12 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
             InterstitialAd.Show(onCloseCallback: (_) =>
             {
                  _persistentProgressService.Progress.Wallet.Give(_reward);
-            _resultPanel.SetScoreItemsValue(_reward + _scoreItemsCounter.ScoreItemsPerGame);
+            _resultScoreItems.SetScoreItemsValue(_reward + _scoreItemsCounter.ScoreItemsPerGame);
             gameObject.SetActive(false);
             });
 #else
             _persistentProgressService.Progress.Wallet.Give(_reward);
-            _resultPanel.SetScoreItemsValue(_reward + _scoreItemsCounter.ScoreItemsPerGame);
+            _resultScoreItems.SetScoreItemsValue(_reward + _scoreItemsCounter.ScoreItemsPerGame);
             gameObject.SetActive(false);
 #endif
             

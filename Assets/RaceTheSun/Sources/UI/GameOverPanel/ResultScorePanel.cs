@@ -2,6 +2,7 @@
 using Assets.RaceTheSun.Sources.Gameplay.ScoreCounter;
 using System;
 using System.Collections;
+using System.Globalization;
 using TMPro;
 using UnityEngine;
 using Zenject;
@@ -26,7 +27,7 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
             _isOpened = false;
         }
 
-        public void ShowResult()
+        public void ShowResult(Action callbakc)
         {
             if (_isOpened)
                 return;
@@ -43,10 +44,19 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
                 _highScoreText.SetActive(false);
             }
 
-            StartCoroutine(ShowAnimator(score));
+            StartCoroutine(ShowAnimator(score, callbakc));
         }
 
-        private IEnumerator ShowAnimator(int resultScore)
+        private string DivideIntegerOnDigits(int value)
+        {
+            if (value == 0)
+                return "0";
+
+            var culture = new CultureInfo("ru-RU");
+            return value.ToString("#,#", culture);
+        }
+
+        private IEnumerator ShowAnimator(int resultScore, Action callbakc)
         {
             int currentScore = 0;
             float passedTime = 0;
@@ -60,12 +70,13 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
                 progress = passedTime / _showAnimationDuration;
 
                 currentScore = (int)Mathf.Lerp(0, resultScore, progress);
-                _text.text = currentScore.ToString();
+                _text.text = DivideIntegerOnDigits(currentScore);
 
                 yield return null;
             }
 
             _isOpened = false;
+            callbakc?.Invoke();
         }
     }
 }

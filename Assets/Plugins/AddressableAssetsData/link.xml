@@ -1,0 +1,319 @@
+<linker>
+  <assembly fullname="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Assets.RaceTheSun.Sources.Animations.AttachmentPanel" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Animations.AttachmentPanels" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Animations.GameOverPanelAnimationElement" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Animations.HudAnimationElement" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Animations.MillAnimation" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Animations.PausePanel" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Audio.CollectItemsSoundEffects" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Audio.DestroySound" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Audio.JumpSound" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Audio.PortalSound" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Audio.SpeedBoostSound" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Audio.StageMusic" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Bird.Bird" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Cameras.CameraShake" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Cameras.CollisionPortalCamera" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Cameras.CustomizeCamera" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Cameras.MainMenuMainCamera" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Cameras.SelectionCamera" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Cameras.ShieldPortalCamera" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Cameras.SpaceshipMainCamera" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Cameras.SpaceshipSideCamera" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Cameras.SpaceshipUpperCamera" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Cameras.StartCamera" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Cameras.TrailCamera" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.CollectItems.CollectItems" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.CollectItems.DestroyItemEffect" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.CollectItems.JumpBoost" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.CollectItems.MysteryBox" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.CollectItems.ScoreItem" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.CollectItems.Shield" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.CollectItems.SpeedBoost" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.DistanceObserver.BonusStageMovableElement" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.DistanceObserver.IneractableEnviroment" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.DistanceObserver.MovableSphere" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.GameplayInstaller" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.ModelPoint" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Portals.BonusStagePortal" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Portals.FinishStagePortal" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Spaceship.Battery" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Spaceship.BatteryIndicator" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Spaceship.CollectItemEffect" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Spaceship.CollisionFx" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Spaceship.CollisionPortalPoint" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Spaceship.DestroySpaceshipFx" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Spaceship.HeightsEngine" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Spaceship.ImpassableEnvironment" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Spaceship.Plane" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Spaceship.ShieldPortal" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Spaceship.Spaceship" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpaceshipDie" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpaceshipFloat" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpaceshipJump" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpaceshipMovement" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpaceshipShieldPortal" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpaceshipTurning" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Spaceship.StartMovement" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Sun.SkyboxSettingsChanger" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Sun.Sun" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.WorldGenerator.BonusStageNumberTile" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.WorldGenerator.FinishBonusStageTile" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.WorldGenerator.JumpBoostSpawner" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.WorldGenerator.ShieldSpawner" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.WorldGenerator.StartBetweenStageTile" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.WorldGenerator.StartStageTile" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.WorldGenerator.Tile" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.WorldGenerator.WorldGenerator" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory.SpaceshipModel" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory.TrailPoint" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.MainMenu.EnviromentAnimation.EnviromentAnimation" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.MainMenu.MainMenuInstaller" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.MainMenu.ModelPoint.ModelPoint" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.MainMenu.PlayButton" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Services.StaticDataService.Configs.AttachmentConfig" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Services.StaticDataService.Configs.GameplayWorldConfig" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Services.StaticDataService.Configs.LevelsConfig" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Services.StaticDataService.Configs.MysteryBoxRewardsConfig" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Services.StaticDataService.Configs.SpaceshipConfig" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Services.StaticDataService.Configs.TrailConfig" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Trail.Trail" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Trail.TrailSpawner" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.CameraButton" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.GameOverPanel.GameOverPanel" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.GameOverPanel.MultipliplyScoreItemsButton" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.GameOverPanel.ResultPanel" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.GameOverPanel.ResultScoreItems" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.GameOverPanel.ResultScorePanel" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.GameOverPanel.RevivalPanel" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.Hud.ScoreItemPanel" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.Hud.ScoreItemsProgressPanel" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.LoadingCurtain.LoadingCurtain" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MainMenu.AttachmentButton" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MainMenu.AttachmentCell" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MainMenu.AttachmentInfoPanel" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MainMenu.AttachmentWindow" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MainMenu.BatteryInfoButton" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MainMenu.CloseCurrentOpenWindowButton" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MainMenu.CurrentClickedButtonsPanel" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MainMenu.CurrentClickedSpacehipWatcher" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MainMenu.CurrentClickedSpaceshipInfo" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MainMenu.CustomizeWindow" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MainMenu.Education" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MainMenu.ExperienceMultiplierInfoButton" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MainMenu.ExperienceProgressPanel" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MainMenu.FloatTimeInfoButton" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MainMenu.InformationPanelActivator" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MainMenu.LevelProgressButton" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MainMenu.MainInfoWindow" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MainMenu.MainMenu" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MainMenu.PickUpRangeInfoButton" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MainMenu.Settings.SettingsWindow" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MainMenu.ShopWindow" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MainMenu.SpaceshipButton" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MainMenu.SpaceshipStatPanel" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MainMenu.SpaceshipsWindow" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MainMenu.TrailPanel.TrailButton" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MainMenu.TrailPanel.TrailInfoPanel" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MainMenu.TrailWindow" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MainMenu.UnlockedLevelInfo" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MainMenu.WalletView" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MainMenu.WindowCloseButton" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MainMenu.WindowOpenButton" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MysteryBox.MysteryBoxesCountPanel" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MysteryBox.MysteryBoxWindow" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MysteryBox.MysteryBoxWindowOpenButton" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MysteryBox.RewardPanel" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MysteryBox.RewardsInfoPanel" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.MysteryBox.TimePanel" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.RaycastTarget" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.ScoreView.ExitButton" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.ScoreView.Hud" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.ScoreView.JumpBoostsCountPanel" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.ScoreView.JumpPanel" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.ScoreView.PerfectStagePanel" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.ScoreView.ScoreMultiplierPanel" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.ScoreView.ScorePanel" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.UI.ScoreView.ShieldCountPanel" preserve="all" />
+    <type fullname="Assets.RaceTheSun.Sources.Gameplay.Spaceship.BatteryMaterialInfo" preserve="nothing" serialized="true" />
+    <type fullname="Assets.RaceTheSun.Sources.Services.StaticDataService.Configs.LevelUnclockInfoConfig" preserve="nothing" serialized="true" />
+    <type fullname="Assets.RaceTheSun.Sources.Services.StaticDataService.Configs.SkyboxConfig" preserve="nothing" serialized="true" />
+    <type fullname="Assets.RaceTheSun.Sources.Services.StaticDataService.Configs.StageConfig" preserve="nothing" serialized="true" />
+    <type fullname="Assets.RaceTheSun.Sources.Services.StaticDataService.Configs.StatConfig" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="Cinemachine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Cinemachine.CinemachineBasicMultiChannelPerlin" preserve="all" />
+    <type fullname="Cinemachine.CinemachineBrain" preserve="all" />
+    <type fullname="Cinemachine.CinemachineComposer" preserve="all" />
+    <type fullname="Cinemachine.CinemachineFreeLook" preserve="all" />
+    <type fullname="Cinemachine.CinemachineHardLookAt" preserve="all" />
+    <type fullname="Cinemachine.CinemachineInputProvider" preserve="all" />
+    <type fullname="Cinemachine.CinemachineOrbitalTransposer" preserve="all" />
+    <type fullname="Cinemachine.CinemachinePipeline" preserve="all" />
+    <type fullname="Cinemachine.CinemachineTransposer" preserve="all" />
+    <type fullname="Cinemachine.CinemachineVirtualCamera" preserve="all" />
+    <type fullname="Cinemachine.NoiseSettings" preserve="all" />
+    <type fullname="Cinemachine.AxisState" preserve="nothing" serialized="true" />
+    <type fullname="Cinemachine.AxisState/Recentering" preserve="nothing" serialized="true" />
+    <type fullname="Cinemachine.CinemachineBlendDefinition" preserve="nothing" serialized="true" />
+    <type fullname="Cinemachine.CinemachineBrain/VcamActivatedEvent" preserve="nothing" serialized="true" />
+    <type fullname="Cinemachine.CinemachineFreeLook/Orbit" preserve="nothing" serialized="true" />
+    <type fullname="Cinemachine.CinemachineOrbitalTransposer/Heading" preserve="nothing" serialized="true" />
+    <type fullname="Cinemachine.CinemachineVirtualCameraBase/TransitionParams" preserve="nothing" serialized="true" />
+    <type fullname="Cinemachine.LensSettings" preserve="nothing" serialized="true" />
+    <type fullname="Cinemachine.NoiseSettings/NoiseParams" preserve="nothing" serialized="true" />
+    <type fullname="Cinemachine.NoiseSettings/TransformNoiseParams" preserve="nothing" serialized="true" />
+    <type fullname="Cinemachine.CinemachineBrain/BrainEvent" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="MPUIKit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="MPUIKIT.MPImage" preserve="all" />
+    <type fullname="MPUIKIT.Circle" preserve="nothing" serialized="true" />
+    <type fullname="MPUIKIT.GradientEffect" preserve="nothing" serialized="true" />
+    <type fullname="MPUIKIT.Hexagon" preserve="nothing" serialized="true" />
+    <type fullname="MPUIKIT.NStarPolygon" preserve="nothing" serialized="true" />
+    <type fullname="MPUIKIT.Pentagon" preserve="nothing" serialized="true" />
+    <type fullname="MPUIKIT.Rectangle" preserve="nothing" serialized="true" />
+    <type fullname="MPUIKIT.Triangle" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="Unity.Addressables, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
+    <type fullname="UnityEngine.AddressableAssets.Addressables" preserve="all" />
+    <type fullname="UnityEngine.AddressableAssets.AssetReference" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.AddressableAssets.AssetReferenceGameObject" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="Unity.InputSystem, Version=1.4.4.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.InputSystem.InputActionAsset" preserve="all" />
+    <type fullname="UnityEngine.InputSystem.InputActionReference" preserve="all" />
+    <type fullname="UnityEngine.InputSystem.OnScreen.OnScreenButton" preserve="all" />
+    <type fullname="UnityEngine.InputSystem.InputAction" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.InputSystem.InputActionMap" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.InputSystem.InputBinding" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="Unity.Postprocessing.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.Rendering.PostProcessing.PostProcessLayer" preserve="all" />
+    <type fullname="UnityEngine.Rendering.PostProcessing.PostProcessProfile" preserve="all" />
+    <type fullname="UnityEngine.Rendering.PostProcessing.PostProcessResources" preserve="all" />
+    <type fullname="UnityEngine.Rendering.PostProcessing.PostProcessVolume" preserve="all" />
+    <type fullname="UnityEngine.Rendering.PostProcessing.Vignette" preserve="all" />
+    <type fullname="UnityEngine.Rendering.PostProcessing.BoolParameter" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Rendering.PostProcessing.ColorParameter" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Rendering.PostProcessing.FastApproximateAntialiasing" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Rendering.PostProcessing.FloatParameter" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Rendering.PostProcessing.Fog" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Rendering.PostProcessing.HistogramMonitor" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Rendering.PostProcessing.LightMeterMonitor" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Rendering.PostProcessing.PostProcessDebugLayer" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Rendering.PostProcessing.PostProcessDebugLayer/OverlaySettings" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Rendering.PostProcessing.PostProcessResources/ComputeShaders" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Rendering.PostProcessing.PostProcessResources/SMAALuts" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Rendering.PostProcessing.PostProcessResources/Shaders" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Rendering.PostProcessing.SubpixelMorphologicalAntialiasing" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Rendering.PostProcessing.TemporalAntialiasing" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Rendering.PostProcessing.TextureParameter" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Rendering.PostProcessing.Vector2Parameter" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Rendering.PostProcessing.VectorscopeMonitor" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Rendering.PostProcessing.VignetteModeParameter" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Rendering.PostProcessing.WaveformMonitor" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.AssetBundleProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.BundledAssetProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.InstanceProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.LegacyResourcesProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.SceneProvider" preserve="all" />
+  </assembly>
+  <assembly fullname="Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="TMPro.TextMeshProUGUI" preserve="all" />
+    <type fullname="TMPro.TMP_FontAsset" preserve="all" />
+    <type fullname="TMPro.FaceInfo_Legacy" preserve="nothing" serialized="true" />
+    <type fullname="TMPro.FontAssetCreationSettings" preserve="nothing" serialized="true" />
+    <type fullname="TMPro.KerningTable" preserve="nothing" serialized="true" />
+    <type fullname="TMPro.TMP_Character" preserve="nothing" serialized="true" />
+    <type fullname="TMPro.TMP_FontFeatureTable" preserve="nothing" serialized="true" />
+    <type fullname="TMPro.TMP_FontWeightPair" preserve="nothing" serialized="true" />
+    <type fullname="TMPro.VertexGradient" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="UnityEditor.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEditor.Audio.AudioMixerSnapshotController" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.AnimationClip" preserve="all" />
+    <type fullname="UnityEngine.Animator" preserve="all" />
+    <type fullname="UnityEngine.RuntimeAnimatorController" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.AudioModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.Audio.AudioMixer" preserve="all" />
+    <type fullname="UnityEngine.Audio.AudioMixerGroup" preserve="all" />
+    <type fullname="UnityEngine.AudioClip" preserve="all" />
+    <type fullname="UnityEngine.AudioListener" preserve="all" />
+    <type fullname="UnityEngine.AudioSource" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.Camera" preserve="all" />
+    <type fullname="UnityEngine.ComputeShader" preserve="all" />
+    <type fullname="UnityEngine.Cubemap" preserve="all" />
+    <type fullname="UnityEngine.Flare" preserve="all" />
+    <type fullname="UnityEngine.FlareLayer" preserve="all" />
+    <type fullname="UnityEngine.GameObject" preserve="all" />
+    <type fullname="UnityEngine.Light" preserve="all" />
+    <type fullname="UnityEngine.LightingSettings" preserve="all" />
+    <type fullname="UnityEngine.LightmapSettings" preserve="all" />
+    <type fullname="UnityEngine.Material" preserve="all" />
+    <type fullname="UnityEngine.Mesh" preserve="all" />
+    <type fullname="UnityEngine.MeshFilter" preserve="all" />
+    <type fullname="UnityEngine.MeshRenderer" preserve="all" />
+    <type fullname="UnityEngine.Object" preserve="all" />
+    <type fullname="UnityEngine.RectTransform" preserve="all" />
+    <type fullname="UnityEngine.RenderSettings" preserve="all" />
+    <type fullname="UnityEngine.Shader" preserve="all" />
+    <type fullname="UnityEngine.Sprite" preserve="all" />
+    <type fullname="UnityEngine.Texture2D" preserve="all" />
+    <type fullname="UnityEngine.Transform" preserve="all" />
+    <type fullname="UnityEngine.Events.PersistentCallGroup" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.RectOffset" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Events.UnityEvent" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Events.ArgumentCache" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Events.PersistentListenerMode" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="UnityEngine.ParticleSystemModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.ParticleSystem" preserve="all" />
+    <type fullname="UnityEngine.ParticleSystemRenderer" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.PhysicsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.BoxCollider" preserve="all" />
+    <type fullname="UnityEngine.MeshCollider" preserve="all" />
+    <type fullname="UnityEngine.Rigidbody" preserve="all" />
+    <type fullname="UnityEngine.SphereCollider" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.EventSystems.EventSystem" preserve="all" />
+    <type fullname="UnityEngine.EventSystems.StandaloneInputModule" preserve="all" />
+    <type fullname="UnityEngine.UI.AspectRatioFitter" preserve="all" />
+    <type fullname="UnityEngine.UI.Button" preserve="all" />
+    <type fullname="UnityEngine.UI.CanvasScaler" preserve="all" />
+    <type fullname="UnityEngine.UI.GraphicRaycaster" preserve="all" />
+    <type fullname="UnityEngine.UI.HorizontalLayoutGroup" preserve="all" />
+    <type fullname="UnityEngine.UI.Image" preserve="all" />
+    <type fullname="UnityEngine.UI.Slider" preserve="all" />
+    <type fullname="UnityEngine.UI.AnimationTriggers" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.Button/ButtonClickedEvent" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.ColorBlock" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.MaskableGraphic/CullStateChangedEvent" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.Navigation" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.Slider/SliderEvent" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.SpriteState" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="UnityEngine.UIModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.Canvas" preserve="all" />
+    <type fullname="UnityEngine.CanvasRenderer" preserve="all" />
+  </assembly>
+  <assembly fullname="Zenject, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Zenject.SceneContext" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.TextCoreFontEngineModule">
+    <type fullname="UnityEngine.TextCore.FaceInfo" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.TextCore.Glyph" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.TextCore.GlyphMetrics" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.TextCore.GlyphRect" preserve="nothing" serialized="true" />
+  </assembly>
+</linker>

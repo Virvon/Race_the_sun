@@ -15,7 +15,7 @@ namespace Assets.RaceTheSun.Sources.MainMenu
         private readonly ILoadingCurtain _loadingCurtain;
 
         private Vector3 _modelPointPosition = new Vector3(0, 3, 0);
-        private Vector3 _trailPointPosition = new Vector3(0, 3, -2);
+        private Vector3 _trailPointPosition = new Vector3(0, 3, -1.5f);
 
         public MainMenuBootstrapper(IMainMenuFactory mainMenuFactory, IUiFactory uiFactory, IPersistentProgressService persistentProgressService, MainMenuCameras mainMenuCameras, ILoadingCurtain loadingCurtain)
         {

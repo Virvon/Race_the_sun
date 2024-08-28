@@ -21,6 +21,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
             _resultPanel = resultPanel;
             _persistentProgressService = persistentProgressService;
             _scoreCounter = scoreCounter;
+
+            resultPanel.gameObject.SetActive(false);
         }
 
         public UniTask Enter()
@@ -39,7 +41,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
 
         private int GetExperience()
         {
-            return 1000;
             return (int)(_scoreCounter.Score * ExperienceMultipllier * _persistentProgressService.Progress.AvailableSpaceships.GetCurrentSpaceshipData().ExperienceMultiplier.Value);
         }
 

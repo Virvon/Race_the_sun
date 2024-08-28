@@ -3,6 +3,7 @@ using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory;
 using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
 using Assets.RaceTheSun.Sources.Infrastructure.SceneManagement;
+using Assets.RaceTheSun.Sources.Services.ActivityTracking;
 using Assets.RaceTheSun.Sources.Services.CoroutineRunner;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.Services.TimeScale;
@@ -10,6 +11,8 @@ using Assets.RaceTheSun.Sources.Services.WaitingService;
 using Assets.RaceTheSun.Sources.UI.LoadingCurtain;
 using Cysharp.Threading.Tasks;
 using System;
+using UnityEngine;
+using UnityEngine.Audio;
 using Virvon.MyBakery.Services.Input;
 using Zenject;
 
@@ -17,6 +20,8 @@ namespace Assets.RaceTheSun.Sources.CompositionRoot
 {
     public class GameInstaller : MonoInstaller, Services.CoroutineRunner.ICoroutineRunner
     {
+        [SerializeField] private AudioMixer _audioMixer;
+
         public override void InstallBindings()
         {
             BindGameStateMachine();
@@ -33,6 +38,12 @@ namespace Assets.RaceTheSun.Sources.CompositionRoot
             BindCoroutineRunner();
             BindWaitingService();
             BindAttachment();
+        }
+
+        private void BindActivityTracking()
+        {
+            Container.Bind<AudioMixer>().FromInstance(_audioMixer).AsSingle();
+            Container.BindInterfacesAndSelfTo<ActivityTracking>().AsSingle().NonLazy();
         }
 
         private void BindAttachment()

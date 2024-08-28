@@ -21,6 +21,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
         [SerializeField] private TMP_Text _upgradeCosteValue;
         [SerializeField] private GameObject _icon;
         [SerializeField] private CurrentClickedSpaceshipInfo _currentClickedSpaceshipInfo;
+        [SerializeField] private TMP_Text _maxLevelText;
 
         private IPersistentProgressService _persistentProgress;
         private IStaticDataService _staticDataService;
@@ -55,7 +56,10 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
             float maxStatLevel = _staticDataService.GetSpaceship(_currentSpaceship).GetStat(_statType).MaxLevel;
 
             _progressbarValue.fillAmount = (currentStatLevel - 1) / (maxStatLevel - 1);
+            _upgradeCosteValue.gameObject.SetActive(true);
+            _maxLevelText.gameObject.SetActive(false);
             _upgradeCosteValue.text = UpgradeCost.ToString();
+            _icon.SetActive(true);
 
             _blockPanel.SetActive(_persistentProgress.Progress.AvailableStatsToUpgrade.CheckAvailability(_statType) == false);
             _upgradeButton.interactable = _persistentProgress.Progress.AvailableStatsToUpgrade.CheckAvailability(_statType) && _persistentProgress.Progress.AvailableSpaceships.GetSpaceshipData(type).IsUnlocked;
@@ -63,7 +67,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
             if (_persistentProgress.Progress.AvailableSpaceships.GetSpaceshipData(_currentSpaceship).GetStat(_statType).Level >= _staticDataService.GetSpaceship(_currentSpaceship).GetStat(_statType).MaxLevel)
             {
                 _upgradeButton.interactable = false;
-                _upgradeCosteValue.text = MaxLevelText;
+                _upgradeCosteValue.gameObject.SetActive(false);
+                _maxLevelText.gameObject.SetActive(true); ;
                 _icon.SetActive(false);
             }
 

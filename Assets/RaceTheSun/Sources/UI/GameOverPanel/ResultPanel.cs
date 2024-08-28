@@ -1,7 +1,6 @@
 ﻿using Assets.RaceTheSun.Sources.Animations;
 using Assets.RaceTheSun.Sources.Gameplay.ScoreCounter;
 using System;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -10,11 +9,11 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
 {
     public class ResultPanel : MonoBehaviour
     {
-        [SerializeField] private GameOverPanelAnimationElement _gameOverPanelAnimationElement;
         [SerializeField] private Button _continueButton;
         [SerializeField] private ResultScorePanel _resultScorePanel;
-        [SerializeField] private TMP_Text _scoreItemsValue;
         [SerializeField] private GameObject _header;
+        [SerializeField] private ResultScoreItems _resultScoreItemsValue;
+        [SerializeField] private MultipliplyScoreItemsButton _multipliplyScoreItemsButton;
 
         private ScoreItemsCounter _scoreItemsCounter;
 
@@ -28,38 +27,33 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
 
         private void OnEnable()
         {
-            _gameOverPanelAnimationElement.Opened += OnOpened;
             _continueButton.onClick.AddListener(Hide);
         }
       
         private void OnDisable()
         {
             _continueButton.onClick.RemoveListener(Hide); 
-            _gameOverPanelAnimationElement.Opened -= OnOpened;
-        }
-
-        public void SetScoreItemsValue(int value)
-        {
-            _scoreItemsValue.text =  value.ToString();
         }
 
         public void Open()
         {
             _header.SetActive(true);
-            _gameOverPanelAnimationElement.Open();
-            SetScoreItemsValue(_scoreItemsCounter.ScoreItemsPerGame);
+            gameObject.SetActive(true);
+
+            _resultScorePanel.ShowResult(callbakc: () =>
+            {
+                _resultScoreItemsValue.SetScoreItemsValue(_scoreItemsCounter.ScoreItemsPerGame, callback: () =>
+                {
+                    _multipliplyScoreItemsButton.gameObject.SetActive(true);
+                });
+            });
         }
 
         private void Hide()
         {
-            _gameOverPanelAnimationElement.Hided += ()=> Hided?.Invoke();
-            _gameOverPanelAnimationElement.Hide();
             _header.SetActive(false);
-        }
-
-        private void OnOpened()
-        {
-            _resultScorePanel.ShowResult();
+            gameObject.SetActive(false);
+            Hided?.Invoke();
         }
     }
 }
