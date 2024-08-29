@@ -12,6 +12,7 @@
         {
             AttachmentStats stats = WrappedEntity.GetStats();
             stats.MaxShileldsCount = BoostedMaxShieldsCount;
+
             return stats;
         }
     }

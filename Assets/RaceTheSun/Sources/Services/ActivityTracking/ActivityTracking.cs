@@ -1,10 +1,5 @@
 ﻿using Agava.WebUtility;
 using Assets.RaceTheSun.Sources.Services.TimeScale;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine.Audio;
 
 namespace Assets.RaceTheSun.Sources.Services.ActivityTracking
@@ -16,9 +11,9 @@ namespace Assets.RaceTheSun.Sources.Services.ActivityTracking
         private const int NormalSoundVolume = 0;
 
         private ITimeScale _timeScale;
-        private AudioMixerGroup _audioMixer;
+        private AudioMixer _audioMixer;
 
-        public ActivityTracking(ITimeScale timeScale, AudioMixerGroup audioMixer)
+        public ActivityTracking(ITimeScale timeScale, AudioMixer audioMixer)
         {
             _timeScale = timeScale;
             _audioMixer = audioMixer;
@@ -34,12 +29,12 @@ namespace Assets.RaceTheSun.Sources.Services.ActivityTracking
             if (inBackground)
             {
                 _timeScale.Scale(TimeScaleType.Pause);
-                _audioMixer.audioMixer.SetFloat(MasterMixer, MutedSoundVolume);
+                _audioMixer.SetFloat(MasterMixer, MutedSoundVolume);
             }
             else
             {
                 _timeScale.Scale(TimeScaleType.Normal);
-                _audioMixer.audioMixer.SetFloat(MasterMixer, NormalSoundVolume);
+                _audioMixer.SetFloat(MasterMixer, NormalSoundVolume);
             }
         }
     }

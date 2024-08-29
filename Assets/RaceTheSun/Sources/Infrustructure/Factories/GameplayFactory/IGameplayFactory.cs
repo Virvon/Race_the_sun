@@ -32,8 +32,8 @@ namespace Assets.RaceTheSun.Sources.Infrustructure.Factories.GameplayFactory
         UniTask CreateStageMusic();
         UniTask CreatePlane();
         UniTask CreateCollectItemsSoundEffects();
-        UniTask CreatePortalSound();
-        UniTask CreateDestroySound();
+        UniTask CreatePortalSoundPlayer();
+        UniTask CreateDestroySoundPlayer();
         UniTask CreateCollisionFx(Vector3 position, Transform parent);
     }
 }

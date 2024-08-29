@@ -1,6 +1,7 @@
 ﻿using Assets.RaceTheSun.Sources.GameLogic.Audio;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
+using Assets.RaceTheSun.Sources.Infrustructure.Factories.GameplayFactory;
 using Assets.RaceTheSun.Sources.UI.LoadingCurtain;
 using UnityEngine;
 using Zenject;
@@ -14,17 +15,18 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Portals
         private ILoadingCurtain _loadingCurtain;
         private Sun.Sun _sun;
         private Spaceship.Plane _plane;
-        private PortalSound _portalSound;
+
+        [Inject(Id = GameplayFactoryInjectId.PortalSound)]
+        private SoundPlayer _portalSound;
 
         [Inject]
-        private void Construct(CurrentGenerationStage currentGenerationStage, WorldGenerator.WorldGenerator worldGenerator, ILoadingCurtain transitionCurtain, Sun.Sun sun, Gameplay.Spaceship.Plane plane, PortalSound portalSound)
+        private void Construct(CurrentGenerationStage currentGenerationStage, WorldGenerator.WorldGenerator worldGenerator, ILoadingCurtain transitionCurtain, Sun.Sun sun, Spaceship.Plane plane)
         {
             _currentGenerationStage = currentGenerationStage;
             _worldGenerator = worldGenerator;
             _loadingCurtain = transitionCurtain;
             _sun = sun;
             _plane = plane;
-            _portalSound = portalSound;
         }
 
         private void OnTriggerEnter(Collider other)

@@ -2,6 +2,7 @@
 using Assets.RaceTheSun.Sources.GameLogic.Cameras.Gameplay;
 using Assets.RaceTheSun.Sources.Gameplay.StateMachine;
 using Assets.RaceTheSun.Sources.Gameplay.StateMachine.States;
+using Assets.RaceTheSun.Sources.Infrustructure.Factories.GameplayFactory;
 using Assets.RaceTheSun.Sources.Services.WaitingService;
 using Cysharp.Threading.Tasks;
 using System;
@@ -19,7 +20,10 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         private GameplayStateMachine _gameplayStateMachine;
         private WaitingService _waitingService;
         private StageMusic _stageMusic;
-        private DestroySound _destroySound;
+
+        [Inject(Id = GameplayFactoryInjectId.DestroySound)]
+        private SoundPlayer _destroySound;
+
         private GameplayCameras _gameplayCameras;
         private Sun.Sun _sun;
 
@@ -30,13 +34,12 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         public event Action Stopped;
 
         [Inject]
-        private void Construct(GameplayCameras cameras, GameplayStateMachine gameplayStateMachine, WaitingService waitingService, StageMusic stageMusic, DestroySound destroySound, GameplayCameras gameplayCameras)
+        private void Construct(GameplayCameras cameras, GameplayStateMachine gameplayStateMachine, WaitingService waitingService, StageMusic stageMusic, GameplayCameras gameplayCameras)
         {
             _cameras = cameras;
             _gameplayStateMachine = gameplayStateMachine;
             _waitingService = waitingService;
             _stageMusic = stageMusic;
-            _destroySound = destroySound;
             _gameplayCameras = gameplayCameras;
         }
 

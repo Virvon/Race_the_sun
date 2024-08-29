@@ -29,8 +29,8 @@
         public const string StageMusic = "StageMusic";
         public const string Plane = "Plane";
         public const string CollectItemsSoundEffects = "CollectItemsSoundEffects";
-        public const string PortalSound = "PortalSound";
-        public const string DestroySound = "DestroySound";
         public const string CollisionFx = "CollisionFx";
+        public const string DestroySoundPlayer = "DestroySound";
+        public const string PortalSoundPlayer = "PortalSound";
     }
 }

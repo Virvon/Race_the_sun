@@ -91,12 +91,9 @@ namespace Assets.RaceTheSun.Sources.Infrustructure.Factories.GameplayFactory
                 .FromFactory<KeyPrefabFactoryAsync<CollectItemsSoundEffects>>();
 
             Container
-                .BindFactory<string, UniTask<PortalSound>, PortalSound.Factory>()
-                .FromFactory<KeyPrefabFactoryAsync<PortalSound>>();
+                .BindFactory<string, UniTask<SoundPlayer>, SoundPlayer.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<SoundPlayer>>();
 
-            Container
-                .BindFactory<string, UniTask<DestroySound>, DestroySound.Factory>()
-                .FromFactory<KeyPrefabFactoryAsync<DestroySound>>();
 
             Container
                 .BindFactory<string, UniTask<CollisionFx>, CollisionFx.Factory>()

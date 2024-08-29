@@ -18,14 +18,17 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         private CollisionPortalPoint _collisionPortalPoint;
         private SpaceshipTurning _spaceshipTurning;
         private StageMusic _stageMusic;
-        private PortalSound _portalSound;
+
+        [Inject(Id = GameplayFactoryInjectId.PortalSound)]
+        private SoundPlayer _portalSound;
+
         private Sun.Sun _sun;
         private Plane _plane;
 
         public event Action Activated;
 
         [Inject]
-        private void Construct(IGameplayFactory gameplayFactory, SpaceshipMovement spaceshipMovement, Spaceship spaceship, GameplayCameras cameras, CollisionPortalPoint collisionPortalPoint, SpaceshipTurning spaceshipTurning, StageMusic stageMusic, PortalSound portalSound, Sun.Sun sun, Plane plane)
+        private void Construct(IGameplayFactory gameplayFactory, SpaceshipMovement spaceshipMovement, Spaceship spaceship, GameplayCameras cameras, CollisionPortalPoint collisionPortalPoint, SpaceshipTurning spaceshipTurning, StageMusic stageMusic, Sun.Sun sun, Plane plane)
         {
             _gameplayFactory = gameplayFactory;
             _spaceshipMovement = spaceshipMovement;
@@ -34,7 +37,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             _collisionPortalPoint = collisionPortalPoint;
             _spaceshipTurning = spaceshipTurning;
             _stageMusic = stageMusic;
-            _portalSound = portalSound;
             _sun = sun;
             _plane = plane;
         }
