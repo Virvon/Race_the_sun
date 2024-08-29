@@ -2,6 +2,7 @@
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship.Battery;
 using Assets.RaceTheSun.Sources.Gameplay.StateMachine;
 using Assets.RaceTheSun.Sources.Gameplay.StateMachine.States;
+using Assets.RaceTheSun.Sources.Infrastructure.Factories.CamerasFactory.Gameplay;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.SpaceshipModelFactory;
 using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
@@ -19,19 +20,21 @@ namespace Assets.RaceTheSun.Sources.Gameplay
         private readonly StatesFactory _statesFactory;
         private readonly IPersistentProgressService _persistentProgress;
         private readonly ISpaceshipModelFactory _spaceshipModelFactory;
+        private readonly IGameplayCamerasFactory _gameplayCamerasFactory;
 
-        public GameplayBootstrapper(IGameplayFactory gameplayFactory, GameplayStateMachine gameplayStateMachine, StatesFactory statesFactory, IPersistentProgressService persistentProgress, ISpaceshipModelFactory spaceshipModelFactory)
+        public GameplayBootstrapper(IGameplayFactory gameplayFactory, GameplayStateMachine gameplayStateMachine, StatesFactory statesFactory, IPersistentProgressService persistentProgress, ISpaceshipModelFactory spaceshipModelFactory, IGameplayCamerasFactory gameplayCamerasFactory)
         {
             _gameplayFactory = gameplayFactory;
             _gameplayStateMachine = gameplayStateMachine;
             _statesFactory = statesFactory;
             _persistentProgress = persistentProgress;
             _spaceshipModelFactory = spaceshipModelFactory;
+            _gameplayCamerasFactory = gameplayCamerasFactory;
         }
 
         public async void Initialize()
         {
-            await _gameplayFactory.CreateStartCamera();
+            await _gameplayCamerasFactory.CreateStartCamera();
             await _gameplayFactory.CreateStageMusic();
             await _gameplayFactory.CreateCollectItemsSoundEffects();
             await _gameplayFactory.CreatePortalSoundPlayer();
@@ -48,11 +51,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay
             await _gameplayFactory.CreateBird();
             await _gameplayFactory.CreateWorldGenerator();
             await _gameplayFactory.CreateHud();
-            await _gameplayFactory.CreateSpaceshipMainCamera();
-            await _gameplayFactory.CreateSpaceshipSideCamera();
-            await _gameplayFactory.CreateSpaceshipUpperCamera();
-            await _gameplayFactory.CreateCollisionPortalCamera();
-            await _gameplayFactory.CreateShieldCamera();
+            await _gameplayCamerasFactory.CreateSpaceshipMainCamera();
+            await _gameplayCamerasFactory.CreateSpaceshipSideCamera();
+            await _gameplayCamerasFactory.CreateSpaceshipUpperCamera();
+            await _gameplayCamerasFactory.CreateCollisionPortalCamera();
+            await _gameplayCamerasFactory.CreateShieldCamera();
             await _gameplayFactory.CreateGameOverPanel();
 
             _gameplayStateMachine.RegisterState(_statesFactory.Create<GameStartState>());

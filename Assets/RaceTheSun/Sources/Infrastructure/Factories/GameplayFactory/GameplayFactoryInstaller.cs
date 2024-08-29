@@ -20,7 +20,10 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
     {
         public override void InstallBindings()
         {
-            Container.Bind<IGameplayFactory>().To<GameplayFactory>().AsSingle();
+            Container
+                .Bind<IGameplayFactory>()
+                .To<GameplayFactory>()
+                .AsSingle();
 
             Container
                 .BindFactory<string, UniTask<Hud>, Hud.Factory>()
@@ -37,10 +40,6 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             Container
                 .BindFactory<string, UniTask<WorldGenerator>, WorldGenerator.Factory>()
                 .FromFactory<KeyPrefabFactoryAsync<WorldGenerator>>();
-
-            Container
-                .BindFactory<string, UniTask<VirtualCamera>, VirtualCamera.Factory>()
-                .FromFactory<KeyPrefabFactoryAsync<VirtualCamera>>();
 
             Container
                 .BindFactory<string, UniTask<Sun>, Sun.Factory>()

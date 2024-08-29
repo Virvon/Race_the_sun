@@ -14,11 +14,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
         private readonly float _defaultSpeed;
         private readonly SpaceshipDie _spaceshipDie;
         private readonly IGameplayFactory _gameplayFactory;
-        private readonly GameplayCameras _cameras;
+        private readonly GameplayCameras _gameplayCameras;
         
         private float _speed;
 
-        public CollisionSpeed(ISpeedProvider wrappedEntity, SpaceshipMovement spaceshipMovement, float defaultSpeed, SpaceshipDie spaceshipDie, GameplayCameras cameras, IGameplayFactory gameplayFactory) : base(wrappedEntity)
+        public CollisionSpeed(ISpeedProvider wrappedEntity, SpaceshipMovement spaceshipMovement, float defaultSpeed, SpaceshipDie spaceshipDie, GameplayCameras gameplayCameras, IGameplayFactory gameplayFactory) : base(wrappedEntity)
         {
             _spaceshipMovement = spaceshipMovement;
             _defaultSpeed = defaultSpeed;
@@ -27,7 +27,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
             _gameplayFactory = gameplayFactory;
 
             IsCollidedPerStage = false;
-            _cameras = cameras;
+            _gameplayCameras = gameplayCameras;
         }
 
         public bool IsCollidedPerStage { get; private set; }
@@ -54,7 +54,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
                 if (_spaceshipMovement.CollisionInfo.Dot > DestoryDot)
                 {
                     _speed = MinSpeed;
-                    _cameras.ShakeSpaceshipMainCamera();
+                    _gameplayCameras.SpaceshipMainCamera.Shake();
                     _gameplayFactory.CreateCollisionFx(_spaceshipMovement.CollisionInfo.CollisionPosition, _spaceshipMovement.transform);
                 }
                 else if (_spaceshipDie.TryRevive() == false)

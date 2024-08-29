@@ -5,6 +5,7 @@ using Assets.RaceTheSun.Sources.Gameplay.DistanceObserver;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using Assets.RaceTheSun.Sources.Gameplay.StateMachine;
 using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
+using Assets.RaceTheSun.Sources.Infrastructure.Factories.CamerasFactory.Gameplay;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.SpaceshipModelFactory;
 using Zenject;
@@ -17,6 +18,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay
         {
             BindGameplayBootstrapper();
             BindGameplayFactory();
+            BindGameplayCamerasFactory();
             BindGameplayStateMachine();
             BindScoreCounter();
             BindCurrentGenerationStage();
@@ -28,6 +30,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay
             Container.BindInterfacesAndSelfTo<ScoreItemsCounter>().AsSingle();
             Container.BindInterfacesAndSelfTo<MultiplierProgressCounter>().AsSingle();
             Container.BindInterfacesAndSelfTo<AttachmentCellsUpgrader>().AsSingle();
+        }
+
+        private void BindGameplayCamerasFactory()
+        {
+            GameplayCamerasFactoryInstaller.Install(Container);
         }
 
         private void BindCurrentSpaceshipStage()

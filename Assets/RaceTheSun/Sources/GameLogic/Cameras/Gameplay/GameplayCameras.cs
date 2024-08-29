@@ -1,4 +1,5 @@
-﻿using Cinemachine;
+﻿using Assets.RaceTheSun.Sources.Infrastructure.Factories.CamerasFactory.Gameplay;
+using Cinemachine;
 using System;
 using UnityEngine;
 
@@ -7,35 +8,18 @@ namespace Assets.RaceTheSun.Sources.GameLogic.Cameras.Gameplay
     public class GameplayCameras
     {
         private readonly CinemachineBrain _cinemachineBrain;
+        private readonly IGameplayCamerasFactory _gameplayCamerasFactory;
 
         private VirtualCamera _currentCamera;
-        private SpaceshipMainCamera _spaceshipMainCamera;
-        private SpaceshipSideCamera _spaceshipSideCamera;
-        private SpaceshipUpperCamera _spaceshipUpperCamera;
-        private StartCamera _startCamera;
-        private ShieldPortalCamera _shieldPortalCamera;
-        private CollisionPortalCamera _collisionPortalCamera;
 
-        public GameplayCameras() =>
+        public GameplayCameras(IGameplayCamerasFactory gameplayCamerasFactory)
+        {
+            _gameplayCamerasFactory = gameplayCamerasFactory;
+
             _cinemachineBrain = Camera.main.GetComponent<CinemachineBrain>();
+        }
 
-        public void Init(SpaceshipMainCamera spaceshipMainCamera) =>
-            _spaceshipMainCamera = spaceshipMainCamera;
-
-        public void Init(SpaceshipSideCamera spaceshipSideCamera) =>
-            _spaceshipSideCamera = spaceshipSideCamera;
-
-        public void Init(SpaceshipUpperCamera spaceshipUpperCamera) =>
-            _spaceshipUpperCamera = spaceshipUpperCamera;
-
-        public void Init(StartCamera startCamera) =>
-            _startCamera = startCamera;
-
-        public void Init(ShieldPortalCamera shieldPortalCamera) =>
-            _shieldPortalCamera = shieldPortalCamera;
-
-        public void Init(CollisionPortalCamera collisionPortalCamera) =>
-            _collisionPortalCamera = collisionPortalCamera;
+        public SpaceshipMainCamera SpaceshipMainCamera => _gameplayCamerasFactory.SpaceshipMainCamera;
 
         public void IncludeCamera(GameplayCameraType type)
         {
@@ -44,22 +28,22 @@ namespace Assets.RaceTheSun.Sources.GameLogic.Cameras.Gameplay
             switch (type)
             {
                 case GameplayCameraType.MainCamera:
-                    targetCamera = _spaceshipMainCamera;
+                    targetCamera = _gameplayCamerasFactory.SpaceshipMainCamera;
                     break;
                 case GameplayCameraType.SideCamera:
-                    targetCamera = _spaceshipSideCamera;
+                    targetCamera = _gameplayCamerasFactory.SpaceshipSideCamera;
                     break;
                 case GameplayCameraType.UpperCamera:
-                    targetCamera = _spaceshipUpperCamera;
+                    targetCamera = _gameplayCamerasFactory.SpaceshipUpperCamera;
                     break;
                 case GameplayCameraType.StartCamera:
-                    targetCamera = _startCamera;
+                    targetCamera = _gameplayCamerasFactory.StartCamera;
                     break;
                 case GameplayCameraType.CollisionPortalCamera:
-                    targetCamera = _collisionPortalCamera;
+                    targetCamera = _gameplayCamerasFactory.CollisionPortalCamera;
                     break;
                 case GameplayCameraType.ShieldPortalCamera:
-                    targetCamera = _shieldPortalCamera;
+                    targetCamera = _gameplayCamerasFactory.ShieldPortalCamera;
                     break;
             }
 
@@ -72,11 +56,6 @@ namespace Assets.RaceTheSun.Sources.GameLogic.Cameras.Gameplay
             _currentCamera = targetCamera;
             _cinemachineBrain.m_DefaultBlend = _currentCamera.BlendDefinition;
             _currentCamera.CinemachineVirtualCamera.Priority = (int)CameraPriority.Use;
-        }
-
-        public void ShakeSpaceshipMainCamera()
-        {
-            _spaceshipMainCamera.Shake();
         }
     }
 }

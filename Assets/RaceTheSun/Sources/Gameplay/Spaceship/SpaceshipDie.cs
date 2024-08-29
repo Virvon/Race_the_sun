@@ -73,7 +73,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             }
             else
             {
-                _gameplayCameras.ShakeSpaceshipMainCamera();
+                _gameplayCameras.SpaceshipMainCamera.Shake();
                 _plane.HideEffect();
                 _sun.IsStopped = true;
                 _destroySound.Play();

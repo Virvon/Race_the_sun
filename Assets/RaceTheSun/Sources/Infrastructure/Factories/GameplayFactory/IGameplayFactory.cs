@@ -14,13 +14,7 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         UniTask<Spaceship> CreateSpaceship();
         UniTask<GameObject> CreateTile(AssetReferenceGameObject tileReference, Vector3 position, Transform parent = null);
         UniTask CreateWorldGenerator();
-        UniTask CreateStartCamera();
-        UniTask CreateSpaceshipMainCamera();
-        UniTask CreateSpaceshipSideCamera();
         UniTask CreateSun();
-        UniTask CreateSpaceshipUpperCamera();
-        UniTask CreateCollisionPortalCamera();
-        UniTask CreateShieldCamera();
         UniTask CreateShpaceshipShieldPortal();
         UniTask CreateGameOverPanel();
         UniTask<JumpBoost> CreateJumpBoost(Vector3 position, Transform parent = null);
