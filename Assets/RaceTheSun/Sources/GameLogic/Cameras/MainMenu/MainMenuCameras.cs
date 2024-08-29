@@ -1,27 +1,16 @@
-﻿using System;
-using UnityEngine;
+﻿using Assets.RaceTheSun.Sources.Infrastructure.Factories.CamerasFactory.MainMenu;
+using Zenject;
 
 namespace Assets.RaceTheSun.Sources.GameLogic.Cameras.MainMenu
 {
     public class MainMenuCameras
     {
+        private IMainMenuCamerasFactory _mainMenuCamerasFactory;
         private FreeLookCamera _currentCamera;
-        private MainMenuMainCamera _mainMenuMainCamera;
-        private SelectionCamera _selectionCamera;
-        private CustomizeCamera _customizeCamera;
-        private TrailCamera _trailCamera;
 
-        public void Init(MainMenuMainCamera mainMenuMainCamera) =>
-            _mainMenuMainCamera = mainMenuMainCamera;
-
-        public void Init(SelectionCamera trailCamera) =>
-            _selectionCamera = trailCamera;
-
-        public void Init(CustomizeCamera customizeCamera) =>
-            _customizeCamera = customizeCamera;
-
-        public void Init(TrailCamera trailCamera) =>
-            _trailCamera = trailCamera;
+        [Inject]
+        private void Construct(IMainMenuCamerasFactory mainMenuCamerasFactory) =>
+            _mainMenuCamerasFactory = mainMenuCamerasFactory;
 
         public void IncludeCamera(MainMenuCameraType type)
         {
@@ -30,16 +19,16 @@ namespace Assets.RaceTheSun.Sources.GameLogic.Cameras.MainMenu
             switch (type)
             {
                 case MainMenuCameraType.MainCamera:
-                    targetCamera = _mainMenuMainCamera;
+                    targetCamera = _mainMenuCamerasFactory.MainMenuInfoCamera;
                     break;
                 case MainMenuCameraType.SelectionCamera:
-                    targetCamera = _selectionCamera;
+                    targetCamera = _mainMenuCamerasFactory.SelectionCamera;
                     break;
                 case MainMenuCameraType.CustomizeCamera:
-                    targetCamera = _customizeCamera;
+                    targetCamera = _mainMenuCamerasFactory.CustomizeCamera;
                     break;
                 case MainMenuCameraType.TrailCamera:
-                    targetCamera = _trailCamera;
+                    targetCamera = _mainMenuCamerasFactory.TrailCamera;
                     break;
             }
 

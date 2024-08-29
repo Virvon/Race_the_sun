@@ -1,4 +1,5 @@
 ﻿using Assets.RaceTheSun.Sources.GameLogic.Cameras.MainMenu;
+using Assets.RaceTheSun.Sources.Infrastructure.Factories.CamerasFactory.MainMenu;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.SpaceshipModelFactory;
 using Zenject;
@@ -13,6 +14,7 @@ namespace Assets.RaceTheSun.Sources.MainMenu
             BindMainMenuFactory();
             BindMainMenuCameras();
             SpaceshipModelFactoryInstaller.Install(Container);
+            MainMenuCamerasFactoryInstaller.Install(Container);
         }
 
         private void BindMainMenuCameras()

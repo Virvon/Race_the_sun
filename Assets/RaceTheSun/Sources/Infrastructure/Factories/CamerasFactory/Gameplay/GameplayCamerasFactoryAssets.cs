@@ -1,6 +1,6 @@
 ﻿namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.CamerasFactory.Gameplay
 {
-    public class GameplayCameraFactoryAssets
+    public class GameplayCamerasFactoryAssets
     {
         public const string CollisionPortalCamera = "CollisionPortalCamera";
         public const string SpaceshipUpperCamera = "SpaceshipUpperCamera";

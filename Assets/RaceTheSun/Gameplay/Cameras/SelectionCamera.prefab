@@ -469,8 +469,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1768370319633952966}
   - component: {fileID: 5785285873314114640}
-  - component: {fileID: -3661598444344043999}
   - component: {fileID: -4477592248813467958}
+  - component: {fileID: 6881227468532944463}
   m_Layer: 0
   m_Name: SelectionCamera
   m_TagString: Untagged
@@ -601,21 +601,6 @@ MonoBehaviour:
   - {fileID: 1390084011440615963}
   - {fileID: 3165796601635951061}
   - {fileID: 8746825117635019522}
---- !u!114 &-3661598444344043999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6199593414886363176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee6470510548bdc4cb0d52c8d5dc259d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cinemachineFreeLook: {fileID: 5785285873314114640}
-  _yAxisValue: 0.572796
-  _xAxisValue: -90
 --- !u!114 &-4477592248813467958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -632,6 +617,21 @@ MonoBehaviour:
   AutoEnableInputs: 1
   XYAxis: {fileID: 6415623129662321230, guid: 3cb0982f743bcf64583a847f92a2f1a0, type: 3}
   ZAxis: {fileID: 6415623129662321230, guid: 3cb0982f743bcf64583a847f92a2f1a0, type: 3}
+--- !u!114 &6881227468532944463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6199593414886363176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 855cc711bd0bccf478dd900430847d72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cinemachineFreeLook: {fileID: 5785285873314114640}
+  _yAxisValue: 0.572796
+  _xAxisValue: -90
 --- !u!1 &7212186488230115604
 GameObject:
   m_ObjectHideFlags: 3

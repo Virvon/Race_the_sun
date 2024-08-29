@@ -88,8 +88,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1768370319633952966}
   - component: {fileID: 5785285873314114640}
-  - component: {fileID: 6345808068883272610}
   - component: {fileID: 8741941721430099184}
+  - component: {fileID: -1966920742211867787}
   m_Layer: 0
   m_Name: MainMenuMainCamera
   m_TagString: Untagged
@@ -220,21 +220,6 @@ MonoBehaviour:
   - {fileID: 4303905272732901982}
   - {fileID: 6334569553407355749}
   - {fileID: 3956106280839247519}
---- !u!114 &6345808068883272610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6199593414886363176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01095370f806d894e97afda9ef764a1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cinemachineFreeLook: {fileID: 5785285873314114640}
-  _yAxisValue: 0.557758
-  _xAxisValue: 180
 --- !u!114 &8741941721430099184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,6 +236,21 @@ MonoBehaviour:
   AutoEnableInputs: 1
   XYAxis: {fileID: 6415623129662321230, guid: 3cb0982f743bcf64583a847f92a2f1a0, type: 3}
   ZAxis: {fileID: 6415623129662321230, guid: 3cb0982f743bcf64583a847f92a2f1a0, type: 3}
+--- !u!114 &-1966920742211867787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6199593414886363176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 855cc711bd0bccf478dd900430847d72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cinemachineFreeLook: {fileID: 5785285873314114640}
+  _yAxisValue: 0.557758
+  _xAxisValue: 180
 --- !u!1 &6593435011544089712
 GameObject:
   m_ObjectHideFlags: 0
