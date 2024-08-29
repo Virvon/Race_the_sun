@@ -14,7 +14,10 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
         private readonly IPersistentProgressService _persistentProgressService;
         private readonly Counters.ScoreCounter _scoreCounter;
 
-        public GameplayResultState(GameplayStateMachine gameplayStateMachine, ResultPanel resultPanel, IPersistentProgressService persistentProgressService, Counters.ScoreCounter scoreCounter)
+        public GameplayResultState(GameplayStateMachine gameplayStateMachine,
+            ResultPanel resultPanel,
+            IPersistentProgressService persistentProgressService,
+            Counters.ScoreCounter scoreCounter)
         {
             _gameplayStateMachine = gameplayStateMachine;
             _resultPanel = resultPanel;
@@ -38,8 +41,13 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
             return default;
         }
 
-        private int GetExperience() =>
-            (int)(_scoreCounter.Score * ExperienceMultipllier * _persistentProgressService.Progress.AvailableSpaceships.GetCurrentSpaceshipData().ExperienceMultiplier.Value);
+        private int GetExperience()
+        {
+            return (int)(_scoreCounter.Score * ExperienceMultipllier * _persistentProgressService
+                .Progress.AvailableSpaceships
+                .GetCurrentSpaceshipData()
+                .ExperienceMultiplier.Value);
+        }
 
         private void OnResultPanelHided() =>
             _gameplayStateMachine.Enter<GameplayEndState>().Forget();

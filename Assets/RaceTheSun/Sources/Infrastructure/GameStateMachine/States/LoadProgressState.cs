@@ -18,7 +18,11 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine.States
         private readonly ISaveLoadService _saveLoadService;
         private readonly IStaticDataService _staticDataService;
 
-        public LoadProgressState(GameStateMachine stateMachine, IPersistentProgressService persistentProgressService, ISaveLoadService saveLoadService, IStaticDataService staticDataService)
+        public LoadProgressState(
+            GameStateMachine stateMachine,
+            IPersistentProgressService persistentProgressService,
+            ISaveLoadService saveLoadService,
+            IStaticDataService staticDataService)
         {
             _gameStateMachine = stateMachine;
             _persistentProgressService = persistentProgressService;
@@ -46,7 +50,19 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine.States
         {
             List<SpaceshipData> spaceshipDatas = new ();
             SpaceshipConfig[] spaceshipConfigs = _staticDataService.GetSpaceships();
-            spaceshipDatas.AddRange(spaceshipConfigs.Select(spaceshipConfig => new SpaceshipData(spaceshipConfig.Type, spaceshipConfig.Battery.StartValue, spaceshipConfig.ExperienceMultiplier.StartValue, spaceshipConfig.PickUpRange.StartValue, spaceshipConfig.FloatTime.StartValue, spaceshipConfig.IsUnlockedOnStart, spaceshipConfig.Battery.StartLevel, spaceshipConfig.ExperienceMultiplier.StartLevel, spaceshipConfig.PickUpRange.StartLevel, spaceshipConfig.FloatTime.StartLevel, spaceshipConfig.StartLevel)));
+
+            spaceshipDatas.AddRange(spaceshipConfigs.Select(spaceshipConfig => new SpaceshipData(
+                spaceshipConfig.Type,
+                spaceshipConfig.Battery.StartValue,
+                spaceshipConfig.ExperienceMultiplier.StartValue,
+                spaceshipConfig.PickUpRange.StartValue,
+                spaceshipConfig.FloatTime.StartValue,
+                spaceshipConfig.IsUnlockedOnStart,
+                spaceshipConfig.Battery.StartLevel,
+                spaceshipConfig.ExperienceMultiplier.StartLevel,
+                spaceshipConfig.PickUpRange.StartLevel,
+                spaceshipConfig.FloatTime.StartLevel,
+                spaceshipConfig.StartLevel)));
 
             List<TrailType> trails = new ();
             TrailConfig[] trailConfigs = _staticDataService.GetTrails();

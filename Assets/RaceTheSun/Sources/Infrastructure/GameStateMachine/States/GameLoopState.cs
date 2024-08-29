@@ -13,7 +13,11 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine.States
         private readonly IAssetProvider _assetProvider;
         private readonly ISaveLoadService _saveLoadService;
 
-        public GameLoopState(ILoadingCurtain loadingCurtainProxy, ISceneLoader sceneLoader, IAssetProvider assetProvider, ISaveLoadService saveLoadService)
+        public GameLoopState(
+            ILoadingCurtain loadingCurtainProxy,
+            ISceneLoader sceneLoader,
+            IAssetProvider assetProvider,
+            ISaveLoadService saveLoadService)
         {
             _loadingCurtainProxy = loadingCurtainProxy;
             _sceneLoader = sceneLoader;

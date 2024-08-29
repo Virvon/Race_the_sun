@@ -12,7 +12,9 @@ namespace Assets.RaceTheSun.Sources.GameLogic.Attachment
         public Attachment(IStaticDataService staticDataService) =>
             _staticDataService = staticDataService;
 
-        public IAttachmentStatsProvider Wrap(UpgradeType attachmentUpgradeType, IAttachmentStatsProvider wrappedAttachmentStatsProvider)
+        public IAttachmentStatsProvider Wrap(
+            UpgradeType attachmentUpgradeType,
+            IAttachmentStatsProvider wrappedAttachmentStatsProvider)
         {
             switch (attachmentUpgradeType)
             {

@@ -79,7 +79,12 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement
             {
                 expiredSeconds += Time.deltaTime;
                 progress = expiredSeconds / _duration;
-                JumpPosition = new Vector3(transform.position.x, startHeight + _jumpCurve.Evaluate(progress) * finishHeight, transform.position.z);
+
+                JumpPosition = new Vector3(
+                    transform.position.x,
+                    startHeight + _jumpCurve.Evaluate(progress) * finishHeight,
+                    transform.position.z);
+
                 yield return null;
             }
 

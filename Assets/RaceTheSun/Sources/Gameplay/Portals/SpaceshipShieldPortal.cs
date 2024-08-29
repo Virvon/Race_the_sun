@@ -32,7 +32,16 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Portals
         public event Action Activated;
 
         [Inject]
-        private void Construct(IGameplayFactory gameplayFactory, SpaceshipMovement spaceshipMovement, Spaceship.Spaceship spaceship, GameplayCameras cameras, CollisionPortalPoint collisionPortalPoint, SpaceshipTurning spaceshipTurning, StageMusic stageMusic, Sun.Sun sun, Spaceship.Plane plane)
+        private void Construct(
+            IGameplayFactory gameplayFactory,
+            SpaceshipMovement spaceshipMovement,
+            Spaceship.Spaceship spaceship,
+            GameplayCameras cameras,
+            CollisionPortalPoint collisionPortalPoint,
+            SpaceshipTurning spaceshipTurning,
+            StageMusic stageMusic,
+            Sun.Sun sun,
+            Spaceship.Plane plane)
         {
             _gameplayFactory = gameplayFactory;
             _spaceshipMovement = spaceshipMovement;
@@ -53,8 +62,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Portals
             Vector3 revivalPosition = new Vector3(_spaceship.transform.position.x, 120, _spaceship.transform.position.z + 2);
             transform.position = revivalPosition;
 
-            _spaceshipMovement.Reset();
-            _spaceshipTurning.Reset();
+            _spaceshipMovement.Restart();
+            _spaceshipTurning.Restart();
 
             if (createdCollisionPortal)
                 _gameplayFactory.CreateShieldPortal(_collisionPortalPoint.transform.position);

@@ -24,7 +24,9 @@ namespace Assets.RaceTheSun.Sources.Gameplay.DistanceObserver
         private void Start()
         {
             _startPosition = transform.position;
-            _distanceObservable.RegisterObserver(this, new Vector3(transform.position.x, transform.position.y, transform.position.z - _distanceToMove));
+            _distanceObservable.RegisterObserver(
+                this,
+                new Vector3(transform.position.x, transform.position.y, transform.position.z - _distanceToMove));
         }
 
         private void Update()
@@ -32,7 +34,9 @@ namespace Assets.RaceTheSun.Sources.Gameplay.DistanceObserver
             if (_canMove == false)
                 return;
 
-            transform.position = Vector3.MoveTowards(transform.position, transform.position + _movementDirection.normalized, _speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(
+                transform.position, transform.position + _movementDirection.normalized,
+                _speed * Time.deltaTime);
 
             if (Vector3.Distance(transform.position, _startPosition) >= _movementDistance)
                 _canMove = false;

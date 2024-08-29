@@ -26,7 +26,11 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
         private ISaveLoadService _saveLoadService;
 
         [Inject]
-        private void Construct(IPersistentProgressService persistentProgressService, IStaticDataService staticDataService, IAssetProvider assetProvider, ISaveLoadService saveLoadService)
+        private void Construct(
+            IPersistentProgressService persistentProgressService,
+            IStaticDataService staticDataService,
+            IAssetProvider assetProvider,
+            ISaveLoadService saveLoadService)
         {
             _persistentProgressService = persistentProgressService;
             _staticDataService = staticDataService;
@@ -45,10 +49,17 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
 
         private async void CheackUnlockedLevel()
         {
-            if (_persistentProgressService.Progress.LevelProgress.LastShowedLevel < _persistentProgressService.Progress.LevelProgress.Level)
+            if (_persistentProgressService
+                .Progress
+                .LevelProgress
+                .LastShowedLevel < _persistentProgressService
+                .Progress
+                .LevelProgress
+                .Level)
             {
                 _persistentProgressService.Progress.LevelProgress.LastShowedLevel++;
-                LevelUnclockInfoConfig levelUnclockInfoConfig = _staticDataService.GetLevelUnlockInfo(_persistentProgressService.Progress.LevelProgress.LastShowedLevel);
+                LevelUnclockInfoConfig levelUnclockInfoConfig = _staticDataService
+                    .GetLevelUnlockInfo(_persistentProgressService.Progress.LevelProgress.LastShowedLevel);
 
                 _levelInfo.text = $"{LevelName} {_persistentProgressService.Progress.LevelProgress.LastShowedLevel}";
                 _title.text = levelUnclockInfoConfig.Title;

@@ -9,7 +9,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.DistanceObserver
         [SerializeField] private float _maxRotationSpeed;
         [SerializeField] private float _minRotationSpeed;
         [SerializeField] private bool _isNotVerticalMoved;
-        [SerializeField] private bool _isPushed;
 
         private float _rotationSpeed;
         private Vector3 _movementDirection;

@@ -7,7 +7,9 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Counters
         private readonly IPersistentProgressService _persistentProgressService;
         private readonly MultiplierProgressCounter _progressMultiplierCounter;
 
-        public ScoreItemsCounter(IPersistentProgressService persistentProgressService, MultiplierProgressCounter progressMultiplierCounter)
+        public ScoreItemsCounter(
+            IPersistentProgressService persistentProgressService,
+            MultiplierProgressCounter progressMultiplierCounter)
         {
             _persistentProgressService = persistentProgressService;
 

@@ -27,7 +27,12 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
         private GameObject _currentSelectedFrame;
 
         [Inject]
-        private void Construct(MainMenuCameras mainMenuCameras, ModelSpawner modelPoint, IPersistentProgressService persistentProgressService, IStaticDataService staticDataService, ISaveLoadService saveLoadService)
+        private void Construct(
+            MainMenuCameras mainMenuCameras,
+            ModelSpawner modelPoint,
+            IPersistentProgressService persistentProgressService,
+            IStaticDataService staticDataService,
+            ISaveLoadService saveLoadService)
         {
             _mainMenuCameras = mainMenuCameras;
             _modelPoint = modelPoint;
@@ -54,7 +59,9 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
             gameObject.SetActive(false);
             _currentSelectedFrame?.SetActive(false);
             _trailInfoPanel.Hide();
-            _modelPoint.ChangeTrail(_persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(_currentClickedSpaceshipInfo.SpaceshipType).TrailType);
+
+            _modelPoint
+                .ChangeTrail(_persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(_currentClickedSpaceshipInfo.SpaceshipType).TrailType);
         }
 
         public override void Open()
@@ -78,7 +85,12 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
         {
             if (_persistentProgressService.Progress.AvailableTrails.IsUnlocked(_currentTrailType))
             {
-                _persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(_currentClickedSpaceshipInfo.SpaceshipType).TrailType = _currentTrailType;
+                _persistentProgressService
+                    .Progress
+                    .AvailableSpaceships
+                    .GetSpaceshipData(_currentClickedSpaceshipInfo.SpaceshipType)
+                    .TrailType = _currentTrailType;
+
                 _trailInfoPanel.Hide();
             }
             else if (_persistentProgressService.Progress.Wallet.TryTake(_staticDataService.GetTrail(_currentTrailType).BuyCost))

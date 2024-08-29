@@ -40,10 +40,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement
         public void Init(SpaceshipModel spaceshipModel) =>
            _model = spaceshipModel;
 
-        private void RotatiModel(float angle) =>
-            _model.transform.rotation = Quaternion.Euler(DirectionXAngle, 0, angle * MaxAngle);
-
-        public void Reset()
+        public void Restart()
         {
             if (_turning != null)
                 StopCoroutine(_turning);
@@ -52,6 +49,9 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement
             _targetTurn = 0;
             TurnFactor = 0;
         }
+
+        private void RotatiModel(float angle) =>
+            _model.transform.rotation = Quaternion.Euler(DirectionXAngle, 0, angle * MaxAngle);
 
         private void Turn(float horizontal)
         {

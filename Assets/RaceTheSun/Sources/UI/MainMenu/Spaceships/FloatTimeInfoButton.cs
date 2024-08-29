@@ -2,7 +2,12 @@
 {
     public class FloatTimeInfoButton : StatInfoButton
     {
-        protected override string GetInfo() =>
-            $"Время полета ({PersistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(CurrentSpaceshipType).FloatTime.Value}с., +{StaticDataService.GetSpaceship(CurrentSpaceshipType).FloatTime.UpgradeValue}с. за уровень)";
+        protected override string GetInfo()
+        {
+            float floatTimeValue = PersistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(CurrentSpaceshipType).FloatTime.Value;
+            float floatTimeUpgradeValue = StaticDataService.GetSpaceship(CurrentSpaceshipType).FloatTime.UpgradeValue;
+
+            return $"Время полета ({floatTimeValue}с., +{floatTimeUpgradeValue}с. за уровень)";
+        }
     }
 }

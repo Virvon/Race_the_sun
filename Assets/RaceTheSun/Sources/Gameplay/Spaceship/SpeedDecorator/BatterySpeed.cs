@@ -14,7 +14,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
         private bool _isStopped;
         private SpaceshipTurning _spaceshipTurning;
 
-        public BatterySpeed(ISpeedProvider wrappedEntity, Battery.Battery battery, SpaceshipDie spaceshipDie, SpaceshipTurning spaceshipTurning)
+        public BatterySpeed(
+            ISpeedProvider wrappedEntity,
+            Battery.Battery battery,
+            SpaceshipDie spaceshipDie,
+            SpaceshipTurning spaceshipTurning)
             : base(wrappedEntity)
         {
             _battery = battery;

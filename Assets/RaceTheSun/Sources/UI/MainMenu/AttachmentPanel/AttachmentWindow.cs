@@ -54,7 +54,11 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.AttachmentPanel
             foreach (AttachmentCell attachmentCell in _attachmentCells)
                 attachmentCell.Reset();
 
-            List<UpgradeType> upgradedTypes = _persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(_currentClickedSpaceshipInfo.SpaceshipType).UpgradeTypes;
+            List<UpgradeType> upgradedTypes = _persistentProgressService
+                .Progress
+                .AvailableSpaceships
+                .GetSpaceshipData(_currentClickedSpaceshipInfo.SpaceshipType)
+                .UpgradeTypes;
 
             for (int i = 0; i < _attachmentCells.Length && i < upgradedTypes.Count; i++)
                 _attachmentCells[i].TryUse(upgradedTypes[i], _currentClickedSpaceshipInfo.SpaceshipType);
@@ -73,7 +77,12 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.AttachmentPanel
 
         private void OnAttachmentInfoPanelClicked()
         {
-            if (_persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(_currentClickedSpaceshipInfo.SpaceshipType).UpgradeTypes.Contains(_currentUpgradeType))
+            if (_persistentProgressService
+                .Progress
+                .AvailableSpaceships
+                .GetSpaceshipData(_currentClickedSpaceshipInfo.SpaceshipType)
+                .UpgradeTypes
+                .Contains(_currentUpgradeType))
             {
                 foreach (AttachmentCell attachmentCell in _attachmentCells)
                 {

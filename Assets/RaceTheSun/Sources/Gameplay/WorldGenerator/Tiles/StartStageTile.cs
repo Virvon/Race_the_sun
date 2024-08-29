@@ -22,7 +22,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator.Tiles
         private AttachmentCellsUpgrader _attachmentCellsUpgrader;
 
         [Inject]
-        private void Construct(DistanceObservable distanceObservable, CurrentSpaceshipStage currentSpacehsipStage, CurrentGenerationStage currentGenerationStage, AttachmentCellsUpgrader attachmentCellsUpgrader)
+        private void Construct(
+            DistanceObservable distanceObservable,
+            CurrentSpaceshipStage currentSpacehsipStage,
+            CurrentGenerationStage currentGenerationStage,
+            AttachmentCellsUpgrader attachmentCellsUpgrader)
         {
             _currentSpacehsipStage = currentSpacehsipStage;
             _distanceObservable = distanceObservable;

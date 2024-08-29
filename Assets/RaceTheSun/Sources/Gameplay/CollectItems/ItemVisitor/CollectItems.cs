@@ -25,14 +25,31 @@ namespace Assets.RaceTheSun.Sources.Gameplay.CollectItems.ItemVisitor
         private IItemVisitor _itemVisitor;
 
         [Inject]
-        private void Construct(ScoreItemsCounter scoreItemsCounter, IPersistentProgressService persistentProgressService, CollectItemsSoundEffects collectItemsSoundEffects)
+        private void Construct(
+            ScoreItemsCounter scoreItemsCounter,
+            IPersistentProgressService persistentProgressService,
+            CollectItemsSoundEffects collectItemsSoundEffects)
         {
             _persistentProgressService = persistentProgressService;
-            _itemVisitor = new ItemVisitor(_spaceship, _spaceshipDie, _spaceshipJump, scoreItemsCounter, persistentProgressService, collectItemsSoundEffects);
+
+            _itemVisitor = new ItemVisitor(
+                    _spaceship,
+                    _spaceshipDie,
+                    _spaceshipJump,
+                    scoreItemsCounter,
+                    persistentProgressService,
+                    collectItemsSoundEffects);
         }
 
-        private void Start() =>
-            _collectRadius = _persistentProgressService.Progress.AvailableSpaceships.GetCurrentSpaceshipData().PickUpRange.Value + _spaceship.AttachmentStats.CollectRadius;
+        private void Start()
+        {
+            _collectRadius = _persistentProgressService
+                .Progress
+                .AvailableSpaceships
+                .GetCurrentSpaceshipData()
+                .PickUpRange
+                .Value + _spaceship.AttachmentStats.CollectRadius;
+        }
 
         private void Update()
         {

@@ -17,7 +17,10 @@ namespace Assets.RaceTheSun.Sources.UI.Hud.BoostsCountPanels
         private SpaceshipJump _spaceshipJump;
 
         [Inject]
-        private void Construct(SpaceshipJump spaceshipJump, Spaceship spaceship, PersistentProgressService persistentProgressService)
+        private void Construct(
+            SpaceshipJump spaceshipJump,
+            Spaceship spaceship,
+            PersistentProgressService persistentProgressService)
         {
             _spaceshipJump = spaceshipJump;
             _maxJumpBoostsCountValue.text = spaceship.AttachmentStats.MaxJumpBoostsCount.ToString();

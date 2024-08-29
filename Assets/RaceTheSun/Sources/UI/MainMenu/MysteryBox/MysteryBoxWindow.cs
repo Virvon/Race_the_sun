@@ -22,7 +22,10 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.MysteryBox
         private ISaveLoadService _saveLoadService;
 
         [Inject]
-        private void Construct(IStaticDataService staticDataService, IPersistentProgressService persistentProgressService, ISaveLoadService saveLoadService)
+        private void Construct(
+            IStaticDataService staticDataService,
+            IPersistentProgressService persistentProgressService,
+            ISaveLoadService saveLoadService)
         {
             _staticDataService = staticDataService;
             _persistentProgressService = persistentProgressService;
@@ -88,7 +91,9 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.MysteryBox
 
             if (chance <= mysteryBoxRewardsConfig.MinScoreItemsRewardChance)
             {
-                int reward = Random.Range(mysteryBoxRewardsConfig.MinScoreItemsRewardMinCount, mysteryBoxRewardsConfig.MinScoreItemsRewardMaxCount);
+                int reward = Random.Range(
+                    mysteryBoxRewardsConfig.MinScoreItemsRewardMinCount,
+                    mysteryBoxRewardsConfig.MinScoreItemsRewardMaxCount);
 
                 _rewardPanel.ShowScoreItemsReward(reward);
                 _persistentProgressService.Progress.Wallet.Give(reward);
@@ -100,7 +105,9 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.MysteryBox
             }
             else
             {
-                int reward = Random.Range(mysteryBoxRewardsConfig.MaxScoreItemsRewardMinCount, mysteryBoxRewardsConfig.MaxScoreItemsRewardMaxCount);
+                int reward = Random.Range(
+                    mysteryBoxRewardsConfig.MaxScoreItemsRewardMinCount,
+                    mysteryBoxRewardsConfig.MaxScoreItemsRewardMaxCount);
 
                 _rewardPanel.ShowScoreItemsReward(reward);
                 _persistentProgressService.Progress.Wallet.Give(reward);

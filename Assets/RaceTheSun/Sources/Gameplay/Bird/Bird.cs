@@ -116,8 +116,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Bird
             }
 
             StartCoroutine(ItemMover(itemTransform, targetPositionY));
-
-            return;
         }
 
         private IEnumerator ItemMover(Transform transform, float targetPositionY)

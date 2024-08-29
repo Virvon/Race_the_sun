@@ -23,7 +23,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
         private IStaticDataService _staticDataService;
 
         [Inject]
-        private void Construct(IGameplayFactory gameplayFactory, Spaceship.Spaceship spaceship, IStaticDataService staticDataService, CurrentGenerationStage currentGenerationStage)
+        private void Construct(
+            IGameplayFactory gameplayFactory,
+            Spaceship.Spaceship spaceship,
+            IStaticDataService staticDataService,
+            CurrentGenerationStage currentGenerationStage)
         {
             _gameplayFactory = gameplayFactory;
             _spaceship = spaceship.transform;

@@ -23,7 +23,10 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
         private SpaceshipType _currentSpaceshipType;
 
         [Inject]
-        private void Construct(IPersistentProgressService persistentProgressService, IStaticDataService staticDataService, ISaveLoadService saveLoadService)
+        private void Construct(
+            IPersistentProgressService persistentProgressService,
+            IStaticDataService staticDataService,
+            ISaveLoadService saveLoadService)
         {
             _persistentProgressService = persistentProgressService;
             _staticDataService = staticDataService;
@@ -55,7 +58,11 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
         {
             _currentSpaceshipType = type;
 
-            bool isUnlocked = _persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(_currentSpaceshipType).IsUnlocked;
+            bool isUnlocked = _persistentProgressService
+                .Progress
+                .AvailableSpaceships
+                .GetSpaceshipData(_currentSpaceshipType)
+                .IsUnlocked;
 
             if (isUnlocked)
             {

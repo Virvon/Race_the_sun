@@ -12,7 +12,10 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.SpaceshipModelFacto
         private readonly IStaticDataService _staticDataService;
         private readonly Trail.Factory _trailFactory;
 
-        public SpaceshipModelFactory(SpaceshipModel.Factory spaceshipModelFactory, IStaticDataService staticDataService, Trail.Factory trailFactory)
+        public SpaceshipModelFactory(
+            SpaceshipModel.Factory spaceshipModelFactory,
+            IStaticDataService staticDataService,
+            Trail.Factory trailFactory)
         {
             _spaceshipModelFactory = spaceshipModelFactory;
             _staticDataService = staticDataService;

@@ -13,11 +13,17 @@ namespace Assets.RaceTheSun.Sources.UI.Hud.AttachmentPanel
         private List<AttachmentPanel> _usedPanels;
 
         [Inject]
-        private void Construct(IPersistentProgressService persistentProgressService, GameLogic.Attachment.Attachment attachment)
+        private void Construct(
+            IPersistentProgressService persistentProgressService,
+            GameLogic.Attachment.Attachment attachment)
         {
             _usedPanels = new ();
 
-            List<Upgrading.UpgradeType> usedTypes = persistentProgressService.Progress.AvailableSpaceships.GetCurrentSpaceshipData().UpgradeTypes;
+            List<Upgrading.UpgradeType> usedTypes = persistentProgressService
+                .Progress
+                .AvailableSpaceships
+                .GetCurrentSpaceshipData()
+                .UpgradeTypes;
 
             for (int i = 0; i < usedTypes.Count; i++)
             {

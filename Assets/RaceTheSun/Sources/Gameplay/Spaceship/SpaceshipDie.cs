@@ -32,7 +32,13 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         private IGameplayFactory _gameplayFactory;
 
         [Inject]
-        private void Construct(GameplayCameras cameras, GameplayStateMachine gameplayStateMachine, WaitingService waitingService, StageMusic stageMusic, GameplayCameras gameplayCameras, IGameplayFactory gameplayFactory)
+        private void Construct(
+            GameplayCameras cameras,
+            GameplayStateMachine gameplayStateMachine,
+            WaitingService waitingService,
+            StageMusic stageMusic,
+            GameplayCameras gameplayCameras,
+            IGameplayFactory gameplayFactory)
         {
             _cameras = cameras;
             _gameplayStateMachine = gameplayStateMachine;
@@ -70,7 +76,10 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
                 _waitingService.Wait(ShowDeathDuration, callback: ( ) =>
                 {
                     _cameras.IncludeCamera(GameplayCameraType.SideCamera);
-                    _waitingService.Wait(EnterRevivalStateDelay, callback: () => _gameplayStateMachine.Enter<GameplayRevivalState>().Forget());
+
+                    _waitingService.Wait(
+                        EnterRevivalStateDelay,
+                        callback: () => _gameplayStateMachine.Enter<GameplayRevivalState>().Forget());
                 });
 
                 return false;
@@ -84,7 +93,10 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             _stageMusic.Pause();
             Stopped?.Invoke();
             _cameras.IncludeCamera(GameplayCameraType.SideCamera);
-            _waitingService.Wait(EnterResultStateDelay, callback: () => _gameplayStateMachine.Enter<GameplayResultState>().Forget());
+
+            _waitingService.Wait(
+                EnterResultStateDelay,
+                callback: () => _gameplayStateMachine.Enter<GameplayResultState>().Forget());
         }
 
         public void GiveShield()

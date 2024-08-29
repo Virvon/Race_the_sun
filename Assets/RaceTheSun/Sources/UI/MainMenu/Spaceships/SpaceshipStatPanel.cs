@@ -30,7 +30,10 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
         private SpaceshipType _currentSpaceship;
 
         [Inject]
-        private void Construct(IPersistentProgressService persistentProgress, IStaticDataService staticDataService, ISaveLoadService saveLoadService)
+        private void Construct(
+            IPersistentProgressService persistentProgress,
+            IStaticDataService staticDataService,
+            ISaveLoadService saveLoadService)
         {
             _persistentProgress = persistentProgress;
             _staticDataService = staticDataService;
@@ -41,7 +44,12 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
 
         public event Action Updated;
 
-        public int UpgradeCost => _persistentProgress.Progress.AvailableSpaceships.GetSpaceshipData(_currentSpaceship).GetStat(_statType).Level * StartUpgradeCost;
+        public int UpgradeCost => _persistentProgress
+            .Progress.AvailableSpaceships
+            .GetSpaceshipData(_currentSpaceship)
+            .GetStat(_statType)
+            .Level * StartUpgradeCost;
+
         public StatType StatType => _statType;
 
         private void OnDestroy() =>
@@ -61,9 +69,24 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
             _icon.SetActive(true);
 
             _blockPanel.SetActive(_persistentProgress.Progress.AvailableStatsToUpgrade.CheckAvailability(_statType) == false);
-            _upgradeButton.interactable = _persistentProgress.Progress.AvailableStatsToUpgrade.CheckAvailability(_statType) && _persistentProgress.Progress.AvailableSpaceships.GetSpaceshipData(type).IsUnlocked;
 
-            if (_persistentProgress.Progress.AvailableSpaceships.GetSpaceshipData(_currentSpaceship).GetStat(_statType).Level >= _staticDataService.GetSpaceship(_currentSpaceship).GetStat(_statType).MaxLevel)
+            _upgradeButton.interactable = _persistentProgress
+                .Progress
+                .AvailableStatsToUpgrade
+                .CheckAvailability(_statType) && _persistentProgress
+                .Progress.AvailableSpaceships
+                .GetSpaceshipData(type)
+                .IsUnlocked;
+
+            if (_persistentProgress
+                .Progress
+                .AvailableSpaceships
+                .GetSpaceshipData(_currentSpaceship)
+                .GetStat(_statType)
+                .Level >= _staticDataService
+                .GetSpaceship(_currentSpaceship)
+                .GetStat(_statType)
+                .MaxLevel)
             {
                 _upgradeButton.interactable = false;
                 _upgradeCosteValue.gameObject.SetActive(false);
@@ -80,7 +103,14 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
             {
                 _persistentProgress.Progress.AvailableSpaceships.GetSpaceshipData(_currentSpaceship).Level++;
                 _persistentProgress.Progress.AvailableSpaceships.GetSpaceshipData(_currentSpaceship).GetStat(_statType).Level++;
-                _persistentProgress.Progress.AvailableSpaceships.GetSpaceshipData(_currentSpaceship).GetStat(_statType).Value += _staticDataService.GetSpaceship(_currentSpaceship).GetStat(_statType).UpgradeValue;
+
+                _persistentProgress
+                    .Progress
+                    .AvailableSpaceships
+                    .GetSpaceshipData(_currentSpaceship)
+                    .GetStat(_statType)
+                    .Value += _staticDataService.GetSpaceship(_currentSpaceship).GetStat(_statType).UpgradeValue;
+
                 _saveLoadService.SaveProgress();
                 _currentClickedSpaceshipInfo.UpdateLevel();
                 ResetSpaceship(_currentSpaceship);

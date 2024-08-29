@@ -34,9 +34,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement
         public bool IsCollided { get; private set; }
         public CollisionInfo CollisionInfo => _collisionInfo;
 
-        public void Reset() =>
-            _collisionInfo = new CollisionInfo();
-
         private void Start()
         {
             _isBounced = false;
@@ -79,6 +76,9 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement
             Gizmos.color = Color.red;
             Gizmos.DrawCube(_rigidbody.position + Offset, _halfExtents * 2);
         }
+
+        public void Restart() =>
+            _collisionInfo = new CollisionInfo();
 
         private void CheckStartOfBounced()
         {
@@ -133,7 +133,12 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement
 
         private void TryFly()
         {
-            if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hitInfo, _maxDistance, _layerMask, QueryTriggerInteraction.Ignore))
+            if (Physics.Raycast(
+                transform.position,
+                -transform.up,
+                out RaycastHit hitInfo,
+                _maxDistance, _layerMask,
+                QueryTriggerInteraction.Ignore))
             {
                 if (hitInfo.distance >= _flightDistance && _isFlight == false)
                 {

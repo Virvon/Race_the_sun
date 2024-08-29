@@ -28,7 +28,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         private IGameplayFactory _gameplayFactory;
 
         [Inject]
-        private void Construct(Attachment attachment, IPersistentProgressService persistentProgressService, GameplayCameras gameplayCameras, IGameplayFactory gameplayFactory)
+        private void Construct(
+            Attachment attachment,
+            IPersistentProgressService persistentProgressService,
+            GameplayCameras gameplayCameras,
+            IGameplayFactory gameplayFactory)
         {
             _gameplayCameras = gameplayCameras;
             _gameplayFactory = gameplayFactory;
@@ -68,16 +72,25 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         public void UpdateSpeedDecorator()
         {
             _speedProvider = new SpaceshipSpeed(DefaultSpeed);
-            _collisionSpeed = new CollisionSpeed(_speedProvider, _spaceshipMovement, DefaultSpeed, _spaceshipDie, _gameplayCameras, _gameplayFactory);
+
+            _collisionSpeed = new CollisionSpeed(_speedProvider,
+                _spaceshipMovement,
+                DefaultSpeed,
+                _spaceshipDie,
+                _gameplayCameras,
+                _gameplayFactory);
+
             _speedProvider = _collisionSpeed;
             _boostedSpeed = new BoostedSpeed(_speedProvider, DefaultSpeed, this, _gameplayFactory.Sun);
             _speedProvider = _boostedSpeed;
             _speedProvider = new BatterySpeed(_speedProvider, _battery, _spaceshipDie, _spaceshipTurning);
         }
 
-        private AttachmentStats GetAttachmentStats(GameLogic.Attachment.Attachment attachment, IPersistentProgressService persistentProgressService)
+        private AttachmentStats GetAttachmentStats(Attachment attachment, IPersistentProgressService persistentProgressService)
         {
-            SpaceshipData spaceshipData = persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(persistentProgressService.Progress.AvailableSpaceships.CurrentSpaceshipType);
+            SpaceshipData spaceshipData = persistentProgressService
+                .Progress.AvailableSpaceships
+                .GetSpaceshipData(persistentProgressService.Progress.AvailableSpaceships.CurrentSpaceshipType);
 
             IAttachmentStatsProvider attachmentStatsProvider = new DefaultAttachmentStats();
 

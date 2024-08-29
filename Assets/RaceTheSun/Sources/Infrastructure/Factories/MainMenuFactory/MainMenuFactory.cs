@@ -12,7 +12,11 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory
         private readonly TrailPoint.Factory _trailPointFactory;
         private readonly ModelSpawner.Factory _modelPointFactory;
 
-        public MainMenuFactory(UI.MainMenu.MainMenu.Factory mainMenuFactory, DiContainer container, TrailPoint.Factory trailPointFactory, ModelSpawner.Factory modelPointFactory)
+        public MainMenuFactory(
+            UI.MainMenu.MainMenu.Factory mainMenuFactory,
+            DiContainer container,
+            TrailPoint.Factory trailPointFactory,
+            ModelSpawner.Factory modelPointFactory)
         {
             _mainMenuFactory = mainMenuFactory;
             _container = container;

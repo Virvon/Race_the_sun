@@ -74,7 +74,11 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService
         private async UniTask LoadLevelUnlockInfoConfigs()
         {
             LevelsConfig[] levelConfigs = await GetConfigs<LevelsConfig>();
-            _levelUnlockInfoConfigs = levelConfigs.First().LevelUnclockInfoConfigs.ToDictionary(value => value.Level, value => value);
+
+            _levelUnlockInfoConfigs = levelConfigs
+                .First()
+                .LevelUnclockInfoConfigs
+                .ToDictionary(value => value.Level, value => value);
         }
 
         private async UniTask LoadAttachmentConfigs()

@@ -23,7 +23,15 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator.Tiles
         private CutSceneMovement _cutSceneMovement;
 
         [Inject]
-        private void Construct(DistanceObservable distanceObservable, CurrentGenerationStage currentGenerationStage, WorldGenerator worldGenerator, ILoadingCurtain loadingCurtain, Sun.Sun sun, SkyboxSettingsChanger skyboxSettingsChanger, Plane plane, CutSceneMovement cutSceneMovement)
+        private void Construct(
+            DistanceObservable distanceObservable,
+            CurrentGenerationStage currentGenerationStage,
+            WorldGenerator worldGenerator,
+            ILoadingCurtain loadingCurtain,
+            Sun.Sun sun,
+            SkyboxSettingsChanger skyboxSettingsChanger,
+            Plane plane,
+            CutSceneMovement cutSceneMovement)
         {
             _distanceObservable = distanceObservable;
             _currentGenerationStage = currentGenerationStage;
@@ -41,7 +49,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator.Tiles
         public void Invoke()
         {
             _loadingCurtain.Show(ShowCurtainDuration, callback: () => _loadingCurtain.Hide(HideCurtainDuration));
-            _sun.Reset();
+            _sun.Restart();
             _skyboxSettingsChanger.Reset();
             _plane.gameObject.SetActive(true);
             _worldGenerator.Clean();

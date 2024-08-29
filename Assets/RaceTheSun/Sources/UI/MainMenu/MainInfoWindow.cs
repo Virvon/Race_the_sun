@@ -17,7 +17,10 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
         private ModelSpawner _modelPoint;
 
         [Inject]
-        private void Construct(MainMenuCameras mainMenuCameras, IPersistentProgressService persistentProgressService, ModelSpawner modelPoint)
+        private void Construct(
+            MainMenuCameras mainMenuCameras,
+            IPersistentProgressService persistentProgressService,
+            ModelSpawner modelPoint)
         {
             _mainMenuCameras = mainMenuCameras;
             _persistentProgressService = persistentProgressService;
@@ -45,7 +48,13 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
                 _spaceshipsEducation.ShowEducation();
                 _persistentProgressService.Progress.Education.IsSpaceshipWindowShowed = true;
             }
-            else if (_persistentProgressService.Progress.Education.IsSpaceshipWindowShowed && _persistentProgressService.Progress.Education.IsShopWindowShowed == false)
+            else if (
+                _persistentProgressService
+                .Progress.Education
+                .IsSpaceshipWindowShowed && _persistentProgressService
+                .Progress
+                .Education
+                .IsShopWindowShowed == false)
             {
                 _shopEducation.ShowEducation();
                 _persistentProgressService.Progress.Education.IsShopWindowShowed = true;

@@ -8,7 +8,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
     public class CollisionSpeed : SpeedDecorator
     {
         private const float MinSpeed = 150;
-        private const float DestoryDot = -0.5f;
+        private const float DestroyDot = -0.5f;
         private const float AccelerationFromMinSpeed = 20;
 
         private readonly SpaceshipMovement _spaceshipMovement;
@@ -19,7 +19,13 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
 
         private float _speed;
 
-        public CollisionSpeed(ISpeedProvider wrappedEntity, SpaceshipMovement spaceshipMovement, float defaultSpeed, SpaceshipDie spaceshipDie, GameplayCameras gameplayCameras, IGameplayFactory gameplayFactory)
+        public CollisionSpeed(
+            ISpeedProvider wrappedEntity,
+            SpaceshipMovement spaceshipMovement,
+            float defaultSpeed,
+            SpaceshipDie spaceshipDie,
+            GameplayCameras gameplayCameras,
+            IGameplayFactory gameplayFactory)
             : base(wrappedEntity)
         {
             _spaceshipMovement = spaceshipMovement;
@@ -51,11 +57,14 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
 
             if (_spaceshipMovement.IsCollided)
             {
-                if (_spaceshipMovement.CollisionInfo.Dot > DestoryDot)
+                if (_spaceshipMovement.CollisionInfo.Dot > DestroyDot)
                 {
                     _speed = MinSpeed;
                     _gameplayCameras.SpaceshipMainCamera.Shake();
-                    _gameplayFactory.CreateCollisionFx(_spaceshipMovement.CollisionInfo.CollisionPosition, _spaceshipMovement.transform);
+
+                    _gameplayFactory.CreateCollisionFx(
+                        _spaceshipMovement.CollisionInfo.CollisionPosition,
+                        _spaceshipMovement.transform);
                 }
                 else if (_spaceshipDie.TryRevive() == false)
                 {

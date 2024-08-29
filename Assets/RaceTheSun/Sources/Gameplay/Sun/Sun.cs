@@ -8,6 +8,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
 {
     public class Sun : MonoBehaviour
     {
+        private const float SpaceshipPositionY = 6.2f;
         [SerializeField] private float _radius;
         [SerializeField] private float _startHeight;
         [SerializeField] private float _finishHeight;
@@ -39,12 +40,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
             _positionY = _cutSceneHeaght;
         }
 
-        public void Reset()
-        {
-            _isHided = false;
-            Move(_startHeight);
-        }
-
         private void Update()
         {
             if (_isHided || IsStopped)
@@ -53,6 +48,12 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
             _positionY = GetHeight();
             Move(_positionY);
             CheckShadowed();
+        }
+
+        public void Restart()
+        {
+            _isHided = false;
+            Move(_startHeight);
         }
 
         public void Show() =>
@@ -72,8 +73,14 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
         {
             bool isShadowed = _isShadowed;
 
-            if (Physics.Raycast(transform.position, (_spaceship.position - transform.position).normalized, out RaycastHit hitInfo, Mathf.Infinity))
+            if (Physics.Raycast(
+                transform.position,
+                (_spaceship.position - transform.position).normalized,
+                out RaycastHit hitInfo,
+                Mathf.Infinity))
+            {
                 isShadowed = hitInfo.transform.TryGetComponent(out Spaceship.Spaceship _) == false;
+            }
 
             if (isShadowed != _isShadowed)
             {
@@ -86,8 +93,13 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
         {
             float positionZ = Mathf.Sqrt(Mathf.Pow(_radius, 2) - Mathf.Pow(positionY, 2));
 
-            transform.position = new Vector3(0, positionY, positionZ) + new Vector3(_spaceship.position.x, 6.2f, _spaceship.position.z);
-            transform.rotation = Quaternion.LookRotation((new Vector3(_spaceship.position.x, 6.2f, _spaceship.position.z) - transform.position).normalized);
+            transform.position = new Vector3(
+                0,
+                positionY, positionZ) + new Vector3(_spaceship.position.x,
+                SpaceshipPositionY,
+                _spaceship.position.z);
+
+            transform.rotation = Quaternion.LookRotation((new Vector3(_spaceship.position.x, SpaceshipPositionY, _spaceship.position.z) - transform.position).normalized);
         }
 
         private float GetHeight()

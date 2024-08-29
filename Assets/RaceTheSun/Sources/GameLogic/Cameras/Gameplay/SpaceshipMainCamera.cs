@@ -48,7 +48,12 @@ namespace Assets.RaceTheSun.Sources.GameLogic.Cameras.Gameplay
             _cameraShake.Shake();
         }
 
-        private void ChangeFollowOffset() =>
-            CinemachineVirtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = _persistentProgressService.Progress.SpaceshipMainCameraSettings.IsFromThirdPerson ? _fromThirdPersonFollowOffset : _fromFirsPersonFollowOffset;
+        private void ChangeFollowOffset()
+        {
+            CinemachineVirtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset =
+                _persistentProgressService
+                .Progress.SpaceshipMainCameraSettings
+                .IsFromThirdPerson ? _fromThirdPersonFollowOffset : _fromFirsPersonFollowOffset;
+        }
     }
 }

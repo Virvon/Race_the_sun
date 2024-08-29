@@ -44,8 +44,17 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.AttachmentPanel
 
             _usedUpgradeType = upgradeType;
 
-            if (_persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(spaceshipType).UpgradeTypes.Contains(upgradeType) == false)
-                _persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(spaceshipType).UpgradeTypes.Add(_usedUpgradeType);
+            if (_persistentProgressService
+                .Progress.AvailableSpaceships
+                .GetSpaceshipData(spaceshipType)
+                .UpgradeTypes
+                .Contains(upgradeType) == false)
+            {
+                _persistentProgressService
+                    .Progress.AvailableSpaceships
+                    .GetSpaceshipData(spaceshipType)
+                    .UpgradeTypes.Add(_usedUpgradeType);
+            }
 
             _isUsed = true;
             _icon.sprite = _attachment.GetIcon(_usedUpgradeType);

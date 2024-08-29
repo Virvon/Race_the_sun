@@ -17,7 +17,12 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine.States
         private readonly IStaticDataService _staticDataService;
         private readonly ICoroutineRunner _coroutineRunner;
 
-        public BootstrapState(GameStateMachine stateMachine, LoadingCurtainProxy loadingCurtainProxy, IAssetProvider assetProvider, IStaticDataService staticDataService, ICoroutineRunner coroutineRunner)
+        public BootstrapState(
+            GameStateMachine stateMachine,
+            LoadingCurtainProxy loadingCurtainProxy,
+            IAssetProvider assetProvider,
+            IStaticDataService staticDataService,
+            ICoroutineRunner coroutineRunner)
         {
             _stateMachine = stateMachine;
             _loadingCurtainProxy = loadingCurtainProxy;
@@ -29,7 +34,9 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine.States
         public async UniTask Enter()
         {
             await InitServices();
-            _coroutineRunner.StartCoroutine(InitializeYandexSdk(callback: () => _stateMachine.Enter<LoadProgressState>().Forget()));
+
+            _coroutineRunner
+                .StartCoroutine(InitializeYandexSdk(callback: () => _stateMachine.Enter<LoadProgressState>().Forget()));
         }
 
         public UniTask Exit() =>

@@ -24,7 +24,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Battery.Indicator
         private List<BatteryCell> _cells;
 
         [Inject]
-        private async void Construct(IStaticDataService staticDataService, IPersistentProgressService persistentProgressService, ICoroutineRunner coroutineRunner, IAssetProvider assetProvider)
+        private async void Construct(
+            IStaticDataService staticDataService,
+            IPersistentProgressService persistentProgressService,
+            ICoroutineRunner coroutineRunner,
+            IAssetProvider assetProvider)
         {
             SpaceshipConfig spaceshipConfig = staticDataService.GetSpaceship(persistentProgressService.Progress.AvailableSpaceships.CurrentSpaceshipType);
 
@@ -38,9 +42,23 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Battery.Indicator
             _cells = new ();
 
             for (int i = 0; i < _batteryMaterialsInfo.Count - 1; i++)
-                _cells.Add(new BatteryCell(GetMinIncludeValue(_batteryMaterialsInfo[i].Position, _batteryMaterialsInfo.Count), _chargedMaterial, _dischargedMaterial, _batteryMaterialsInfo[i].Index));
+            {
+                _cells.Add(new BatteryCell(GetMinIncludeValue(
+                    _batteryMaterialsInfo[i].Position,
+                    _batteryMaterialsInfo.Count),
+                    _chargedMaterial,
+                    _dischargedMaterial,
+                    _batteryMaterialsInfo[i].Index));
+            }
 
-            _cells.Add(new LastBatteryCell(GetMinIncludeValue(_batteryMaterialsInfo.Last().Position, _batteryMaterialsInfo.Count), _chargedMaterial, _lowBatteryMaterial, _dischargedMaterial, _batteryMaterialsInfo.Last().Index, coroutineRunner));
+            _cells.Add(new LastBatteryCell(GetMinIncludeValue(
+                _batteryMaterialsInfo.Last().Position,
+                _batteryMaterialsInfo.Count),
+                _chargedMaterial,
+                _lowBatteryMaterial,
+                _dischargedMaterial,
+                _batteryMaterialsInfo.Last().Index,
+                coroutineRunner));
         }
 
         private void OnDestroy() =>

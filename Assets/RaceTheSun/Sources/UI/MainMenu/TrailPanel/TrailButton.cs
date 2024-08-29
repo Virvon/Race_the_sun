@@ -52,7 +52,11 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.TrailPanel
         private void ChangeInfo()
         {
             _lockIcon.SetActive(_persistentProgressService.Progress.AvailableTrails.IsUnlocked(_trailType) == false);
-            _useIcon.SetActive(_persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(_currentClickedSpaceshipInfo.SpaceshipType).TrailType == _trailType);
+
+            _useIcon.SetActive(_persistentProgressService
+                .Progress.AvailableSpaceships
+                .GetSpaceshipData(_currentClickedSpaceshipInfo.SpaceshipType)
+                .TrailType == _trailType);
         }
     }
 }

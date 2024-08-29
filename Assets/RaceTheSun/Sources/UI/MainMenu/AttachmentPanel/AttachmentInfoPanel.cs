@@ -55,7 +55,10 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.AttachmentPanel
 
             if (_persistentProgressService.Progress.Upgrading.IsUpgraded(upgradeType))
             {
-                SpaceshipData spaceshipData = _persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(_currentClickedSpaceshipInfo.SpaceshipType);
+                SpaceshipData spaceshipData = _persistentProgressService
+                    .Progress
+                    .AvailableSpaceships
+                    .GetSpaceshipData(_currentClickedSpaceshipInfo.SpaceshipType);
 
                 if (spaceshipData.UpgradeTypes.Contains(upgradeType))
                 {
@@ -64,7 +67,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.AttachmentPanel
                 }
                 else
                 {
-                    _button.interactable = spaceshipData.UpgradeTypes.Count < _persistentProgressService.Progress.Upgrading.AttachmentCellsCount;
+                    _button
+                        .interactable = spaceshipData.UpgradeTypes.Count < _persistentProgressService.Progress.Upgrading.AttachmentCellsCount;
                     _buttonText.text = _equipText;
                 }
 

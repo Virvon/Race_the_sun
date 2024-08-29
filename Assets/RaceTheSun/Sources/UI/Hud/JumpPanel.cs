@@ -13,7 +13,10 @@ namespace Assets.RaceTheSun.Sources.UI.Hud
         private SpaceshipShieldPortal _spaceshipShieldPortal;
 
         [Inject]
-        private void Construct(SpaceshipJump spaceshipJump, SpaceshipDie spaceshipDie, SpaceshipShieldPortal spaceshipShieldPortal)
+        private void Construct(
+            SpaceshipJump spaceshipJump,
+            SpaceshipDie spaceshipDie,
+            SpaceshipShieldPortal spaceshipShieldPortal)
         {
             _spaceshipJump = spaceshipJump;
             _spaceshipDie = spaceshipDie;

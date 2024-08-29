@@ -16,7 +16,10 @@ namespace Assets.RaceTheSun.Sources.UI.Hud.BoostsCountPanels
         private SpaceshipDie _spaceshipDie;
 
         [Inject]
-        private void Construct(SpaceshipDie spaceshipDie, Spaceship spaceship, IPersistentProgressService persistentProgressService)
+        private void Construct(
+            SpaceshipDie spaceshipDie,
+            Spaceship spaceship,
+            IPersistentProgressService persistentProgressService)
         {
             _spaceshipDie = spaceshipDie;
             _maxShieldsCountValue.text = spaceship.AttachmentStats.MaxShileldsCount.ToString();

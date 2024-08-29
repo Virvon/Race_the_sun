@@ -18,7 +18,12 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator.Tiles
         private WorldGenerator _worldGenerator;
 
         [Inject]
-        private void Construct(Bird.Bird bird, WaitingService waitingService, Spaceship.Spaceship spaceship, PerfectStagePanel perfectStagePanel, WorldGenerator worldGenerator)
+        private void Construct(
+            Bird.Bird bird,
+            WaitingService waitingService,
+            Spaceship.Spaceship spaceship,
+            PerfectStagePanel perfectStagePanel,
+            WorldGenerator worldGenerator)
         {
             _bird = bird;
             _waitingService = waitingService;

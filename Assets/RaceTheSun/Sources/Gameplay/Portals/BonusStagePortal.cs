@@ -22,7 +22,12 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Portals
         private SoundPlayer _portalSound;
 
         [Inject]
-        private void Construct(CurrentGenerationStage currentGenerationStage, WorldGenerator.WorldGenerator worldGenerator, ILoadingCurtain transitionCurtain, Sun.Sun sun, Spaceship.Plane plane)
+        private void Construct(
+            CurrentGenerationStage currentGenerationStage,
+            WorldGenerator.WorldGenerator worldGenerator,
+            ILoadingCurtain transitionCurtain,
+            Sun.Sun sun,
+            Spaceship.Plane plane)
         {
             _currentGenerationStage = currentGenerationStage;
             _worldGenerator = worldGenerator;
@@ -41,7 +46,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Portals
                 _currentGenerationStage.SetBonusLevel();
                 _sun.Hide();
                 _plane.gameObject.SetActive(false);
-                other.GetComponentInChildren<CutSceneMovement>().MoveUpper(startCallback: ( ) => _loadingCurtain.Hide(HideCurtainDuration));
+                other.GetComponentInChildren<CutSceneMovement>().MoveUpper(
+                    startCallback: ( ) => _loadingCurtain.Hide(HideCurtainDuration));
             }
         }
     }

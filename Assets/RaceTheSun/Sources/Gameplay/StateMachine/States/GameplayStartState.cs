@@ -18,7 +18,12 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
         private readonly ILoadingCurtain _loadingCurtain;
         private readonly Sun.Sun _sun;
 
-        public GameplayStartState(GameplayStateMachine gameplayStateMachine, IStaticDataService staticDataService, Spaceship.Spaceship spaceship, ILoadingCurtain loadingCurtain, Sun.Sun sun)
+        public GameplayStartState(
+            GameplayStateMachine gameplayStateMachine,
+            IStaticDataService staticDataService,
+            Spaceship.Spaceship spaceship,
+            ILoadingCurtain loadingCurtain,
+            Sun.Sun sun)
         {
             _gameplayStateMachine = gameplayStateMachine;
             _staticDataService = staticDataService;

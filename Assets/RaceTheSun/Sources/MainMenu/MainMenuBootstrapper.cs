@@ -19,7 +19,11 @@ namespace Assets.RaceTheSun.Sources.MainMenu
         private Vector3 _modelSpawnerPosition = new Vector3(0, 3, 0);
         private Vector3 _trailPointPosition = new Vector3(0, 3, -1.5f);
 
-        public MainMenuBootstrapper(IMainMenuFactory mainMenuFactory, MainMenuCameras mainMenuCameras, ILoadingCurtain loadingCurtain, IMainMenuCamerasFactory mainMenuCamerasFactory)
+        public MainMenuBootstrapper(
+            IMainMenuFactory mainMenuFactory,
+            MainMenuCameras mainMenuCameras,
+            ILoadingCurtain loadingCurtain,
+            IMainMenuCamerasFactory mainMenuCamerasFactory)
         {
             _mainMenuFactory = mainMenuFactory;
             _mainMenuCameras = mainMenuCameras;

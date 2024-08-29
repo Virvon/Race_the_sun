@@ -1,5 +1,4 @@
-﻿using System;
-using Assets.RaceTheSun.Sources.Data;
+﻿using Assets.RaceTheSun.Sources.Data;
 using Assets.RaceTheSun.Sources.MainMenu.Model;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
@@ -22,7 +21,10 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
         private IStaticDataService _staticDataService;
 
         [Inject]
-        private void Construct(IPersistentProgressService persistentProgressService, ModelSpawner modelPoint, IStaticDataService staticDataService)
+        private void Construct(
+            IPersistentProgressService persistentProgressService,
+            ModelSpawner modelPoint,
+            IStaticDataService staticDataService)
         {
             _persistentProgressService = persistentProgressService;
             _modelPoint = modelPoint;
@@ -38,7 +40,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
             _currentClickedSpaceshipWatcher.CurrentSpaceshipChanged -= OnSpaceshipChanged;
 
         public void UpdateLevel() =>
-            _spaceshipLevel.text = _persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(SpaceshipType).Level.ToString();
+            _spaceshipLevel
+            .text = _persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(SpaceshipType).Level.ToString();
 
         private async void OnSpaceshipChanged(SpaceshipType type)
         {

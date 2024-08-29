@@ -17,7 +17,12 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
 
         private bool _isRevivalTryed;
 
-        public GameplayRevivalState(RevivalPanel revivalPanel, CutSceneMovement startMovement, GameplayStateMachine gameplayStateMachine, SpaceshipShieldPortal spaceshipShieldPortal, Sun.Sun sun)
+        public GameplayRevivalState(
+            RevivalPanel revivalPanel,
+            CutSceneMovement startMovement,
+            GameplayStateMachine gameplayStateMachine,
+            SpaceshipShieldPortal spaceshipShieldPortal,
+            Sun.Sun sun)
         {
             _revivalPanel = revivalPanel;
 

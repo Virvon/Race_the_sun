@@ -33,10 +33,19 @@ namespace Assets.RaceTheSun.Sources.UI
             _button.onClick.RemoveListener(OnButtonClick);
         }
 
-        private void OnButtonClick() =>
-            _persistentProgressService.Progress.SpaceshipMainCameraSettings.Change(!_persistentProgressService.Progress.SpaceshipMainCameraSettings.IsFromThirdPerson);
+        private void OnButtonClick()
+        {
+            _persistentProgressService
+            .Progress
+            .SpaceshipMainCameraSettings
+            .Change(!_persistentProgressService.Progress.SpaceshipMainCameraSettings.IsFromThirdPerson);
+        }
 
-        private void ChangeText() =>
-            _text.text = _persistentProgressService.Progress.SpaceshipMainCameraSettings.IsFromThirdPerson ? _fromThirdPersonText : _fromFirstPersonText;
+        private void ChangeText()
+        {
+            _text.text = _persistentProgressService
+            .Progress.SpaceshipMainCameraSettings
+            .IsFromThirdPerson ? _fromThirdPersonText : _fromFirstPersonText;
+        }  
     }
 }

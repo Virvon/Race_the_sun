@@ -28,8 +28,13 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
             _skyboxMaterial = RenderSettings.skybox;
         }
 
-        public void Reset() =>
-            SetSkyboxMaterialSettings(_startSkyboxConfig.SkyboxColor, _startSkyboxConfig.AtmosphereThickness, _startSkyboxConfig.Exposure);
+        public void Reset()
+        {
+            SetSkyboxMaterialSettings(
+                _startSkyboxConfig.SkyboxColor,
+                _startSkyboxConfig.AtmosphereThickness,
+                _startSkyboxConfig.Exposure);
+        }
 
         private void Start() =>
             Reset();

@@ -18,7 +18,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement
 
         [SerializeField] private Spaceship _spaceship;
         [SerializeField] private SpaceshipMovement _spaceshipMovement;
-        [SerializeField] private CollisionPortalPoint _collisionPortalPoint;
         [SerializeField] private SpaceshipTurning _spaceshipTurning;
 
         private GameplayCameras _cameras;

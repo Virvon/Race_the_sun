@@ -21,7 +21,15 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement
 
         private void Lift()
         {
-            if (Physics.BoxCast(_rigidbody.position, _halfExtence, transform.forward, out RaycastHit hitInfo, Quaternion.identity, _maxDistance, _layerMask, QueryTriggerInteraction.Ignore))
+            if (Physics.BoxCast(
+                _rigidbody.position,
+                _halfExtence,
+                transform.forward,
+                out RaycastHit hitInfo,
+                Quaternion.identity,
+                _maxDistance,
+                _layerMask,
+                QueryTriggerInteraction.Ignore))
             {
                 float distance = hitInfo.distance;
 
@@ -34,7 +42,10 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement
                 distance = Mathf.Clamp(distance, maxForceHeight, minForceHeight);
 
                 float forceFactor = distance.Remap(maxForceHeight, minForceHeight, _maxForce, 0);
-                _rigidbody.AddForce(-transform.forward * Mathf.Max(forceFactor - (_springSpeed * _maxForce * _damping), 0), ForceMode.Force);
+
+                _rigidbody.AddForce(
+                    -transform.forward * Mathf.Max(forceFactor - (_springSpeed * _maxForce * _damping), 0),
+                    ForceMode.Force);
             }
         }
     }

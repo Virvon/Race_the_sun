@@ -55,7 +55,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
         private void OnCurrentSpaceshipChanged(SpaceshipType spaceshipType)
         {
             _selectFrame.SetActive(spaceshipType == _spaceshipType);
-            _blockPanel.SetActive(_persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(_spaceshipType).IsUnlocked == false);
+            _blockPanel.SetActive(
+                _persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(_spaceshipType).IsUnlocked == false);
             _useIcon.SetActive(_persistentProgressService.Progress.AvailableSpaceships.CurrentSpaceshipType == _spaceshipType);
         }
 

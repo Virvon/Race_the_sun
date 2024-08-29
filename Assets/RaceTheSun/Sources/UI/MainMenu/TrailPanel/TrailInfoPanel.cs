@@ -57,7 +57,12 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.TrailPanel
 
             if (_persistentProgressService.Progress.AvailableTrails.IsUnlocked(trailType))
             {
-                _button.interactable = _persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(_currentClickedSpaceshipInfo.SpaceshipType).TrailType != trailType;
+                _button.interactable = _persistentProgressService
+                    .Progress
+                    .AvailableSpaceships
+                    .GetSpaceshipData(_currentClickedSpaceshipInfo.SpaceshipType)
+                    .TrailType != trailType;
+
                 _buttonText.text = _unlockedButtonText;
                 _buyIcon.SetActive(false);
             }

@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.DistanceObserver
 {
-    public class IneractableEnviroment : MonoBehaviour, IObserver
+    public class InteractableEnvironment : MonoBehaviour, IObserver
     {
         [SerializeField] private Animator _animator;
         [SerializeField] private float _distanceToMove;
@@ -15,8 +15,12 @@ namespace Assets.RaceTheSun.Sources.Gameplay.DistanceObserver
         private void Construct(DistanceObservable distanceObservable) =>
             _distanceObservable = distanceObservable;
 
-        private void Start() =>
-            _distanceObservable.RegisterObserver(this, new Vector3(transform.position.x, transform.position.y, transform.position.z - _distanceToMove));
+        private void Start()
+        {
+            _distanceObservable.RegisterObserver(
+                this,
+                new Vector3(transform.position.x, transform.position.y, transform.position.z - _distanceToMove));
+        }
 
         public void Invoke()
         {

@@ -23,7 +23,13 @@ namespace Assets.RaceTheSun.Sources.Gameplay
         private readonly ISpaceshipModelFactory _spaceshipModelFactory;
         private readonly IGameplayCamerasFactory _gameplayCamerasFactory;
 
-        public GameplayBootstrapper(IGameplayFactory gameplayFactory, GameplayStateMachine gameplayStateMachine, StatesFactory statesFactory, IPersistentProgressService persistentProgress, ISpaceshipModelFactory spaceshipModelFactory, IGameplayCamerasFactory gameplayCamerasFactory)
+        public GameplayBootstrapper(
+            IGameplayFactory gameplayFactory,
+            GameplayStateMachine gameplayStateMachine,
+            StatesFactory statesFactory,
+            IPersistentProgressService persistentProgress,
+            ISpaceshipModelFactory spaceshipModelFactory,
+            IGameplayCamerasFactory gameplayCamerasFactory)
         {
             _gameplayFactory = gameplayFactory;
             _gameplayStateMachine = gameplayStateMachine;
@@ -70,7 +76,10 @@ namespace Assets.RaceTheSun.Sources.Gameplay
         {
             Spaceship.Spaceship spaceship = await _gameplayFactory.CreateSpaceship();
 
-            SpaceshipModel spaceshipModel = await _spaceshipModelFactory.CreateSpaceshipModel(_persistentProgress.Progress.AvailableSpaceships.CurrentSpaceshipType, spaceship.GetComponentInChildren<ModelPoint>().transform.position, spaceship.transform);
+            SpaceshipModel spaceshipModel = await _spaceshipModelFactory.CreateSpaceshipModel(
+                _persistentProgress.Progress.AvailableSpaceships.CurrentSpaceshipType,
+                spaceship.GetComponentInChildren<ModelPoint>().transform.position,
+                spaceship.transform);
 
             spaceship.GetComponentInChildren<SpaceshipTurning>().Init(spaceshipModel);
             spaceship.GetComponentInChildren<BatteryIndicator>().Init(spaceshipModel.GetComponentInChildren<MeshRenderer>());

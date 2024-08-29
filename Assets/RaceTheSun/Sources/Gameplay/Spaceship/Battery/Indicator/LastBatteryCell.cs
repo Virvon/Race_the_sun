@@ -14,7 +14,13 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Battery.Indicator
         private bool _isBlinked;
         private Material _currentBlinkingMaterial;
 
-        public LastBatteryCell(float minIncludeValue, Material chargedMaterial, Material lowBatteryMaterial, Material dischargedMaterial, int materialIndex, ICoroutineRunner coroutineRunner)
+        public LastBatteryCell(
+            float minIncludeValue,
+            Material chargedMaterial,
+            Material lowBatteryMaterial,
+            Material dischargedMaterial,
+            int materialIndex,
+            ICoroutineRunner coroutineRunner)
             : base(minIncludeValue, chargedMaterial, lowBatteryMaterial, materialIndex)
         {
             _dischargedMaterial = dischargedMaterial;

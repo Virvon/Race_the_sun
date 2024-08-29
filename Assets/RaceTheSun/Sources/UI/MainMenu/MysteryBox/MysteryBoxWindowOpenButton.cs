@@ -20,8 +20,12 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.MysteryBox
 
             _button.onClick.AddListener(OnButtonClick);
 
-            if (_persistentProgressService.Progress.MysteryBoxes.GetEndDate() <= DateTime.Now || persistentProgressService.Progress.MysteryBoxes.Count == 0)
+            if (_persistentProgressService
+                .Progress.MysteryBoxes
+                .GetEndDate() <= DateTime.Now || persistentProgressService.Progress.MysteryBoxes.Count == 0)
+            {
                 gameObject.SetActive(false);
+            }
         }
 
         private void OnDestroy() =>

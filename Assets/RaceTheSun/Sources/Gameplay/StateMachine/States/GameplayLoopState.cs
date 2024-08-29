@@ -15,7 +15,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
         private readonly GameplayCameras _cameras;
         private readonly Spaceship.Spaceship _spaceship;
 
-        public GameplayLoopState(HudAnimation hudAnimation, IWaitingService waitingService, GameplayCameras cameras, Spaceship.Spaceship spaceship)
+        public GameplayLoopState(
+            HudAnimation hudAnimation,
+            IWaitingService waitingService,
+            GameplayCameras cameras,
+            Spaceship.Spaceship spaceship)
         {
             _hudAnimation = hudAnimation;
             _waitingService = waitingService;
