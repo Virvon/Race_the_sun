@@ -1,8 +1,8 @@
-﻿using Assets.RaceTheSun.Sources.GameLogic.Trail;
+﻿using System;
+using System.Collections.Generic;
+using Assets.RaceTheSun.Sources.GameLogic.Trail;
 using Assets.RaceTheSun.Sources.MainMenu;
 using Assets.RaceTheSun.Sources.Upgrading;
-using System;
-using System.Collections.Generic;
 
 namespace Assets.RaceTheSun.Sources.Data
 {
@@ -19,7 +19,18 @@ namespace Assets.RaceTheSun.Sources.Data
         public List<UpgradeType> UpgradeTypes;
         public int Level;
 
-        public SpaceshipData(SpaceshipType type, float batteryValue, float experienceMultiplierValue, float pickupRangeValue, float floatTimeValue, bool isUnlocked, int startBateryLevel, int startExperienceMultipllierLevel, int startPickUpRangeLevel, int startFloatTimeLevel, int startSpaceshipLevel)
+        public SpaceshipData(
+            SpaceshipType type,
+            float batteryValue,
+            float experienceMultiplierValue,
+            float pickupRangeValue,
+            float floatTimeValue,
+            bool isUnlocked,
+            int startBateryLevel,
+            int startExperienceMultipllierLevel,
+            int startPickUpRangeLevel,
+            int startFloatTimeLevel,
+            int startSpaceshipLevel)
         {
             Type = type;
             Battery = new StatData(StatType.Battery, batteryValue, startBateryLevel);
