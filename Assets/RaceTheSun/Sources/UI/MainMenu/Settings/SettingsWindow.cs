@@ -51,10 +51,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Settings
             gameObject.SetActive(false);
         }
 
-        public override void Open()
-        {
+        public override void Open() =>
             gameObject.SetActive(true);
-        }
 
         private void OnMusicSliderValueChanged(float value)
         {

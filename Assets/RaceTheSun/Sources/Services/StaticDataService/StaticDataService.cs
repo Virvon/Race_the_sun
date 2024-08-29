@@ -23,10 +23,8 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService
         private Dictionary<UpgradeType, AttachmentConfig> _attachmentConfigs;
         private Dictionary<int, LevelUnclockInfoConfig> _levelUnlockInfoConfigs;
 
-        public StaticDataService(IAssetProvider assetsProvider)
-        {
+        public StaticDataService(IAssetProvider assetsProvider) =>
             _assetsProvider = assetsProvider;
-        }
 
         public async UniTask InitializeAsync()
         {

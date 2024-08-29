@@ -48,14 +48,10 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.AttachmentPanel
             _attachmentInfoPanel.Clicked -= ChangeInfo;
         }
 
-        private void ChangeInfo()
-        {
+        private void ChangeInfo() =>
             _useIcon.SetActive(_persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(_currentClickedSpaceshipInfo.SpaceshipType).UpgradeTypes.Contains(_upgradeType));
-        }
 
-        private void OnClicked()
-        {
+        private void OnClicked() =>
             Clicked?.Invoke(_upgradeType, _selectFrame);
-        }
     }
 }

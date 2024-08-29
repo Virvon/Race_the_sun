@@ -2,9 +2,7 @@
 {
     public class PickUpRangeInfoButton : StatInfoButton
     {
-        protected override string GetInfo()
-        {
-            return $"Радиус подбора ({PersistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(CurrentSpaceshipType).PickUpRange.Value}, +{StaticDataService.GetSpaceship(CurrentSpaceshipType).PickUpRange.UpgradeValue} за уровень)";
-        }
+        protected override string GetInfo() =>
+            $"Радиус подбора ({PersistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(CurrentSpaceshipType).PickUpRange.Value}, +{StaticDataService.GetSpaceship(CurrentSpaceshipType).PickUpRange.UpgradeValue} за уровень)";
     }
 }

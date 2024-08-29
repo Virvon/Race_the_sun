@@ -60,9 +60,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
             _useIcon.SetActive(_persistentProgressService.Progress.AvailableSpaceships.CurrentSpaceshipType == _spaceshipType);
         }
 
-        private void OnClicked()
-        {
+        private void OnClicked() =>
             Clicked?.Invoke(_spaceshipType);
-        }
     }
 }

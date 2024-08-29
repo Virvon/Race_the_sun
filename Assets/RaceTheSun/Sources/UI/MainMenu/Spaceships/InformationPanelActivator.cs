@@ -20,10 +20,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
                 infoButton.ShowedInformation -= OnInfoButtonShowedInformation;
         }
 
-        public void Hide()
-        {
+        public void Hide() =>
             _currentInformationButton?.HideInfo();
-        }
 
         private void OnInfoButtonShowedInformation(InformationButton informationButton)
         {

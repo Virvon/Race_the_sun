@@ -35,14 +35,10 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.MysteryBox
             _experienceRewardChance.text = mysteryBoxRewardsConfig.ExperienceRewardChance.ToString();
         }
 
-        public override void Hide()
-        {
+        public override void Hide() =>
             gameObject.SetActive(false);
-        }
 
-        public override void Open()
-        {
+        public override void Open() =>
             gameObject.SetActive(true);
-        }
     }
 }

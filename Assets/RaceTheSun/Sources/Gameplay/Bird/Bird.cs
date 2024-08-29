@@ -1,4 +1,4 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.CollectItems;
+﻿using Assets.RaceTheSun.Sources.Gameplay.CollectItems.Items;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using Assets.RaceTheSun.Sources.Upgrading;
@@ -15,6 +15,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Bird
         private const float ScoreItemPositionY = 0.5f;
         private const float ItemLiveTime = 5;
         private const int MinItemNumber = 1;
+        private const int MaxItemNuber = 4;
+        private const int BoostItemPositionY = 3;
         private readonly Vector3 _dropPositionOffset = new Vector3(0, -5, 0);
 
         [SerializeField] private float _speed;
@@ -33,10 +35,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Bird
             _persistentProgressService = persistentProgerssService;
         }
 
-        private void Start()
-        {
+        private void Start() =>
             _isMovementPathEnded = true;
-        }
 
         private async void Update()
         {
@@ -84,14 +84,14 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Bird
 
             while(isItmeChoosed == false)
             {
-                int itemIndex = Random.Range(MinItemNumber, 4);
+                int itemIndex = Random.Range(MinItemNumber, MaxItemNuber);
 
                 switch (itemIndex)
                 {
                     case 1:
                         SpeedBoost speedBoost = await _gameplayFactory.CreateSpeedBoost(transform.position + _dropPositionOffset);
                         itemTransform = speedBoost.transform;
-                        targetPositionY = 3;
+                        targetPositionY = BoostItemPositionY;
                         isItmeChoosed = true;
                         break;
                     case 2:
@@ -100,7 +100,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Bird
 
                         JumpBoost jumpBoost = await _gameplayFactory.CreateJumpBoost(transform.position + _dropPositionOffset);
                         itemTransform = jumpBoost.transform;
-                        targetPositionY = 3;
+                        targetPositionY = BoostItemPositionY;
                         isItmeChoosed = true;
                         break;
                     case 3:
@@ -109,7 +109,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Bird
 
                         Shield shield = await _gameplayFactory.CreateShield(transform.position + _dropPositionOffset);
                         itemTransform = shield.transform;
-                        targetPositionY = 3;
+                        targetPositionY = BoostItemPositionY;
                         isItmeChoosed = true;
                         break;
                 }

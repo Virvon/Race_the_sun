@@ -15,10 +15,8 @@ namespace Assets.RaceTheSun.Sources.UI.LoadingCurtain
             _factory = factory;
         }
 
-        public async UniTask InitializeAsync()
-        {
+        public async UniTask InitializeAsync() =>
             _implementation = await _factory.Create(InfrasructureAssetPath.Curtain);
-        }
 
         public void Show(float duration = 0, Action callback = null) =>
             _implementation.Show(duration, callback);

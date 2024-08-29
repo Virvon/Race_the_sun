@@ -33,13 +33,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
         {
             _spaceship = spaceship.transform;
             _isShadowed = false;
-            _battery = spaceship.GetComponentInChildren<Battery>();
+            _battery = _spaceship.GetComponentInChildren<Battery>();
             _isMovedDown = true;
             _isHided = false;
             IsStopped = true;
             _positionY = _cutSceneHeaght;
-
-            spaceship.Init(this);
         }
 
         private void Update()
@@ -58,15 +56,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
             Move(_startHeight);
         }
 
-        public void Show()
-        {
+        public void Show() =>
             StartCoroutine(CutScene());
-        }
 
-        public void SetMovementDirection(bool isMovedDown)
-        {
+        public void SetMovementDirection(bool isMovedDown) =>
             _isMovedDown = isMovedDown;
-        }
 
         public void Hide()
         {

@@ -19,20 +19,14 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
         public event Action Hided;
 
         [Inject]
-        private void Construct(ScoreItemsCounter scoreItemsCounter)
-        {
+        private void Construct(ScoreItemsCounter scoreItemsCounter) =>
             _scoreItemsCounter = scoreItemsCounter;
-        }
 
-        private void OnEnable()
-        {
+        private void OnEnable() =>
             _continueButton.onClick.AddListener(Hide);
-        }
-      
-        private void OnDisable()
-        {
-            _continueButton.onClick.RemoveListener(Hide); 
-        }
+
+        private void OnDisable() =>
+            _continueButton.onClick.RemoveListener(Hide);
 
         public void Open()
         {

@@ -28,19 +28,13 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
             _openButton.onClick.RemoveListener(OnOpenButtonClilcked);
         }
 
-        public virtual void OpenInfo()
-        {
+        public virtual void OpenInfo() =>
             _infoPanel.SetActive(true);
-        }
 
-        public void HideInfo()
-        {
+        public void HideInfo() =>
             _infoPanel.SetActive(false);
-        }
 
-        private void OnOpenButtonClilcked()
-        {
+        private void OnOpenButtonClilcked() =>
             ShowedInformation?.Invoke(this);
-        }
     }
 }

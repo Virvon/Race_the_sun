@@ -24,14 +24,10 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.MysteryBox
                 gameObject.SetActive(false);
         }
 
-        private void OnDestroy()
-        {
+        private void OnDestroy() =>
             _button.onClick.RemoveListener(OnButtonClick);
-        }
 
-        private void OnButtonClick()
-        {
+        private void OnButtonClick() =>
             _mysteryBoxWindow.Open();
-        }
     }
 }

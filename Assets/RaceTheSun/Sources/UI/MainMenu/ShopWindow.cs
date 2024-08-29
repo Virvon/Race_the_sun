@@ -29,20 +29,14 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
             _button.onClick.AddListener(OnButtonClick);
         }
 
-        private void OnDestroy()
-        {
+        private void OnDestroy() =>
             _button.onClick.RemoveListener(OnButtonClick);
-        }
 
-        public override void Hide()
-        {
+        public override void Hide() =>
             gameObject.SetActive(false);
-        }
 
-        public override void Open()
-        {
+        public override void Open() =>
             gameObject.SetActive(true);
-        }
 
         private void OnButtonClick()
         {

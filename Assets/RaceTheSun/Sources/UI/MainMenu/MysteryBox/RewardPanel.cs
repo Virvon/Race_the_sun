@@ -13,15 +13,11 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.MysteryBox
         [SerializeField] private GameObject _scoreItemsIcon;
         [SerializeField] private GameObject _experienceIcon;
 
-        private void OnEnable()
-        {
+        private void OnEnable() =>
             _closeButtone.onClick.AddListener(OnCloseButtonClick);
-        }
 
-        private void OnDisable()
-        {
+        private void OnDisable() =>
             _closeButtone.onClick.RemoveListener(OnCloseButtonClick);
-        }
 
         public void ShowScoreItemsReward(int reward)
         {
@@ -39,9 +35,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.MysteryBox
             gameObject.SetActive(true);
         }
 
-        private void OnCloseButtonClick()
-        {
+        private void OnCloseButtonClick() =>
             gameObject.SetActive(false);
-        }
     }
 }

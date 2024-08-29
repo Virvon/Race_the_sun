@@ -1,6 +1,6 @@
 ﻿using Assets.RaceTheSun.Sources.GameLogic.Audio;
-using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
-using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
+using Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement;
+using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator.StageInfo;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
 using Assets.RaceTheSun.Sources.UI.LoadingCurtain;
 using UnityEngine;
@@ -10,6 +10,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Portals
 {
     public class BonusStagePortal : MonoBehaviour
     {
+        private const float HideCurtainDuration = 0.6f;
+
         private CurrentGenerationStage _currentGenerationStage;
         private WorldGenerator.WorldGenerator _worldGenerator;
         private ILoadingCurtain _loadingCurtain;
@@ -39,7 +41,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Portals
                 _currentGenerationStage.SetBonusLevel();
                 _sun.Hide();
                 _plane.gameObject.SetActive(false);
-                other.GetComponentInChildren<StartMovement>().MoveUpper(startCallback: ()=> _loadingCurtain.Hide(0.6f));
+                other.GetComponentInChildren<CutSceneMovement>().MoveUpper(startCallback: ()=> _loadingCurtain.Hide(HideCurtainDuration));
             }
         }
     }

@@ -14,7 +14,6 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
     public class SpaceshipStatPanel : MonoBehaviour
     {
         private const int StartUpgradeCost = 1000;
-        private const string MaxLevelText = "МАКС. УРОВЕНЬ";
 
         [SerializeField] private Button _upgradeButton;
         [SerializeField] private StatType _statType;
@@ -45,10 +44,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
         public int UpgradeCost => _persistentProgress.Progress.AvailableSpaceships.GetSpaceshipData(_currentSpaceship).GetStat(_statType).Level * StartUpgradeCost;
         public StatType StatType => _statType;
 
-        private void OnDestroy()
-        {
+        private void OnDestroy() =>
             _upgradeButton.onClick.RemoveListener(OnUpgradeButtonClicked);
-        }
 
         public void ResetSpaceship(SpaceshipType type)
         {

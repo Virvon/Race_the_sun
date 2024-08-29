@@ -4,14 +4,10 @@
     {
         private readonly float _defaultSpeed;
 
-        public SpaceshipSpeed(float defaultSpeed)
-        {
+        public SpaceshipSpeed(float defaultSpeed) =>
             _defaultSpeed = defaultSpeed;
-        }
 
-        public float GetSpeed()
-        {
-            return _defaultSpeed;
-        }
+        public float GetSpeed() =>
+            _defaultSpeed;
     }
 }

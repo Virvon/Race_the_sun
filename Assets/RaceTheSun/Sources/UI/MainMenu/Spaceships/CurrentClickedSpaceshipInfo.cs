@@ -1,5 +1,5 @@
 ﻿using Assets.RaceTheSun.Sources.Data;
-using Assets.RaceTheSun.Sources.MainMenu.ModelPoint;
+using Assets.RaceTheSun.Sources.MainMenu.Model;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using System;
@@ -18,11 +18,11 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
         [SerializeField] private TMP_Text _spaceshipLevel;
 
         private IPersistentProgressService _persistentProgressService;
-        private ModelPoint _modelPoint;
+        private ModelSpawner _modelPoint;
         private IStaticDataService _staticDataService;
 
         [Inject]
-        private void Construct(IPersistentProgressService persistentProgressService, ModelPoint modelPoint, IStaticDataService staticDataService)
+        private void Construct(IPersistentProgressService persistentProgressService, ModelSpawner modelPoint, IStaticDataService staticDataService)
         {
             _persistentProgressService = persistentProgressService;
             _modelPoint = modelPoint;
@@ -31,20 +31,14 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
 
         public SpaceshipType SpaceshipType { get; private set; }
 
-        private void OnEnable()
-        {
+        private void OnEnable() =>
             _currentClickedSpaceshipWatcher.CurrentSpaceshipChanged += OnSpaceshipChanged;
-        }
 
-        private void OnDisable()
-        {
+        private void OnDisable() =>
             _currentClickedSpaceshipWatcher.CurrentSpaceshipChanged -= OnSpaceshipChanged;
-        }
 
-        public void UpdateLevel()
-        {
+        public void UpdateLevel() =>
             _spaceshipLevel.text = _persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(SpaceshipType).Level.ToString();
-        }
 
         private async void OnSpaceshipChanged(SpaceshipType type)
         {

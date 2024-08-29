@@ -34,15 +34,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             transform.position = new Vector3(_target.position.x, _positionY, _target.position.z) + _offset;
         }
 
-        public void HideEffect()
-        {
+        public void HideEffect() =>
             _effect.Stop();
-        }
 
-        public void ShowEffect()
-        {
+        public void ShowEffect() =>
             _effect.Play();
-        }
 
         public class Factory : PlaceholderFactory<string, UniTask<Plane>>
         {

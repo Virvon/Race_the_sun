@@ -22,14 +22,10 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.MysteryBox
             ChangeCountValue(_persistentProgressService.Progress.MysteryBoxes.Count);
         }
 
-        private void OnDestroy()
-        {
+        private void OnDestroy() =>
             _persistentProgressService.Progress.MysteryBoxes.CountChanged -= ChangeCountValue;
-        }
 
-        private void ChangeCountValue(int count)
-        {
+        private void ChangeCountValue(int count) =>
             _countValue.text = count.ToString();
-        }
     }
 }

@@ -11,6 +11,7 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
     public class MultipliplyScoreItemsButton : MonoBehaviour
     {
         private const int MinReward = 20;
+        private const int MinScoreCount = 10;
 
         [SerializeField] private Button _button;
         [SerializeField] private TMP_Text _rewardValue;
@@ -35,14 +36,12 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
             _rewardValue.text = _reward.ToString();
         }
 
-        private void OnDisable()
-        {
+        private void OnDisable() =>
             _button.onClick.RemoveListener(OnButtonClick);
-        }
 
         private int GetReward()
         {
-            if (_scoreItemsCounter.ScoreItemsPerGame < 10)
+            if (_scoreItemsCounter.ScoreItemsPerGame < MinScoreCount)
                 return MinReward;
             else
                 return _scoreItemsCounter.ScoreItemsPerGame;

@@ -49,10 +49,8 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
             _header.SetActive(false);
         }
 
-        private void OnRevivalPanelAnimationElementOpened()
-        {
+        private void OnRevivalPanelAnimationElementOpened() =>
             _timer = StartCoroutine(Timer());
-        }
 
         private void OnRevivalButtonClicked()
         {

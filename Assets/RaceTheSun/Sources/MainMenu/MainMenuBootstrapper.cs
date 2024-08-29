@@ -1,7 +1,6 @@
 ﻿using Assets.RaceTheSun.Sources.GameLogic.Cameras.MainMenu;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.CamerasFactory.MainMenu;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory;
-using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using Assets.RaceTheSun.Sources.UI.LoadingCurtain;
 using UnityEngine;
 using Zenject;
@@ -10,12 +9,14 @@ namespace Assets.RaceTheSun.Sources.MainMenu
 {
     public class MainMenuBootstrapper : IInitializable
     {
+        private const float HideLoadingCurtainDuration = 0.1f;
+
         private readonly IMainMenuFactory _mainMenuFactory;
         private readonly MainMenuCameras _mainMenuCameras;
         private readonly ILoadingCurtain _loadingCurtain;
         private readonly IMainMenuCamerasFactory _mainMenuCamerasFactory;
 
-        private Vector3 _modelPointPosition = new Vector3(0, 3, 0);
+        private Vector3 _modelSpawnerPosition = new Vector3(0, 3, 0);
         private Vector3 _trailPointPosition = new Vector3(0, 3, -1.5f);
 
         public MainMenuBootstrapper(IMainMenuFactory mainMenuFactory, MainMenuCameras mainMenuCameras, ILoadingCurtain loadingCurtain, IMainMenuCamerasFactory mainMenuCamerasFactory)
@@ -28,7 +29,7 @@ namespace Assets.RaceTheSun.Sources.MainMenu
 
         public async void Initialize()
         {
-            await _mainMenuFactory.CreateModelPoint(_modelPointPosition);
+            await _mainMenuFactory.CreateModelSpawner(_modelSpawnerPosition);
             await _mainMenuFactory.CreateTrailPoint(_trailPointPosition);
             await _mainMenuFactory.CreateMainMenu();
             await _mainMenuCamerasFactory.CreateMainMenuMainCamera();
@@ -37,7 +38,7 @@ namespace Assets.RaceTheSun.Sources.MainMenu
             await _mainMenuCamerasFactory.CreateTrailCamera();
 
             _mainMenuCameras.IncludeCamera(MainMenuCameraType.MainCamera);
-            _loadingCurtain.Hide(0.1f);
+            _loadingCurtain.Hide(HideLoadingCurtainDuration);
         }
     }
 }

@@ -20,14 +20,10 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
             _persistentProgress.Progress.Wallet.ValueChanged += OnWalletValueChanged;
         }
 
-        private void OnDestroy()
-        {
+        private void OnDestroy() =>
             _persistentProgress.Progress.Wallet.ValueChanged -= OnWalletValueChanged;
-        }
 
-        private void OnWalletValueChanged(int value)
-        {
+        private void OnWalletValueChanged(int value) =>
             _walletValue.text = value.ToString();
-        }
     }
 }

@@ -1,14 +1,11 @@
-﻿using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
+﻿using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator.StageInfo;
+using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
 using Cysharp.Threading.Tasks;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using Zenject;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
@@ -133,10 +130,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
                 gridPosition * _cellLength);
         }
 
-        private int WorldToGridPosition(Vector3 worldPosition)
-        {
-            return (int)(worldPosition.z / _cellLength);
-        }
+        private int WorldToGridPosition(Vector3 worldPosition) =>
+            (int)(worldPosition.z / _cellLength);
 
         public class Factory : PlaceholderFactory<string, UniTask<WorldGenerator>>
         {

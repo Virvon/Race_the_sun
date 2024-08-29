@@ -35,20 +35,14 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.MysteryBox
                 _persistentProgressService.Progress.MysteryBoxes.Count = 0;
         }
 
-        private void OnDestroy()
-        {
+        private void OnDestroy() =>
             _openMysteryBoxButton.onClick.RemoveListener(OnOpenMysteryBoxButtonCllicked);
-        }
 
-        public override void Hide()
-        {
+        public override void Hide() =>
             gameObject.SetActive(false);
-        }
 
-        public override void Open()
-        {
+        public override void Open() =>
             gameObject.SetActive(true);
-        }
 
         private void OnOpenMysteryBoxButtonCllicked()
         {

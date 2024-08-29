@@ -1,6 +1,6 @@
 ﻿using Assets.RaceTheSun.Sources.GameLogic.Cameras.MainMenu;
 using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
-using Assets.RaceTheSun.Sources.MainMenu.ModelPoint;
+using Assets.RaceTheSun.Sources.MainMenu.Model;
 using Cysharp.Threading.Tasks;
 using Zenject;
 
@@ -20,8 +20,8 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory
                 .FromFactory<KeyPrefabFactoryAsync<UI.MainMenu.MainMenu>>();
 
             Container
-                .BindFactory<string, UniTask<ModelPoint>, ModelPoint.Factory>()
-                .FromFactory<KeyPrefabFactoryAsync<ModelPoint>>();
+                .BindFactory<string, UniTask<ModelSpawner>, ModelSpawner.Factory>()
+                .FromFactory<KeyPrefabFactoryAsync<ModelSpawner>>();
 
             Container
                 .BindFactory<string, UniTask<TrailPoint>, TrailPoint.Factory>()

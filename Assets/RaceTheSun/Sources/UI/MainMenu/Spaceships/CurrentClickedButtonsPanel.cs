@@ -82,10 +82,6 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
                 _saveLoadService.SaveProgress();
                 _currentClickedSpaceshipWatcher.Reset();
             }
-            else
-            {
-                Debug.Log("cant buy");
-            }
         }
     }
 }

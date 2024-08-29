@@ -39,10 +39,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.AttachmentPanel
             Hide();
         }
 
-        private void OnDestroy()
-        {
+        private void OnDestroy() =>
             _button.onClick.RemoveListener(OnButtonClick);
-        }
 
         public void Hide()
         {
@@ -84,10 +82,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.AttachmentPanel
             _upgradeName.text = _staticDataService.GetAttachment(upgradeType).Name;
         }
 
-        private void OnButtonClick()
-        {
+        private void OnButtonClick() =>
             Clicked?.Invoke();
-        }
 
         private void Open()
         {

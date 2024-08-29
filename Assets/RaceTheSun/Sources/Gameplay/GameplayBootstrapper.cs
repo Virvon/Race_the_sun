@@ -1,5 +1,6 @@
 ﻿using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
-using Assets.RaceTheSun.Sources.Gameplay.Spaceship.Battery;
+using Assets.RaceTheSun.Sources.Gameplay.Spaceship.Battery.Indicator;
+using Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement;
 using Assets.RaceTheSun.Sources.Gameplay.StateMachine;
 using Assets.RaceTheSun.Sources.Gameplay.StateMachine.States;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.CamerasFactory.Gameplay;
@@ -7,7 +8,8 @@ using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.SpaceshipModelFactory;
 using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;
-using Assets.RaceTheSun.Sources.UI.LoadingCurtain;
+using Cysharp.Threading.Tasks;
+using System.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -39,12 +41,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay
             await _gameplayFactory.CreateCollectItemsSoundEffects();
             await _gameplayFactory.CreatePortalSoundPlayer();
             await _gameplayFactory.CreateDestroySoundPlayer();
-
-            Spaceship.Spaceship spaceship = await _gameplayFactory.CreateSpaceship();
-            SpaceshipModel spaceshipModel = await _spaceshipModelFactory.CreateSpaceshipModel(_persistentProgress.Progress.AvailableSpaceships.CurrentSpaceshipType, spaceship.GetComponentInChildren< Assets.RaceTheSun.Sources.Gameplay.ModelPoint>().transform.position, spaceship.transform);
-            spaceship.GetComponentInChildren<SpaceshipTurning>().Init(spaceshipModel);
-            spaceship.GetComponentInChildren<BatteryIndicator>().Init(spaceshipModel.GetComponentInChildren<MeshRenderer>());
-
+            await CreateSpaceship();
             await _gameplayFactory.CreateSun();
             await _gameplayFactory.CreatePlane();
             await _gameplayFactory.CreateShpaceshipShieldPortal();
@@ -57,14 +54,27 @@ namespace Assets.RaceTheSun.Sources.Gameplay
             await _gameplayCamerasFactory.CreateCollisionPortalCamera();
             await _gameplayCamerasFactory.CreateShieldCamera();
             await _gameplayFactory.CreateGameOverPanel();
+            CreateGameplayStates();
+            await _gameplayStateMachine.Enter<GameplayStartState>();
+        }
 
-            _gameplayStateMachine.RegisterState(_statesFactory.Create<GameStartState>());
-            _gameplayStateMachine.RegisterState(_statesFactory.Create<GameLoopState>());
-            _gameplayStateMachine.RegisterState(_statesFactory.Create<RevivalState>());
-            _gameplayStateMachine.RegisterState(_statesFactory.Create<ResultState>());
-            _gameplayStateMachine.RegisterState(_statesFactory.Create<GameEndState>());
+        private void CreateGameplayStates()
+        {
+            _gameplayStateMachine.RegisterState(_statesFactory.Create<GameplayStartState>());
+            _gameplayStateMachine.RegisterState(_statesFactory.Create<GameplayLoopState>());
+            _gameplayStateMachine.RegisterState(_statesFactory.Create<GameplayRevivalState>());
+            _gameplayStateMachine.RegisterState(_statesFactory.Create<GameplayResultState>());
+            _gameplayStateMachine.RegisterState(_statesFactory.Create<GameplayEndState>());
+        }
 
-            await _gameplayStateMachine.Enter<GameStartState>();
+        private async UniTask CreateSpaceship()
+        {
+            Spaceship.Spaceship spaceship = await _gameplayFactory.CreateSpaceship();
+
+            SpaceshipModel spaceshipModel = await _spaceshipModelFactory.CreateSpaceshipModel(_persistentProgress.Progress.AvailableSpaceships.CurrentSpaceshipType, spaceship.GetComponentInChildren<ModelPoint>().transform.position, spaceship.transform);
+
+            spaceship.GetComponentInChildren<SpaceshipTurning>().Init(spaceshipModel);
+            spaceship.GetComponentInChildren<BatteryIndicator>().Init(spaceshipModel.GetComponentInChildren<MeshRenderer>());
         }
     }
 }

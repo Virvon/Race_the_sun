@@ -4,9 +4,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
 {
     public class BatteryInfoButton : StatInfoButton
     {
-        protected override string GetInfo()
-        {
-            return $"Сохраняй заряд в тени дольше ({PersistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(CurrentSpaceshipType).Battery.Value}с., +{StaticDataService.GetSpaceship(CurrentSpaceshipType).Battery.UpgradeValue}с. за уровень)";
-        }
+        protected override string GetInfo() =>
+            $"Сохраняй заряд в тени дольше ({PersistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(CurrentSpaceshipType).Battery.Value}с., +{StaticDataService.GetSpaceship(CurrentSpaceshipType).Battery.UpgradeValue}с. за уровень)";
     }
 }

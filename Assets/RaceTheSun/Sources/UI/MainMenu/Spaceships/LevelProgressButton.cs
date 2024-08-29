@@ -14,9 +14,7 @@
             ShowedInformation -= OnShowedInformation;
         }
 
-        private void OnShowedInformation(InformationButton _)
-        {
+        private void OnShowedInformation(InformationButton _) =>
             OpenInfo();
-        }
     }
 }

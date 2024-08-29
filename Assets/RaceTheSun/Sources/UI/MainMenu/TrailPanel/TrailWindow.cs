@@ -1,6 +1,6 @@
 ﻿using Assets.RaceTheSun.Sources.GameLogic.Cameras.MainMenu;
 using Assets.RaceTheSun.Sources.GameLogic.Trail;
-using Assets.RaceTheSun.Sources.MainMenu.ModelPoint;
+using Assets.RaceTheSun.Sources.MainMenu.Model;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using Assets.RaceTheSun.Sources.Services.SaveLoad;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
@@ -19,7 +19,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
         [SerializeField] private CurrentClickedSpaceshipInfo _currentClickedSpaceshipInfo;
 
         private MainMenuCameras _mainMenuCameras;
-        private ModelPoint _modelPoint;
+        private ModelSpawner _modelPoint;
         private IPersistentProgressService _persistentProgressService;
         private IStaticDataService _staticDataService;
         private ISaveLoadService _saveLoadService;
@@ -27,7 +27,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
         private GameObject _currentSelectedFrame;
 
         [Inject]
-        private void Construct(MainMenuCameras mainMenuCameras, ModelPoint modelPoint, IPersistentProgressService persistentProgressService, IStaticDataService staticDataService, ISaveLoadService saveLoadService)
+        private void Construct(MainMenuCameras mainMenuCameras, ModelSpawner modelPoint, IPersistentProgressService persistentProgressService, IStaticDataService staticDataService, ISaveLoadService saveLoadService)
         {
             _mainMenuCameras = mainMenuCameras;
             _modelPoint = modelPoint;

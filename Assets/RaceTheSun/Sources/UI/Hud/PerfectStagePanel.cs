@@ -6,15 +6,15 @@ namespace Assets.RaceTheSun.Sources.UI.Hud
 {
     public class PerfectStagePanel : MonoBehaviour
     {
+        private const int ShowDuration = 4;
+
         [SerializeField] private JumpPanel _jumpPanel;
 
         private IWaitingService _waitingService;
 
         [Inject]
-        private void Construct(IWaitingService waitingService)
-        {
+        private void Construct(IWaitingService waitingService) =>
             _waitingService = waitingService;
-        }
 
         public void Show()
         {
@@ -23,7 +23,7 @@ namespace Assets.RaceTheSun.Sources.UI.Hud
             _jumpPanel.Hide();
             gameObject.SetActive(true);
 
-            _waitingService.Wait(4, callback: () =>
+            _waitingService.Wait(ShowDuration, callback: () =>
             {
                 gameObject.SetActive(false);
 

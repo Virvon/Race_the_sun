@@ -1,14 +1,14 @@
 ﻿using Assets.RaceTheSun.Sources.GameLogic.Audio;
-using Assets.RaceTheSun.Sources.GameLogic.Cameras.Gameplay;
 using Assets.RaceTheSun.Sources.Gameplay.Bird;
-using Assets.RaceTheSun.Sources.Gameplay.CollectItems;
-using Assets.RaceTheSun.Sources.Gameplay.DistanceObserver;
+using Assets.RaceTheSun.Sources.Gameplay.CollectItems.Items;
+using Assets.RaceTheSun.Sources.Gameplay.Portals;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship.Battery;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship.Collision;
+using Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement;
 using Assets.RaceTheSun.Sources.Gameplay.Sun;
 using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
-using Assets.RaceTheSun.Sources.Services.StaticDataService;
+using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator.Tiles;
 using Assets.RaceTheSun.Sources.UI.GameOverPanel;
 using Assets.RaceTheSun.Sources.UI.Hud;
 using Cysharp.Threading.Tasks;
@@ -22,13 +22,10 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
     {
         private readonly DiContainer _container;
         private readonly Hud.Factory _hudFactory;
-        private readonly IStaticDataService _staticDataService;
         private readonly Spaceship.Factory _spaceshipFactory;
         private readonly Tile.Factory _tileFactory;
         private readonly WorldGenerator.Factory _worldGeneratorFactory;
         private readonly Sun.Factory _sunFactory;
-        private readonly DistanceObservable _distanceObservable;
-        private readonly GameplayCameras _cameras;
         private readonly SpaceshipShieldPortal.Factory _spaceshipShieldPortalFactory;
         private readonly GameOverPanel.Factory _gameOverPanelFactory;
         private readonly JumpBoost.Factory _jumpBoostFactory;
@@ -43,18 +40,13 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         private readonly CollisionFx.Factory _collisonFxFactory;
         private readonly SoundPlayer.Factory _soundPlayerFactory;
 
-        private SpaceshipDie _spaceshipDie;
-
         public GameplayFactory(
             DiContainer container,
             Hud.Factory hudFactory,
-            IStaticDataService staticDataService,
             Spaceship.Factory spaceshipFactory,
             Tile.Factory tileFactory,
             WorldGenerator.Factory worldGeneratorFactory,
             Sun.Factory sunFactory,
-            DistanceObservable distanceObservable,
-            GameplayCameras cameras,
             SpaceshipShieldPortal.Factory spaceshipShieldPortalFactory,
             GameOverPanel.Factory gameOverPanelFactory,
             JumpBoost.Factory jumpBoostFactory,
@@ -71,13 +63,10 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
         {
             _container = container;
             _hudFactory = hudFactory;
-            _staticDataService = staticDataService;
             _spaceshipFactory = spaceshipFactory;
             _tileFactory = tileFactory;
             _worldGeneratorFactory = worldGeneratorFactory;
             _sunFactory = sunFactory;
-            _distanceObservable = distanceObservable;
-            _cameras = cameras;
             _spaceshipShieldPortalFactory = spaceshipShieldPortalFactory;
             _gameOverPanelFactory = gameOverPanelFactory;
             _jumpBoostFactory = jumpBoostFactory;
@@ -93,6 +82,11 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             _soundPlayerFactory = soundPlayerFactory;
         }
 
+        public Spaceship Spaceship { get; private set; }
+        public SpaceshipShieldPortal SpaceshipShieldPortal { get; private set; }
+        public Sun Sun { get; private set; }
+        public Gameplay.Spaceship.Plane Plane { get; private set; }
+
         public async UniTask CreateGameOverPanel()
         {
             GameOverPanel gameOverPanel = await _gameOverPanelFactory.Create(GameplayFactoryAssets.GameOverPanel);
@@ -102,29 +96,24 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
 
         public async UniTask CreateShpaceshipShieldPortal()
         {
-            SpaceshipShieldPortal spaceshipShieldPortal = await _spaceshipShieldPortalFactory.Create(GameplayFactoryAssets.SpaceshipShieldPortal);
-            _container.Bind<SpaceshipShieldPortal>().FromInstance(spaceshipShieldPortal).AsSingle();
-            _spaceshipDie.Init(spaceshipShieldPortal);
+            SpaceshipShieldPortal = await _spaceshipShieldPortalFactory.Create(GameplayFactoryAssets.SpaceshipShieldPortal);
+            _container.Bind<SpaceshipShieldPortal>().FromInstance(SpaceshipShieldPortal).AsSingle();
         }
-
-        
 
         public async UniTask<Spaceship> CreateSpaceship()
         {
-            Spaceship spaceship = await _spaceshipFactory.Create(GameplayFactoryAssets.Spaceship);
-            _container.Bind<Spaceship>().FromInstance(spaceship).AsSingle();
-            _container.Bind<SpaceshipMovement>().FromInstance(spaceship.GetComponentInChildren<SpaceshipMovement>()).AsSingle();
-            _container.Bind<StartMovement>().FromInstance(spaceship.GetComponentInChildren<StartMovement>()).AsSingle();
-            _container.Bind<CollisionPortalPoint>().FromInstance(spaceship.GetComponentInChildren<CollisionPortalPoint>()).AsSingle();
-            _distanceObservable.Init(spaceship);
-            _container.Bind<Battery>().FromInstance(spaceship.GetComponentInChildren<Battery>()).AsSingle();
-            _container.Bind<SpaceshipTurning>().FromInstance(spaceship.GetComponentInChildren<SpaceshipTurning>()).AsSingle();
-            _container.Bind<SpaceshipDie>().FromInstance(spaceship.GetComponentInChildren<SpaceshipDie>()).AsSingle();
-            _container.Bind<SpaceshipJump>().FromInstance(spaceship.GetComponentInChildren<SpaceshipJump>()).AsSingle();
+            Spaceship = await _spaceshipFactory.Create(GameplayFactoryAssets.Spaceship);
 
-            _spaceshipDie = spaceship.GetComponentInChildren<SpaceshipDie>();
+            _container.Bind<Spaceship>().FromInstance(Spaceship).AsSingle();
+            _container.Bind<SpaceshipMovement>().FromInstance(Spaceship.GetComponentInChildren<SpaceshipMovement>()).AsSingle();
+            _container.Bind<CutSceneMovement>().FromInstance(Spaceship.GetComponentInChildren<CutSceneMovement>()).AsSingle();
+            _container.Bind<CollisionPortalPoint>().FromInstance(Spaceship.GetComponentInChildren<CollisionPortalPoint>()).AsSingle();
+            _container.Bind<Battery>().FromInstance(Spaceship.GetComponentInChildren<Battery>()).AsSingle();
+            _container.Bind<SpaceshipTurning>().FromInstance(Spaceship.GetComponentInChildren<SpaceshipTurning>()).AsSingle();
+            _container.Bind<SpaceshipDie>().FromInstance(Spaceship.GetComponentInChildren<SpaceshipDie>()).AsSingle();
+            _container.Bind<SpaceshipJump>().FromInstance(Spaceship.GetComponentInChildren<SpaceshipJump>()).AsSingle();
 
-            return spaceship;
+            return Spaceship;
         }
 
         public async UniTask CreateHud()
@@ -155,11 +144,10 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
 
         public async UniTask CreateSun()
         {
-            Sun sun = await _sunFactory.Create(GameplayFactoryAssets.Sun);
+            Sun = await _sunFactory.Create(GameplayFactoryAssets.Sun);
 
-            _container.Bind<Sun>().FromInstance(sun).AsSingle();
-            _container.Bind<SkyboxSettingsChanger>().FromInstance(sun.GetComponent<SkyboxSettingsChanger>()).AsSingle();
-            _spaceshipDie.Init(sun);
+            _container.Bind<Sun>().FromInstance(Sun).AsSingle();
+            _container.Bind<SkyboxSettingsChanger>().FromInstance(Sun.GetComponent<SkyboxSettingsChanger>()).AsSingle();
         }
 
         public async UniTask<JumpBoost> CreateJumpBoost(Vector3 position, Transform parent = null)
@@ -223,10 +211,9 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
 
         public async UniTask CreatePlane()
         {
-            Gameplay.Spaceship.Plane plane = await _planeFactory.Create(GameplayFactoryAssets.Plane);
+            Plane = await _planeFactory.Create(GameplayFactoryAssets.Plane);
 
-            _spaceshipDie.Init(plane);
-            _container.Bind<Gameplay.Spaceship.Plane>().FromInstance(plane).AsSingle();
+            _container.Bind<Gameplay.Spaceship.Plane>().FromInstance(Plane).AsSingle();
         }
 
         public async UniTask CreateCollectItemsSoundEffects()

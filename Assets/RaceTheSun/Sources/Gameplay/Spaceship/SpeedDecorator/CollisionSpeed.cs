@@ -1,4 +1,5 @@
 ﻿using Assets.RaceTheSun.Sources.GameLogic.Cameras.Gameplay;
+using Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
 using UnityEngine;
 
@@ -32,10 +33,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
 
         public bool IsCollidedPerStage { get; private set; }
 
-        public void Reset()
-        {
+        public void Reset() =>
             IsCollidedPerStage = false;
-        }
 
         protected override float GetSpeedInternal()
         {

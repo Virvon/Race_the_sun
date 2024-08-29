@@ -1,6 +1,4 @@
 ﻿using Assets.RaceTheSun.Sources.GameLogic.Cameras.MainMenu;
-using Assets.RaceTheSun.Sources.MainMenu.ModelPoint;
-using System;
 using UnityEngine;
 using Zenject;
 
@@ -13,10 +11,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
         private MainMenuCameras _mainMenuCameras;
 
         [Inject]
-        private void Construct(MainMenuCameras mainMenuCameras)
-        {
+        private void Construct(MainMenuCameras mainMenuCameras) =>
             _mainMenuCameras = mainMenuCameras;
-        }
 
         public override void Hide()
         {

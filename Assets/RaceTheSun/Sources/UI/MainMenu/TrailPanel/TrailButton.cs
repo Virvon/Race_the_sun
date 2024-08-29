@@ -46,10 +46,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.TrailPanel
             _trailInfoPanel.Clicked -= ChangeInfo;
         }
 
-        private void OnButtonClick()
-        {
+        private void OnButtonClick() =>
             Clicked?.Invoke(_trailType, _selectFrame);
-        }
 
         private void ChangeInfo()
         {

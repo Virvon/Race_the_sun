@@ -13,10 +13,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.MysteryBox
         private DateTime _endDate;
 
         [Inject]
-        private void Construct(IPersistentProgressService persistentProgressService)
-        {
+        private void Construct(IPersistentProgressService persistentProgressService) =>
             _endDate = persistentProgressService.Progress.MysteryBoxes.GetEndDate();
-        }
 
         private void Update()
         {
@@ -25,9 +23,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.MysteryBox
             _value.text = timeSpan <= TimeSpan.Zero ? ToReadableString(TimeSpan.Zero) : ToReadableString(timeSpan);
         }
 
-        private string ToReadableString(TimeSpan span)
-        {
-            return span.Hours + ":" + span.Minutes + ":" + span.Seconds;
-        }
+        private string ToReadableString(TimeSpan span) =>
+            span.Hours + ":" + span.Minutes + ":" + span.Seconds;
     }
 }

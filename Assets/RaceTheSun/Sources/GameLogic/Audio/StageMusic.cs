@@ -1,4 +1,4 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
+﻿using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator.StageInfo;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
 using Cysharp.Threading.Tasks;

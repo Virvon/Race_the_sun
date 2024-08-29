@@ -8,7 +8,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
         private const float BoostValue = 100;
         private const float AccelerationDuration = 1;
         private const float BoostedSpeedTime = 8;
-        private const float BrakingDuration = 2;
 
         private readonly float _defaultSpeed;
         private readonly MonoBehaviour _coroutineRunner;
@@ -43,17 +42,15 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
             _sun.SetMovementDirection(true);
         }
 
-        protected override float GetSpeedInternal()
-        {
-            return _isBoosted ? _speed : WrappedEntity.GetSpeed();
-        }
+        protected override float GetSpeedInternal() =>
+            _isBoosted ? _speed : WrappedEntity.GetSpeed();
 
         private IEnumerator Booster()
         {
             float startSpeed = WrappedEntity.GetSpeed();
             float targetSpeed = startSpeed + BoostValue;
             float time = 0;
-            float progress = 0;
+            float progress;
 
             _speed = startSpeed;
             _isBoosted = true;

@@ -1,5 +1,7 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.CollectItems;
+﻿using Assets.RaceTheSun.Sources.Gameplay.CollectItems.Items;
+using Assets.RaceTheSun.Sources.Gameplay.Portals;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
+using Assets.RaceTheSun.Sources.Gameplay.Sun;
 using Cinemachine;
 using Cysharp.Threading.Tasks;
 using System.Threading.Tasks;
@@ -10,6 +12,11 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
 {
     public interface IGameplayFactory
     {
+        Spaceship Spaceship { get; }
+        Gameplay.Spaceship.Plane Plane { get; }
+        Sun Sun { get; }
+        SpaceshipShieldPortal SpaceshipShieldPortal { get; }
+
         UniTask CreateHud();
         UniTask<Spaceship> CreateSpaceship();
         UniTask<GameObject> CreateTile(AssetReferenceGameObject tileReference, Vector3 position, Transform parent = null);

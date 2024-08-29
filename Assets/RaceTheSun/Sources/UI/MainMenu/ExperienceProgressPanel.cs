@@ -17,10 +17,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
         private IPersistentProgressService _persistentProgressService;
 
         [Inject]
-        private void Construct(IPersistentProgressService persistentProgressService)
-        {
+        private void Construct(IPersistentProgressService persistentProgressService) =>
             _persistentProgressService = persistentProgressService;
-        }
 
         private void OnEnable()
         {
@@ -29,10 +27,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
             _persistentProgressService.Progress.LevelProgress.ExperienceCountChanged += ChangeInfo;
         }
 
-        private void OnDisable()
-        {
+        private void OnDisable() =>
             _persistentProgressService.Progress.LevelProgress.ExperienceCountChanged -= ChangeInfo;
-        }
 
         private void ChangeInfo()
         {

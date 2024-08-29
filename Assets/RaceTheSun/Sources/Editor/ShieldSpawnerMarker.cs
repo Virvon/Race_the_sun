@@ -1,4 +1,4 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
+﻿using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator.Spawners;
 using UnityEditor;
 using UnityEngine;
 

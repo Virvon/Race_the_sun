@@ -8,7 +8,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Counters
 
         private int _scoreItemsProgress;
 
-
         public event Action<int> MultiplierChanged;
         public event Action<int> MultiplierProgressChanged;
 

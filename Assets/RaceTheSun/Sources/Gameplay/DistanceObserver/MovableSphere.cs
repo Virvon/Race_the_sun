@@ -38,9 +38,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.DistanceObserver
                 _canMove = false;
         }
 
-        public void Invoke()
-        {
+        public void Invoke() =>
             _canMove = true;
-        }
     }
 }

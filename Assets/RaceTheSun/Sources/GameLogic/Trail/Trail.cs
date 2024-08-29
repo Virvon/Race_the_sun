@@ -7,10 +7,8 @@ namespace Assets.RaceTheSun.Sources.GameLogic.Trail
 {
     public class Trail : MonoBehaviour
     {
-        private void Start()
-        {
+        private void Start() =>
             transform.localPosition = Vector3.zero;
-        }
 
         public class Factory : PlaceholderFactory<AssetReferenceGameObject, UniTask<Trail>>
         {

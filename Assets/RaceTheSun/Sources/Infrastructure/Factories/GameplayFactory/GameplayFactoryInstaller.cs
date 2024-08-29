@@ -1,11 +1,13 @@
 ﻿using Assets.RaceTheSun.Sources.GameLogic.Audio;
 using Assets.RaceTheSun.Sources.GameLogic.Cameras.Gameplay;
 using Assets.RaceTheSun.Sources.Gameplay.Bird;
-using Assets.RaceTheSun.Sources.Gameplay.CollectItems;
+using Assets.RaceTheSun.Sources.Gameplay.CollectItems.Items;
+using Assets.RaceTheSun.Sources.Gameplay.Portals;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship.Collision;
 using Assets.RaceTheSun.Sources.Gameplay.Sun;
 using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
+using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator.Tiles;
 using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
 using Assets.RaceTheSun.Sources.UI.GameOverPanel;
 using Assets.RaceTheSun.Sources.UI.Hud;

@@ -10,15 +10,11 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
         [SerializeField] private TMP_Text _scoreItemsValue;
         [SerializeField] private float _showAnimationDuration;
 
-        public void SetScoreItemsValue(int value, Action callback)
-        {
+        public void SetScoreItemsValue(int value, Action callback) =>
             StartCoroutine(ShowAnimator(value, callback));
-        }
 
-        public void SetScoreItemsValue(int value)
-        {
+        public void SetScoreItemsValue(int value) =>
             _scoreItemsValue.text = value.ToString();
-        }
 
         public IEnumerator ShowAnimator(int value, Action callback)
         {

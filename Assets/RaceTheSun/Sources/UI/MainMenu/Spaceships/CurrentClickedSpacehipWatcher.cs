@@ -15,10 +15,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
         public event Action<SpaceshipType> CurrentSpaceshipChanged;
 
         [Inject]
-        private void Construct(IPersistentProgressService persistentProgressService)
-        {
+        private void Construct(IPersistentProgressService persistentProgressService) =>
             _persistentProgressService = persistentProgressService;
-        }
 
         private void OnEnable()
         {
@@ -28,10 +26,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
             _persistentProgressService.Progress.AvailableSpaceships.SpaceshipUnlocked += OnSpaceshipUnlocked;
         }
 
-        private void Start()
-        {
+        private void Start() =>
             Reset();
-        }
 
         private void OnDisable()
         {
@@ -41,15 +37,11 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
             _persistentProgressService.Progress.AvailableSpaceships.SpaceshipUnlocked -= OnSpaceshipUnlocked;
         }
 
-        public void Reset()
-        {
+        public void Reset() =>
             CurrentSpaceshipChanged?.Invoke(_persistentProgressService.Progress.AvailableSpaceships.CurrentSpaceshipType);
-        }
 
-        private void OnSpaceshipButtonClicked(SpaceshipType spaceshipType)
-        {
+        private void OnSpaceshipButtonClicked(SpaceshipType spaceshipType) =>
             CurrentSpaceshipChanged?.Invoke(spaceshipType);
-        }
 
         private void OnSpaceshipUnlocked(SpaceshipType type) =>
             CurrentSpaceshipChanged?.Invoke(type);

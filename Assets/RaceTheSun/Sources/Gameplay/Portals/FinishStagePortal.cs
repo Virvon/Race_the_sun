@@ -1,6 +1,6 @@
 ﻿using Assets.RaceTheSun.Sources.GameLogic.Audio;
-using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
-using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
+using Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement;
+using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator.StageInfo;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
 using UnityEngine;
 using Zenject;
@@ -27,7 +27,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Portals
             if(other.TryGetComponent(out Spaceship.Spaceship _))
             {
                 _portalSound.Play();
-                other.GetComponentInChildren<StartMovement>().Move();
+                other.GetComponentInChildren<CutSceneMovement>().MoveStart();
                 _worldGenerator.Clean();
                 _currentGenerationStage.FinishStage();
             }

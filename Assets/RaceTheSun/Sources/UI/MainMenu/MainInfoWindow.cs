@@ -1,5 +1,5 @@
 ﻿using Assets.RaceTheSun.Sources.GameLogic.Cameras.MainMenu;
-using Assets.RaceTheSun.Sources.MainMenu.ModelPoint;
+using Assets.RaceTheSun.Sources.MainMenu.Model;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using System;
 using UnityEngine;
@@ -14,10 +14,10 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
 
         private MainMenuCameras _mainMenuCameras;
         private IPersistentProgressService _persistentProgressService;
-        private ModelPoint _modelPoint;
+        private ModelSpawner _modelPoint;
 
         [Inject]
-        private void Construct(MainMenuCameras mainMenuCameras, IPersistentProgressService persistentProgressService, ModelPoint modelPoint)
+        private void Construct(MainMenuCameras mainMenuCameras, IPersistentProgressService persistentProgressService, ModelSpawner modelPoint)
         {
             _mainMenuCameras = mainMenuCameras;
             _persistentProgressService = persistentProgressService;
@@ -25,10 +25,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
             CheackEducation();
         }
 
-        public override void Hide()
-        {
+        public override void Hide() =>
             gameObject.SetActive(false);
-        }
 
         public async override void Open()
         {

@@ -13,19 +13,32 @@ namespace Assets.RaceTheSun.Sources.MainMenu
             BindMainMenuBootstrapper();
             BindMainMenuFactory();
             BindMainMenuCameras();
-            SpaceshipModelFactoryInstaller.Install(Container);
-            MainMenuCamerasFactoryInstaller.Install(Container);
+            BindSpaceshipModelFactory();
+            BindMainMenuCamerasFactory();
         }
+
+        private void BindMainMenuCamerasFactory() =>
+            MainMenuCamerasFactoryInstaller.Install(Container);
+
+        private void BindSpaceshipModelFactory() =>
+            SpaceshipModelFactoryInstaller.Install(Container);
 
         private void BindMainMenuCameras()
         {
-            Container.BindInterfacesAndSelfTo<MainMenuCameras>().AsSingle();
+            Container
+                .BindInterfacesAndSelfTo<MainMenuCameras>()
+                .AsSingle();
         }
 
         private void BindMainMenuFactory() =>
             MainMenuFactoryInstaller.Install(Container);
 
-        private void BindMainMenuBootstrapper() =>
-            Container.BindInterfacesAndSelfTo<MainMenuBootstrapper>().AsSingle().NonLazy();
+        private void BindMainMenuBootstrapper()
+        {
+            Container
+                .BindInterfacesAndSelfTo<MainMenuBootstrapper>()
+                .AsSingle()
+                .NonLazy();
+        }
     }
 }

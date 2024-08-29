@@ -12,15 +12,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay.DistanceObserver
         private DistanceObservable _distanceObservable;
 
         [Inject]
-        private void Construct(DistanceObservable distanceObservable)
-        {
+        private void Construct(DistanceObservable distanceObservable) =>
             _distanceObservable = distanceObservable;
-        }
 
-        private void Start()
-        {
+        private void Start() =>
             _distanceObservable.RegisterObserver(this, new Vector3(transform.position.x, transform.position.y, transform.position.z - _distanceToMove));
-        }
 
         public void Invoke()
         {

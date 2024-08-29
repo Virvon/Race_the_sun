@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+﻿using Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement;
+using UnityEngine;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
 {
     public class BatterySpeed : SpeedDecorator
     {
         private const float StopSpeed = 0.2f;
-
+        private const float HalfBatteryValue = 0.5f;
         private readonly Battery.Battery _battery;
 
         private float _speedMultiplier;
@@ -26,7 +27,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
         {
             if (_battery.Discharged == false)
             {
-                if(_battery.Value > 0.5f)
+                if(_battery.Value > HalfBatteryValue)
                     _speedMultiplier = 1;
                 else
                     _speedMultiplier -= Time.deltaTime * StopSpeed;

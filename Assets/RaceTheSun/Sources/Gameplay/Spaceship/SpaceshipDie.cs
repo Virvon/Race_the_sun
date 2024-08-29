@@ -13,6 +13,10 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 {
     public class SpaceshipDie : MonoBehaviour
     {
+        private const int EnterResultStateDelay = 2;
+        private const float EnterRevivalStateDelay = 0.5f;
+        private const float ShowDeathDuration = 0.4f;
+
         [SerializeField] private Spaceship _spaceship;
 
         private int _shieldsCount;
@@ -25,40 +29,23 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         private SoundPlayer _destroySound;
 
         private GameplayCameras _gameplayCameras;
-        private Sun.Sun _sun;
-
-        private SpaceshipShieldPortal _spaceshipShieldPortal;
-        private Plane _plane;
+        private IGameplayFactory _gameplayFactory;
 
         public event Action Died;
         public event Action Stopped;
 
         [Inject]
-        private void Construct(GameplayCameras cameras, GameplayStateMachine gameplayStateMachine, WaitingService waitingService, StageMusic stageMusic, GameplayCameras gameplayCameras)
+        private void Construct(GameplayCameras cameras, GameplayStateMachine gameplayStateMachine, WaitingService waitingService, StageMusic stageMusic, GameplayCameras gameplayCameras, IGameplayFactory gameplayFactory)
         {
             _cameras = cameras;
             _gameplayStateMachine = gameplayStateMachine;
             _waitingService = waitingService;
             _stageMusic = stageMusic;
             _gameplayCameras = gameplayCameras;
+            _gameplayFactory = gameplayFactory;
         }
 
         public event Action<int> ShieldsCountChanged;
-
-        public void Init(SpaceshipShieldPortal spaceshipShieldPortal)
-        {
-            _spaceshipShieldPortal = spaceshipShieldPortal;
-        }
-
-        public void Init(Sun.Sun sun)
-        {
-            _sun = sun;
-        }
-
-        public void Init(Plane plane)
-        {
-            _plane = plane;
-        }
 
         public bool TryRevive()
         {
@@ -66,23 +53,24 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             
             if(_shieldsCount > 0)
             {
-                _spaceshipShieldPortal.Activate();
+                _gameplayFactory.SpaceshipShieldPortal.Activate();
                 _shieldsCount--;
                 ShieldsCountChanged?.Invoke(_shieldsCount);
+
                 return true;
             }
             else
             {
                 _gameplayCameras.SpaceshipMainCamera.Shake();
-                _plane.HideEffect();
-                _sun.IsStopped = true;
+                _gameplayFactory.Plane.HideEffect();
+                _gameplayFactory.Sun.IsStopped = true;
                 _destroySound.Play();
                 _stageMusic.Pause();
                 Died?.Invoke();
 
-                _waitingService.Wait(0.4f, callback: ()=>{
+                _waitingService.Wait(ShowDeathDuration, callback: ()=>{
                     _cameras.IncludeCamera(GameplayCameraType.SideCamera);
-                    _waitingService.Wait(0.5f, callback: () => _gameplayStateMachine.Enter<RevivalState>().Forget());
+                    _waitingService.Wait(EnterRevivalStateDelay, callback: () => _gameplayStateMachine.Enter<GameplayRevivalState>().Forget());
                 });
                
                 return false;
@@ -91,12 +79,12 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
         public void Stop()
         {
-            _plane.HideEffect();
-            _sun.IsStopped = true;
+            _gameplayFactory.Plane.HideEffect();
+            _gameplayFactory.Sun.IsStopped = true;
             _stageMusic.Pause();
             Stopped?.Invoke();
             _cameras.IncludeCamera(GameplayCameraType.SideCamera);
-            _waitingService.Wait(2, callback: () => _gameplayStateMachine.Enter<ResultState>().Forget());
+            _waitingService.Wait(EnterResultStateDelay, callback: () => _gameplayStateMachine.Enter<GameplayResultState>().Forget());
         }
 
         public void GiveShield()

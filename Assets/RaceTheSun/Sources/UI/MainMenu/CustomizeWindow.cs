@@ -22,10 +22,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
             _staticDataService = staticDataService;
         }
 
-        public override void Hide()
-        {
+        public override void Hide() =>
             gameObject.SetActive(false);
-        }
 
         public override void Open()
         {

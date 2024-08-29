@@ -1,4 +1,4 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
+﻿using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator.StageInfo;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
 using System;
@@ -29,25 +29,17 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
             _skyboxMaterial = RenderSettings.skybox;
         }
 
-        private void Start()
-        {
+        private void Start() =>
             Reset();
-        }
 
-        private void OnEnable()
-        {
+        private void OnEnable() =>
             _currentSpaceshipStage.StageChanged += ChangeColor;
-        }
 
-        private void OnDisable()
-        {
+        private void OnDisable() =>
             _currentSpaceshipStage.StageChanged -= ChangeColor;
-        }
 
-        public void Reset()
-        {
+        public void Reset() =>
             SetSkyboxMaterialSettings(_startSkyboxConfig.SkyboxColor, _startSkyboxConfig.AtmosphereThickness, _startSkyboxConfig.Exposure);
-        }
 
         private void SetSkyboxMaterialSettings(Color color, float atmosphereThickness, float exposure)
         {
@@ -69,7 +61,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
             float progress = 0;
 
             Color startColor = _skyboxMaterial.GetColor(SkyboxColor);
-            Color currentColor = startColor;
+            Color currentColor;
 
             float startAtmosphereThickness = _skyboxMaterial.GetFloat(AtmosphereThickness);
             float currentAtmosphereThickness = startAtmosphereThickness;

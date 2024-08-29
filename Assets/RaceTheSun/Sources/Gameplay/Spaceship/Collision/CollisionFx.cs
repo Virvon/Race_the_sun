@@ -6,10 +6,10 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Collision
 {
     public class CollisionFx : MonoBehaviour
     {
-        private void Start()
-        {
-            Destroy(gameObject, 2);
-        }
+        private const int DestroyDelay = 2;
+
+        private void Start() =>
+            Destroy(gameObject, DestroyDelay);
 
         public class Factory : PlaceholderFactory<string, UniTask<CollisionFx>>
         {

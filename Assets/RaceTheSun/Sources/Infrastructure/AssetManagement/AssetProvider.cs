@@ -11,10 +11,8 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.AssetManagement
     {
         private readonly Dictionary<string, AsyncOperationHandle> _assetRequest;
 
-        public AssetProvider()
-        {
+        public AssetProvider() =>
             _assetRequest = new();
-        }
 
         public async UniTask InitializeAsync()
         {

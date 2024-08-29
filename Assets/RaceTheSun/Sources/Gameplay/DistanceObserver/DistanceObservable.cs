@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
+using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -7,25 +7,22 @@ namespace Assets.RaceTheSun.Sources.Gameplay.DistanceObserver
 {
     public class DistanceObservable : ITickable
     {
-        private Transform _spaceship;
+        private readonly IGameplayFactory _gameplayFactory;
+
         private List<ObserverInfo> _observers;
 
-        public DistanceObservable()
+        public DistanceObservable(IGameplayFactory gameplayFactory)
         {
+            _gameplayFactory = gameplayFactory;
             _observers = new();
-        }
-
-        public void Init(Spaceship.Spaceship spaceship)
-        {
-            _spaceship = spaceship.transform;
         }
 
         public void Tick()
         {
-            if (_spaceship == null)
+            if (_gameplayFactory.Spaceship == null)
                 return;
 
-            Vector3 SpaceshipPosition = _spaceship.position;
+            Vector3 SpaceshipPosition = _gameplayFactory.Spaceship.transform.position;
             List<ObserverInfo> removedObservers = new();
 
             foreach(ObserverInfo info in _observers)
@@ -40,10 +37,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.DistanceObserver
             RemoveObservers(removedObservers);
         }
 
-        public void RegisterObserver(IObserver observer, Vector3 invokePosition)
-        {
+        public void RegisterObserver(IObserver observer, Vector3 invokePosition) =>
             _observers.Add(new ObserverInfo(observer, invokePosition));
-        }
 
         private void RemoveObservers(List<ObserverInfo> observers)
         {

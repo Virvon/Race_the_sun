@@ -27,7 +27,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.DistanceObserver
             float speed = Random.Range(_minSpeed, _maxSpeed);
 
             _movementDirection = _movementDirection.normalized * speed;
-
             _rotationSpeed = Random.Range(_minRotationSpeed, _maxRotationSpeed);
         }
 

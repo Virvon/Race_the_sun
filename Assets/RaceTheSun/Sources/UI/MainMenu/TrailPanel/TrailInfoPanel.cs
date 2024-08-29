@@ -43,15 +43,11 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.TrailPanel
             Hide();
         }
 
-        private void OnEnable()
-        {
+        private void OnEnable() =>
             _button.onClick.AddListener(OnButtonClicked);
-        }
 
-        private void OnDisable()
-        {
+        private void OnDisable() =>
             _button.onClick.RemoveListener(OnButtonClicked);
-        }
 
         public void Hide()
         {
@@ -83,10 +79,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.TrailPanel
             _trailTitle.text = _staticDataService.GetTrail(trailType).Title;
         }
 
-        private void OnButtonClicked()
-        {
+        private void OnButtonClicked() =>
             Clicked?.Invoke();
-        }
 
         private void Open()
         {

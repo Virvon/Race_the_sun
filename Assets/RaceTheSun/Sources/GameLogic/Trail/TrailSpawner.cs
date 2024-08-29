@@ -25,10 +25,8 @@ namespace Assets.RaceTheSun.Sources.GameLogic.Trail
             _createdeTrails = new List<Trail>();
         }
 
-        private void Start()
-        {
+        private void Start() =>
             CreateTrails(_persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(_spaceshipType).TrailType);
-        }
 
         public async void CreateTrails(TrailType type)
         {

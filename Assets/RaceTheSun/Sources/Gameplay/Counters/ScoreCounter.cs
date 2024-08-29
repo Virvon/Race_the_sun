@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -10,36 +11,28 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Counters
         private const float SpeedMultiplier = 0.0032f;
 
         private readonly MultiplierProgressCounter _progressMultiplierCounter;
-
-        private Spaceship.Spaceship _spaceship;
+        private readonly IGameplayFactory _gameplayFactory;
 
         public event Action<int> ScoreCountChanged;
 
-        public ScoreCounter(MultiplierProgressCounter progressMultiplierCounter)
-
+        public ScoreCounter(MultiplierProgressCounter progressMultiplierCounter, IGameplayFactory gameplayFactory)
         {
             _progressMultiplierCounter = progressMultiplierCounter;
+            _gameplayFactory = gameplayFactory;
 
             Score = 0;
         }
 
         public float Score { get; private set; }
 
-        public void Init(Spaceship.Spaceship spaceship)
-        {
-            _spaceship = spaceship;
-        }
-
         public void Tick()
         {
-            if (_spaceship == null)
+            if (_gameplayFactory.Spaceship == null)
                 return;
 
-            Score += ScorePerSecond * Time.deltaTime * _progressMultiplierCounter.Multiplier * (_spaceship.Speed * SpeedMultiplier);
+            Score += ScorePerSecond * Time.deltaTime * _progressMultiplierCounter.Multiplier * (_gameplayFactory.Spaceship.Speed * SpeedMultiplier);
 
             ScoreCountChanged?.Invoke((int)Score);
         }
-
-
     }
 }

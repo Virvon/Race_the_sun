@@ -1,4 +1,6 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
+﻿using Assets.RaceTheSun.Sources.Gameplay.Portals;
+using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
+using Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement;
 using System;
 using UnityEngine;
 using Zenject;
@@ -26,7 +28,7 @@ namespace Assets.RaceTheSun.Sources.UI.Hud
             TryActive();
         }
 
-        public bool IsActivated;
+        public bool IsActivated { get; private set; }
 
         private void OnDestroy()
         {

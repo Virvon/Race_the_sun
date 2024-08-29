@@ -36,10 +36,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
             base.OpenInfo();
         }
 
-        private void OnStatPanelUpdated()
-        {
+        private void OnStatPanelUpdated() =>
             HideInfo();
-        }
 
         protected abstract string GetInfo();
     }

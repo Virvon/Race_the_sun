@@ -1,6 +1,6 @@
 ﻿using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
 using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine.States;
-using Assets.RaceTheSun.Sources.Services.CoroutineRunner;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -25,8 +25,7 @@ namespace Assets.RaceTheSun.Sources.Infrastructure
             _gameStateMachine.RegisterState(_statesFactory.Create<MainMenuState>());
             _gameStateMachine.RegisterState(_statesFactory.Create<GameLoopState>());
 
-#pragma warning disable CS4014
-            _gameStateMachine.Enter<BootstrapState>();
+            _gameStateMachine.Enter<BootstrapState>().Forget();
 
             DontDestroyOnLoad(this);
         }

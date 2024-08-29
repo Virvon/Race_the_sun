@@ -37,15 +37,11 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
             CheackUnlockedLevel();
         }
 
-        private void OnDestroy()
-        {
+        private void OnDestroy() =>
             _continueButton.onClick.RemoveListener(OnContinueButtonClicked);
-        }
 
-        private void OnContinueButtonClicked()
-        {
+        private void OnContinueButtonClicked() =>
             CheackUnlockedLevel();
-        }
 
         private async void CheackUnlockedLevel()
         {

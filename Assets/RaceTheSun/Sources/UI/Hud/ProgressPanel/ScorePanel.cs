@@ -19,14 +19,10 @@ namespace Assets.RaceTheSun.Sources.UI.Hud.ProgressPanel
             _scoreCounter.ScoreCountChanged += OnScoreCountChanged;
         }
 
-        private void OnDestroy()
-        {
+        private void OnDestroy() =>
             _scoreCounter.ScoreCountChanged -= OnScoreCountChanged;
-        }
 
-        private void OnScoreCountChanged(int score)
-        {
+        private void OnScoreCountChanged(int score) =>
             _scoreValue.text = score.ToString();
-        }
     }
 }
