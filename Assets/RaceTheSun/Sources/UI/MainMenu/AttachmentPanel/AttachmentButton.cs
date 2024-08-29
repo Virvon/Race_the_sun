@@ -1,4 +1,6 @@
-﻿using Assets.RaceTheSun.Sources.Services.StaticDataService;
+﻿using Assets.RaceTheSun.Sources.Services.PersistentProgress;
+using Assets.RaceTheSun.Sources.Services.StaticDataService;
+using Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships;
 using Assets.RaceTheSun.Sources.Upgrading;
 using System;
 using TMPro;
@@ -6,7 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Assets.RaceTheSun.Sources.UI.MainMenu
+namespace Assets.RaceTheSun.Sources.UI.MainMenu.AttachmentPanel
 {
     public class AttachmentButton : MonoBehaviour
     {

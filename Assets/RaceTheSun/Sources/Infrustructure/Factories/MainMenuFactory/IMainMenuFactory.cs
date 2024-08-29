@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory
+namespace Assets.RaceTheSun.Sources.Infrustructure.Factories.MainMenuFactory
 {
     public interface IMainMenuFactory
     {

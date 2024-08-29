@@ -2,8 +2,6 @@
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using Assets.RaceTheSun.Sources.Gameplay.Sun;
 using Assets.RaceTheSun.Sources.UI.LoadingCurtain;
-using Assets.RaceTheSun.Sources.UI.ScoreView;
-using UnityEngine;
 using Zenject;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
@@ -17,7 +15,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
         private ILoadingCurtain _loadingCurtain;
         private Sun.Sun _sun;
         private SkyboxSettingsChanger _skyboxSettingsChanger;
-        private Spaceship.Plane _plane;
+        private Plane _plane;
 
         [Inject]
         private void Construct(DistanceObservable distanceObservable, CurrentGenerationStage currentGenerationStage, WorldGenerator worldGenerator, Spaceship.Spaceship spaceship, ILoadingCurtain loadingCurtain, Sun.Sun sun, SkyboxSettingsChanger skyboxSettingsChanger, Spaceship.Plane plane)

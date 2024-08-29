@@ -1,10 +1,11 @@
-﻿using Assets.RaceTheSun.Sources.Animations;
+﻿using Assets.RaceTheSun.Sources.GameLogic.Animations;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
+using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using TMPro;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.RaceTheSun.Sources.UI.ScoreView
+namespace Assets.RaceTheSun.Sources.UI.Hud
 {
     public class JumpBoostsCountPanel : HudAnimationElement
     {

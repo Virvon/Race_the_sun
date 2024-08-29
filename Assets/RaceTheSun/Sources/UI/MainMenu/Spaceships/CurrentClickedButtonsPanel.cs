@@ -1,13 +1,13 @@
 ﻿using Assets.RaceTheSun.Sources.Data;
-using Assets.RaceTheSun.Sources.MainMenu.Spaceship;
+using Assets.RaceTheSun.Sources.Services.PersistentProgress;
+using Assets.RaceTheSun.Sources.Services.SaveLoad;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Assets.RaceTheSun.Sources.UI.MainMenu
+namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
 {
     public class CurrentClickedButtonsPanel : MonoBehaviour
     {
@@ -57,7 +57,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
 
             bool isUnlocked = _persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(_currentSpaceshipType).IsUnlocked;
 
-            if(isUnlocked)
+            if (isUnlocked)
             {
                 _buyButton.gameObject.SetActive(false);
                 _selectOrCustomizePanel.SetActive(true);
@@ -74,7 +74,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
 
         private void OnBuyButtonClicked()
         {
-            if(_persistentProgressService.Progress.Wallet.TryTake(_staticDataService.GetSpaceship(_currentSpaceshipType).BuyCost))
+            if (_persistentProgressService.Progress.Wallet.TryTake(_staticDataService.GetSpaceship(_currentSpaceshipType).BuyCost))
             {
                 _persistentProgressService.Progress.AvailableSpaceships.Unlock(_currentSpaceshipType);
                 _persistentProgressService.Progress.AvailableStatsToUpgrade.Add(_staticDataService.GetSpaceship(_currentSpaceshipType).UnlockedStatType);

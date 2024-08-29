@@ -1,15 +1,17 @@
-﻿using Assets.RaceTheSun.Sources.Audio;
+﻿using Assets.RaceTheSun.Sources.GameLogic.Audio;
+using Assets.RaceTheSun.Sources.GameLogic.Cameras.Gameplay;
 using Assets.RaceTheSun.Sources.Gameplay;
 using Assets.RaceTheSun.Sources.Gameplay.Bird;
-using Assets.RaceTheSun.Sources.Gameplay.Cameras;
 using Assets.RaceTheSun.Sources.Gameplay.CollectItems;
 using Assets.RaceTheSun.Sources.Gameplay.DistanceObserver;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
+using Assets.RaceTheSun.Sources.Gameplay.Spaceship.Battery;
+using Assets.RaceTheSun.Sources.Gameplay.Spaceship.Collision;
 using Assets.RaceTheSun.Sources.Gameplay.Sun;
 using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.UI.GameOverPanel;
-using Assets.RaceTheSun.Sources.UI.ScoreView;
+using Assets.RaceTheSun.Sources.UI.Hud;
 using Cinemachine;
 using Cysharp.Threading.Tasks;
 using System;
@@ -18,7 +20,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Zenject;
 
-namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
+namespace Assets.RaceTheSun.Sources.Infrustructure.Factories.GameplayFactory
 {
     public class GameplayFactory : IGameplayFactory
     {
@@ -222,7 +224,7 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             ScoreItem scoreItem = await _scoreItemFactory.Create(GameplayFactoryAssets.ScoreItem);
 
             scoreItem.transform.position = position;
-            
+
             return scoreItem;
         }
 

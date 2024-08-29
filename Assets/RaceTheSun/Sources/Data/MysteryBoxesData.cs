@@ -10,10 +10,8 @@ namespace Assets.RaceTheSun.Sources.Data
 
         public event Action<int> CountChanged;
 
-        public MysteryBoxesData()
-        {
+        public MysteryBoxesData() =>
             EndDate = DateTime.MinValue.ToString();
-        }
 
         public void Take()
         {

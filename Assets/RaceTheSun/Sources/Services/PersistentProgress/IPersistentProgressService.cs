@@ -1,6 +1,9 @@
 ﻿using Assets.RaceTheSun.Sources.Data;
 
-public interface IPersistentProgressService
+namespace Assets.RaceTheSun.Sources.Services.PersistentProgress
 {
-    public PlayerProgress Progress { get; set; }
+    public interface IPersistentProgressService
+    {
+        public PlayerProgress Progress { get; set; }
+    }
 }

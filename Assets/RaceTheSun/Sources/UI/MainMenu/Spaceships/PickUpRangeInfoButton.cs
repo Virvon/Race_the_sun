@@ -1,4 +1,4 @@
-﻿namespace Assets.RaceTheSun.Sources.UI.MainMenu
+﻿namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
 {
     public class PickUpRangeInfoButton : StatInfoButton
     {

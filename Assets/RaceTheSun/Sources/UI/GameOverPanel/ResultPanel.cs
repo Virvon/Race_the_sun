@@ -1,5 +1,4 @@
-﻿using Assets.RaceTheSun.Sources.Animations;
-using Assets.RaceTheSun.Sources.Gameplay.ScoreCounter;
+﻿using Assets.RaceTheSun.Sources.Gameplay.Counters;
 using System;
 using UnityEngine;
 using UnityEngine.UI;

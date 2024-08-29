@@ -1,12 +1,10 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.Cameras;
-using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
-using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
+﻿using Assets.RaceTheSun.Sources.GameLogic.Cameras.MainMenu;
+using Assets.RaceTheSun.Sources.Infrustructure.AssetManagement;
 using Assets.RaceTheSun.Sources.MainMenu.ModelPoint;
 using Cysharp.Threading.Tasks;
-using UnityEngine;
 using Zenject;
 
-namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory
+namespace Assets.RaceTheSun.Sources.Infrustructure.Factories.MainMenuFactory
 {
     public class MainMenuFactoryInstaller : Installer<MainMenuFactoryInstaller>
     {
@@ -18,7 +16,7 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory
                 .BindFactory<string, UniTask<UI.MainMenu.MainMenu>, UI.MainMenu.MainMenu.Factory>()
                 .FromFactory<KeyPrefabFactoryAsync<UI.MainMenu.MainMenu>>();
 
-           
+
 
             Container
                 .BindFactory<string, UniTask<FreeLookCamera>, FreeLookCamera.Factory>()

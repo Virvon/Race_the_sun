@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Assets.RaceTheSun.Sources.GameLogic.Animations;
+using Assets.RaceTheSun.Sources.Services.PersistentProgress;
+using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.RaceTheSun.Sources.Animations
+namespace Assets.RaceTheSun.Sources.UI.Hud
 {
     public class AttachmentPanels : HudAnimationElement
     {
@@ -11,7 +13,7 @@ namespace Assets.RaceTheSun.Sources.Animations
         private List<AttachmentPanel> _usedPanels;
 
         [Inject]
-        private void Construct(IPersistentProgressService persistentProgressService, Attachment.Attachment attachment)
+        private void Construct(IPersistentProgressService persistentProgressService, GameLogic.Attachment.Attachment attachment)
         {
             _usedPanels = new();
 

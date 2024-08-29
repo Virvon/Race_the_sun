@@ -1,6 +1,6 @@
 ﻿using Assets.RaceTheSun.Sources.Data;
+using Assets.RaceTheSun.Sources.GameLogic.Trail;
 using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
-using Assets.RaceTheSun.Sources.Trail;
 using Assets.RaceTheSun.Sources.Upgrading;
 using Cysharp.Threading.Tasks;
 

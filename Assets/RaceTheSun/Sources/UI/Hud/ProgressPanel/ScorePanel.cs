@@ -1,9 +1,9 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.ScoreCounter;
+﻿using Assets.RaceTheSun.Sources.Gameplay.Counters;
 using TMPro;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.RaceTheSun.Sources.UI.ScoreView
+namespace Assets.RaceTheSun.Sources.UI.Hud.ProgressPanel
 {
     public class ScorePanel : MonoBehaviour
     {

@@ -1,5 +1,4 @@
-﻿using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
-using Assets.RaceTheSun.Sources.Infrustructure.GameStateMachine.States;
+﻿using Assets.RaceTheSun.Sources.Infrustructure.GameStateMachine.States;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.UI.LoadingCurtain;
 using Cysharp.Threading.Tasks;
@@ -8,6 +7,7 @@ using Agava.YandexGames;
 using UnityEngine;
 using System.Collections;
 using System;
+using Assets.RaceTheSun.Sources.Infrustructure.AssetManagement;
 
 namespace Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine.States
 {

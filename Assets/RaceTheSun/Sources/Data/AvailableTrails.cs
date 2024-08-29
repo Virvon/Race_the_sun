@@ -1,4 +1,4 @@
-﻿using Assets.RaceTheSun.Sources.Trail;
+﻿using Assets.RaceTheSun.Sources.GameLogic.Trail;
 using System;
 using System.Collections.Generic;
 

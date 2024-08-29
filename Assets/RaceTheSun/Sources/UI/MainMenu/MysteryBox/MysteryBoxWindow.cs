@@ -1,4 +1,6 @@
 ﻿using Agava.YandexGames;
+using Assets.RaceTheSun.Sources.Services.PersistentProgress;
+using Assets.RaceTheSun.Sources.Services.SaveLoad;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
 using Assets.RaceTheSun.Sources.UI.MainMenu;
@@ -8,7 +10,7 @@ using UnityEngine.UI;
 using Zenject;
 using Random = UnityEngine.Random;
 
-namespace Assets.RaceTheSun.Sources.UI.MysteryBox
+namespace Assets.RaceTheSun.Sources.UI.MainMenu.MysteryBox
 {
     public partial class MysteryBoxWindow : OpenableWindow
     {

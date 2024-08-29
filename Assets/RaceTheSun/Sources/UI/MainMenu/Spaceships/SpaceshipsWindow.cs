@@ -1,10 +1,10 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.Cameras;
+﻿using Assets.RaceTheSun.Sources.GameLogic.Cameras.MainMenu;
 using Assets.RaceTheSun.Sources.MainMenu.ModelPoint;
 using System;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.RaceTheSun.Sources.UI.MainMenu
+namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
 {
     public class SpaceshipsWindow : OpenableWindow
     {

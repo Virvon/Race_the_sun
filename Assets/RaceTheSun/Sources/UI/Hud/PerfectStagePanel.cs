@@ -2,7 +2,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace Assets.RaceTheSun.Sources.UI.ScoreView
+namespace Assets.RaceTheSun.Sources.UI.Hud
 {
     public class PerfectStagePanel : MonoBehaviour
     {

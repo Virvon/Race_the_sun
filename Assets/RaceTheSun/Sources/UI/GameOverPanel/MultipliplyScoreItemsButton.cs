@@ -1,5 +1,6 @@
 ﻿using Agava.YandexGames;
-using Assets.RaceTheSun.Sources.Gameplay.ScoreCounter;
+using Assets.RaceTheSun.Sources.Gameplay.Counters;
+using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

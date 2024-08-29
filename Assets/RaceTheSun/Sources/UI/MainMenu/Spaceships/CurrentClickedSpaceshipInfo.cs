@@ -1,12 +1,13 @@
 ﻿using Assets.RaceTheSun.Sources.Data;
 using Assets.RaceTheSun.Sources.MainMenu.ModelPoint;
+using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using System;
 using TMPro;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.RaceTheSun.Sources.UI.MainMenu
+namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
 {
     public class CurrentClickedSpaceshipInfo : MonoBehaviour
     {

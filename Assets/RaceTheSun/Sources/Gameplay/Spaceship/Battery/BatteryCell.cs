@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
+namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Battery
 {
     public class BatteryCell
     {
@@ -24,13 +24,13 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         {
             material = null;
 
-            if(batteryValue < MinIncludeValue && CurrentMaterial != DischargedMaterial)
+            if (batteryValue < MinIncludeValue && CurrentMaterial != DischargedMaterial)
             {
                 material = DischargedMaterial;
                 CurrentMaterial = material;
                 return true;
             }
-            else if(batteryValue >= MinIncludeValue && CurrentMaterial != ChargedMaterial)
+            else if (batteryValue >= MinIncludeValue && CurrentMaterial != ChargedMaterial)
             {
                 material = ChargedMaterial;
                 CurrentMaterial = material;

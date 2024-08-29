@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Assets.RaceTheSun.Sources.Services.PersistentProgress;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Assets.RaceTheSun.Sources.UI.MysteryBox
+namespace Assets.RaceTheSun.Sources.UI.MainMenu.MysteryBox
 {
     public class MysteryBoxWindowOpenButton : MonoBehaviour
     {

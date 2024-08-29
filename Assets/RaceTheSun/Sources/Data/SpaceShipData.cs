@@ -1,5 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.MainMenu.Spaceship;
-using Assets.RaceTheSun.Sources.Trail;
+﻿using Assets.RaceTheSun.Sources.GameLogic.Trail;
+using Assets.RaceTheSun.Sources.MainMenu;
 using Assets.RaceTheSun.Sources.Upgrading;
 using System;
 using System.Collections.Generic;

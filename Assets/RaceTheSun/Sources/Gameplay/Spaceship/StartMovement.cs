@@ -1,7 +1,4 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.Cameras;
-using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
-using Assets.RaceTheSun.Sources.Services.CoroutineRunner;
-using Cinemachine;
+﻿using Assets.RaceTheSun.Sources.GameLogic.Cameras.Gameplay;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -16,10 +13,10 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         [SerializeField] private CollisionPortalPoint _collisionPortalPoint;
         [SerializeField] private SpaceshipTurning _spaceshipTurning;
 
-        private Cameras.GameplayCameras _cameras;
+        private GameplayCameras _cameras;
 
         [Inject]
-        private void Construct(Cameras.GameplayCameras cameras)
+        private void Construct(GameplayCameras cameras)
         {
             _cameras = cameras;
         }
@@ -37,12 +34,12 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         private IEnumerator UpperMover(Action startCallback, Action finishCallback)
         {
             _spaceship.transform.position = new Vector3(0, 2.4f, 0);
-            _cameras.IncludeCamera(Cameras.GameplayCameraType.UpperCamera);
+            _cameras.IncludeCamera(GameplayCameraType.UpperCamera);
 
             yield return new WaitForSeconds(1);
             startCallback?.Invoke();
 
-            _cameras.IncludeCamera(Cameras.GameplayCameraType.MainCamera);
+            _cameras.IncludeCamera(GameplayCameraType.MainCamera);
             finishCallback?.Invoke();
         }
 
@@ -55,7 +52,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
             _spaceshipMovement.IsStopped = true;
             _spaceshipTurning.CanTurn = false;
-            _cameras.IncludeCamera(Cameras.GameplayCameraType.StartCamera);
+            _cameras.IncludeCamera(GameplayCameraType.StartCamera);
 
             while (_spaceship.transform.position != endPosition)
             {
@@ -67,7 +64,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
                 yield return null;
             }
 
-            _cameras.IncludeCamera(Cameras.GameplayCameraType.MainCamera);
+            _cameras.IncludeCamera(GameplayCameraType.MainCamera);
             _spaceshipMovement.IsStopped = false;
             _spaceshipTurning.CanTurn = true;
             endCallback?.Invoke();

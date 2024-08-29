@@ -1,16 +1,16 @@
-﻿using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
-using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
-using Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory;
-using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
+﻿using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
 using Assets.RaceTheSun.Sources.Infrastructure.SceneManagement;
+using Assets.RaceTheSun.Sources.Infrustructure.AssetManagement;
+using Assets.RaceTheSun.Sources.Infrustructure.Factories.GameplayFactory;
 using Assets.RaceTheSun.Sources.Services.ActivityTracking;
 using Assets.RaceTheSun.Sources.Services.CoroutineRunner;
+using Assets.RaceTheSun.Sources.Services.PersistentProgress;
+using Assets.RaceTheSun.Sources.Services.SaveLoad;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.Services.TimeScale;
 using Assets.RaceTheSun.Sources.Services.WaitingService;
 using Assets.RaceTheSun.Sources.UI.LoadingCurtain;
 using Cysharp.Threading.Tasks;
-using System;
 using UnityEngine;
 using UnityEngine.Audio;
 using Virvon.MyBakery.Services.Input;
@@ -18,7 +18,7 @@ using Zenject;
 
 namespace Assets.RaceTheSun.Sources.CompositionRoot
 {
-    public class GameInstaller : MonoInstaller, Services.CoroutineRunner.ICoroutineRunner
+    public class GameInstaller : MonoInstaller, ICoroutineRunner
     {
         [SerializeField] private AudioMixer _audioMixer;
 
@@ -33,23 +33,29 @@ namespace Assets.RaceTheSun.Sources.CompositionRoot
             BindStaticDataService();
             BindSaveLoadService();
             BindPersistentProgressService();
-            BindUiFactory();
             BindTimeScale();
             BindCoroutineRunner();
             BindWaitingService();
             BindAttachment();
+            BindActivityTracking();
         }
 
         private void BindActivityTracking()
         {
-            Container.Bind<AudioMixer>().FromInstance(_audioMixer).AsSingle();
-            Container.BindInterfacesAndSelfTo<ActivityTracking>().AsSingle().NonLazy();
+            Container
+                .Bind<AudioMixer>()
+                .FromInstance(_audioMixer).AsSingle();
+
+            Container
+                .BindInterfacesAndSelfTo<ActivityTracking>()
+                .AsSingle()
+                .NonLazy();
         }
 
         private void BindAttachment()
         {
             Container
-                .BindInterfacesAndSelfTo<Attachment.Attachment>()
+                .BindInterfacesAndSelfTo<GameLogic.Attachment.Attachment>()
                 .AsSingle();
         }
 
@@ -81,16 +87,6 @@ namespace Assets.RaceTheSun.Sources.CompositionRoot
                 .BindInterfacesAndSelfTo<TimeScale>()
                 .AsSingle();
         }
-
-        private void BindUiFactory()
-        {
-            Container
-                 .Bind<IUiFactory>()
-                 .FromSubContainerResolve()
-                 .ByInstaller<UiFactoryInstaller>()
-                 .AsSingle();
-        }
-
 
         private void BindPersistentProgressService()
         {

@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Assets.RaceTheSun.Sources.Services.PersistentProgress;
+using System;
 using System.Collections;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
+namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Battery
 {
     public class Battery : MonoBehaviour
     {
@@ -38,7 +39,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             }
             else
             {
-                if(_batteryDischarger != null)
+                if (_batteryDischarger != null)
                     StopCoroutine(_batteryDischarger);
 
                 _battery = FullBattery;
@@ -51,7 +52,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             float progress = 0;
             float time = 0;
 
-            while(progress < 1)
+            while (progress < 1)
             {
                 time += Time.deltaTime;
                 progress = time / _dischargerDuration;

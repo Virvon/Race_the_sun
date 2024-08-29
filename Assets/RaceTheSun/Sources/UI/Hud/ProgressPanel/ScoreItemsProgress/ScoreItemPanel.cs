@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.RaceTheSun.Sources.UI.Hud
+namespace Assets.RaceTheSun.Sources.UI.Hud.ProgressPanel.ScoreItemsProgress
 {
     public class ScoreItemPanel : MonoBehaviour
     {
@@ -26,7 +26,7 @@ namespace Assets.RaceTheSun.Sources.UI.Hud
 
         private void OnValidate()
         {
-            if(_releasingAnimationDuration < _halfFillAnimationDuration)
+            if (_releasingAnimationDuration < _halfFillAnimationDuration)
             {
                 Debug.LogError($"{nameof(_releasingAnimationDuration)} should not be less {nameof(_halfFillAnimationDuration)}");
                 _releasingAnimationDuration = _halfFillAnimationDuration;
@@ -67,7 +67,7 @@ namespace Assets.RaceTheSun.Sources.UI.Hud
 
             transform.localScale = Vector3.one;
 
-            while(_image.color != _emptyColor)
+            while (_image.color != _emptyColor)
             {
                 passedTime += Time.deltaTime;
                 progress = passedTime / _releasingAnimationDuration;
@@ -88,7 +88,7 @@ namespace Assets.RaceTheSun.Sources.UI.Hud
             float passedTime = 0;
             float progress;
 
-            while(_image.transform.localScale != _fillAnimationScale)
+            while (_image.transform.localScale != _fillAnimationScale)
             {
                 passedTime += Time.deltaTime;
                 progress = passedTime / _halfFillAnimationDuration;

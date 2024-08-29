@@ -1,4 +1,4 @@
-﻿using Assets.RaceTheSun.Sources.Audio;
+﻿using Assets.RaceTheSun.Sources.GameLogic.Audio;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
 using UnityEngine;

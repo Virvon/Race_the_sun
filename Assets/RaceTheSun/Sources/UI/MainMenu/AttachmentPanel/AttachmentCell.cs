@@ -1,10 +1,11 @@
 ﻿using Assets.RaceTheSun.Sources.Data;
+using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using Assets.RaceTheSun.Sources.Upgrading;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Assets.RaceTheSun.Sources.UI.MainMenu
+namespace Assets.RaceTheSun.Sources.UI.MainMenu.AttachmentPanel
 {
     public class AttachmentCell : MonoBehaviour
     {
@@ -13,13 +14,13 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
         [SerializeField] private Image _icon;
 
         private IPersistentProgressService _persistentProgressService;
-        private Attachment.Attachment _attachment;
+        private GameLogic.Attachment.Attachment _attachment;
         private UpgradeType _usedUpgradeType;
         private bool _isBlocked;
         private bool _isUsed;
 
         [Inject]
-        private void Construct(IPersistentProgressService persistentProgressService, Attachment.Attachment attachment)
+        private void Construct(IPersistentProgressService persistentProgressService, GameLogic.Attachment.Attachment attachment)
         {
             _persistentProgressService = persistentProgressService;
             _attachment = attachment;
@@ -42,8 +43,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
                 return false;
 
             _usedUpgradeType = upgradeType;
-            
-            if(_persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(spaceshipType).UpgradeTypes.Contains(upgradeType) == false)
+
+            if (_persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(spaceshipType).UpgradeTypes.Contains(upgradeType) == false)
                 _persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(spaceshipType).UpgradeTypes.Add(_usedUpgradeType);
 
             _isUsed = true;

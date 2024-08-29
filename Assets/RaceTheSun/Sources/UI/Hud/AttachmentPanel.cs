@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using Assets.RaceTheSun.Sources.GameLogic.Animations;
+using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.RaceTheSun.Sources.Animations
+namespace Assets.RaceTheSun.Sources.UI.Hud
 {
     public class AttachmentPanel : HudAnimationElement
     {

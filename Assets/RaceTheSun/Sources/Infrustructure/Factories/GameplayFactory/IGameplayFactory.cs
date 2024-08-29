@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
+namespace Assets.RaceTheSun.Sources.Infrustructure.Factories.GameplayFactory
 {
     public interface IGameplayFactory
     {

@@ -1,5 +1,6 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.Cameras;
-using Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory;
+﻿using Assets.RaceTheSun.Sources.GameLogic.Cameras.MainMenu;
+using Assets.RaceTheSun.Sources.Infrustructure.Factories.MainMenuFactory;
+using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using Assets.RaceTheSun.Sources.UI.LoadingCurtain;
 using UnityEngine;
 using Zenject;
@@ -9,7 +10,6 @@ namespace Assets.RaceTheSun.Sources.MainMenu
     public class MainMenuBootstrapper : IInitializable
     {
         private readonly IMainMenuFactory _mainMenuFactory;
-        private readonly IUiFactory _uiFactory;
         private readonly IPersistentProgressService _persistentProgressService;
         private readonly MainMenuCameras _mainMenuCameras;
         private readonly ILoadingCurtain _loadingCurtain;
@@ -17,10 +17,9 @@ namespace Assets.RaceTheSun.Sources.MainMenu
         private Vector3 _modelPointPosition = new Vector3(0, 3, 0);
         private Vector3 _trailPointPosition = new Vector3(0, 3, -1.5f);
 
-        public MainMenuBootstrapper(IMainMenuFactory mainMenuFactory, IUiFactory uiFactory, IPersistentProgressService persistentProgressService, MainMenuCameras mainMenuCameras, ILoadingCurtain loadingCurtain)
+        public MainMenuBootstrapper(IMainMenuFactory mainMenuFactory, IPersistentProgressService persistentProgressService, MainMenuCameras mainMenuCameras, ILoadingCurtain loadingCurtain)
         {
             _mainMenuFactory = mainMenuFactory;
-            _uiFactory = uiFactory;
             _persistentProgressService = persistentProgressService;
             _mainMenuCameras = mainMenuCameras;
             _loadingCurtain = loadingCurtain;

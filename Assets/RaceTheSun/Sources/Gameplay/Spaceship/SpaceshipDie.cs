@@ -1,5 +1,6 @@
-﻿using Assets.RaceTheSun.Sources.Audio;
-using Assets.RaceTheSun.Sources.Gameplay.Cameras;
+﻿using Assets.RaceTheSun.Sources.GameLogic.Audio;
+using Assets.RaceTheSun.Sources.GameLogic.Cameras.Gameplay;
+using Assets.RaceTheSun.Sources.Gameplay.StateMachine;
 using Assets.RaceTheSun.Sources.Gameplay.StateMachine.States;
 using Assets.RaceTheSun.Sources.Services.WaitingService;
 using Cysharp.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         [SerializeField] private Spaceship _spaceship;
 
         private int _shieldsCount;
-        private Cameras.GameplayCameras _cameras;
+        private GameplayCameras _cameras;
         private GameplayStateMachine _gameplayStateMachine;
         private WaitingService _waitingService;
         private StageMusic _stageMusic;
@@ -29,7 +30,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         public event Action Stopped;
 
         [Inject]
-        private void Construct(Cameras.GameplayCameras cameras, GameplayStateMachine gameplayStateMachine, WaitingService waitingService, Audio.StageMusic stageMusic, DestroySound destroySound, GameplayCameras gameplayCameras)
+        private void Construct(GameplayCameras cameras, GameplayStateMachine gameplayStateMachine, WaitingService waitingService, StageMusic stageMusic, DestroySound destroySound, GameplayCameras gameplayCameras)
         {
             _cameras = cameras;
             _gameplayStateMachine = gameplayStateMachine;
@@ -77,7 +78,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
                 Died?.Invoke();
 
                 _waitingService.Wait(0.4f, callback: ()=>{
-                    _cameras.IncludeCamera(Cameras.GameplayCameraType.SideCamera);
+                    _cameras.IncludeCamera(GameplayCameraType.SideCamera);
                     _waitingService.Wait(0.5f, callback: () => _gameplayStateMachine.Enter<RevivalState>().Forget());
                 });
                
@@ -91,7 +92,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             _sun.IsStopped = true;
             _stageMusic.Pause();
             Stopped?.Invoke();
-            _cameras.IncludeCamera(Cameras.GameplayCameraType.SideCamera);
+            _cameras.IncludeCamera(GameplayCameraType.SideCamera);
             _waitingService.Wait(2, callback: () => _gameplayStateMachine.Enter<ResultState>().Forget());
         }
 

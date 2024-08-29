@@ -1,5 +1,5 @@
 ﻿using Assets.RaceTheSun.Sources.Data;
-using Assets.RaceTheSun.Sources.MainMenu.Spaceship;
+using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using System;
 using TMPro;
@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Assets.RaceTheSun.Sources.UI.MainMenu
+namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
 {
     public class SpaceshipButton : InformationButton
     {

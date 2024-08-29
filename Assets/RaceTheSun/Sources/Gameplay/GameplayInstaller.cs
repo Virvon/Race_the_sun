@@ -1,10 +1,12 @@
-﻿using Assets.RaceTheSun.Sources.Animations;
+﻿using Assets.RaceTheSun.Sources.GameLogic.Animations;
+using Assets.RaceTheSun.Sources.GameLogic.Cameras.Gameplay;
+using Assets.RaceTheSun.Sources.Gameplay.Counters;
 using Assets.RaceTheSun.Sources.Gameplay.DistanceObserver;
-using Assets.RaceTheSun.Sources.Gameplay.ScoreCounter;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
+using Assets.RaceTheSun.Sources.Gameplay.StateMachine;
 using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
-using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
-using Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory;
+using Assets.RaceTheSun.Sources.Infrustructure.Factories.GameplayFactory;
+using Assets.RaceTheSun.Sources.Infrustructure.Factories.SpaceshipModelFactory;
 using Zenject;
 
 namespace Assets.RaceTheSun.Sources.Gameplay
@@ -39,7 +41,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay
         }
 
         private void BindCameras() =>
-            Container.BindInterfacesAndSelfTo<Cameras.GameplayCameras>().AsSingle();
+            Container.BindInterfacesAndSelfTo<GameplayCameras>().AsSingle();
 
         private void BindDistanceObservable() =>
             Container.BindInterfacesAndSelfTo<DistanceObservable>().AsSingle();
@@ -48,7 +50,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay
             Container.BindInterfacesAndSelfTo<CurrentGenerationStage>().AsSingle();
 
         private void BindScoreCounter() =>
-            Container.BindInterfacesAndSelfTo<ScoreCounter.ScoreCounter>().AsSingle();
+            Container.BindInterfacesAndSelfTo<Counters.ScoreCounter>().AsSingle();
 
         private void BindGameplayStateMachine() =>
             GameplayStateMachineInstaller.Install(Container);

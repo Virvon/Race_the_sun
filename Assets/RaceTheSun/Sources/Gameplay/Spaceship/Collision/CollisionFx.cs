@@ -2,7 +2,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
+namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Collision
 {
     public class CollisionFx : MonoBehaviour
     {

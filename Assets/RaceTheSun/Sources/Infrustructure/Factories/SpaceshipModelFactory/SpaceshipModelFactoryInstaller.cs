@@ -1,9 +1,9 @@
-﻿using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
+﻿using Assets.RaceTheSun.Sources.Infrustructure.AssetManagement;
 using Cysharp.Threading.Tasks;
 using UnityEngine.AddressableAssets;
 using Zenject;
 
-namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory
+namespace Assets.RaceTheSun.Sources.Infrustructure.Factories.SpaceshipModelFactory
 {
     public class SpaceshipModelFactoryInstaller : Installer<SpaceshipModelFactoryInstaller>
     {
@@ -16,8 +16,8 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory
                .FromFactory<RefefencePrefabFactoryAsync<SpaceshipModel>>();
 
             Container
-               .BindFactory<AssetReferenceGameObject, UniTask<Trail.Trail>, Trail.Trail.Factory>()
-               .FromFactory<RefefencePrefabFactoryAsync<Trail.Trail>>();
+               .BindFactory<AssetReferenceGameObject, UniTask<GameLogic.Trail.Trail>, GameLogic.Trail.Trail.Factory>()
+               .FromFactory<RefefencePrefabFactoryAsync<GameLogic.Trail.Trail>>();
         }
     }
 }

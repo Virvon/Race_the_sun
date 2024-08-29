@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Zenject;
 
-namespace Assets.RaceTheSun.Sources.Infrastructure.AssetManagement
+namespace Assets.RaceTheSun.Sources.Infrustructure.AssetManagement
 {
     public class RefefencePrefabFactoryAsync<TComponent> : IFactory<AssetReferenceGameObject, UniTask<TComponent>>
     {

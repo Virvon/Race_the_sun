@@ -1,13 +1,13 @@
 ﻿using System;
 
-namespace Assets.RaceTheSun.Sources.Gameplay.ScoreCounter
+namespace Assets.RaceTheSun.Sources.Gameplay.Counters
 {
     public class MultiplierProgressCounter
     {
         private const int ScoreItemsToMultiplyProgress = 5;
 
         private int _scoreItemsProgress;
-        
+
 
         public event Action<int> MultiplierChanged;
         public event Action<int> MultiplierProgressChanged;

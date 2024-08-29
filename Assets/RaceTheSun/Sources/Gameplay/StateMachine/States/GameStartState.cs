@@ -1,15 +1,10 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.Cameras;
-using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
-using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
+﻿using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
+using Assets.RaceTheSun.Sources.Infrustructure.Factories.GameplayFactory;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
 using Assets.RaceTheSun.Sources.UI.LoadingCurtain;
-using Cinemachine;
 using Cysharp.Threading.Tasks;
-using System.Collections;
-using UnityEngine;
-using Zenject;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
 {
@@ -17,27 +12,23 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
     {
         private readonly GameplayStateMachine _gameplayStateMachine;
         private readonly IStaticDataService _staticDataService;
-        private readonly WorldGenerator.WorldGenerator _worldGenerator;
-        private readonly IGameplayFactory _gameplayFacotry;
         private readonly Spaceship.Spaceship _spaceship;
         private readonly StartMovement _startMovement;
         private readonly ILoadingCurtain _loadingCurtain;
         private readonly Sun.Sun _sun;
 
 
-        public GameStartState(GameplayStateMachine gameplayStateMachine, IStaticDataService staticDataService, WorldGenerator.WorldGenerator worldGenerator, IGameplayFactory gameplayFacotry, Spaceship.Spaceship spaceship, ILoadingCurtain loadingCurtain, Sun.Sun sun)
+        public GameStartState(GameplayStateMachine gameplayStateMachine, IStaticDataService staticDataService, Spaceship.Spaceship spaceship, ILoadingCurtain loadingCurtain, Sun.Sun sun)
         {
             _gameplayStateMachine = gameplayStateMachine;
             _staticDataService = staticDataService;
-            _worldGenerator = worldGenerator;
-            _gameplayFacotry = gameplayFacotry;
             _spaceship = spaceship;
             _startMovement = _spaceship.GetComponentInChildren<StartMovement>();
             _loadingCurtain = loadingCurtain;
             _sun = sun;
         }
 
-        public async UniTask Enter()
+        public UniTask Enter()
         {
             _loadingCurtain.Hide(0.6f);
 
@@ -49,6 +40,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
             });
 
             _sun.Show();
+
+            return default;
         }
 
         public UniTask Exit()

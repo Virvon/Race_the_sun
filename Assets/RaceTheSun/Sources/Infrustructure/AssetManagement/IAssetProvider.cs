@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.AddressableAssets;
 
-namespace Assets.RaceTheSun.Sources.Infrastructure.AssetManagement
+namespace Assets.RaceTheSun.Sources.Infrustructure.AssetManagement
 {
     public interface IAssetProvider
     {

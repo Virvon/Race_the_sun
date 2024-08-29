@@ -1,5 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.Animations;
-using Assets.RaceTheSun.Sources.Gameplay.Cameras;
+﻿using Assets.RaceTheSun.Sources.GameLogic.Animations;
+using Assets.RaceTheSun.Sources.GameLogic.Cameras.Gameplay;
 using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
 using Assets.RaceTheSun.Sources.Services.WaitingService;
 using Cinemachine;
@@ -11,10 +11,10 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
     {
         private readonly HudAnimation _hudAnimation;
         private readonly IWaitingService _waitingService;
-        private readonly Cameras.GameplayCameras _cameras;
+        private readonly GameplayCameras _cameras;
         private readonly Spaceship.Spaceship _spaceship;
 
-        public GameLoopState(HudAnimation hudAnimation, IWaitingService waitingService, Cameras.GameplayCameras cameras, Spaceship.Spaceship spaceship)
+        public GameLoopState(HudAnimation hudAnimation, IWaitingService waitingService, GameplayCameras cameras, Spaceship.Spaceship spaceship)
         {
             _hudAnimation = hudAnimation;
             _waitingService = waitingService;

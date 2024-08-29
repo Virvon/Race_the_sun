@@ -1,8 +1,11 @@
 ﻿using Assets.RaceTheSun.Sources.Data;
 
-public interface ISaveLoadService
+namespace Assets.RaceTheSun.Sources.Services.SaveLoad
 {
-    void SaveProgress();
+    public interface ISaveLoadService
+    {
+        void SaveProgress();
 
-    PlayerProgress LoadProgress();
+        PlayerProgress LoadProgress();
+    }
 }

@@ -1,4 +1,5 @@
 ﻿using Assets.RaceTheSun.Sources.Data;
+using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using Assets.RaceTheSun.Sources.Upgrading;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator

@@ -1,4 +1,4 @@
-﻿namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
+﻿namespace Assets.RaceTheSun.Sources.Infrustructure.Factories.GameplayFactory
 {
     public class GameplayFactoryAssets
     {

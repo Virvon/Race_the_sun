@@ -1,4 +1,6 @@
-﻿namespace Assets.RaceTheSun.Sources.Gameplay.ScoreCounter
+﻿using Assets.RaceTheSun.Sources.Services.PersistentProgress;
+
+namespace Assets.RaceTheSun.Sources.Gameplay.Counters
 {
     public class ScoreItemsCounter
     {

@@ -1,5 +1,4 @@
-﻿using Assets.RaceTheSun.Sources.Audio;
-using Assets.RaceTheSun.Sources.Gameplay.DistanceObserver;
+﻿using Assets.RaceTheSun.Sources.Gameplay.DistanceObserver;
 using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
 using TMPro;
 using UnityEngine;

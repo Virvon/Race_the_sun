@@ -1,4 +1,4 @@
-﻿using Assets.RaceTheSun.Sources.MainMenu.Spaceship;
+﻿using Assets.RaceTheSun.Sources.MainMenu;
 using System;
 using System.Collections.Generic;
 using System.Linq;

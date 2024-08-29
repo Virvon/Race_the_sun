@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Zenject;
 
-namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory
+namespace Assets.RaceTheSun.Sources.Infrustructure.Factories.SpaceshipModelFactory
 {
     public class SpaceshipModel : MonoBehaviour
     {

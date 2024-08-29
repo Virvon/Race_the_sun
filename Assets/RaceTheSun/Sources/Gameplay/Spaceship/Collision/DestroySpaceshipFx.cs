@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
+namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Collision
 {
     public class DestroySpaceshipFx : MonoBehaviour
     {

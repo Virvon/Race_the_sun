@@ -1,5 +1,7 @@
 ﻿using Assets.RaceTheSun.Sources.Data;
-using Assets.RaceTheSun.Sources.MainMenu.Spaceship;
+using Assets.RaceTheSun.Sources.MainMenu;
+using Assets.RaceTheSun.Sources.Services.PersistentProgress;
+using Assets.RaceTheSun.Sources.Services.SaveLoad;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using System;
 using TMPro;
@@ -7,7 +9,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Assets.RaceTheSun.Sources.UI.MainMenu
+namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
 {
     public class SpaceshipStatPanel : MonoBehaviour
     {
@@ -31,7 +33,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
         public event Action Updated;
 
         [Inject]
-        private void Construct(IPersistentProgressService persistentProgress, IStaticDataService staticDataService,ISaveLoadService saveLoadService)
+        private void Construct(IPersistentProgressService persistentProgress, IStaticDataService staticDataService, ISaveLoadService saveLoadService)
         {
             _persistentProgress = persistentProgress;
             _staticDataService = staticDataService;

@@ -29,7 +29,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
             _sun = sun;
         }
 
-        public async UniTask Enter()
+        public UniTask Enter()
         {
             _revivalPanel.RevivalButtonClicked += OnRevivalButtonClicked;
             _revivalPanel.RevivalTimeEnded += OnRevivalTimeEnded;
@@ -43,6 +43,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
             {
                 _gameplayStateMachine.Enter<ResultState>().Forget();
             }
+
+            return default;
         }
 
         public UniTask Exit()

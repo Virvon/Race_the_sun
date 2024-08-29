@@ -1,27 +1,23 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.Cameras;
-using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
+﻿using Assets.RaceTheSun.Sources.GameLogic.Cameras.MainMenu;
 using Assets.RaceTheSun.Sources.MainMenu.ModelPoint;
-using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory
+namespace Assets.RaceTheSun.Sources.Infrustructure.Factories.MainMenuFactory
 {
     public class MainMenuFactory : IMainMenuFactory
     {
         private readonly UI.MainMenu.MainMenu.Factory _mainMenuFactory;
-        private readonly IStaticDataService _staticDataService;
         private readonly DiContainer _container;
         private readonly FreeLookCamera.Factory _freeLookCameraFactory;
         private readonly MainMenuCameras _mainMenuCameras;
         private readonly TrailPoint.Factory _trailPointFactory;
         private readonly ModelPoint.Factory _modelPointFactory;
 
-        public MainMenuFactory(UI.MainMenu.MainMenu.Factory mainMenuFactory, IStaticDataService staticDataService, DiContainer container, FreeLookCamera.Factory freeLookCameraFactory, MainMenuCameras mainMenuCameras, TrailPoint.Factory trailPointFactory, ModelPoint.Factory modelPointFactory)
+        public MainMenuFactory(UI.MainMenu.MainMenu.Factory mainMenuFactory, DiContainer container, FreeLookCamera.Factory freeLookCameraFactory, MainMenuCameras mainMenuCameras, TrailPoint.Factory trailPointFactory, ModelPoint.Factory modelPointFactory)
         {
             _mainMenuFactory = mainMenuFactory;
-            _staticDataService = staticDataService;
             _container = container;
             _freeLookCameraFactory = freeLookCameraFactory;
             _mainMenuCameras = mainMenuCameras;
@@ -32,7 +28,7 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory
         public async UniTask CreateMainMenu() =>
             await _mainMenuFactory.Create(MainMenuFactoryAssets.MainMenu);
 
-        
+
 
         public async UniTask CreateMainMenuMainCamera()
         {

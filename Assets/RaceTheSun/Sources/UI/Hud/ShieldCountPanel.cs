@@ -1,10 +1,11 @@
-﻿using Assets.RaceTheSun.Sources.Animations;
+﻿using Assets.RaceTheSun.Sources.GameLogic.Animations;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
+using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using TMPro;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.RaceTheSun.Sources.UI.ScoreView
+namespace Assets.RaceTheSun.Sources.UI.Hud
 {
     public class ShieldCountPanel : HudAnimationElement
     {
@@ -37,9 +38,9 @@ namespace Assets.RaceTheSun.Sources.UI.ScoreView
         {
             _shieldsCountValue.text = shieldsCount.ToString();
 
-            if(shieldsCount > 0 && _infoPanel.activeSelf == false)
+            if (shieldsCount > 0 && _infoPanel.activeSelf == false)
                 _infoPanel.SetActive(true);
-            else if(shieldsCount == 0)
+            else if (shieldsCount == 0)
                 _infoPanel.SetActive(false);
         }
     }

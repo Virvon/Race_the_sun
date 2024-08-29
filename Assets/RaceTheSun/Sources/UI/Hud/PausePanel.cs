@@ -1,10 +1,10 @@
-﻿using Assets.RaceTheSun.Sources.Audio;
+﻿using Assets.RaceTheSun.Sources.GameLogic.Animations;
+using Assets.RaceTheSun.Sources.GameLogic.Audio;
 using Assets.RaceTheSun.Sources.Services.TimeScale;
-using Assets.RaceTheSun.Sources.UI.ScoreView;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.RaceTheSun.Sources.Animations
+namespace Assets.RaceTheSun.Sources.UI.Hud
 {
     public class PausePanel : HudAnimationElement
     {

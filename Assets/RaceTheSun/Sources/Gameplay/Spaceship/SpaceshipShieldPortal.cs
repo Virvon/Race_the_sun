@@ -1,6 +1,6 @@
-﻿using Assets.RaceTheSun.Sources.Audio;
-using Assets.RaceTheSun.Sources.Gameplay.Cameras;
-using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
+﻿using Assets.RaceTheSun.Sources.GameLogic.Audio;
+using Assets.RaceTheSun.Sources.GameLogic.Cameras.Gameplay;
+using Assets.RaceTheSun.Sources.Infrustructure.Factories.GameplayFactory;
 using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;

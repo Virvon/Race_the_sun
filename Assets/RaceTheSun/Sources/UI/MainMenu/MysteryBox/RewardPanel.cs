@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.RaceTheSun.Sources.UI.MysteryBox
+namespace Assets.RaceTheSun.Sources.UI.MainMenu.MysteryBox
 {
     public class RewardPanel : MonoBehaviour
     {

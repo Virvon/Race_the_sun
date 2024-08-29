@@ -2,7 +2,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace Assets.RaceTheSun.Sources.Infrastructure.AssetManagement
+namespace Assets.RaceTheSun.Sources.Infrustructure.AssetManagement
 {
     public class KeyPrefabFactoryAsync<TComponent> : IFactory<string, UniTask<TComponent>>
     {

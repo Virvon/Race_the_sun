@@ -1,4 +1,4 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay;
+﻿using Assets.RaceTheSun.Sources.Gameplay.StateMachine;
 using Assets.RaceTheSun.Sources.Gameplay.StateMachine.States;
 using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
 using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine.States;
@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Assets.RaceTheSun.Sources.UI.ScoreView
+namespace Assets.RaceTheSun.Sources.UI.Hud
 {
     public class ExitButton : MonoBehaviour
     {

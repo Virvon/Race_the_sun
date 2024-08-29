@@ -1,4 +1,4 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
+﻿using Assets.RaceTheSun.Sources.Gameplay.Spaceship.Battery;
 using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;

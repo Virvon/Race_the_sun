@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Assets.RaceTheSun.Sources.Services.PersistentProgress;
+using TMPro;
 using UnityEngine;
 using Zenject;
 

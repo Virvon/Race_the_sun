@@ -1,10 +1,13 @@
-﻿using Assets.RaceTheSun.Sources.Upgrading;
+﻿using Assets.RaceTheSun.Sources.Services.PersistentProgress;
+using Assets.RaceTheSun.Sources.Services.SaveLoad;
+using Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships;
+using Assets.RaceTheSun.Sources.Upgrading;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.RaceTheSun.Sources.UI.MainMenu
+namespace Assets.RaceTheSun.Sources.UI.MainMenu.AttachmentPanel
 {
     public class AttachmentWindow : OpenableWindow
     {
@@ -74,7 +77,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
         {
             if (_persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(_currentClickedSpaceshipInfo.SpaceshipType).UpgradeTypes.Contains(_currentUpgradeType))
             {
-                foreach(AttachmentCell attachmentCell in _attachmentCells)
+                foreach (AttachmentCell attachmentCell in _attachmentCells)
                 {
                     if (attachmentCell.TryRemove(_currentUpgradeType, _currentClickedSpaceshipInfo.SpaceshipType))
                     {

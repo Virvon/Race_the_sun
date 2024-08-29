@@ -6,14 +6,14 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
     {
         private const float StopSpeed = 0.2f;
 
-        private readonly Battery _battery;
+        private readonly Battery.Battery _battery;
 
         private float _speedMultiplier;
         private SpaceshipDie _spaceshipDie;
         private bool _isStopped;
         private SpaceshipTurning _spaceshipTurning;
 
-        public BatterySpeed(ISpeedProvider wrappedEntity, Battery battery, SpaceshipDie spaceshipDie, SpaceshipTurning spaceshipTurning) : base(wrappedEntity)
+        public BatterySpeed(ISpeedProvider wrappedEntity, Battery.Battery battery, SpaceshipDie spaceshipDie, SpaceshipTurning spaceshipTurning) : base(wrappedEntity)
         {
             _battery = battery;
             _spaceshipDie = spaceshipDie;

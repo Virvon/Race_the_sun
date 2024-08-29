@@ -1,7 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
-using Assets.RaceTheSun.Sources.Services.WaitingService;
-using Assets.RaceTheSun.Sources.UI.ScoreView;
-using System.Collections;
+﻿using Assets.RaceTheSun.Sources.Services.WaitingService;
+using Assets.RaceTheSun.Sources.UI.Hud;
 using UnityEngine;
 using Zenject;
 
@@ -15,21 +13,16 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
         private WaitingService _waitingService;
         private Spaceship.Spaceship _spaceship;
         private PerfectStagePanel _perfectStagePanel;
-        private CurrentGenerationStage _currentGenerationStage;
         private WorldGenerator _worldGenerator;
 
-        private int _index;
-
         [Inject]
-        private void Construct(Bird.Bird bird, WaitingService waitingService, Spaceship.Spaceship spaceship, PerfectStagePanel perfectStagePanel, CurrentGenerationStage currentGenerationStage, WorldGenerator worldGenerator)
+        private void Construct(Bird.Bird bird, WaitingService waitingService, Spaceship.Spaceship spaceship, PerfectStagePanel perfectStagePanel, WorldGenerator worldGenerator)
         {
             _bird = bird;
             _waitingService = waitingService;
             _spaceship = spaceship;
             _perfectStagePanel = perfectStagePanel;
-            _currentGenerationStage = currentGenerationStage;
             _worldGenerator = worldGenerator;
-            _index = _currentGenerationStage.CurrentTile;
         }
 
         public override void Invoke()

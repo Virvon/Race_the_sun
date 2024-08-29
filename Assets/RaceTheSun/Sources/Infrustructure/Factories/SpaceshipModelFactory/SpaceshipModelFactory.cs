@@ -1,18 +1,18 @@
 ﻿using Assets.RaceTheSun.Sources.Data;
+using Assets.RaceTheSun.Sources.GameLogic.Trail;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
-using Assets.RaceTheSun.Sources.Trail;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory
+namespace Assets.RaceTheSun.Sources.Infrustructure.Factories.SpaceshipModelFactory
 {
     public class SpaceshipModelFactory : ISpaceshipModelFactory
     {
         private readonly SpaceshipModel.Factory _spaceshipModelFactory;
         private readonly IStaticDataService _staticDataService;
-        private readonly Trail.Trail.Factory _trailFactory;
+        private readonly Trail.Factory _trailFactory;
 
-        public SpaceshipModelFactory(SpaceshipModel.Factory spaceshipModelFactory, IStaticDataService staticDataService, Trail.Trail.Factory trailFactory)
+        public SpaceshipModelFactory(SpaceshipModel.Factory spaceshipModelFactory, IStaticDataService staticDataService, Trail.Factory trailFactory)
         {
             _spaceshipModelFactory = spaceshipModelFactory;
             _staticDataService = staticDataService;
@@ -29,9 +29,9 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory
             return spaceshipModel;
         }
 
-        public async UniTask<Trail.Trail> CreateTrail(TrailType type, Vector3 position, Transform parent)
+        public async UniTask<Trail> CreateTrail(TrailType type, Vector3 position, Transform parent)
         {
-            Trail.Trail trail = await _trailFactory.Create(_staticDataService.GetTrail(type).Reference);
+            Trail trail = await _trailFactory.Create(_staticDataService.GetTrail(type).Reference);
 
             trail.transform.parent = parent;
             trail.transform.position = position;

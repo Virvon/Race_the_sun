@@ -1,8 +1,7 @@
-﻿using Assets.RaceTheSun.Sources.Audio;
+﻿using Assets.RaceTheSun.Sources.GameLogic.Audio;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
 using Assets.RaceTheSun.Sources.UI.LoadingCurtain;
-using Assets.RaceTheSun.Sources.UI.ScoreView;
 using UnityEngine;
 using Zenject;
 

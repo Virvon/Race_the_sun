@@ -1,4 +1,4 @@
-﻿namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory
+﻿namespace Assets.RaceTheSun.Sources.Infrustructure.Factories.MainMenuFactory
 {
     public class MainMenuFactoryAssets
     {

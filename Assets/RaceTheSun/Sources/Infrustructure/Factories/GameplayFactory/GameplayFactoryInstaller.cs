@@ -1,19 +1,20 @@
-﻿using Assets.RaceTheSun.Sources.Audio;
+﻿using Assets.RaceTheSun.Sources.GameLogic.Audio;
+using Assets.RaceTheSun.Sources.GameLogic.Cameras.Gameplay;
 using Assets.RaceTheSun.Sources.Gameplay.Bird;
-using Assets.RaceTheSun.Sources.Gameplay.Cameras;
 using Assets.RaceTheSun.Sources.Gameplay.CollectItems;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
+using Assets.RaceTheSun.Sources.Gameplay.Spaceship.Collision;
 using Assets.RaceTheSun.Sources.Gameplay.Sun;
 using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
-using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
+using Assets.RaceTheSun.Sources.Infrustructure.AssetManagement;
 using Assets.RaceTheSun.Sources.UI.GameOverPanel;
-using Assets.RaceTheSun.Sources.UI.ScoreView;
+using Assets.RaceTheSun.Sources.UI.Hud;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Zenject;
 
-namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
+namespace Assets.RaceTheSun.Sources.Infrustructure.Factories.GameplayFactory
 {
     public class GameplayFactoryInstaller : Installer<GameplayFactoryInstaller>
     {
@@ -55,8 +56,8 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
 
             Container
                 .BindFactory<string, UniTask<JumpBoost>, JumpBoost.Factory>()
-                .FromFactory < KeyPrefabFactoryAsync <JumpBoost>>();
-            
+                .FromFactory<KeyPrefabFactoryAsync<JumpBoost>>();
+
             Container
                 .BindFactory<string, UniTask<Shield>, Shield.Factory>()
                 .FromFactory<KeyPrefabFactoryAsync<Shield>>();
@@ -76,7 +77,7 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             Container
                 .BindFactory<string, UniTask<SpeedBoost>, SpeedBoost.Factory>()
                 .FromFactory<KeyPrefabFactoryAsync<SpeedBoost>>();
-            
+
             Container
                 .BindFactory<string, UniTask<StageMusic>, StageMusic.Factory>()
                 .FromFactory<KeyPrefabFactoryAsync<StageMusic>>();

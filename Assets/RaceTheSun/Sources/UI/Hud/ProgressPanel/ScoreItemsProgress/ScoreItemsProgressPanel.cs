@@ -1,10 +1,10 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.ScoreCounter;
+﻿using Assets.RaceTheSun.Sources.Gameplay.Counters;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.RaceTheSun.Sources.UI.Hud
+namespace Assets.RaceTheSun.Sources.UI.Hud.ProgressPanel.ScoreItemsProgress
 {
     public class ScoreItemsProgressPanel : MonoBehaviour
     {

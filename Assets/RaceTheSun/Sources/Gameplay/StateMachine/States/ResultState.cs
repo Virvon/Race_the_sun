@@ -1,4 +1,5 @@
 ﻿using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
+using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using Assets.RaceTheSun.Sources.UI.GameOverPanel;
 using Cysharp.Threading.Tasks;
 using System;
@@ -13,9 +14,9 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
         private readonly GameplayStateMachine _gameplayStateMachine;
         private readonly ResultPanel _resultPanel;
         private readonly IPersistentProgressService _persistentProgressService;
-        private readonly ScoreCounter.ScoreCounter _scoreCounter;
+        private readonly Counters.ScoreCounter _scoreCounter;
 
-        public ResultState(GameplayStateMachine gameplayStateMachine, ResultPanel resultPanel, IPersistentProgressService persistentProgressService, ScoreCounter.ScoreCounter scoreCounter)
+        public ResultState(GameplayStateMachine gameplayStateMachine, ResultPanel resultPanel, IPersistentProgressService persistentProgressService, Counters.ScoreCounter scoreCounter)
         {
             _gameplayStateMachine = gameplayStateMachine;
             _resultPanel = resultPanel;

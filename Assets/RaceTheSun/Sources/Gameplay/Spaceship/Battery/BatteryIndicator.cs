@@ -1,5 +1,6 @@
-﻿using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
+﻿using Assets.RaceTheSun.Sources.Infrustructure.AssetManagement;
 using Assets.RaceTheSun.Sources.Services.CoroutineRunner;
+using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Linq;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
+namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Battery
 {
     public class BatteryIndicator : MonoBehaviour
     {
@@ -34,12 +35,12 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
             _cells = new();
 
-           for(int i = 0; i < _batteryMaterialsInfo.Count - 1; i++)
-           {
+            for (int i = 0; i < _batteryMaterialsInfo.Count - 1; i++)
+            {
                 _cells.Add(new BatteryCell(GetMinIncludeValue(_batteryMaterialsInfo[i].Position, _batteryMaterialsInfo.Count), _chargedMaterial, _dischargedMaterial, _batteryMaterialsInfo[i].Index));
-           }
+            }
 
-            _cells.Add(new LastBatteryCell(GetMinIncludeValue(_batteryMaterialsInfo.Last().Position, _batteryMaterialsInfo.Count) , _chargedMaterial, _lowBatteryMaterial, _dischargedMaterial, _batteryMaterialsInfo.Last().Index, coroutineRunner));
+            _cells.Add(new LastBatteryCell(GetMinIncludeValue(_batteryMaterialsInfo.Last().Position, _batteryMaterialsInfo.Count), _chargedMaterial, _lowBatteryMaterial, _dischargedMaterial, _batteryMaterialsInfo.Last().Index, coroutineRunner));
         }
 
         private void OnDestroy()
@@ -54,14 +55,14 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
         private float GetMinIncludeValue(int position, int cellsCount)
         {
-            return 1 - (0.3f / cellsCount) * position;
+            return 1 - 0.3f / cellsCount * position;
         }
 
         private void OnBatteryValueChanged(float value)
         {
-            foreach(BatteryCell cell in _cells)
+            foreach (BatteryCell cell in _cells)
             {
-                if(cell.IsNeedToChangeMaterial(value, out Material material))
+                if (cell.IsNeedToChangeMaterial(value, out Material material))
                 {
                     Material[] materials = _meshRenderer.materials;
                     materials[cell.MaterialIndex] = material;

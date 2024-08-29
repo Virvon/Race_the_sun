@@ -1,4 +1,4 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.ScoreCounter;
+﻿using Assets.RaceTheSun.Sources.Gameplay.Counters;
 using System;
 using System.Collections;
 using TMPro;
@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace Assets.RaceTheSun.Sources.UI.ScoreView
+namespace Assets.RaceTheSun.Sources.UI.Hud.ProgressPanel
 {
     public class ScoreMultiplierPanel : MonoBehaviour
     {
@@ -52,7 +52,7 @@ namespace Assets.RaceTheSun.Sources.UI.ScoreView
             float progress;
             Color startColor = _image.color;
 
-            while(_image.color != targetColor)
+            while (_image.color != targetColor)
             {
                 passedTime += Time.deltaTime;
                 progress = passedTime / _halfAnimationDuration;

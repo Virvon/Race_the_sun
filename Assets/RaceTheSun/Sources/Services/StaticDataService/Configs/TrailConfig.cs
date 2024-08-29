@@ -1,4 +1,4 @@
-﻿using Assets.RaceTheSun.Sources.Trail;
+﻿using Assets.RaceTheSun.Sources.GameLogic.Trail;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 

@@ -1,5 +1,6 @@
 ﻿using Assets.RaceTheSun.Sources.Gameplay.CollectItems;
-using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
+using Assets.RaceTheSun.Sources.Infrustructure.Factories.GameplayFactory;
+using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using Assets.RaceTheSun.Sources.Upgrading;
 using Cysharp.Threading.Tasks;
 using System.Collections;

@@ -1,13 +1,13 @@
 ﻿using Assets.RaceTheSun.Sources.Data;
-using Assets.RaceTheSun.Sources.Trail;
+using Assets.RaceTheSun.Sources.GameLogic.Trail;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory
+namespace Assets.RaceTheSun.Sources.Infrustructure.Factories.SpaceshipModelFactory
 {
     public interface ISpaceshipModelFactory
     {
         UniTask<SpaceshipModel> CreateSpaceshipModel(SpaceshipType type, Vector3 position, Transform parent = null);
-        UniTask<Trail.Trail> CreateTrail(TrailType type, Vector3 position, Transform parent);
+        UniTask<Trail> CreateTrail(TrailType type, Vector3 position, Transform parent);
     }
 }

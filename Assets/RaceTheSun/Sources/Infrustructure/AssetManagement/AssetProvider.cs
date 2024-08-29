@@ -5,7 +5,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceLocations;
 
-namespace Assets.RaceTheSun.Sources.Infrastructure.AssetManagement
+namespace Assets.RaceTheSun.Sources.Infrustructure.AssetManagement
 {
     public class AssetProvider : IAssetProvider
     {

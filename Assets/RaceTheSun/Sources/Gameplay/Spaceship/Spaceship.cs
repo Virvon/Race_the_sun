@@ -1,8 +1,9 @@
-﻿using Assets.RaceTheSun.Sources.Attachment;
-using Assets.RaceTheSun.Sources.Data;
-using Assets.RaceTheSun.Sources.Gameplay.Cameras;
+﻿using Assets.RaceTheSun.Sources.Data;
+using Assets.RaceTheSun.Sources.GameLogic.Attachment;
+using Assets.RaceTheSun.Sources.GameLogic.Cameras.Gameplay;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator;
-using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
+using Assets.RaceTheSun.Sources.Infrustructure.Factories.GameplayFactory;
+using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine;
@@ -15,7 +16,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         private const float DefaultSpeed = 300;
 
         [SerializeField] private SpaceshipMovement _spaceshipMovement;
-        [SerializeField] private Battery _battery;
+        [SerializeField] private Battery.Battery _battery;
         [SerializeField] private SpaceshipDie _spaceshipDie;
         [SerializeField] private SpaceshipTurning _spaceshipTurning;
 
@@ -30,7 +31,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
        
 
         [Inject]
-        private void Construct(ScoreCounter.ScoreCounter scoreCounter, Attachment.Attachment attachment, IPersistentProgressService persistentProgressService, GameplayCameras gameplayCameras, IGameplayFactory gameplayFactory)
+        private void Construct(Counters.ScoreCounter scoreCounter, Attachment attachment, IPersistentProgressService persistentProgressService, GameplayCameras gameplayCameras, IGameplayFactory gameplayFactory)
         {
             _gameplayCameras = gameplayCameras;
             _gameplayFactory = gameplayFactory;
@@ -84,7 +85,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             _speedProvider = new BatterySpeed(_speedProvider, _battery, _spaceshipDie, _spaceshipTurning);
         }
 
-        private AttachmentStats GetAttachmentStats(Attachment.Attachment attachment, IPersistentProgressService persistentProgressService)
+        private AttachmentStats GetAttachmentStats(GameLogic.Attachment.Attachment attachment, IPersistentProgressService persistentProgressService)
         {
             SpaceshipData spaceshipData = persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(persistentProgressService.Progress.AvailableSpaceships.CurrentSpaceshipType);
 

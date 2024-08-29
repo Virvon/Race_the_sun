@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
+namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Battery
 {
     public class LastBatteryCell : BatteryCell
     {
@@ -25,23 +25,23 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         {
             material = null;
 
-            if(batteryValue == 0)
+            if (batteryValue == 0)
             {
                 material = _dischargedMaterial;
                 CurrentMaterial = material;
                 _isBlinked = false;
                 return true;
             }
-            else if(batteryValue < MinIncludeValue)
+            else if (batteryValue < MinIncludeValue)
             {
-                if(_isBlinked == false)
+                if (_isBlinked == false)
                     _coroutineRunner.StartCoroutine(Blinking());
 
                 material = _currentBlinkingMaterial;
 
                 return true;
             }
-            else if(batteryValue >= MinIncludeValue && CurrentMaterial != ChargedMaterial)
+            else if (batteryValue >= MinIncludeValue && CurrentMaterial != ChargedMaterial)
             {
                 material = ChargedMaterial;
                 _isBlinked = false;
@@ -58,15 +58,15 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
             float passedTime = 0;
 
-            while(_isBlinked)
+            while (_isBlinked)
             {
                 passedTime += Time.deltaTime;
 
-                if(passedTime >= BlinkingSpeed)
+                if (passedTime >= BlinkingSpeed)
                 {
                     passedTime = 0;
 
-                    _currentBlinkingMaterial = _currentBlinkingMaterial == DischargedMaterial? _dischargedMaterial : DischargedMaterial;
+                    _currentBlinkingMaterial = _currentBlinkingMaterial == DischargedMaterial ? _dischargedMaterial : DischargedMaterial;
                 }
 
                 yield return null;

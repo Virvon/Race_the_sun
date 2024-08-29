@@ -1,10 +1,10 @@
-﻿using Assets.RaceTheSun.Sources.Animations;
+﻿using Assets.RaceTheSun.Sources.GameLogic.Animations;
 using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.RaceTheSun.Sources.UI.ScoreView
+namespace Assets.RaceTheSun.Sources.UI.Hud
 {
     public class Hud : MonoBehaviour
     {

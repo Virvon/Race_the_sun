@@ -1,4 +1,4 @@
-﻿using Assets.RaceTheSun.Sources.Animations;
+﻿using Assets.RaceTheSun.Sources.GameLogic.Animations;
 using Assets.RaceTheSun.Sources.UI.MainMenu;
 using MPUIKIT;
 using System;

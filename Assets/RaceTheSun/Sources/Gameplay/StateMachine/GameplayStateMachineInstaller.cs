@@ -1,7 +1,7 @@
 ﻿using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
 using Zenject;
 
-namespace Assets.RaceTheSun.Sources.Gameplay
+namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine
 {
     public class GameplayStateMachineInstaller : Installer<GameplayStateMachineInstaller>
     {

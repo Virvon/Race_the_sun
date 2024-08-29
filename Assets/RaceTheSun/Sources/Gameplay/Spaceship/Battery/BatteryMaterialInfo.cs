@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
+namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Battery
 {
     [Serializable]
     public class BatteryMaterialInfo
