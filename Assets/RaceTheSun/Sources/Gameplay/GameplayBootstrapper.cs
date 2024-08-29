@@ -2,9 +2,9 @@
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship.Battery;
 using Assets.RaceTheSun.Sources.Gameplay.StateMachine;
 using Assets.RaceTheSun.Sources.Gameplay.StateMachine.States;
+using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
+using Assets.RaceTheSun.Sources.Infrastructure.Factories.SpaceshipModelFactory;
 using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
-using Assets.RaceTheSun.Sources.Infrustructure.Factories.GameplayFactory;
-using Assets.RaceTheSun.Sources.Infrustructure.Factories.SpaceshipModelFactory;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using Assets.RaceTheSun.Sources.UI.LoadingCurtain;
 using UnityEngine;

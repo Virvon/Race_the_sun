@@ -1,6 +1,5 @@
 ﻿using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
-using Assets.RaceTheSun.Sources.Infrustructure.Factories.GameplayFactory;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
 using Assets.RaceTheSun.Sources.UI.LoadingCurtain;

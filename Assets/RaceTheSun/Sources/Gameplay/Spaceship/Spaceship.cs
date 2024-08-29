@@ -2,7 +2,7 @@
 using Assets.RaceTheSun.Sources.GameLogic.Attachment;
 using Assets.RaceTheSun.Sources.GameLogic.Cameras.Gameplay;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator;
-using Assets.RaceTheSun.Sources.Infrustructure.Factories.GameplayFactory;
+using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using Cysharp.Threading.Tasks;
 using System;

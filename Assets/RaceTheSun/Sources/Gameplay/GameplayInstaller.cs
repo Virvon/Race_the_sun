@@ -5,8 +5,8 @@ using Assets.RaceTheSun.Sources.Gameplay.DistanceObserver;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using Assets.RaceTheSun.Sources.Gameplay.StateMachine;
 using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
-using Assets.RaceTheSun.Sources.Infrustructure.Factories.GameplayFactory;
-using Assets.RaceTheSun.Sources.Infrustructure.Factories.SpaceshipModelFactory;
+using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
+using Assets.RaceTheSun.Sources.Infrastructure.Factories.SpaceshipModelFactory;
 using Zenject;
 
 namespace Assets.RaceTheSun.Sources.Gameplay

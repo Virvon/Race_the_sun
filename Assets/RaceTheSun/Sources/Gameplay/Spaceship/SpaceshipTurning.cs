@@ -1,4 +1,4 @@
-﻿using Assets.RaceTheSun.Sources.Infrustructure.Factories.SpaceshipModelFactory;
+﻿using Assets.RaceTheSun.Sources.Infrastructure.Factories.SpaceshipModelFactory;
 using System;
 using System.Collections;
 using UnityEngine;

@@ -1,7 +1,7 @@
-﻿using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
+﻿using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
+using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
+using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
 using Assets.RaceTheSun.Sources.Infrastructure.SceneManagement;
-using Assets.RaceTheSun.Sources.Infrustructure.AssetManagement;
-using Assets.RaceTheSun.Sources.Infrustructure.Factories.GameplayFactory;
 using Assets.RaceTheSun.Sources.Services.ActivityTracking;
 using Assets.RaceTheSun.Sources.Services.CoroutineRunner;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;

@@ -1,5 +1,5 @@
 ﻿using Assets.RaceTheSun.Sources.GameLogic.Cameras.Gameplay;
-using Assets.RaceTheSun.Sources.Infrustructure.Factories.GameplayFactory;
+using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
 using UnityEngine;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator

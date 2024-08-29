@@ -1,4 +1,4 @@
-﻿using Assets.RaceTheSun.Sources.Infrustructure.AssetManagement;
+﻿using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using Assets.RaceTheSun.Sources.Services.SaveLoad;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;

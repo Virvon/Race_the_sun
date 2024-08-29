@@ -2,7 +2,7 @@
 using Assets.RaceTheSun.Sources.GameLogic.Cameras.Gameplay;
 using Assets.RaceTheSun.Sources.Gameplay.StateMachine;
 using Assets.RaceTheSun.Sources.Gameplay.StateMachine.States;
-using Assets.RaceTheSun.Sources.Infrustructure.Factories.GameplayFactory;
+using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
 using Assets.RaceTheSun.Sources.Services.WaitingService;
 using Cysharp.Threading.Tasks;
 using System;

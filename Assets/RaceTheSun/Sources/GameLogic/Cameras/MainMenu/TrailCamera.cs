@@ -1,4 +1,4 @@
-﻿using Assets.RaceTheSun.Sources.Infrustructure.Factories.MainMenuFactory;
+﻿using Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory;
 using Zenject;
 
 namespace Assets.RaceTheSun.Sources.GameLogic.Cameras.MainMenu

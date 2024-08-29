@@ -1,5 +1,5 @@
 ﻿using Assets.RaceTheSun.Sources.GameLogic.Cameras.MainMenu;
-using Assets.RaceTheSun.Sources.Infrustructure.Factories.MainMenuFactory;
+using Assets.RaceTheSun.Sources.Infrastructure.Factories.MainMenuFactory;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using Assets.RaceTheSun.Sources.UI.LoadingCurtain;
 using UnityEngine;

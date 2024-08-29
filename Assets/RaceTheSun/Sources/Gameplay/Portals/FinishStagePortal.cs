@@ -1,7 +1,7 @@
 ﻿using Assets.RaceTheSun.Sources.GameLogic.Audio;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator;
-using Assets.RaceTheSun.Sources.Infrustructure.Factories.GameplayFactory;
+using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
 using UnityEngine;
 using Zenject;
 
