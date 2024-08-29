@@ -1,12 +1,12 @@
-﻿using Assets.RaceTheSun.Sources.Data;
+﻿using System;
+using Cysharp.Threading.Tasks;
+using Assets.RaceTheSun.Sources.Data;
 using Assets.RaceTheSun.Sources.GameLogic.Attachment;
 using Assets.RaceTheSun.Sources.GameLogic.Cameras.Gameplay;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;
-using Cysharp.Threading.Tasks;
-using System;
 using UnityEngine;
 using Zenject;
 
@@ -27,8 +27,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         private GameplayCameras _gameplayCameras;
         private IGameplayFactory _gameplayFactory;
 
-        public event Action SpeedBoosted;
-
         [Inject]
         private void Construct(Attachment attachment, IPersistentProgressService persistentProgressService, GameplayCameras gameplayCameras, IGameplayFactory gameplayFactory)
         {
@@ -38,12 +36,14 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             AttachmentStats = GetAttachmentStats(attachment, persistentProgressService);
         }
 
+        public event Action SpeedBoosted;
+
         public float Speed { get; private set; }
         public AttachmentStats AttachmentStats { get; private set; }
 
         private void Update()
         {
-            if(_speedProvider != null)
+            if (_speedProvider != null)
                 Speed = _speedProvider.GetSpeed();
         }
 
@@ -51,7 +51,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         {
             bool isCollidedPerStage = _collisionSpeed.IsCollidedPerStage;
 
-            _collisionSpeed.Reset();
+            _collisionSpeed.Restart();
 
             return isCollidedPerStage;
         }
@@ -81,7 +81,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
 
             IAttachmentStatsProvider attachmentStatsProvider = new DefaultAttachmentStats();
 
-            foreach(Upgrading.UpgradeType upgradeType in spaceshipData.UpgradeTypes)
+            foreach (Upgrading.UpgradeType upgradeType in spaceshipData.UpgradeTypes)
                 attachmentStatsProvider = attachment.Wrap(upgradeType, attachmentStatsProvider);
 
             return attachmentStatsProvider.GetStats();

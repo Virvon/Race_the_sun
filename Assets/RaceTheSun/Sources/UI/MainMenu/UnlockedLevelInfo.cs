@@ -45,7 +45,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
 
         private async void CheackUnlockedLevel()
         {
-            if(_persistentProgressService.Progress.LevelProgress.LastShowedLevel < _persistentProgressService.Progress.LevelProgress.Level)
+            if (_persistentProgressService.Progress.LevelProgress.LastShowedLevel < _persistentProgressService.Progress.LevelProgress.Level)
             {
                 _persistentProgressService.Progress.LevelProgress.LastShowedLevel++;
                 LevelUnclockInfoConfig levelUnclockInfoConfig = _staticDataService.GetLevelUnlockInfo(_persistentProgressService.Progress.LevelProgress.LastShowedLevel);

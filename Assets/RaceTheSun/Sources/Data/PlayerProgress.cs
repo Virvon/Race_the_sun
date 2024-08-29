@@ -1,6 +1,6 @@
-﻿using Assets.RaceTheSun.Sources.GameLogic.Trail;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Assets.RaceTheSun.Sources.GameLogic.Trail;
 
 namespace Assets.RaceTheSun.Sources.Data
 {
@@ -21,17 +21,17 @@ namespace Assets.RaceTheSun.Sources.Data
 
         public PlayerProgress(List<SpaceshipData> spaceshipDatas, List<TrailType> trails)
         {
-            Wallet = new();
-            AvailableStatsToUpgrade = new();
-            AvailableSpaceships = new(spaceshipDatas);
-            Upgrading = new();
-            LevelProgress = new(Upgrading);
-            SpaceshipMainCameraSettings = new();
-            AvailableTrails = new(trails);
-            MysteryBoxes = new();
-            AudioSettings = new();
+            Wallet = new ();
+            AvailableStatsToUpgrade = new ();
+            AvailableSpaceships = new (spaceshipDatas);
+            Upgrading = new ();
+            LevelProgress = new (Upgrading);
+            SpaceshipMainCameraSettings = new ();
+            AvailableTrails = new (trails);
+            MysteryBoxes = new ();
+            AudioSettings = new ();
             HighScore = 0;
-            Education = new();
+            Education = new ();
         }
     }
 }

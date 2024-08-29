@@ -18,9 +18,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement
         private Coroutine _jumping;
         private IInputService _inputService;
 
-        public event Action JumpBoostsCountChanged;
-        public event Action Jumped;
-
         [Inject]
         private void Construct(IInputService inputService)
         {
@@ -29,6 +26,9 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement
 
             _inputService.Jumped += OnJumped;
         }
+
+        public event Action JumpBoostsCountChanged;
+        public event Action Jumped;
 
         public int JumpBoostsCount { get; private set; }
         public Vector3 JumpPosition { get; private set; }

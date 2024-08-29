@@ -1,6 +1,4 @@
 ﻿using Assets.RaceTheSun.Sources.Gameplay.Counters;
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 

@@ -24,7 +24,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Portals
 
         private void OnTriggerEnter(Collider other)
         {
-            if(other.TryGetComponent(out Spaceship.Spaceship _))
+            if (other.TryGetComponent(out Spaceship.Spaceship _))
             {
                 _portalSound.Play();
                 other.GetComponentInChildren<CutSceneMovement>().MoveStart();

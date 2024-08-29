@@ -1,6 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.Infrastructure.Factories.SpaceshipModelFactory;
-using System;
-using System.Collections;
+﻿using System.Collections;
+using Assets.RaceTheSun.Sources.Infrastructure.Factories.SpaceshipModelFactory;
 using UnityEngine;
 using Virvon.MyBakery.Services.Input;
 using Zenject;
@@ -11,6 +10,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement
     {
         private const int MaxAngle = -35;
         private const int DirectionXAngle = -10;
+
         [SerializeField] private float _turnDuration;
         [SerializeField] private float _maxDeviation;
 
@@ -37,11 +37,11 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement
             RotatiModel(_currentTurn);
         }
 
+        public void Init(SpaceshipModel spaceshipModel) =>
+           _model = spaceshipModel;
+
         private void RotatiModel(float angle) =>
             _model.transform.rotation = Quaternion.Euler(DirectionXAngle, 0, angle * MaxAngle);
-
-        public void Init(SpaceshipModel spaceshipModel) =>
-            _model = spaceshipModel;
 
         public void Reset()
         {
@@ -61,7 +61,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement
                 _targetTurn = horizontal;
 
                 if (horizontal != 0)
-                    duration = _turnDuration + Mathf.Abs(_currentTurn) * _turnDuration;
+                    duration = _turnDuration + (Mathf.Abs(_currentTurn) * _turnDuration);
                 else if (horizontal == 0)
                     duration = Mathf.Abs(_currentTurn) * _turnDuration;
                 else

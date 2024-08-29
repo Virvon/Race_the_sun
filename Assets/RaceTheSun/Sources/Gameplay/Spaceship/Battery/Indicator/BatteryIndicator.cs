@@ -1,10 +1,10 @@
-﻿using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
 using Assets.RaceTheSun.Sources.Services.CoroutineRunner;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using Zenject;
 
@@ -35,7 +35,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Battery.Indicator
 
             _battery.BatteryValueChanged += OnBatteryValueChanged;
 
-            _cells = new();
+            _cells = new ();
 
             for (int i = 0; i < _batteryMaterialsInfo.Count - 1; i++)
                 _cells.Add(new BatteryCell(GetMinIncludeValue(_batteryMaterialsInfo[i].Position, _batteryMaterialsInfo.Count), _chargedMaterial, _dischargedMaterial, _batteryMaterialsInfo[i].Index));
@@ -50,7 +50,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Battery.Indicator
             _meshRenderer = meshRenderer;
 
         private float GetMinIncludeValue(int position, int cellsCount) =>
-            OneHundredPercent - PercentageBeforeDischargeStart / cellsCount * position;
+            OneHundredPercent - (PercentageBeforeDischargeStart / cellsCount * position);
 
         private void OnBatteryValueChanged(float value)
         {

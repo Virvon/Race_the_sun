@@ -20,7 +20,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.DistanceObserver
 
         public void Invoke()
         {
-            if(_animator != null)
+            if (_animator != null)
                 _animator.SetTrigger(AnimationPath.Move);
         }
     }

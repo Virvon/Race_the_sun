@@ -9,7 +9,8 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine
         public StatesFactory(IInstantiator instantiator) =>
             _instantiator = instantiator;
 
-        public TState Create<TState>() where TState : IExitableState =>
+        public TState Create<TState>()
+            where TState : IExitableState =>
             _instantiator.Instantiate<TState>();
     }
 }

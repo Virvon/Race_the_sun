@@ -1,6 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.MainMenu;
-using System;
-using UnityEngine;
+﻿using System;
+using Assets.RaceTheSun.Sources.MainMenu;
 
 namespace Assets.RaceTheSun.Sources.Services.StaticDataService.Configs
 {

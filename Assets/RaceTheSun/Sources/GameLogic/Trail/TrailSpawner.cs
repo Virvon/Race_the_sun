@@ -1,7 +1,7 @@
-﻿using Assets.RaceTheSun.Sources.Data;
+﻿using System.Collections.Generic;
+using Assets.RaceTheSun.Sources.Data;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.SpaceshipModelFactory;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;
-using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 

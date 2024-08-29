@@ -1,5 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.CollectItems.ItemVisitor;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
+using Assets.RaceTheSun.Sources.Gameplay.CollectItems.ItemVisitor;
 using UnityEngine;
 using Zenject;
 
@@ -16,7 +16,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.CollectItems.Items
 
         public class Factory : PlaceholderFactory<string, UniTask<JumpBoost>>
         {
-
         }
     }
 }

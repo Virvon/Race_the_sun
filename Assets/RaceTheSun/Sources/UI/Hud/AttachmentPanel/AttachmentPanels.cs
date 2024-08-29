@@ -1,6 +1,6 @@
-﻿using Assets.RaceTheSun.Sources.GameLogic.Animations;
+﻿using System.Collections.Generic;
+using Assets.RaceTheSun.Sources.GameLogic.Animations;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;
-using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -15,7 +15,7 @@ namespace Assets.RaceTheSun.Sources.UI.Hud.AttachmentPanel
         [Inject]
         private void Construct(IPersistentProgressService persistentProgressService, GameLogic.Attachment.Attachment attachment)
         {
-            _usedPanels = new();
+            _usedPanels = new ();
 
             List<Upgrading.UpgradeType> usedTypes = persistentProgressService.Progress.AvailableSpaceships.GetCurrentSpaceshipData().UpgradeTypes;
 

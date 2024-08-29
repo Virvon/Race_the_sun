@@ -1,6 +1,6 @@
-﻿using Assets.RaceTheSun.Sources.Data;
+﻿using System;
+using Assets.RaceTheSun.Sources.Data;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;
-using System;
 using UnityEngine;
 using Zenject;
 
@@ -26,6 +26,9 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
             _persistentProgressService.Progress.AvailableSpaceships.SpaceshipUnlocked += OnSpaceshipUnlocked;
         }
 
+        public void Reset() =>
+            CurrentSpaceshipChanged?.Invoke(_persistentProgressService.Progress.AvailableSpaceships.CurrentSpaceshipType);
+
         private void Start() =>
             Reset();
 
@@ -36,9 +39,6 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
 
             _persistentProgressService.Progress.AvailableSpaceships.SpaceshipUnlocked -= OnSpaceshipUnlocked;
         }
-
-        public void Reset() =>
-            CurrentSpaceshipChanged?.Invoke(_persistentProgressService.Progress.AvailableSpaceships.CurrentSpaceshipType);
 
         private void OnSpaceshipButtonClicked(SpaceshipType spaceshipType) =>
             CurrentSpaceshipChanged?.Invoke(spaceshipType);

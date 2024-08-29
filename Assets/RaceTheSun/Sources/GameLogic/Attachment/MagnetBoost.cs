@@ -4,7 +4,8 @@
     {
         private const float BoostedCollectRadius = 15;
 
-        public MagnetBoost(IAttachmentStatsProvider wrappedEntity) : base(wrappedEntity)
+        public MagnetBoost(IAttachmentStatsProvider wrappedEntity)
+            : base(wrappedEntity)
         {
         }
 

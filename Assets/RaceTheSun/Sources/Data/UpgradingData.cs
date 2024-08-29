@@ -1,6 +1,6 @@
-﻿using Assets.RaceTheSun.Sources.Upgrading;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Assets.RaceTheSun.Sources.Upgrading;
 
 namespace Assets.RaceTheSun.Sources.Data
 {
@@ -12,7 +12,7 @@ namespace Assets.RaceTheSun.Sources.Data
 
         public UpgradingData()
         {
-            UpgradedTypes = new();
+            UpgradedTypes = new ();
             AttachmentCellsCount = 0;
         }
 

@@ -1,8 +1,8 @@
-﻿using Assets.RaceTheSun.Sources.GameLogic.Trail;
+﻿using System;
+using Assets.RaceTheSun.Sources.GameLogic.Trail;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships;
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

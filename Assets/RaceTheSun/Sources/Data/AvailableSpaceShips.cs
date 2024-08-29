@@ -12,15 +12,15 @@ namespace Assets.RaceTheSun.Sources.Data
         public List<SpaceshipData> Spaceships;
         public SpaceshipType CurrentSpaceshipType;
 
-        public event Action<SpaceshipType> SpaceshipUnlocked;
-
-        public AvailableSpaceships(List<SpaceshipData> SpaceshipDatas)
+        public AvailableSpaceships(List<SpaceshipData> spaceshipDatas)
         {
-            Spaceships = SpaceshipDatas;
+            Spaceships = spaceshipDatas;
             CurrentSpaceshipType = StartSpaceship;
         }
 
-        public SpaceshipData GetSpaceshipData(SpaceshipType type) => 
+        public event Action<SpaceshipType> SpaceshipUnlocked;
+
+        public SpaceshipData GetSpaceshipData(SpaceshipType type) =>
             Spaceships.First(spaceshipData => spaceshipData.Type == type);
 
         public SpaceshipData GetCurrentSpaceshipData() =>

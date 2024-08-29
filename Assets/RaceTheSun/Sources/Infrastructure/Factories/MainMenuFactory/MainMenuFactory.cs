@@ -1,6 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.GameLogic.Cameras.MainMenu;
+﻿using Cysharp.Threading.Tasks;
 using Assets.RaceTheSun.Sources.MainMenu.Model;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 

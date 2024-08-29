@@ -1,6 +1,6 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.Counters;
-using System;
+﻿using System;
 using System.Collections;
+using Assets.RaceTheSun.Sources.Gameplay.Counters;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

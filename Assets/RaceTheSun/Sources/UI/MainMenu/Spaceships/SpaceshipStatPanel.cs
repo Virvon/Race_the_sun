@@ -1,9 +1,9 @@
-﻿using Assets.RaceTheSun.Sources.Data;
+﻿using System;
+using Assets.RaceTheSun.Sources.Data;
 using Assets.RaceTheSun.Sources.MainMenu;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using Assets.RaceTheSun.Sources.Services.SaveLoad;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -29,8 +29,6 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
         private ISaveLoadService _saveLoadService;
         private SpaceshipType _currentSpaceship;
 
-        public event Action Updated;
-
         [Inject]
         private void Construct(IPersistentProgressService persistentProgress, IStaticDataService staticDataService, ISaveLoadService saveLoadService)
         {
@@ -40,6 +38,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
 
             _upgradeButton.onClick.AddListener(OnUpgradeButtonClicked);
         }
+
+        public event Action Updated;
 
         public int UpgradeCost => _persistentProgress.Progress.AvailableSpaceships.GetSpaceshipData(_currentSpaceship).GetStat(_statType).Level * StartUpgradeCost;
         public StatType StatType => _statType;
@@ -67,7 +67,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
             {
                 _upgradeButton.interactable = false;
                 _upgradeCosteValue.gameObject.SetActive(false);
-                _maxLevelText.gameObject.SetActive(true); ;
+                _maxLevelText.gameObject.SetActive(true);
                 _icon.SetActive(false);
             }
 

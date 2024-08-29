@@ -1,5 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.Counters;
-using System;
+﻿using System;
+using Assets.RaceTheSun.Sources.Gameplay.Counters;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;

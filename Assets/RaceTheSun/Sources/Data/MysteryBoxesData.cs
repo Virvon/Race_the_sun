@@ -8,10 +8,10 @@ namespace Assets.RaceTheSun.Sources.Data
         public int Count;
         public string EndDate;
 
-        public event Action<int> CountChanged;
-
         public MysteryBoxesData() =>
             EndDate = DateTime.MinValue.ToString();
+
+        public event Action<int> CountChanged;
 
         public void Take()
         {
@@ -21,7 +21,7 @@ namespace Assets.RaceTheSun.Sources.Data
 
         public void Give()
         {
-            if(Count == 0)
+            if (Count == 0)
             {
                 DateTime endDate = DateTime.Now;
                 endDate = endDate.AddDays(1);

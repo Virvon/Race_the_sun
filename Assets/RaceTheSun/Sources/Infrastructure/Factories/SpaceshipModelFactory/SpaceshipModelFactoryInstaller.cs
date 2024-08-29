@@ -1,5 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
+using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
 using UnityEngine.AddressableAssets;
 using Zenject;
 

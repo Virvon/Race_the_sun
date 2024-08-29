@@ -1,7 +1,6 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.Spaceship.Battery;
+﻿using System.Collections;
 using Cysharp.Threading.Tasks;
-using System;
-using System.Collections;
+using Assets.RaceTheSun.Sources.Gameplay.Spaceship.Battery;
 using UnityEngine;
 using Zenject;
 
@@ -27,7 +26,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
         private bool _isMovedDown;
         private bool _isHided;
         private float _positionY;
-        
+
         [Inject]
         private void Construct(Spaceship.Spaceship spaceship)
         {
@@ -40,6 +39,12 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
             _positionY = _cutSceneHeaght;
         }
 
+        public void Reset()
+        {
+            _isHided = false;
+            Move(_startHeight);
+        }
+
         private void Update()
         {
             if (_isHided || IsStopped)
@@ -48,12 +53,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
             _positionY = GetHeight();
             Move(_positionY);
             CheckShadowed();
-        }
-
-        public void Reset()
-        {
-            _isHided = false;
-            Move(_startHeight);
         }
 
         public void Show() =>
@@ -93,7 +92,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
 
         private float GetHeight()
         {
-            if((_progress < 1 && _isMovedDown) || (_progress > 0 && _isMovedDown == false))
+            if ((_progress < 1 && _isMovedDown) || (_progress > 0 && _isMovedDown == false))
             {
                 float movementSpeed = _isMovedDown ? _downMoveSpeed : _upMoveSpeed * -1;
                 _progress += Time.deltaTime * movementSpeed;
@@ -107,7 +106,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
             float passedTime = 0;
             float progress;
 
-            while(_positionY != _startHeight)
+            while (_positionY != _startHeight)
             {
                 passedTime += Time.deltaTime;
                 progress = passedTime / _cutSceneDuration;

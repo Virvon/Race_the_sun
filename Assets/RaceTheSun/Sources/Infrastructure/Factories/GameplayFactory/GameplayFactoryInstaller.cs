@@ -1,5 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.GameLogic.Audio;
-using Assets.RaceTheSun.Sources.GameLogic.Cameras.Gameplay;
+﻿using Cysharp.Threading.Tasks;
+using Assets.RaceTheSun.Sources.GameLogic.Audio;
 using Assets.RaceTheSun.Sources.Gameplay.Bird;
 using Assets.RaceTheSun.Sources.Gameplay.CollectItems.Items;
 using Assets.RaceTheSun.Sources.Gameplay.Portals;
@@ -11,8 +11,6 @@ using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator.Tiles;
 using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
 using Assets.RaceTheSun.Sources.UI.GameOverPanel;
 using Assets.RaceTheSun.Sources.UI.Hud;
-using Cysharp.Threading.Tasks;
-using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Zenject;
 
@@ -94,7 +92,6 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory
             Container
                 .BindFactory<string, UniTask<SoundPlayer>, SoundPlayer.Factory>()
                 .FromFactory<KeyPrefabFactoryAsync<SoundPlayer>>();
-
 
             Container
                 .BindFactory<string, UniTask<CollisionFx>, CollisionFx.Factory>()

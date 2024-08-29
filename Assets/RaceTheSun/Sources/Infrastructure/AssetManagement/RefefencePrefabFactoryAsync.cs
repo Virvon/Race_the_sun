@@ -22,6 +22,5 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.AssetManagement
             GameObject newObject = _instantiator.InstantiatePrefab(prefab);
             return newObject.GetComponent<TComponent>();
         }
-
     }
 }

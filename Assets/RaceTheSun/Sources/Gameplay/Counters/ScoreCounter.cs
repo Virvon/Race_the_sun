@@ -1,5 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
-using System;
+﻿using System;
+using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
 using UnityEngine;
 using Zenject;
 
@@ -13,8 +13,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Counters
         private readonly MultiplierProgressCounter _progressMultiplierCounter;
         private readonly IGameplayFactory _gameplayFactory;
 
-        public event Action<int> ScoreCountChanged;
-
         public ScoreCounter(MultiplierProgressCounter progressMultiplierCounter, IGameplayFactory gameplayFactory)
         {
             _progressMultiplierCounter = progressMultiplierCounter;
@@ -22,6 +20,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Counters
 
             Score = 0;
         }
+
+        public event Action<int> ScoreCountChanged;
 
         public float Score { get; private set; }
 

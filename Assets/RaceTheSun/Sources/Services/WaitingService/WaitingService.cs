@@ -1,6 +1,6 @@
-﻿using Assets.RaceTheSun.Sources.Services.CoroutineRunner;
-using System;
+﻿using System;
 using System.Collections;
+using Assets.RaceTheSun.Sources.Services.CoroutineRunner;
 using UnityEngine;
 
 namespace Assets.RaceTheSun.Sources.Services.WaitingService

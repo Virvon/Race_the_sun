@@ -1,7 +1,7 @@
-﻿using Assets.RaceTheSun.Sources.GameLogic.Cameras.Gameplay;
-using Assets.RaceTheSun.Sources.Gameplay.Portals;
-using System;
+﻿using System;
 using System.Collections;
+using Assets.RaceTheSun.Sources.GameLogic.Cameras.Gameplay;
+using Assets.RaceTheSun.Sources.Gameplay.Portals;
 using UnityEngine;
 using Zenject;
 

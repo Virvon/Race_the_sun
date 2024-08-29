@@ -1,20 +1,18 @@
-﻿using Assets.RaceTheSun.Sources.Data;
+﻿using Cysharp.Threading.Tasks;
+using System.Collections.Generic;
+using System.Linq;
+using Assets.RaceTheSun.Sources.Data;
 using Assets.RaceTheSun.Sources.GameLogic.Trail;
 using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
 using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
 using Assets.RaceTheSun.Sources.Upgrading;
-using Cysharp.Threading.Tasks;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
 
 namespace Assets.RaceTheSun.Sources.Services.StaticDataService
 {
     public class StaticDataService : IStaticDataService
     {
         private readonly IAssetProvider _assetsProvider;
-        
+
         private Dictionary<Stage, StageConfig> _stageConfigs;
         private Dictionary<SpaceshipType, SpaceshipConfig> _spaceshipConfigs;
         private GameplayWorldConfig _gameplayWorldConfig;
@@ -108,7 +106,8 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService
             _stageConfigs = _gameplayWorldConfig.StageConfigs.ToDictionary(value => value.Stage, value => value);
         }
 
-        private async UniTask<TConfig[]> GetConfigs<TConfig>() where TConfig : class
+        private async UniTask<TConfig[]> GetConfigs<TConfig>()
+            where TConfig : class
         {
             List<string> keys = await GetConfigKeys<TConfig>();
             return await _assetsProvider.LoadAll<TConfig>(keys);
@@ -116,7 +115,5 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService
 
         private async UniTask<List<string>> GetConfigKeys<TConfig>() =>
             await _assetsProvider.GetAssetsListByLabel<TConfig>(AssetLabels.Configs);
-
-
     }
 }

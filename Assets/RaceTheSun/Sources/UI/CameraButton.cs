@@ -1,5 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.Services.PersistentProgress;
-using System;
+﻿using System;
+using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,7 +13,7 @@ namespace Assets.RaceTheSun.Sources.UI
         [SerializeField] private TMP_Text _text;
         [SerializeField] private string _fromFirstPersonText;
         [SerializeField] private string _fromThirdPersonText;
-        
+
         private IPersistentProgressService _persistentProgressService;
 
         [Inject]
@@ -35,7 +35,6 @@ namespace Assets.RaceTheSun.Sources.UI
 
         private void OnButtonClick() =>
             _persistentProgressService.Progress.SpaceshipMainCameraSettings.Change(!_persistentProgressService.Progress.SpaceshipMainCameraSettings.IsFromThirdPerson);
-
 
         private void ChangeText() =>
             _text.text = _persistentProgressService.Progress.SpaceshipMainCameraSettings.IsFromThirdPerson ? _fromThirdPersonText : _fromFirstPersonText;

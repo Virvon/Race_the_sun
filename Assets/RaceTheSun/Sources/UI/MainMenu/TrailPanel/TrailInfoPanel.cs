@@ -1,12 +1,8 @@
-﻿using Assets.RaceTheSun.Sources.GameLogic.Trail;
+﻿using System;
+using Assets.RaceTheSun.Sources.GameLogic.Trail;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -27,12 +23,6 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.TrailPanel
         private IPersistentProgressService _persistentProgressService;
         private IStaticDataService _staticDataService;
         private bool _isHided;
-        private TrailType _currentTrailType;
-
-        public bool IsLocked { get; private set; }
-        public bool IsUsed { get; private set; }
-
-        public event Action Clicked;
 
         [Inject]
         private void Construct(IPersistentProgressService persistentProgressService, IStaticDataService staticDataService)
@@ -42,6 +32,11 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.TrailPanel
 
             Hide();
         }
+
+        public event Action Clicked;
+
+        public bool IsLocked { get; private set; }
+        public bool IsUsed { get; private set; }
 
         private void OnEnable() =>
             _button.onClick.AddListener(OnButtonClicked);
@@ -60,7 +55,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.TrailPanel
             if (_isHided)
                 Open();
 
-            if(_persistentProgressService.Progress.AvailableTrails.IsUnlocked(trailType))
+            if (_persistentProgressService.Progress.AvailableTrails.IsUnlocked(trailType))
             {
                 _button.interactable = _persistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(_currentClickedSpaceshipInfo.SpaceshipType).TrailType != trailType;
                 _buttonText.text = _unlockedButtonText;

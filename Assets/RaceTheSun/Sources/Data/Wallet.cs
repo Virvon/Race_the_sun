@@ -17,7 +17,7 @@ namespace Assets.RaceTheSun.Sources.Data
 
         public bool TryTake(int value)
         {
-            if(value > Value)
+            if (value > Value)
                 return false;
 
             Value -= value;

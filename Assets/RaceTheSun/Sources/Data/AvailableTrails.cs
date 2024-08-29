@@ -1,6 +1,6 @@
-﻿using Assets.RaceTheSun.Sources.GameLogic.Trail;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Assets.RaceTheSun.Sources.GameLogic.Trail;
 
 namespace Assets.RaceTheSun.Sources.Data
 {

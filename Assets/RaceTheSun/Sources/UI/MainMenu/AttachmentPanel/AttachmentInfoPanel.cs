@@ -1,9 +1,9 @@
-﻿using Assets.RaceTheSun.Sources.Data;
+﻿using System;
+using Assets.RaceTheSun.Sources.Data;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships;
 using Assets.RaceTheSun.Sources.Upgrading;
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -74,7 +74,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.AttachmentPanel
             else
             {
                 _button.interactable = false;
-                _buttonText.text = "";
+                _buttonText.text = string.Empty;
                 _lockIcon.SetActive(true);
                 _title.text = $"Разблокируется на уровне {(int)upgradeType}";
             }

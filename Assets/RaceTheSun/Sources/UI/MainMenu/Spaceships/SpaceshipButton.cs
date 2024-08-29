@@ -1,7 +1,7 @@
-﻿using Assets.RaceTheSun.Sources.Data;
+﻿using System;
+using Assets.RaceTheSun.Sources.Data;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -44,7 +44,6 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
             base.OnDisable();
             _button.onClick.RemoveListener(OnClicked);
             _currentClickedSpacehipWatcher.CurrentSpaceshipChanged -= OnCurrentSpaceshipChanged;
-
         }
 
         public override void OpenInfo()

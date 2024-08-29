@@ -1,5 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.Services.PersistentProgress;
-using System.Collections;
+﻿using System.Collections;
+using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using UnityEngine;
 using Zenject;
 

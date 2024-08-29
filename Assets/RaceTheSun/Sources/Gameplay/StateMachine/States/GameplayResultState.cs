@@ -1,9 +1,7 @@
-﻿using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
+﻿using Cysharp.Threading.Tasks;
+using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using Assets.RaceTheSun.Sources.UI.GameOverPanel;
-using Cysharp.Threading.Tasks;
-using System;
-using UnityEngine;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
 {

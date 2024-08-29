@@ -1,17 +1,17 @@
-﻿using Assets.RaceTheSun.Sources.MainMenu;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.RaceTheSun.Sources.MainMenu;
 
 namespace Assets.RaceTheSun.Sources.Data
 {
-    [Serializable] 
+    [Serializable]
     public class AvailableStatsToUpgrade
     {
         public List<StatType> Stats;
 
         public AvailableStatsToUpgrade() =>
-            Stats = new();
+            Stats = new ();
 
         public void Add(StatType stat)
         {

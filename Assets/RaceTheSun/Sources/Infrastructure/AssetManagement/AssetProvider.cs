@@ -12,7 +12,7 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.AssetManagement
         private readonly Dictionary<string, AsyncOperationHandle> _assetRequest;
 
         public AssetProvider() =>
-            _assetRequest = new();
+            _assetRequest = new ();
 
         public async UniTask InitializeAsync()
         {
@@ -42,7 +42,8 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.AssetManagement
             return (TAsset)handle.Result;
         }
 
-        public async UniTask<TAsset> Load<TAsset>(AssetReferenceGameObject reference) where TAsset : class
+        public async UniTask<TAsset> Load<TAsset>(AssetReferenceGameObject reference)
+            where TAsset : class
         {
             AsyncOperationHandle handle;
 
@@ -57,7 +58,8 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.AssetManagement
             return handle.Result as TAsset;
         }
 
-        public async UniTask<TAsset> Load<TAsset>(string key) where TAsset : class
+        public async UniTask<TAsset> Load<TAsset>(string key)
+            where TAsset : class
         {
             AsyncOperationHandle handle;
 
@@ -78,9 +80,10 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.AssetManagement
             await LoadAll<object>(assetsList);
         }
 
-        public async UniTask<TAsset[]> LoadAll<TAsset>(List<string> keys) where TAsset : class
+        public async UniTask<TAsset[]> LoadAll<TAsset>(List<string> keys)
+            where TAsset : class
         {
-            List<UniTask<TAsset>> tasks = new(keys.Count);
+            List<UniTask<TAsset>> tasks = new (keys.Count);
 
             foreach (string key in keys)
                 tasks.Add(Load<TAsset>(key));

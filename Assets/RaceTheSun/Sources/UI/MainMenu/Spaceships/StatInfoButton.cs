@@ -1,7 +1,7 @@
-﻿using Assets.RaceTheSun.Sources.Data;
+﻿using System;
+using Assets.RaceTheSun.Sources.Data;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
-using System;
 using UnityEngine;
 using Zenject;
 
@@ -25,10 +25,8 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
         protected IPersistentProgressService PersistentProgressService { get; private set; }
         protected SpaceshipType CurrentSpaceshipType => _currentClickedSpaceshipInfo.SpaceshipType;
 
-        private void OnDestroy()
-        {
+        private void OnDestroy() =>
             _statPanel.Updated -= OnStatPanelUpdated;
-        }
 
         public override void OpenInfo()
         {
@@ -36,9 +34,9 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships
             base.OpenInfo();
         }
 
+        protected abstract string GetInfo();
+
         private void OnStatPanelUpdated() =>
             HideInfo();
-
-        protected abstract string GetInfo();
     }
 }

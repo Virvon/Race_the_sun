@@ -1,7 +1,7 @@
-﻿using Agava.YandexGames;
+﻿using System;
+using Agava.YandexGames;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using Assets.RaceTheSun.Sources.Services.SaveLoad;
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

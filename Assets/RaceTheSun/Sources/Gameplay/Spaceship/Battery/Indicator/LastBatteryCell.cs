@@ -1,5 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.Services.CoroutineRunner;
-using System.Collections;
+﻿using System.Collections;
+using Assets.RaceTheSun.Sources.Services.CoroutineRunner;
 using UnityEngine;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Battery.Indicator
@@ -14,7 +14,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Battery.Indicator
         private bool _isBlinked;
         private Material _currentBlinkingMaterial;
 
-        public LastBatteryCell(float minIncludeValue, Material chargedMaterial, Material lowBatteryMaterial, Material dischargedMaterial, int materialIndex, ICoroutineRunner coroutineRunner) : base(minIncludeValue, chargedMaterial, lowBatteryMaterial, materialIndex)
+        public LastBatteryCell(float minIncludeValue, Material chargedMaterial, Material lowBatteryMaterial, Material dischargedMaterial, int materialIndex, ICoroutineRunner coroutineRunner)
+            : base(minIncludeValue, chargedMaterial, lowBatteryMaterial, materialIndex)
         {
             _dischargedMaterial = dischargedMaterial;
             _isBlinked = false;

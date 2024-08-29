@@ -1,4 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.GameLogic.Cameras.MainMenu;
+﻿using System;
+using Assets.RaceTheSun.Sources.GameLogic.Cameras.MainMenu;
 using Assets.RaceTheSun.Sources.GameLogic.Trail;
 using Assets.RaceTheSun.Sources.MainMenu.Model;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;
@@ -6,7 +7,6 @@ using Assets.RaceTheSun.Sources.Services.SaveLoad;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships;
 using Assets.RaceTheSun.Sources.UI.MainMenu.TrailPanel;
-using System;
 using UnityEngine;
 using Zenject;
 

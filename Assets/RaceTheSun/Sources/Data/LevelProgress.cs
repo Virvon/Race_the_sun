@@ -13,8 +13,6 @@ namespace Assets.RaceTheSun.Sources.Data
         public int Level;
         public int LastShowedLevel;
 
-        public event Action ExperienceCountChanged;
-
         public LevelProgress(UpgradingData upgradingData)
         {
             UpgradingData = upgradingData;
@@ -23,6 +21,8 @@ namespace Assets.RaceTheSun.Sources.Data
             Level = 1;
             LastShowedLevel = 1;
         }
+
+        public event Action ExperienceCountChanged;
 
         public bool IsMaxLevel => Level >= MaxLevel;
 
@@ -33,7 +33,7 @@ namespace Assets.RaceTheSun.Sources.Data
 
             Experience += count;
 
-            if(Experience >= ExperienceToLevelUp)
+            if (Experience >= ExperienceToLevelUp)
             {
                 int levelsCount = Experience / ExperienceToLevelUp;
 
@@ -44,7 +44,7 @@ namespace Assets.RaceTheSun.Sources.Data
 
                 UpgradingData.Upgrade(Level);
 
-                for(int i = Level - levelsCount + 1; i <= Level; i++)
+                for (int i = Level - levelsCount + 1; i <= Level; i++)
                     UpgradingData.Upgrade(i);
             }
 

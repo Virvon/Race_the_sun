@@ -14,7 +14,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
         private bool _isStopped;
         private SpaceshipTurning _spaceshipTurning;
 
-        public BatterySpeed(ISpeedProvider wrappedEntity, Battery.Battery battery, SpaceshipDie spaceshipDie, SpaceshipTurning spaceshipTurning) : base(wrappedEntity)
+        public BatterySpeed(ISpeedProvider wrappedEntity, Battery.Battery battery, SpaceshipDie spaceshipDie, SpaceshipTurning spaceshipTurning)
+            : base(wrappedEntity)
         {
             _battery = battery;
             _spaceshipDie = spaceshipDie;
@@ -27,7 +28,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
         {
             if (_battery.Discharged == false)
             {
-                if(_battery.Value > HalfBatteryValue)
+                if (_battery.Value > HalfBatteryValue)
                     _speedMultiplier = 1;
                 else
                     _speedMultiplier -= Time.deltaTime * StopSpeed;
@@ -35,8 +36,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
             else
             {
                 _speedMultiplier = 0;
-                
-                if(_isStopped == false)
+
+                if (_isStopped == false)
                 {
                     _isStopped = true;
                     _spaceshipDie.Stop();

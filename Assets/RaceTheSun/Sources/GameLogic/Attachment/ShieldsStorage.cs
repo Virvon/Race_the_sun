@@ -4,7 +4,8 @@
     {
         public const int BoostedMaxShieldsCount = 2;
 
-        public ShieldsStorage(IAttachmentStatsProvider wrappedEntity) : base(wrappedEntity)
+        public ShieldsStorage(IAttachmentStatsProvider wrappedEntity)
+            : base(wrappedEntity)
         {
         }
 

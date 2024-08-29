@@ -1,6 +1,5 @@
 ﻿using Assets.RaceTheSun.Sources.Infrastructure.Factories.CamerasFactory.Gameplay;
 using Cinemachine;
-using System;
 using UnityEngine;
 
 namespace Assets.RaceTheSun.Sources.GameLogic.Cameras.Gameplay

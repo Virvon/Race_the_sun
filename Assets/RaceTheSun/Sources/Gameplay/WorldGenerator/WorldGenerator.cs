@@ -1,10 +1,10 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator.StageInfo;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Cysharp.Threading.Tasks;
+using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator.StageInfo;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
-using Cysharp.Threading.Tasks;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using Zenject;
 
@@ -35,7 +35,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
             _cellLength = gameplayWorldConfig.CellLength;
             _renderDistance = gameplayWorldConfig.RenderDistacne;
 
-            _tilesMatrix = new();
+            _tilesMatrix = new ();
             _isFlowFree = true;
         }
 
@@ -54,7 +54,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
 
         public void Clean()
         {
-            foreach(var tile in _tilesMatrix)
+            foreach (var tile in _tilesMatrix)
             {
                 Destroy(tile.gameObject);
             }
@@ -66,7 +66,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
         {
             GameObject[] tiles = _tilesMatrix.OrderBy(value => value.transform.position.z).ToArray();
 
-            for(int z = 0; z < tiles.Length; z++)
+            for (int z = 0; z < tiles.Length; z++)
             {
                 tiles[z].transform.position = GridToWorldPosition(z - 1);
             }
@@ -74,9 +74,9 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
 
         private UniTask Empty(Vector3 spaceshipPositoin)
         {
-            HashSet<GameObject> removedTiles = new();
+            HashSet<GameObject> removedTiles = new ();
 
-            foreach(GameObject tile in _tilesMatrix)
+            foreach (GameObject tile in _tilesMatrix)
             {
                 int tileGridPosition = WorldToGridPosition(tile.transform.position);
                 int spaceshipGridPosition = WorldToGridPosition(spaceshipPositoin);
@@ -92,7 +92,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
 
         private void Remove(HashSet<GameObject> removedTiles)
         {
-            foreach(GameObject tile in removedTiles)
+            foreach (GameObject tile in removedTiles)
             {
                 _tilesMatrix.Remove(tile);
                 Destroy(tile.gameObject);
@@ -103,8 +103,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator
         {
             int cellCoundOnAxis = renderDistance / _cellLength;
             int fillStart = WorldToGridPosition(spaceshipPosition);
-            
-            for(int z = 0; z < cellCoundOnAxis; z++)
+
+            for (int z = 0; z < cellCoundOnAxis; z++)
             {
                 await TryCreate(fillStart + z);
             }

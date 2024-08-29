@@ -1,11 +1,9 @@
-﻿using Agava.YandexGames;
+﻿using Cysharp.Threading.Tasks;
+using Agava.YandexGames;
 using Assets.RaceTheSun.Sources.Gameplay.Portals;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement;
 using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
 using Assets.RaceTheSun.Sources.UI.GameOverPanel;
-using Cysharp.Threading.Tasks;
-using System;
-using UnityEngine;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
 {
@@ -35,7 +33,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
             _revivalPanel.RevivalButtonClicked += OnRevivalButtonClicked;
             _revivalPanel.RevivalTimeEnded += OnRevivalTimeEnded;
 
-            if(_isRevivalTryed == false)
+            if (_isRevivalTryed == false)
             {
                 _revivalPanel.Open();
                 _isRevivalTryed = true;
@@ -76,7 +74,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
             _spaceshipShieldPortal.Activate(false);
             _revivalPanel.Hide();
             _sun.IsStopped = false;
-#endif 
+#endif
         }
     }
 }

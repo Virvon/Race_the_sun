@@ -1,7 +1,7 @@
-﻿using Assets.RaceTheSun.Sources.GameLogic.Cameras.MainMenu;
+﻿using System;
+using Assets.RaceTheSun.Sources.GameLogic.Cameras.MainMenu;
 using Assets.RaceTheSun.Sources.MainMenu.Model;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;
-using System;
 using UnityEngine;
 using Zenject;
 
@@ -45,7 +45,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu
                 _spaceshipsEducation.ShowEducation();
                 _persistentProgressService.Progress.Education.IsSpaceshipWindowShowed = true;
             }
-            else if(_persistentProgressService.Progress.Education.IsSpaceshipWindowShowed && _persistentProgressService.Progress.Education.IsShopWindowShowed == false)
+            else if (_persistentProgressService.Progress.Education.IsSpaceshipWindowShowed && _persistentProgressService.Progress.Education.IsShopWindowShowed == false)
             {
                 _shopEducation.ShowEducation();
                 _persistentProgressService.Progress.Education.IsShopWindowShowed = true;

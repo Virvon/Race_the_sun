@@ -1,10 +1,9 @@
-﻿using Agava.YandexGames;
+﻿using System;
+using Agava.YandexGames;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using Assets.RaceTheSun.Sources.Services.SaveLoad;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
-using Assets.RaceTheSun.Sources.UI.MainMenu;
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -82,7 +81,7 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.MysteryBox
                 _mysteryBoxWindowOpenButton.gameObject.SetActive(false);
             }
             });
-# else
+#else
             MysteryBoxRewardsConfig mysteryBoxRewardsConfig = _staticDataService.GetMysteryBoxRewards();
 
             int chance = Random.Range(0, 100);

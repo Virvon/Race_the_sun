@@ -17,7 +17,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.SpeedDecorator
         private bool _isBoosted;
         private Coroutine _booster;
 
-        public BoostedSpeed(ISpeedProvider wrappedEntity, float defaultSpeed, MonoBehaviour coroutineRunner, Sun.Sun sun) : base(wrappedEntity)
+        public BoostedSpeed(ISpeedProvider wrappedEntity, float defaultSpeed, MonoBehaviour coroutineRunner, Sun.Sun sun)
+            : base(wrappedEntity)
         {
             _defaultSpeed = defaultSpeed;
             _coroutineRunner = coroutineRunner;

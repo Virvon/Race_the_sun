@@ -4,7 +4,8 @@
     {
         private const int BoostedMaxJumpBoostsCount = 2;
 
-        public JumpBoostsStorage(IAttachmentStatsProvider wrappedEntity) : base(wrappedEntity)
+        public JumpBoostsStorage(IAttachmentStatsProvider wrappedEntity)
+            : base(wrappedEntity)
         {
         }
 

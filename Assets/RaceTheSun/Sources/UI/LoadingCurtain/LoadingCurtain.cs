@@ -38,7 +38,7 @@ namespace Assets.RaceTheSun.Sources.UI.LoadingCurtain
             float progerss = 0;
             float time = 0;
 
-            while(_curtain.color != targetColor)
+            while (_curtain.color != targetColor)
             {
                 time += Time.deltaTime;
                 progerss = time / duration;

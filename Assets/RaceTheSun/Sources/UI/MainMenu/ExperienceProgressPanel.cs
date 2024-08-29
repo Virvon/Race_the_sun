@@ -1,9 +1,7 @@
 ﻿using Assets.RaceTheSun.Sources.Data;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;
-using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using Zenject;
 
 namespace Assets.RaceTheSun.Sources.UI.MainMenu

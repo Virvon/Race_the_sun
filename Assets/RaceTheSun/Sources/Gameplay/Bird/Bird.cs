@@ -1,9 +1,9 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.CollectItems.Items;
+﻿using System.Collections;
+using Cysharp.Threading.Tasks;
+using Assets.RaceTheSun.Sources.Gameplay.CollectItems.Items;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using Assets.RaceTheSun.Sources.Upgrading;
-using Cysharp.Threading.Tasks;
-using System.Collections;
 using UnityEngine;
 using Zenject;
 
@@ -45,13 +45,13 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Bird
 
             transform.position = Vector3.MoveTowards(transform.position, _movementPath[_targetPointIndex], _speed * Time.deltaTime);
 
-            if(Vector3.Distance(transform.position, _movementPath[_targetPointIndex]) <= Delta)
+            if (Vector3.Distance(transform.position, _movementPath[_targetPointIndex]) <= Delta)
             {
                 if (_targetPointIndex < _movementPath.Length - 1)
                 {
                     _targetPointIndex++;
-                    
-                    if(_targetPointIndex < _movementPath.Length - 1)
+
+                    if (_targetPointIndex < _movementPath.Length - 1)
                     {
                         ScoreItem scoreItem = await _gameplayFactory.CreateScoreItem(transform.position + _dropPositionOffset);
                         StartCoroutine(ItemMover(scoreItem.transform, ScoreItemPositionY));
@@ -82,7 +82,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Bird
             Transform itemTransform = null;
             float targetPositionY = 0;
 
-            while(isItmeChoosed == false)
+            while (isItmeChoosed == false)
             {
                 int itemIndex = Random.Range(MinItemNumber, MaxItemNuber);
 
@@ -129,7 +129,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Bird
 
             while (transform.position != targetPosition)
             {
-                passedTime += Time.deltaTime + passedTime * Time.deltaTime;
+                passedTime += Time.deltaTime + (passedTime * Time.deltaTime);
                 progress = passedTime / _itemDropSpeed;
 
                 transform.position = Vector3.Lerp(startPosition, targetPosition, progress);

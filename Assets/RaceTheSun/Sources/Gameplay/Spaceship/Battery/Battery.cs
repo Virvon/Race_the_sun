@@ -1,6 +1,6 @@
-﻿using Assets.RaceTheSun.Sources.Services.PersistentProgress;
-using System;
+﻿using System;
 using System.Collections;
+using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using UnityEngine;
 using Zenject;
 
@@ -16,14 +16,14 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Battery
         private Coroutine _batteryDischarger;
         private float _battery;
 
-        public event Action<float> BatteryValueChanged;
-
         [Inject]
         private void Construct(IPersistentProgressService persistentProgressService)
         {
             _dischargerDuration = persistentProgressService.Progress.AvailableSpaceships.GetCurrentSpaceshipData().Battery.Value;
             _battery = FullBattery;
         }
+
+        public event Action<float> BatteryValueChanged;
 
         public bool Discharged => _battery == 0;
         public float Value => _battery;

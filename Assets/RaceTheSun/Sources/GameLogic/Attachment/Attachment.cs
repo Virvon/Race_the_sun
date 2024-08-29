@@ -19,7 +19,7 @@ namespace Assets.RaceTheSun.Sources.GameLogic.Attachment
                 case UpgradeType.Magnet:
                     return new MagnetBoost(wrappedAttachmentStatsProvider);
                 case UpgradeType.JumpBoostsStorage:
-                    return new JumpBoostsStorage(wrappedAttachmentStatsProvider); ;
+                    return new JumpBoostsStorage(wrappedAttachmentStatsProvider);
                 case UpgradeType.ShieldPortalsStorage:
                     return new ShieldsStorage(wrappedAttachmentStatsProvider);
                 default:

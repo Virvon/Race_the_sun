@@ -1,8 +1,7 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator.StageInfo;
+﻿using System.Collections;
+using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator.StageInfo;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
-using System;
-using System.Collections;
 using UnityEngine;
 using Zenject;
 
@@ -29,6 +28,9 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
             _skyboxMaterial = RenderSettings.skybox;
         }
 
+        public void Reset() =>
+            SetSkyboxMaterialSettings(_startSkyboxConfig.SkyboxColor, _startSkyboxConfig.AtmosphereThickness, _startSkyboxConfig.Exposure);
+
         private void Start() =>
             Reset();
 
@@ -37,9 +39,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
 
         private void OnDisable() =>
             _currentSpaceshipStage.StageChanged -= ChangeColor;
-
-        public void Reset() =>
-            SetSkyboxMaterialSettings(_startSkyboxConfig.SkyboxColor, _startSkyboxConfig.AtmosphereThickness, _startSkyboxConfig.Exposure);
 
         private void SetSkyboxMaterialSettings(Color color, float atmosphereThickness, float exposure)
         {

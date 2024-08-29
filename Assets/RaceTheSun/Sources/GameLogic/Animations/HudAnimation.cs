@@ -8,7 +8,7 @@ namespace Assets.RaceTheSun.Sources.GameLogic.Animations
         private readonly List<HudAnimationElement> _hudAnimationElements;
 
         public HudAnimation() =>
-            _hudAnimationElements = new();
+            _hudAnimationElements = new ();
 
         public void RegisterHudAnimationElement(HudAnimationElement hudAnimationElement) =>
             _hudAnimationElements.Add(hudAnimationElement);

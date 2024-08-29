@@ -1,9 +1,8 @@
-﻿using Assets.RaceTheSun.Sources.Services.PersistentProgress;
+﻿using System.Collections.Generic;
+using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using Assets.RaceTheSun.Sources.Services.SaveLoad;
 using Assets.RaceTheSun.Sources.UI.MainMenu.Spaceships;
 using Assets.RaceTheSun.Sources.Upgrading;
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -20,7 +19,6 @@ namespace Assets.RaceTheSun.Sources.UI.MainMenu.AttachmentPanel
         private IPersistentProgressService _persistentProgressService;
         private ISaveLoadService _saveLoadService;
         private GameObject _currentSelectFrame;
-
 
         [Inject]
         private void Construct(IPersistentProgressService persistentProgressService, ISaveLoadService saveLoadService)

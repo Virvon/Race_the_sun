@@ -1,11 +1,11 @@
-﻿using Assets.RaceTheSun.Sources.GameLogic.Audio;
+﻿using System;
+using Cysharp.Threading.Tasks;
+using Assets.RaceTheSun.Sources.GameLogic.Audio;
 using Assets.RaceTheSun.Sources.GameLogic.Cameras.Gameplay;
 using Assets.RaceTheSun.Sources.Gameplay.StateMachine;
 using Assets.RaceTheSun.Sources.Gameplay.StateMachine.States;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
 using Assets.RaceTheSun.Sources.Services.WaitingService;
-using Cysharp.Threading.Tasks;
-using System;
 using UnityEngine;
 using Zenject;
 
@@ -31,9 +31,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
         private GameplayCameras _gameplayCameras;
         private IGameplayFactory _gameplayFactory;
 
-        public event Action Died;
-        public event Action Stopped;
-
         [Inject]
         private void Construct(GameplayCameras cameras, GameplayStateMachine gameplayStateMachine, WaitingService waitingService, StageMusic stageMusic, GameplayCameras gameplayCameras, IGameplayFactory gameplayFactory)
         {
@@ -45,13 +42,15 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
             _gameplayFactory = gameplayFactory;
         }
 
+        public event Action Died;
+        public event Action Stopped;
         public event Action<int> ShieldsCountChanged;
 
         public bool TryRevive()
         {
             _spaceship.gameObject.SetActive(false);
-            
-            if(_shieldsCount > 0)
+
+            if (_shieldsCount > 0)
             {
                 _gameplayFactory.SpaceshipShieldPortal.Activate();
                 _shieldsCount--;
@@ -68,11 +67,12 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship
                 _stageMusic.Pause();
                 Died?.Invoke();
 
-                _waitingService.Wait(ShowDeathDuration, callback: ()=>{
+                _waitingService.Wait(ShowDeathDuration, callback: ( ) =>
+                {
                     _cameras.IncludeCamera(GameplayCameraType.SideCamera);
                     _waitingService.Wait(EnterRevivalStateDelay, callback: () => _gameplayStateMachine.Enter<GameplayRevivalState>().Forget());
                 });
-               
+
                 return false;
             }
         }

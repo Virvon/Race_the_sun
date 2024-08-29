@@ -34,7 +34,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement
                 distance = Mathf.Clamp(distance, maxForceHeight, minForceHeight);
 
                 float forceFactor = distance.Remap(maxForceHeight, minForceHeight, _maxForce, 0);
-                _rigidbody.AddForce(-transform.forward * Mathf.Max(forceFactor - _springSpeed * _maxForce * _damping, 0), ForceMode.Force);
+                _rigidbody.AddForce(-transform.forward * Mathf.Max(forceFactor - (_springSpeed * _maxForce * _damping), 0), ForceMode.Force);
             }
         }
     }

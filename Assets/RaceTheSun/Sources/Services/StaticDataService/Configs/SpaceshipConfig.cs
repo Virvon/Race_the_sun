@@ -1,7 +1,7 @@
-﻿using Assets.RaceTheSun.Sources.Data;
+﻿using System.Collections.Generic;
+using Assets.RaceTheSun.Sources.Data;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship.Battery.Indicator;
 using Assets.RaceTheSun.Sources.MainMenu;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 

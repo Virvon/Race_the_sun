@@ -1,15 +1,13 @@
-﻿using Assets.RaceTheSun.Sources.Data;
+﻿using Cysharp.Threading.Tasks;
+using System.Collections.Generic;
+using System.Linq;
+using Assets.RaceTheSun.Sources.Data;
 using Assets.RaceTheSun.Sources.GameLogic.Trail;
-using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
 using Assets.RaceTheSun.Sources.MainMenu;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using Assets.RaceTheSun.Sources.Services.SaveLoad;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
-using Cysharp.Threading.Tasks;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
 
 namespace Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine.States
 {
@@ -46,14 +44,14 @@ namespace Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine.States
 
         private PlayerProgress CreateNewProgress()
         {
-            List<SpaceshipData> spaceshipDatas = new();
+            List<SpaceshipData> spaceshipDatas = new ();
             SpaceshipConfig[] spaceshipConfigs = _staticDataService.GetSpaceships();
             spaceshipDatas.AddRange(spaceshipConfigs.Select(spaceshipConfig => new SpaceshipData(spaceshipConfig.Type, spaceshipConfig.Battery.StartValue, spaceshipConfig.ExperienceMultiplier.StartValue, spaceshipConfig.PickUpRange.StartValue, spaceshipConfig.FloatTime.StartValue, spaceshipConfig.IsUnlockedOnStart, spaceshipConfig.Battery.StartLevel, spaceshipConfig.ExperienceMultiplier.StartLevel, spaceshipConfig.PickUpRange.StartLevel, spaceshipConfig.FloatTime.StartLevel, spaceshipConfig.StartLevel)));
 
-            List<TrailType> trails = new();
+            List<TrailType> trails = new ();
             TrailConfig[] trailConfigs = _staticDataService.GetTrails();
             trails.AddRange(trailConfigs.Where(trailConfig => trailConfig.IsUnlockedOnStart).Select(trailConfig => trailConfig.Type));
-            PlayerProgress progress = new(spaceshipDatas, trails);
+            PlayerProgress progress = new (spaceshipDatas, trails);
 
             progress.AvailableStatsToUpgrade.Stats.Add(StatType.Battery);
 

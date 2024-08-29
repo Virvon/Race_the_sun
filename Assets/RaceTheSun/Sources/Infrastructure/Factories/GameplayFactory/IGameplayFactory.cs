@@ -1,10 +1,8 @@
-﻿using Assets.RaceTheSun.Sources.Gameplay.CollectItems.Items;
+﻿using Cysharp.Threading.Tasks;
+using Assets.RaceTheSun.Sources.Gameplay.CollectItems.Items;
 using Assets.RaceTheSun.Sources.Gameplay.Portals;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using Assets.RaceTheSun.Sources.Gameplay.Sun;
-using Cinemachine;
-using Cysharp.Threading.Tasks;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 

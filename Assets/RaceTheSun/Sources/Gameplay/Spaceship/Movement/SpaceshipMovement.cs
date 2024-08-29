@@ -34,6 +34,9 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement
         public bool IsCollided { get; private set; }
         public CollisionInfo CollisionInfo => _collisionInfo;
 
+        public void Reset() =>
+            _collisionInfo = new CollisionInfo();
+
         private void Start()
         {
             _isBounced = false;
@@ -61,7 +64,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement
         {
             Gizmos.color = Color.red;
             Gizmos.DrawCube(transform.position, Vector3.one * 0.2f);
-            Gizmos.DrawLine(transform.position, transform.position - transform.up * _maxDistance);
+            Gizmos.DrawLine(transform.position, transform.position - (transform.up * _maxDistance));
 
             if (Offset == Vector3.zero)
                 return;
@@ -75,11 +78,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement
 
             Gizmos.color = Color.red;
             Gizmos.DrawCube(_rigidbody.position + Offset, _halfExtents * 2);
-
         }
-
-        public void Reset() =>
-            _collisionInfo = new CollisionInfo();
 
         private void CheckStartOfBounced()
         {
@@ -117,7 +116,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement
 
             if (_isBounced)
             {
-                direction = (Vector3.forward + _bounceDirection * _collisionForceMultiplier).normalized;
+                direction = (Vector3.forward + (_bounceDirection * _collisionForceMultiplier)).normalized;
                 _forceTime += Time.fixedDeltaTime;
                 if (_forceTime > _collisionForceDuration)
                     _isBounced = false;
@@ -167,6 +166,6 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement
         }
 
         private Vector3 Project(Vector3 direction) =>
-            direction - Vector3.Dot(direction, _surfaceNormal) * _surfaceNormal;
+            direction - (Vector3.Dot(direction, _surfaceNormal) * _surfaceNormal);
     }
 }

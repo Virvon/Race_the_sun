@@ -1,8 +1,7 @@
-﻿using Assets.RaceTheSun.Sources.GameLogic.Animations;
-using Assets.RaceTheSun.Sources.UI.MainMenu;
-using MPUIKIT;
-using System;
+﻿using System;
 using System.Collections;
+using Assets.RaceTheSun.Sources.GameLogic.Animations;
+using MPUIKIT;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -44,7 +43,7 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
 
         public void Hide(Action callback = null)
         {
-            _revivalPanelAnimationElement.Hided += ()=> callback?.Invoke();
+            _revivalPanelAnimationElement.Hided += ( ) => callback?.Invoke();
             _revivalPanelAnimationElement.Hide();
             _header.SetActive(false);
         }
@@ -54,7 +53,7 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
 
         private void OnRevivalButtonClicked()
         {
-            if(_timer != null)
+            if (_timer != null)
                 StopCoroutine(_timer);
 
             RevivalButtonClicked?.Invoke();
@@ -74,7 +73,7 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
             float startValue = 1;
             float progress;
 
-            while(_timerValue.fillAmount != 0)
+            while (_timerValue.fillAmount != 0)
             {
                 passedTime += Time.deltaTime;
                 progress = passedTime / _duration;

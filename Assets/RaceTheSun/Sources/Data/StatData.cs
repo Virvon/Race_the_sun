@@ -1,5 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.MainMenu;
-using System;
+﻿using System;
+using Assets.RaceTheSun.Sources.MainMenu;
 
 namespace Assets.RaceTheSun.Sources.Data
 {

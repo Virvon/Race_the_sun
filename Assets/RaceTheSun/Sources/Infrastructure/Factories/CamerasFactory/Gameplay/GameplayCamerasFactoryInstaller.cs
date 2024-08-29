@@ -1,6 +1,6 @@
-﻿using Assets.RaceTheSun.Sources.GameLogic.Cameras.Gameplay;
+﻿using Cysharp.Threading.Tasks;
+using Assets.RaceTheSun.Sources.GameLogic.Cameras.Gameplay;
 using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
-using Cysharp.Threading.Tasks;
 using Zenject;
 
 namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.CamerasFactory.Gameplay

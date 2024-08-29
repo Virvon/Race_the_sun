@@ -1,9 +1,9 @@
-﻿using Agava.YandexGames;
-using Assets.RaceTheSun.Sources.Gameplay.Counters;
-using Assets.RaceTheSun.Sources.Services.PersistentProgress;
-using System;
+﻿using System;
 using System.Collections;
 using System.Globalization;
+using Agava.YandexGames;
+using Assets.RaceTheSun.Sources.Gameplay.Counters;
+using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using TMPro;
 using UnityEngine;
 using Zenject;
@@ -34,8 +34,8 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
                 return;
 
             int score = (int)_scoreCounter.Score;
-            
-            if(score > _persistentProgressService.Progress.HighScore)
+
+            if (score > _persistentProgressService.Progress.HighScore)
             {
                 _highScoreText.SetActive(true);
                 _persistentProgressService.Progress.HighScore = score;
@@ -65,7 +65,7 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
 
             _isOpened = true;
 
-            while(currentScore != resultScore)
+            while (currentScore != resultScore)
             {
                 passedTime += Time.deltaTime;
                 progress = passedTime / _showAnimationDuration;
@@ -81,4 +81,3 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
         }
     }
 }
- 

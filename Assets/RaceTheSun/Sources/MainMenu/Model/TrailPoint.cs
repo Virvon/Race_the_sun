@@ -8,7 +8,6 @@ namespace Assets.RaceTheSun.Sources.MainMenu.Model
     {
         public class Factory : PlaceholderFactory<string, UniTask<TrailPoint>>
         {
-
         }
     }
 }

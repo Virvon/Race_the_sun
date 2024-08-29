@@ -61,8 +61,6 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
             _resultScoreItems.SetScoreItemsValue(_reward + _scoreItemsCounter.ScoreItemsPerGame);
             gameObject.SetActive(false);
 #endif
-            
         }
     }
 }
- 

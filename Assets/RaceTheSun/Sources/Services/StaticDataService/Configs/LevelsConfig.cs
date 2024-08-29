@@ -9,7 +9,7 @@ namespace Assets.RaceTheSun.Sources.Services.StaticDataService.Configs
 
         public LevelUnclockInfoConfig GetLevelUnclockInfoConfigs(int level)
         {
-            foreach(var levelConfig in LevelUnclockInfoConfigs)
+            foreach (var levelConfig in LevelUnclockInfoConfigs)
             {
                 if (levelConfig.Level == level)
                     return levelConfig;
