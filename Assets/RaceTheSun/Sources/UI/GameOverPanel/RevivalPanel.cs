@@ -43,7 +43,7 @@ namespace Assets.RaceTheSun.Sources.UI.GameOverPanel
 
         public void Hide(Action callback = null)
         {
-            _revivalPanelAnimationElement.Hided += ( ) => callback?.Invoke();
+            _revivalPanelAnimationElement.Hided +=() => callback?.Invoke();
             _revivalPanelAnimationElement.Hide();
             _header.SetActive(false);
         }

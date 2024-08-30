@@ -1,6 +1,6 @@
-using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 
 namespace Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine
 {

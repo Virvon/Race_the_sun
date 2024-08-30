@@ -1,5 +1,4 @@
 ﻿using Cysharp.Threading.Tasks;
-using System;
 
 namespace Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine
 {

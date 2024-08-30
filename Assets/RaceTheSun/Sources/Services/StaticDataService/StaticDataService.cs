@@ -1,11 +1,11 @@
-﻿using Cysharp.Threading.Tasks;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Assets.RaceTheSun.Sources.Data;
 using Assets.RaceTheSun.Sources.GameLogic.Trail;
 using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
 using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
 using Assets.RaceTheSun.Sources.Upgrading;
+using Cysharp.Threading.Tasks;
 
 namespace Assets.RaceTheSun.Sources.Services.StaticDataService
 {

@@ -1,5 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
-using Assets.RaceTheSun.Sources.Services.WaitingService;
+﻿using Assets.RaceTheSun.Sources.Services.WaitingService;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 

@@ -1,9 +1,9 @@
-﻿using Cysharp.Threading.Tasks;
-using Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement;
+﻿using Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement;
 using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
 using Assets.RaceTheSun.Sources.UI.LoadingCurtain;
+using Cysharp.Threading.Tasks;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
 {

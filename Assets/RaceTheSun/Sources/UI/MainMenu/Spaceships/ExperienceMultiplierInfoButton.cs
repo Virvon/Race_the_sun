@@ -4,10 +4,10 @@
     {
         protected override string GetInfo()
         {
-            float ExperienceMultiplierValue = PersistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(CurrentSpaceshipType).ExperienceMultiplier.Value * 100;
-            float ExperienceMultiplierUpgradeValue = StaticDataService.GetSpaceship(CurrentSpaceshipType).ExperienceMultiplier.UpgradeValue * 100;
+            float experienceMultiplierValue = PersistentProgressService.Progress.AvailableSpaceships.GetSpaceshipData(CurrentSpaceshipType).ExperienceMultiplier.Value * 100;
+            float experienceMultiplierUpgradeValue = StaticDataService.GetSpaceship(CurrentSpaceshipType).ExperienceMultiplier.UpgradeValue * 100;
 
-            return $"Множитель опыта ({ExperienceMultiplierValue}%, +{ExperienceMultiplierUpgradeValue}% за уровень";
+            return $"Множитель опыта ({experienceMultiplierValue}%, +{experienceMultiplierUpgradeValue}% за уровень";
         }
     }
 }

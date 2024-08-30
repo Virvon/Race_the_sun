@@ -24,7 +24,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Collision
 
             bool isCollided = Physics.BoxCast(
                 _rigidbody.position,
-                _halfExtents, offset,
+                _halfExtents,
+                offset,
                 out RaycastHit hitInfo,
                 _rigidbody.rotation,
                 castDistance,

@@ -1,5 +1,4 @@
-﻿using Cysharp.Threading.Tasks;
-using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
+﻿using Assets.RaceTheSun.Sources.Gameplay.Spaceship;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship.Battery.Indicator;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement;
 using Assets.RaceTheSun.Sources.Gameplay.StateMachine;
@@ -9,6 +8,7 @@ using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.SpaceshipModelFactory;
 using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 

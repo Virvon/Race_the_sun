@@ -137,7 +137,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement
                 transform.position,
                 -transform.up,
                 out RaycastHit hitInfo,
-                _maxDistance, _layerMask,
+                _maxDistance,
+                _layerMask,
                 QueryTriggerInteraction.Ignore))
             {
                 if (hitInfo.distance >= _flightDistance && _isFlight == false)

@@ -47,7 +47,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Portals
                 _sun.Hide();
                 _plane.gameObject.SetActive(false);
                 other.GetComponentInChildren<CutSceneMovement>().MoveUpper(
-                    startCallback: ( ) => _loadingCurtain.Hide(HideCurtainDuration));
+                    startCallback:() => _loadingCurtain.Hide(HideCurtainDuration));
             }
         }
     }

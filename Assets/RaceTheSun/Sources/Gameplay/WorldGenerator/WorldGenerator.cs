@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Cysharp.Threading.Tasks;
 using Assets.RaceTheSun.Sources.Gameplay.WorldGenerator.StageInfo;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 

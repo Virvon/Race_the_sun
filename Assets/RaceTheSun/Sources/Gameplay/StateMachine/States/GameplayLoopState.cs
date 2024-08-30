@@ -1,8 +1,8 @@
-﻿using Cysharp.Threading.Tasks;
-using Assets.RaceTheSun.Sources.GameLogic.Animations;
+﻿using Assets.RaceTheSun.Sources.GameLogic.Animations;
 using Assets.RaceTheSun.Sources.GameLogic.Cameras.Gameplay;
 using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
 using Assets.RaceTheSun.Sources.Services.WaitingService;
+using Cysharp.Threading.Tasks;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
 {

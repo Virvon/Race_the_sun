@@ -1,5 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
-using Assets.RaceTheSun.Sources.Gameplay.CollectItems.ItemVisitor;
+﻿using Assets.RaceTheSun.Sources.Gameplay.CollectItems.ItemVisitor;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 

@@ -1,9 +1,9 @@
 ﻿using System.Collections;
-using Cysharp.Threading.Tasks;
 using Assets.RaceTheSun.Sources.Gameplay.CollectItems.Items;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.GameplayFactory;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;
 using Assets.RaceTheSun.Sources.Upgrading;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 

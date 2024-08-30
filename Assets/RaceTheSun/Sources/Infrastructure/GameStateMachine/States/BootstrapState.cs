@@ -1,11 +1,11 @@
-﻿using Cysharp.Threading.Tasks;
-using System;
+﻿using System;
 using System.Collections;
 using Assets.RaceTheSun.Sources.Services.StaticDataService;
 using Assets.RaceTheSun.Sources.UI.LoadingCurtain;
 using Assets.RaceTheSun.Sources.Services.CoroutineRunner;
 using Agava.YandexGames;
 using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
+using Cysharp.Threading.Tasks;
 
 namespace Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine.States
 {

@@ -1,6 +1,6 @@
 ﻿using System.Collections;
-using Cysharp.Threading.Tasks;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship.Battery;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -93,11 +93,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
         {
             float positionZ = Mathf.Sqrt(Mathf.Pow(_radius, 2) - Mathf.Pow(positionY, 2));
 
-            transform.position = new Vector3(
-                0,
-                positionY, positionZ) + new Vector3(_spaceship.position.x,
-                SpaceshipPositionY,
-                _spaceship.position.z);
+            transform.position = new Vector3(0, positionY, positionZ) + new Vector3(_spaceship.position.x, SpaceshipPositionY, _spaceship.position.z);
 
             transform.rotation = Quaternion.LookRotation((new Vector3(_spaceship.position.x, SpaceshipPositionY, _spaceship.position.z) - transform.position).normalized);
         }

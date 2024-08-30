@@ -35,7 +35,8 @@ namespace Assets.RaceTheSun.Sources.Gameplay.DistanceObserver
                 return;
 
             transform.position = Vector3.MoveTowards(
-                transform.position, transform.position + _movementDirection.normalized,
+                transform.position,
+                transform.position + _movementDirection.normalized,
                 _speed * Time.deltaTime);
 
             if (Vector3.Distance(transform.position, _startPosition) >= _movementDistance)

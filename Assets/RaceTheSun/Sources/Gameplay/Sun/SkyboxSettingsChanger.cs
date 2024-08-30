@@ -71,7 +71,7 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Sun
             float currentAtmosphereThickness = startAtmosphereThickness;
 
             float startExposure = _skyboxMaterial.GetFloat(Exposure);
-            float currentExposure = startExposure;  
+            float currentExposure;
 
             while (progress < 1)
             {

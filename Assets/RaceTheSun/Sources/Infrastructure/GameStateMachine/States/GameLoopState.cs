@@ -1,8 +1,8 @@
-﻿using Cysharp.Threading.Tasks;
-using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
+﻿using Assets.RaceTheSun.Sources.Infrastructure.AssetManagement;
 using Assets.RaceTheSun.Sources.Infrastructure.SceneManagement;
 using Assets.RaceTheSun.Sources.Services.SaveLoad;
 using Assets.RaceTheSun.Sources.UI.LoadingCurtain;
+using Cysharp.Threading.Tasks;
 
 namespace Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine.States
 {

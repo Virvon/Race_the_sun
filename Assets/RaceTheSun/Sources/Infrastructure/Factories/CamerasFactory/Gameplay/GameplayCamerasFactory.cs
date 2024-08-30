@@ -1,5 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
-using Assets.RaceTheSun.Sources.GameLogic.Cameras.Gameplay;
+﻿using Assets.RaceTheSun.Sources.GameLogic.Cameras.Gameplay;
+using Cysharp.Threading.Tasks;
 
 namespace Assets.RaceTheSun.Sources.Infrastructure.Factories.CamerasFactory.Gameplay
 {

@@ -1,9 +1,9 @@
-﻿using Cysharp.Threading.Tasks;
-using Agava.YandexGames;
+﻿using Agava.YandexGames;
 using Assets.RaceTheSun.Sources.Gameplay.Portals;
 using Assets.RaceTheSun.Sources.Gameplay.Spaceship.Movement;
 using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
 using Assets.RaceTheSun.Sources.UI.GameOverPanel;
+using Cysharp.Threading.Tasks;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.StateMachine.States
 {

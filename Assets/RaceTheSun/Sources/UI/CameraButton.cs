@@ -46,6 +46,6 @@ namespace Assets.RaceTheSun.Sources.UI
             _text.text = _persistentProgressService
             .Progress.SpaceshipMainCameraSettings
             .IsFromThirdPerson ? _fromThirdPersonText : _fromFirstPersonText;
-        }  
+        }
     }
 }

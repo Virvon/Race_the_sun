@@ -1,6 +1,6 @@
-﻿using Cysharp.Threading.Tasks;
-using System;
+﻿using System;
 using Assets.RaceTheSun.Sources.Infrastructure;
+using Cysharp.Threading.Tasks;
 
 namespace Assets.RaceTheSun.Sources.UI.LoadingCurtain
 {

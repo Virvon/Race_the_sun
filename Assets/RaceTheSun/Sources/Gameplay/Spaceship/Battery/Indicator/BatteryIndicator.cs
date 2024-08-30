@@ -43,17 +43,15 @@ namespace Assets.RaceTheSun.Sources.Gameplay.Spaceship.Battery.Indicator
 
             for (int i = 0; i < _batteryMaterialsInfo.Count - 1; i++)
             {
-                _cells.Add(new BatteryCell(GetMinIncludeValue(
-                    _batteryMaterialsInfo[i].Position,
-                    _batteryMaterialsInfo.Count),
+                _cells.Add(new BatteryCell(
+                    GetMinIncludeValue(_batteryMaterialsInfo[i].Position, _batteryMaterialsInfo.Count),
                     _chargedMaterial,
                     _dischargedMaterial,
                     _batteryMaterialsInfo[i].Index));
             }
 
-            _cells.Add(new LastBatteryCell(GetMinIncludeValue(
-                _batteryMaterialsInfo.Last().Position,
-                _batteryMaterialsInfo.Count),
+            _cells.Add(new LastBatteryCell(
+                GetMinIncludeValue(_batteryMaterialsInfo.Last().Position, _batteryMaterialsInfo.Count),
                 _chargedMaterial,
                 _lowBatteryMaterial,
                 _dischargedMaterial,

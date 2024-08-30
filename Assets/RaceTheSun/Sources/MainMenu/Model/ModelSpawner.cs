@@ -1,8 +1,8 @@
-﻿using Cysharp.Threading.Tasks;
-using Assets.RaceTheSun.Sources.Data;
+﻿using Assets.RaceTheSun.Sources.Data;
 using Assets.RaceTheSun.Sources.GameLogic.Trail;
 using Assets.RaceTheSun.Sources.Infrastructure.Factories.SpaceshipModelFactory;
 using Assets.RaceTheSun.Sources.Services.PersistentProgress;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 

@@ -1,6 +1,6 @@
-﻿using Cysharp.Threading.Tasks;
-using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
+﻿using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine;
 using Assets.RaceTheSun.Sources.Infrastructure.GameStateMachine.States;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 

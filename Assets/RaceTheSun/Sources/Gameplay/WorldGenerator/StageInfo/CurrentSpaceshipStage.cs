@@ -1,5 +1,5 @@
-﻿using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
-using System;
+﻿using System;
+using Assets.RaceTheSun.Sources.Services.StaticDataService.Configs;
 
 namespace Assets.RaceTheSun.Sources.Gameplay.WorldGenerator.StageInfo
 {

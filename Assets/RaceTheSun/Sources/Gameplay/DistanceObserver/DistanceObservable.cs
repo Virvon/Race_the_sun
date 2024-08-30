@@ -22,12 +22,12 @@ namespace Assets.RaceTheSun.Sources.Gameplay.DistanceObserver
             if (_gameplayFactory.Spaceship == null)
                 return;
 
-            Vector3 SpaceshipPosition = _gameplayFactory.Spaceship.transform.position;
+            Vector3 spaceshipPosition = _gameplayFactory.Spaceship.transform.position;
             List<ObserverInfo> removedObservers = new ();
 
             foreach (ObserverInfo info in _observers)
             {
-                if (SpaceshipPosition.z >= info.InvokePosition.z)
+                if (spaceshipPosition.z >= info.InvokePosition.z)
                 {
                     info.Observer.Invoke();
                     removedObservers.Add(info);
